@@ -1,0 +1,17 @@
+Third Party Source.
+
+* jmod_0_9k.jar
+
+https://sourceforge.net/project/downloading.php?group_id=131823&filename=jmod-0.9.tar.bz2&a=57874221
+
+* toot-r3-beta2,jar
+
+https://toot2.googlecode.com/svn trunk   (tag 3beta2)
+
+* audioServers-beta2.jar
+
+https://tootaudioservers.googlecode.com/svn  (tag 3beta2)
+
+* macstub (provides a stub verison of MRJAdapter.jar).
+
+https://frinika.svn.sourceforge.net/svnroot/frinika  MacStub

@@ -1,0 +1,11 @@
+Active developers and what they're workin on
+---------------------------------------------------------------------
+
+Peter Salomonsen
+----------------
+Frinika SynthRack - split out code, and remove special treatment in Frinika
+
+Paul Leonard.
+-------------
+Music Server Database. 
+Automatic music generation.

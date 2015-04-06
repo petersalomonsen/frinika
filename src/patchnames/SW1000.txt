@@ -1,0 +1,2751 @@
+[cubase parse file]
+[parser version 0001]
+[comment] XG Device by Janne Roeper 22.04.99 Amended for SW1000XG by Ian Baker (Reggie) 08/2000
+
+[creators first name]Janne
+[creators last name]Roeper
+[device manufacturer]YAMAHA
+[device name]Reg's XG
+[script name]Reg's XG Voices
+[script version]version 1.00
+
+[define patchnames]
+
+[mode]	SW1000 Voices
+
+[g1]		Piano
+[g2]			GrandPno
+[p3, 0, 0, 0]			GrandPiano
+[p3, 0, 0, 1]			GrndPnoKSP
+[p3, 0, 0, 18]			MelloGrP
+[p3, 0, 0, 40]			PianoStr
+[p3, 0, 0, 41]			Dream
+
+[p3, 0, 0, 64]			Concert Grand
+[p3, 0, 0, 65]			Concert Grand KSP
+[p3, 0, 0, 66]			Double Concert Grand
+[p3, 0, 0, 67]			MIDI Grand 1
+[p3, 0, 0, 68]			MIDI Grand 2
+[p3, 0, 0,126]			Grand Piano #
+[p3, 0, 0,127]			Grand Piano 2
+[g2]			BritePno
+[p3, 1, 0, 0]			BritePno
+[p3, 1, 0, 1]			BritPnoK
+
+[p3, 1, 0, 3] 			Stereo Bright Piano 
+[p3, 1, 0, 20] 			Resonant Bright Piano
+[p3, 1, 0, 32]			Detuned Bright Piano
+[p3, 1, 0, 40]			Synth Pad Piano
+[p3, 1, 0, 64]			Bright Concert Grand
+[p3, 1, 0, 65]			Bright Cncert GrndKSP
+[p3, 1, 0, 66]			MIDI Grand 3 
+[p3, 1, 0, 67]			MIDI Grand 4 
+[p3, 1, 0, 68]			Old Piano 
+[p3, 1, 0, 126]			Bright Piano # 
+[p3, 1, 0, 127]			Bright Piano 2
+
+
+[g2]			E.Grand
+[p3, 2, 0, 0]			ELectric Grand Piano
+[p3, 2, 0, 1]			ELectric Grand Piano KSP
+[p3, 2, 0, 32]			Detuned CP80
+[p3, 2, 0, 32]			Synth CP 
+[p3, 2, 0, 40]			Layered CP 1
+[p3, 2, 0, 41]			Layered CP 2
+[p3, 2, 0, 127]			Electric Grand Piano 2
+
+[g2]			HnkyTonk
+[p3, 3, 0, 0]			Honky-tonk Piano
+[p3, 3, 0, 1]			Honky-tonk Piano KSP
+[p3, 3, 0, 127]			Honky-tonk Piano 2
+
+[g2]			E.Piano1
+[p3, 4, 0, 0]			Electric Piano 1
+[p3, 4, 0, 1]			Electric Piano 1 KSP
+[p3, 4, 0, 18]			Mellow Electric Piano 1
+[p3, 4, 0, 32]			Chorus Electric Piano 1
+[p3, 4, 0, 40]			Hard Electric Piano
+[p3, 4, 0, 45]			Velo Crossfade E.Pno 1
+[p3, 4, 0, 64]			60's Electric Piano 1
+[p3, 4, 0, 65]			Old Electric Piano
+[p3, 4, 0, 66]			Tribecca
+[p3, 4, 0, 67]			Diploid 1
+[p3, 4, 0, 68]			Flops
+[p3, 4, 0, 69]			Soho
+[p3, 4, 0, 70]			Flops Detuned
+[p3, 4, 0, 71]			Diploid 2
+[p3, 4, 0, 72]			Brooklyn
+[p3, 4, 0, 73]			Diploid 3
+[p3, 4, 0, 74]			Phunky DX
+[p3, 4, 0, 75]			Nasal DX
+[p3, 4, 0, 76]			Nasal DX Detune
+[p3, 4, 0, 77]			Din 
+[p3, 4, 0, 126]			Electric Piano 1 #
+[p3, 4, 0, 127]			Electric Piano 2 
+
+[g2]			E.Piano2
+[p3, 5, 0, 0]			Electric Piano 2
+[p3, 5, 0, 1]			Electric Piano 2 KSP
+[p3, 5, 0, 12]			Chorus E.Piano Decay 
+[p3, 5, 0, 32]			Chorus Electric Piano 2
+[p3, 5, 0, 33]			DX Electric Piano Hard
+[p3, 5, 0, 34]			DX Legend
+[p3, 5, 0, 40]			DX Phase Electric Piano
+[p3, 5, 0, 41]			DX + Analog Electric Piano
+[p3, 5, 0, 42]			DX Koto Electric Piano
+[p3, 5, 0, 45]			Velo Crossfade E.Pno 2
+[p3, 5, 0, 48]			Chorus E.Piano KSP 
+[p3, 5, 0, 52]			DX Mallet 
+[p3, 5, 0, 64]			Shirakawa 
+[p3, 5, 0, 65]			Old Electric Piano Tine 
+[p3, 5, 0, 66]			Flips 
+[p3, 5, 0, 67]			Flips Detuned 
+[p3, 5, 0, 68]			Flicks 
+[p3, 5, 0, 69]			Flicks Detuned 
+[p3, 5, 0, 70]			Bright DX 
+[p3, 5, 0, 71]			Bright DX Detune 
+[p3, 5, 0, 72]			Kitayama 
+[p3, 5, 0, 73]			Turnpike 1 
+[p3, 5, 0, 74]			Turnpike 2 
+[p3, 5, 0, 75]			Cerritos 
+[p3, 5, 0, 76]			Sunset 
+[p3, 5, 0, 77]			Soft DX 
+[p3, 5, 0, 78]			Resonant DX 
+[p3, 5, 0, 79]			Piercing DX 
+[p3, 5, 0, 80]			Shivering DX 
+[p3, 5, 0, 81]			Shivering DX Plus 
+[p3, 5, 0, 82]			Rattling DX 
+[p3, 5, 0, 83]			Rattling DX Plus 
+[p3, 5, 0, 84]			Tinker DX 
+[p3, 5, 0, 85]			Tinker DX Plus 
+[p3, 5, 0, 126]			Electric Piano 2 # 
+[p3, 5, 0, 127]			Electric Piano 2 2
+[g2]			Harpsichord
+[p3, 6, 0, 0]			Harpsichord
+[p3, 6, 0, 1]			HarpsichordKSP
+[p3, 6, 0, 25]			Harpsichord2
+[p3, 6, 0, 35]			Harpsichord3
+[p3, 6, 0, 40]			Electric Harpsichord
+[p3, 6, 0, 64]			Synth Harpsichord
+[p3, 6, 0, 127]			Harpsichord 4
+
+
+[g2]			Clavi.
+[p3, 7, 0, 0]			Clavi
+[p3, 7, 0, 1]			Clavi KSP
+[p3, 7, 0, 27]			Clavi Wah
+[p3, 7, 0, 40]			Cosmic Clavi
+[p3, 7, 0, 64]			Pulse Clavi
+[p3, 7, 0, 65]			Pierce Clavi
+[p3, 7, 0, 66]			Clear Clavi
+[p3, 7, 0, 67]			Sweep Clavi
+[p3, 7, 0, 68]			Synth Clavi
+[p3, 7, 0, 69]			Super Clavi
+[p3, 7, 0, 70]			Guitar Clavi
+[p3, 7, 0, 71]			Hardy Pluck
+[p3, 7, 0, 72]			Hardy Pluck Plus
+[p3, 7, 0, 73]			FM Clavi Double
+[p3, 7, 0, 126]			Clavi #
+[p3, 7, 0, 127]			Clavi 2
+
+[g1]		Chromatic Percussion
+[g2]			Celesta
+[p3, 8, 0, 0]			Celesta
+[p3, 8, 0, 64]			FMCelesta
+[p3, 8, 0, 127]			Celesta2
+[g2]			Glocken
+[p3, 9, 0, 0]			Glocken
+[p3, 9, 0, 127]			Glocken2
+[g2]			MusicBox
+[p3, 10, 0, 0]			MusicBox
+[p3, 10, 0, 64]			Orgel
+[p3, 10, 0, 65]			Sml.Orgel
+[p3, 10, 0, 127]			MusicBox2
+[g2]			Vibes
+[p3, 11, 0, 0]			Vibes
+[p3, 11, 0, 1]			VibesK
+[p3, 11, 0, 45]			HardVibe
+[p3, 11, 0, 127]		Vibes2
+[g2]			Marimba
+[p3, 12, 0, 0]			Marimba
+[p3, 12, 0, 1]			MarimbaK
+[p3, 12, 0, 64]			SineMrmb
+[p3, 12, 0, 96]			Balafon
+[p3, 12, 0, 97]			Balafon2
+[p3, 12, 0, 98]			Log Drum
+[p3, 12, 0, 127]		Marimba2
+[g2]			Xylophon
+[p3, 13, 0, 0]			Xylophon
+[p3, 13, 0, 127]		Xylophn2
+[g2]			TubulBel
+[p3, 14, 0, 0]			TubulBel
+[p3, 14, 0, 96]			ChurchBel
+[p3, 14, 0, 97]			Carillion
+[p3, 14, 0, 127]		Tubular2
+[g2]			Dulcimer
+[p3, 15, 0, 0]			Dulcimer
+[p3, 15, 0, 35]			Dulcimr2
+[p3, 15, 0, 96]			Cimbalom
+[p3, 15, 0, 97]			Santur
+[p3, 15, 0, 127]		Dulcimr3
+[g1]		Organ
+
+[g2]			DrawOrgn
+[p3, 16, 0, 0]			DrawOrgn
+[p3, 16, 0, 3]			Stereo Drawbar Organ
+[p3, 16, 0, 32]			DetDrwOr
+[p3, 16, 0, 33]			60sDrOr1
+[p3, 16, 0, 34]			60sDrOr2
+[p3, 16, 0, 35]			70sDrOr1
+[p3, 16, 0, 36]			DrawOrg2
+[p3, 16, 0, 37]			60sDrOr3
+[p3, 16, 0, 38]			EvenBar
+[p3, 16, 0, 40]			16+2"2/3
+[p3, 16, 0, 64]			Organ Ba
+[p3, 16, 0, 65]			70sDrOr2
+[p3, 16, 0, 66]			CheezOrg
+[p3, 16, 0, 67]			DrawOrg3
+
+[p3, 16, 0, 68]			Stadium Organ
+[p3, 16, 0, 69]			Stadium Organ 2
+[p3, 16, 0, 70]			Gospel Organ
+[p3, 16, 0, 71]			Click Gospel Organ
+[p3, 16, 0, 72]			Chapel Organ
+[p3, 16, 0, 73]			Dim Chorus
+[p3, 16, 0, 74]			Dawn
+[p3, 16, 0, 75]			Mellorgan
+[p3, 16, 0, 76]			Fuzzorgan
+[p3, 16, 0, 77]			FMO
+[p3, 16, 0, 126]			Drawbar Organ # 
+[p3, 16, 0, 127]			Drawbar Organ 4
+
+[g2]			Percussion Organ
+[p3, 17, 0, 0]			PercOrgn
+[p3, 17, 0, 24]			70sPcOr1
+[p3, 17, 0, 32]			DetPrcOr
+[p3, 17, 0, 33]			LiteOrg
+[p3, 17, 0, 37]			PercOrg2
+[p3, 17, 0, 64]			Jazz Organ
+[p3, 17, 0, 65]			Warm Jazz Organ
+[p3, 17, 0, 66]			Click Organ
+[p3, 17, 0, 67]			Grace
+[p3, 17, 0, 68]			Crunchy Grace
+[p3, 17, 0, 69]			Dim Click
+[p3, 17, 0, 70]			Dusk
+[p3, 17, 0, 71]			FM Click
+[p3, 17, 0, 72]			Spoony
+[p3, 17, 0, 73]			Super Rotary
+[p3, 17, 0, 74]			Lo Fi Organ
+[p3, 17, 0, 75]			Beep Organ
+[p3, 17, 0, 76]			Belief
+[p3, 17, 0, 77]			Snap Organ
+[p3, 17, 0, 126]			Percussive Organ #
+[p3, 17, 0, 127]			Percussive Organ
+
+
+[g2]			Rock Organ
+[p3, 18, 0, 0]			RockOrgn
+[p3, 18, 0, 64]			RotaryOr
+[p3, 18, 0, 65]			SloRotar
+[p3, 18, 0, 66]			FstRotar
+[p3, 18, 0, 126]			Rock Organ #
+[p3, 18, 0, 127]			Rock Organ 2
+
+[g2]			Church Organ
+[p3, 19, 0, 0]			ChrchOrg
+[p3, 19, 0, 32]			ChurOrg3
+[p3, 19, 0, 35]			ChurOrg2
+[p3, 19, 0, 40]			NotreDam
+[p3, 19, 0, 64]			OrgFlute
+[p3, 19, 0, 65]			TrmOrgFl
+[p3, 19, 0, 127]			Church Organ
+[g2]			Reed Organ
+[p3, 20, 0, 0]			Reed Organ
+[p3, 20, 0, 32]			Reed Organ Detuned
+[p3, 20, 0, 40]			Puff Organ
+[p3, 20, 0, 64]			Synth Reed Dark
+[p3, 20, 0, 127]			Reed Organ
+
+[g2]			Acordion
+[p3, 21, 0, 0]			Acordion
+[p3, 21, 0, 32]			AccordIt
+[p3, 21, 0, 127]			Accordion 2
+[g2]			Harmnica
+[p3, 22, 0, 0]			Harmonica
+[p3, 22, 0, 32]			Harmonica 2
+[p3, 22, 0, 127]			Harmonica 3
+[g2]			TangoAcd
+[p3, 23, 0, 0]			Tango Accordion
+[p3, 23, 0, 64]			Tango Accordion 2
+[p3, 23, 0, 65]			Tight Accordion 
+[p3, 23, 0, 66]			Tight Acrdion Detuned
+[p3, 23, 0, 126]			Tango Accordion #
+[p3, 23, 0, 127]			Tango Accordion 3
+
+
+[g1]		Guitar
+[g2]			Nylon Guitar
+[p3, 24, 0, 0]			Nylon Guitar
+[p3, 24, 0, 16]			Nylon Guitar 2
+[p3, 24, 0, 25]			Nylon Guitar 3
+[p3, 24, 0, 32]			Nylon Guitar Detuned
+[p3, 24, 0, 40]			Wayside
+[p3, 24, 0, 43]			Velo Guitar Harmonics
+[p3, 24, 0, 64]			Spanish Guitar
+[p3, 24, 0, 65]			Spanish Guitar Hard
+[p3, 24, 0, 66]			Spanish Guitar Mellow
+[p3, 24, 0, 67]			Spanish Guitar Decay
+[p3, 24, 0, 96]			Ukulele
+[p3, 24, 0, 126]			Nylon Guitar #
+[p3, 24, 0, 127]			Nylon Guitar 4
+
+[g2]			Steel Guitar
+[p3, 25, 0, 0]			Steel Guitar
+[p3, 25, 0, 16]			Steel Guitar 2
+[p3, 25, 0, 32]			Steel Guitar Detuned
+[p3, 25, 0, 35]			12-string Guitar
+[p3, 25, 0, 40]			Nylon & Steel Guitar
+[p3, 25, 0, 41]			SteelGuitar with BodySound
+[p3, 25, 0, 64]			Nashville
+[p3, 25, 0, 65]			Nashville Resonant
+[p3, 25, 0, 66]			Nashville 12
+[p3, 25, 0, 96]			Mandolin
+[p3, 25, 0, 97]			Mandolin Ensemble
+[p3, 25, 0, 126]			Steel Guitar #
+[p3, 25, 0, 127]			Steel Guitar 3
+
+[g2]			Jazz Guitar
+[p3, 26, 0, 0]			Jazz Guitar
+[p3, 26, 0, 18]			Mellow Guitar
+[p3, 26, 0, 32]			Jazz Amp
+[p3, 26, 0, 40]			Organ Guitar 
+[p3, 26, 0, 41]			Octave Plate
+[p3, 26, 0, 64]			Super Jazz Middle
+[p3, 26, 0, 65]			Super Jazz Bridge
+[p3, 26, 0, 66]			Super Jazz Detuned
+[p3, 26, 0, 67]			Super Jazz Resonant
+[p3, 26, 0, 68]			DX Jazz Guitar
+[p3, 26, 0, 69]			DX Jazz Gtr Detuned
+[p3, 26, 0, 70]			Pulse Jazz
+[p3, 26, 0, 71]			Roughcaster Neck
+[p3, 26, 0, 72]			Roughcaster Middle
+[p3, 26, 0, 96]			Pedal Steel Guitar
+[p3, 26, 0, 126]			Jazz Guitar #
+[p3, 26, 0, 127]			Jazz Guitar 2
+[g2]			Clean Guitar
+[p3, 27, 0, 0]			Clean Guitar
+[p3, 27, 0, 32]			Chorus Guitar
+[p3, 27, 0, 33]			Chorus Guitar Light
+[p3, 27, 0, 64]			CleanGuitar 2
+[p3, 27, 0, 65]			Mid Tone Guitar
+[p3, 27, 0, 66]			Mid Tone Gtr Stereo
+[p3, 27, 0, 67]			Nasal Guitar
+[p3, 27, 0, 68]			Nasal Guitar Stereo
+[p3, 27, 0, 69]			Hammer Middle
+[p3, 27, 0, 70]			Hammer Bridge
+[p3, 27, 0, 71]			Hammer Double
+[p3, 27, 0, 72]			Hammer Stereo
+[p3, 27, 0, 73]			FM Chorus Guitar
+[p3, 27, 0, 74]			FM Chorus Guitar Soft
+[p3, 27, 0, 75]			Pesky Guitar
+[p3, 27, 0, 76]			Clavi Guitar
+[p3, 27, 0, 127]			Clean Guitar
+
+
+[g2]			Mute Guitar
+[p3, 28, 0, 0]			Muted Guitar
+[p3, 28, 0, 40]			Funk Guitar 1
+[p3, 28, 0, 41]			Muted Steel Guitar
+[p3, 28, 0, 43]			Funk Guitar 2
+[p3, 28, 0, 45]			Jazz Man
+[p3, 28, 0, 64]			Wrench
+[p3, 28, 0, 65]			Wrench Heavy
+[p3, 28, 0, 66]			Wrench Double
+[p3, 28, 0, 67]			Tin
+[p3, 28, 0, 96]			Muted Distortion Guitar
+[p3, 28, 0, 126]			Muted Guitar #
+[p3, 28, 0, 127]			Muted Guitar 2
+
+[g2]			Over drive
+[p3, 29, 0, 0]			Overdriven Guitar
+[p3, 29, 0, 32]			OverdriveGtr Detuned 
+[p3, 29, 0, 40]			Parallel 
+[p3, 29, 0, 43]			Guitar Pinch
+[p3, 29, 0, 64]			Manhattan Middle
+[p3, 29, 0, 65]			Manhattan Bridge
+[p3, 29, 0, 66]			Manhattan Detuned
+[p3, 29, 0, 67]			Manhattan Powered
+[p3, 29, 0, 126]			Overdriven Guitar #
+[p3, 29, 0, 127]			Overdriven Guitar 2
+
+[g2]			Distortion Guitar
+[p3, 30, 0, 0]			Distortion Guitar
+[p3, 30, 0, 12]			Distorted Rhythm Gtr
+[p3, 30, 0, 24]			Distortion Guitar 2
+[p3, 30, 0, 35]			Distortion Guitar 3
+[p3, 30, 0, 36]			Power Guitar 2
+[p3, 30, 0, 37]			Power Guitar 1
+[p3, 30, 0, 38]			Distorted Fifths
+[p3, 30, 0, 40]			Feedback Guitar
+[p3, 30, 0, 41]			Feedback Guitar 2
+[p3, 30, 0, 42]			Twin Distortion
+[p3, 30, 0, 43]			Rock Rhythm Guitar 2
+[p3, 30, 0, 45]			Rock Rhythm Guitar 1
+[p3, 30, 0, 64]			Bite
+[p3, 30, 0, 65]			Bite Resonant
+[p3, 30, 0, 66]			Bite Detuned
+[p3, 30, 0, 67]			Bite Plus
+[p3, 30, 0, 68]			Burnout
+[p3, 30, 0, 69]			Bombay
+[p3, 30, 0, 70]			Bombay Sustained
+[p3, 30, 0, 71]			Jaipur
+[p3, 30, 0, 126]			Distortion Guitar #
+[p3, 30, 0, 127]			Distortion Guitar 4
+
+[g2]			GtrHarmo
+[p3, 31, 0, 0]			 Guitar Harmonics
+[p3, 31, 0, 64] 			Acoustic Harmonics
+[p3, 31, 0, 65] 			Guitar Feedback
+[p3, 31, 0, 66] 			Guitar Harmonics 2
+[p3, 31, 0, 67] 			Shimla
+[p3, 31, 0, 127] 			Guitar Harmonics 3
+
+[g1]		Bass
+[g2]			Acoustic Bass
+[p3, 32, 0, 0]			Acoustic Bass
+[p3, 32, 0, 40]			Jazz Rhythm
+[p3, 32, 0, 41]			Pick Acoustic Bass 
+[p3, 32, 0, 43]			Blink Bass
+[p3, 32, 0, 45]			Velo Crsfade UprightBass
+[p3, 32, 0, 64]			Boston
+[p3, 32, 0, 65]			Boston Bright
+[p3, 32, 0, 66]			Coolth
+[p3, 32, 0, 67]			Coolth Bright
+[p3, 32, 0, 96]			Walking Synth Bass
+[p3, 32, 0, 97]			Dim & Cool
+[p3, 32, 0, 126]			Acoustic Bass #
+[p3, 32, 0, 127]			Acoustic Bass 2
+[g2]			Finger Bass
+[p3, 33, 0, 0]			Finger Bass
+[p3, 33, 0, 18]			Finger Dark
+[p3, 33, 0, 27]			Flange Bass
+[p3, 33, 0, 32]			Finger Bass Detuned 
+[p3, 33, 0, 40]			Bass & Distorted E.Gtr
+[p3, 33, 0, 43]			Finger Slap Bass
+[p3, 33, 0, 45]			Finger Bass 2
+[p3, 33, 0, 64]			Jazzy Bass
+[p3, 33, 0, 65]			Modulated Bass
+[p3, 33, 0, 66]			Chase
+[p3, 33, 0, 67]			Chase Resonant
+[p3, 33, 0, 68]			Blue Bass
+[p3, 33, 0, 126]			Finger Bass #
+[p3, 33, 0, 127]			Finger Bass 2 2
+[g2]			Pick Bass
+[p3, 34, 0, 0]			Pick Bass
+[p3, 34, 0, 28]			Muted Pick Bass
+[p3, 34, 0, 40]			PickBass & MutedGtr
+[p3, 34, 0, 64]			Hard Pick
+[p3, 34, 0, 65]			Hard Pick Resonant
+[p3, 34, 0, 66]			Pick Bass Plus
+[p3, 34, 0, 127]			Pick Bass
+[g2]			Fretless Bass
+[p3, 35, 0, 0]			Fretless Bass
+[p3, 35, 0, 32]			Fretless Bass 2
+[p3, 35, 0, 33]			Fretless Bass 3
+[p3, 35, 0, 34]			Fretless Bass 4
+[p3, 35, 0, 64]			Powered Fretless
+[p3, 35, 0, 65]			Power Fretless Reso
+[p3, 35, 0, 66]			Talking Bass
+[p3, 35, 0, 67]			Noisy Fretless
+[p3, 35, 0, 96]			Synth Fretless
+[p3, 35, 0, 97]			Smooth Fretless
+[p3, 35, 0, 126]			Fretless Bass #
+[p3, 35, 0, 127]			Fretless Bass 5
+[g2]			Slap Bass1
+[p3, 36, 0, 0]			Slap Bass 1
+[p3, 36, 0, 21]			Cosmic Slap
+[p3, 36, 0, 27]			Resonant Slap
+[p3, 36, 0, 32]			Punch Thumb Bass
+[p3, 36, 0, 64]			Slapper
+[p3, 36, 0, 65]			Thumb & Slap
+[p3, 36, 0, 66]			Glitzy Slap
+[p3, 36, 0, 67]			FM Slap
+[p3, 36, 0, 68]			FM Slap Detuned
+[p3, 36, 0, 126]			Slap Bass 1 #
+[p3, 36, 0, 127]			Slap Bass 1
+[g2]			Slap Bass2
+[p3, 37, 0, 0]			Slap Bass 2
+[p3, 37, 0, 16]			Bright Slap Split
+[p3, 37, 0, 22]			Wah Slap
+[p3, 37, 0, 43]			Velocity Switch Slap
+[p3, 37, 0, 126]			Slap Bass 2 #
+[p3, 37, 0, 127]			Slap Bass 3
+[g2]			Synth Bass1
+[p3, 38, 0, 0]			Synth Bass 1
+[p3, 38, 0, 18]			Synth Bass 1 Dark
+[p3, 38, 0, 20]			Fast Resonant Bass
+[p3, 38, 0, 21]			TL66
+[p3, 38, 0, 24]			Acid Bass
+[p3, 38, 0, 27]			Resonant Bass 
+[p3, 38, 0, 28]			Muted Pulse Bass
+[p3, 38, 0, 29]			Slow Attack
+[p3, 38, 0, 35]			Clavi Bass
+[p3, 38, 0, 40]			Techno Synth Bass
+[p3, 38, 0, 41]			Kick'n'Bass
+[p3, 38, 0, 42]			NEP
+[p3, 38, 0, 64]			Orbiter
+[p3, 38, 0, 65]			Square Bass
+[p3, 38, 0, 66]			Rubber Bass
+[p3, 38, 0, 67]			Fish
+[p3, 38, 0, 68]			Hard Resonance
+[p3, 38, 0, 69]			Wah Saw
+[p3, 38, 0, 70]			Pluto 
+[p3, 38, 0, 71]			Pluto Plus
+[p3, 38, 0, 72]			Stimuli
+[p3, 38, 0, 73]			Running Pulse
+[p3, 38, 0, 74]			Talking Pulse
+[p3, 38, 0, 75]			Node
+[p3, 38, 0, 76]			Stainer
+[p3, 38, 0, 77]			Stainer Attack
+[p3, 38, 0, 78]			Sweep Square
+[p3, 38, 0, 79]			Sweep Square Plus
+[p3, 38, 0, 80]			Stinks
+[p3, 38, 0, 81]			Stinks Resonant
+[p3, 38, 0, 82]			Resonant Square
+[p3, 38, 0, 83]			Dagger
+[p3, 38, 0, 84]			Zinc
+[p3, 38, 0, 85]			SweePWM
+[p3, 38, 0, 86]			SweePWM Stereo
+[p3, 38, 0, 87]			Slow Wah
+[p3, 38, 0, 88]			Crook
+[p3, 38, 0, 96]			Hammer
+[p3, 38, 0, 127]			Synth Bass 1 2
+[g2]			Synth Bass 2
+[p3, 39, 0, 0]			Synth Bass 2
+[p3, 39, 0, 6]			Mellow Synth Bass
+[p3, 39, 0, 12]			Sequenced Bass
+[p3, 39, 0, 18]			Click Synth Bass
+[p3, 39, 0, 19]			Synth Bass 2 Dark
+[p3, 39, 0, 22]			Zealot
+[p3, 39, 0, 32]			Smooth Synth Bass
+[p3, 39, 0, 40]			Modular Synth Bass
+[p3, 39, 0, 41]			DX Bass
+[p3, 39, 0, 42]			DX Bass Bright
+[p3, 39, 0, 64]			X Wire Bass
+[p3, 39, 0, 65]			Attack Pulse
+[p3, 39, 0, 66]			CS Light
+[p3, 39, 0, 67]			Metal Bass
+[p3, 39, 0, 68]			Forced Osc Bass
+[p3, 39, 0, 69]			Cubit
+[p3, 39, 0, 70]			Cubit Plus
+[p3, 39, 0, 71]			Keel
+[p3, 39, 0, 72]			Keel Powered
+[p3, 39, 0, 73]			Plain Pulse
+[p3, 39, 0, 74]			Powered Pulse
+[p3, 39, 0, 75]			Powered Pulse Bright
+[p3, 39, 0, 76]			Powered Sawtooth
+[p3, 39, 0, 127]			Synth Bass 2 2
+
+[g1]		Strings
+[g2]			Violin
+[p3, 40, 0, 0]			Violin
+[p3, 40, 0, 8]			Slow Violin
+[p3, 40, 0, 40]			Unison
+[p3, 40, 0, 64]			Cadenza
+[p3, 40, 0, 65]			Cadenza Dark
+[p3, 40, 0, 126]			Violin #
+[p3, 40, 0, 127]			Violin 2
+
+[g2]			Viola
+[p3, 41, 0, 0]			Viola
+[p3, 41, 0, 40]			Viola Double
+[p3, 41, 0, 64]			Sonata
+[p3, 41, 0, 127]			Viola 2
+
+[g2]			Cello
+[p3, 42, 0, 0]			Cello
+[p3, 42, 0, 127]			Cello 2
+
+[g2]			Contra bass
+[p3, 43, 0, 0]			Contra bass
+[p3, 43, 0, 127]			Contra bass 2
+
+[g2]			Tremelo Strings
+[p3, 44, 0, 0]			Tremolo Strings
+[p3, 44, 0, 8]			Slow Tremolo Strings
+[p3, 44, 0, 40]			Suspense Strings
+[p3, 44, 0, 64]			Fear
+[p3, 44, 0, 65]			Fear Detuned
+[p3, 44, 0, 66]			Apocalypse
+[p3, 44, 0, 126]			Tremolo Strings # 
+[p3, 44, 0, 127]			Tremolo Strings 2
+[g2]			Pizzicato Strings
+[p3, 45, 0, 0]			Pizzicato Strings
+[p3, 45, 0, 35]			Pizzicato Octave
+[p3, 45, 0, 40]			Sleep
+[p3, 45, 0, 127]			Pizzicato Strings 2
+
+[g2]			Harp
+[p3, 46, 0, 0]			Orchestral Harp
+[p3, 46, 0, 40]			Yang Chin
+[p3, 46, 0, 96]			Violin Harp
+[p3, 46, 0, 97]			Violin Harp Detuned
+[p3, 46, 0, 127]			Orchestral Harp
+
+[g2]			Timpani
+[p3, 47, 0, 0]			Timpani
+[p3, 47, 0, 43]			Roll & Hit
+[p3, 47, 0, 127]			Timpani
+
+[g1]		Ensemble
+[g2]			Strings1
+[p3, 48, 0, 0]			Strings 1
+[p3, 48, 0, 3]			Stereo Strings
+[p3, 48, 0, 8]			Slow Strings
+[p3, 48, 0, 14]			Sforzando Strings 
+[p3, 48, 0, 24]			ArcoStr
+[p3, 48, 0, 35]			60sStrng
+[p3, 48, 0, 40]			Orchestr
+[p3, 48, 0, 41]			Orchstr2
+[p3, 48, 0, 42]			TremOrch
+[p3, 48, 0, 45]			VeloStr
+[p3, 48, 0, 52]			Lento
+[p3, 48, 0, 64]			Super Strings
+[p3, 48, 0, 65]			Super Strings Stereo
+[p3, 48, 0, 66]			Triste
+[p3, 48, 0, 67]			Basso
+[p3, 48, 0, 126]			Strings 1 #
+[p3, 48, 0, 127]			Strings 1 2
+
+[g2]			Strings2
+[p3, 49, 0, 0]			Strings 2
+[p3, 49, 0, 3]			Stereo Slow Strings
+[p3, 49, 0, 8]			Legato Strings
+[p3, 49, 0, 40]			Warm Strings
+[p3, 49, 0, 41]			Kingdom
+[p3, 49, 0, 64]			70's Strings
+[p3, 49, 0, 65]			String Ensemble 3
+[p3, 49, 0, 126]			Strings 2 #
+[p3, 49, 0, 127]			Strings 2 2
+
+[g2]			Synth Strings 1
+[p3, 50, 0, 0]			Synth Strings 1
+[p3, 50, 0, 8]			Memory
+[p3, 50, 0, 18]			Zephyr
+[p3, 50, 0, 27]			Resonant Strings
+[p3, 50, 0, 35]			Synth Strings 3
+[p3, 50, 0, 39]			Monarchy
+[p3, 50, 0, 40]			Grand Pad
+[p3, 50, 0, 41]			Sweep Strings
+[p3, 50, 0, 42]			Sweep Strings Octave
+[p3, 50, 0, 64]			Synth Strings 4
+[p3, 50, 0, 65]			Synth Strings 5
+[p3, 50, 0, 66]			Solitude
+[p3, 50, 0, 67]			Fate
+[p3, 50, 0, 68]			Thulium
+[p3, 50, 0, 69]			Brook
+[p3, 50, 0, 70]			Brook Stereo
+[p3, 50, 0, 127]			Synth Strings 1 2
+
+[g2]			Synth Strings 2
+[p3, 51, 0, 0]			Synth Strings 2
+[p3, 51, 0, 21]			Trade Wind 
+[p3, 51, 0, 39]			Worm Hole
+[p3, 51, 0, 64]			Hope
+[p3, 51, 0, 65]			Virgo
+[p3, 51, 0, 66]			Platinum
+[p3, 51, 0, 67]			Octave PWM
+[p3, 51, 0, 68]			Taurus
+[p3, 51, 0, 69]			Frost
+[p3, 51, 0, 70]			Leo
+[p3, 51, 0, 71]			Solar Plexus
+[p3, 51, 0, 127]			Synth Strings 2 2
+
+[g2]			Choir Aahhs
+[p3, 52, 0, 0]			Choir Aahs 
+[p3, 52, 0, 3]			Stereo Choir
+[p3, 52, 0, 16]			Choir Aahs 2
+[p3, 52, 0, 32]			Mellow Choir
+[p3, 52, 0, 39]			Gasp
+[p3, 52, 0, 40]			Choir Strings
+[p3, 52, 0, 41]			Dead Sea
+[p3, 52, 0, 64]			Strings & Choir Aahs
+[p3, 52, 0, 65]			Male Choir Aahs
+[p3, 52, 0, 66]			Scroll
+[p3, 52, 0, 67]			Scroll Plus 
+[p3, 52, 0, 127]			Choir Aahs 2 2
+[g2]			Voice Oohs
+[p3, 53, 0, 0]			Voice Oohs
+[p3, 53, 0, 64]			Voice Doo
+[p3, 53, 0, 65]			Hmn
+[p3, 53, 0, 66]			Whirl Choir
+[p3, 53, 0, 96]			Voice Humming
+[p3, 53, 0, 127]			Voice Oohs 2
+
+[g2]			Syntyh Voice
+[p3, 54, 0, 0]			Synth Voice
+[p3, 54, 0, 40]			Synth Voice 2
+[p3, 54, 0, 41]			Choral
+[p3, 54, 0, 64]			Analog Voice
+[p3, 54, 0, 65]			Aspirate
+[p3, 54, 0, 66]			Aspirate Detuned
+[p3, 54, 0, 67]			Facula
+[p3, 54, 0, 127]			Synth Voice 2 2
+
+[g2]			Orchestral Hits
+[p3, 55, 0, 0]			Orchestra Hit
+[p3, 55, 0, 12]			Lo-Fi Hit
+[p3, 55, 0, 35]			Orchestra Hit 2
+[p3, 55, 0, 40]			Throne
+[p3, 55, 0, 64]			Impact
+[p3, 55, 0, 65]			Brass Stab
+[p3, 55, 0, 66]			Double Hit
+[p3, 55, 0, 67]			Brass Stab 80
+[p3, 55, 0, 68]			Bass Hit 
+[p3, 55, 0, 69]			Bass Hit Plus 
+[p3, 55, 0, 70]			6th Hit
+[p3, 55, 0, 71]			6th Hit Plus
+[p3, 55, 0, 72]			Euro Hit
+[p3, 55, 0, 73]			Euro Hit Plus 
+[p3, 55, 0, 74]			Blowout
+[p3, 55, 0, 127]			Orchestra Hit 2 2
+
+
+
+
+[g1]		Brass
+[g2]			Trumpet
+[p3, 56, 0, 0]			Trumpet 
+[p3, 56, 0, 16]			Trumpet 2
+[p3, 56, 0, 17]			Bright Trumpet
+[p3, 56, 0, 32]			Warm Trumpet
+[p3, 56, 0, 64]			Dark Trumpet
+[p3, 56, 0, 65]			Dark Trumpet Soft
+[p3, 56, 0, 66]			Soft Trumpet 
+[p3, 56, 0, 67]			Blow
+[p3, 56, 0, 68]			Blow Double
+[p3, 56, 0, 96]			Flugel Horn
+[p3, 56, 0, 97]			Cornet
+[p3, 56, 0, 126]			Trumpet #
+[p3, 56, 0, 127]			Trumpet 3
+[g2]			Trombone
+[p3, 57, 0, 0]			Trombone
+[p3, 57, 0, 18]			Trombone 2
+[p3, 57, 0, 64]			Bright Trombone
+[p3, 57, 0, 65]			Mellow Trombone
+[p3, 57, 0, 66]			JJJ
+[p3, 57, 0, 126]			Trombone #
+[p3, 57, 0, 127]			Trombone 3
+[g2]			Tuba
+[p3, 58, 0, 0]			Tuba
+[p3, 58, 0, 16]			Tuba 2
+[p3, 58, 0, 127]			Tuba 3
+
+[g2]			Muted Trumpet
+[p3, 59, 0, 0]			Muted Trumpet
+[p3, 59, 0, 40]			Backyard
+[p3, 59, 0, 64]			Muted Trumpet 2
+[p3, 59, 0, 65]			Backstairs
+[p3, 59, 0, 126]			Muted Trumpet #
+[p3, 59, 0, 127]			Muted Trumpet 3
+[g2]			Fr.Horn
+[p3, 60, 0, 0]			French Horn
+[p3, 60, 0, 6]			French Horn Solo
+[p3, 60, 0, 32]			French Horn 2
+[p3, 60, 0, 37]			Horn Orchestra
+[p3, 60, 0, 64]			Synth Horn
+[p3, 60, 0, 127]			French Horn 3
+[g2]			BrasSect
+[p3, 61, 0, 0]			Brass Section
+[p3, 61, 0, 3]			Stereo Brass Section
+[p3, 61, 0, 14]			Sforzando Brass
+[p3, 61, 0, 18]			Mild Brass 
+[p3, 61, 0, 35]			Trumpet & Trombone
+[p3, 61, 0, 36]			Trumpet & Trombone 2
+[p3, 61, 0, 39]			Brass Fall
+[p3, 61, 0, 40]			Brass Section 2
+[p3, 61, 0, 41]			High Brass
+[p3, 61, 0, 42]			Mellow Brass
+[p3, 61, 0, 52]			Bund
+[p3, 61, 0, 53]			Fake Horns
+[p3, 61, 0, 54]			Fake Horns Octave
+[p3, 61, 0, 64]			Super Brass
+[p3, 61, 0, 65]			Super Brass Cut
+[p3, 61, 0, 66]			Super Brass Blown
+[p3, 61, 0, 67]			Powered Sforzando
+[p3, 61, 0, 68]			Power Sfrznd Bright
+[p3, 61, 0, 69]			Alto & Trumpet
+[p3, 61, 0, 70]			Tenor & Trumpet
+[p3, 61, 0, 71]			Brass Brothers
+[p3, 61, 0, 72]			Vague Brothers
+[p3, 61, 0, 126]			Brass Section #
+[p3, 61, 0, 127]			Brass Section 3
+
+[g2]			Synth Brass 1
+[p3, 62, 0, 0]			Synth Brass 1
+[p3, 62, 0, 12]			Quack Brass
+[p3, 62, 0, 20]			Resonant Synth Brass
+[p3, 62, 0, 24]			Poly Brass
+[p3, 62, 0, 27]			Synth Brass 3
+[p3, 62, 0, 29]			Analog Sforzando
+[p3, 62, 0, 32]			Jump Brass
+[p3, 62, 0, 40]			SynBrass with Osc
+[p3, 62, 0, 45]			Analog Velocity Brass 1
+[p3, 62, 0, 64]			Analog Brass 1
+[p3, 62, 0, 65]			Synth Then
+[p3, 62, 0, 66]			Sync Brass
+[p3, 62, 0, 67]			Sync Brass Stereo
+[p3, 62, 0, 68]			Analog Horns 1
+[p3, 62, 0, 69]			Analog Horns 2
+[p3, 62, 0, 70]			Analog Horns Octave
+[p3, 62, 0, 71]			Saw Brass Powered
+[p3, 62, 0, 127]			Synth Brass 1 2
+
+[g2]			Synth Brass 2
+[p3, 63, 0, 0]			Synth Brass 2
+[p3, 63, 0, 18]			Soft Brass
+[p3, 63, 0, 40]			Synth Brass 4
+[p3, 63, 0, 41]			Choir Brass
+[p3, 63, 0, 42]			Analog Horns Rich
+[p3, 63, 0, 45]			Analog Velocity Brass
+[p3, 63, 0, 64]			Analog Brass 2
+[p3, 63, 0, 65]			Soft Cut
+[p3, 63, 0, 66]			Analog Horns Soft
+[p3, 63, 0, 127]			Synth Brass 2 2
+
+[g1]		Reed
+[g2]			Soprano Sax
+[p3, 64, 0, 0]			Soprano Sax
+[p3, 64, 0, 8]			Vague Soprano Sax
+[p3, 64, 0, 64]			Meditation
+[p3, 64, 0, 65]			Meditation Resonant
+[p3, 64, 0, 127]			Soprano Sax
+[g2]			Alto Sax
+[p3, 65, 0, 0]			Alto Sax
+[p3, 65, 0, 18]			Alto Sax Legato
+[p3, 65, 0, 40]			Sax Section
+[p3, 65, 0, 43]			Hyper Alto Sax
+[p3, 65, 0, 64]			Alto Sax Powered
+[p3, 65, 0, 65]			Fake Alto
+[p3, 65, 0, 66]			Fake Alto Plus
+[p3, 65, 0, 67]			Fake Alto Detuned
+[p3, 65, 0, 126]			Alto Sax #
+[p3, 65, 0, 127]			Alto Sax 2
+[g2]			TenorSax
+
+[p3, 66, 0, 0]			Tenor Sax
+[p3, 66, 0, 40]			Breathy Tenor Sax
+[p3, 66, 0, 41]			Soft Tenor Sax
+[p3, 66, 0, 64]			Tenor Sax 2
+[p3, 66, 0, 65]			Super Tenor
+[p3, 66, 0, 66]			Super Tenor Plus
+[p3, 66, 0, 67]			Super Tenor Stereo
+[p3, 66, 0, 68]			Tenor & Alto
+[p3, 66, 0, 127]		Tenor Sax
+[g2]			Bari.Sax
+[p3, 67, 0, 0]			Bari.Sax
+[p3, 67, 0, 127]			Baritone Sax
+[g2]			Oboe
+[p3, 68, 0, 0]			Oboe
+[p3, 68, 0, 64]			Heinz
+[p3, 68, 0, 65]			Heinz Unison
+[p3, 68, 0, 126]			Oboe #
+[p3, 68, 0, 127]			Oboe 2
+[g2]			Eng.Horn
+[p3, 69, 0, 0]			English Horn
+[p3, 69, 0, 127]			English Horn 2
+[g2]			Bassoon
+[p3, 70, 0, 0]			Bassoon
+[p3, 70, 0, 127]			Bassoon 2
+[g2]			Clarinet
+[p3, 71, 0, 0]			Clarinet
+[p3, 71, 0, 40]			Synth & Clarinet
+[p3, 71, 0, 96]			Bass Clarinet
+[p3, 71, 0, 127]			Clarinet
+[g1]		Pipe
+[g2]			Piccolo
+[p3, 72, 0, 0]			Piccolo
+[p3, 72, 0, 127]			Piccolo 2
+
+[g2]			Flute
+[p3, 73, 0, 0]			Flute
+[p3, 73, 0, 40]			Neat Breath
+[p3, 73, 0, 64]			Boehm
+[p3, 73, 0, 65]			Boehm Breathy
+[p3, 73, 0, 66]			Pastorale
+[p3, 73, 0, 67]			Shepherd
+[p3, 73, 0, 126]			Flute #
+[p3, 73, 0, 127]		 	Flute 2
+[g2]			Recorder
+[p3, 74, 0, 0]			Recorder
+[p3, 74, 0, 64]			Piplith
+[p3, 74, 0, 65]			Home
+[p3, 74, 0, 127]			Recorder
+[g2]			PanFlute
+[p3, 75, 0, 0]			Pan Flute
+[p3, 75, 0, 64]			Pan Flute 2
+[p3, 75, 0, 65]			Meadow
+[p3, 75, 0, 96]			Kawala **
+[p3, 75, 0, 126]			Pan Flute #
+[p3, 75, 0, 127]			Pan Flute 3
+[g2]			Bottle
+[p3, 76, 0, 0]			Blown Bottle
+[p3, 76, 0, 64]			Bottle Legato
+[p3, 76, 0, 127]			Blown Bottle 2
+
+[g2]			Shakuhachi
+[p3, 77, 0, 0]			Shakuhachi
+[p3, 77, 0, 127]			Shakuhachi 2
+
+[g2]			Whistle
+[p3, 78, 0, 0]			Whistle
+[p3, 78, 0, 64]			Reverie
+[p3, 78, 0, 127]			Whistle 2
+
+[g2]			Ocarina
+[p3, 79, 0, 0]			Ocarina
+[p3, 79, 0, 64]			Opalina
+[p3, 79, 0, 127]			Ocarina 2
+
+[g1]		Synth Lead
+[g2]			SquareLead
+[p3, 80, 0, 0]			SquareLd
+[p3, 80, 0, 6]			Square 2
+[p3, 80, 0, 8]			LMSquare
+[p3, 80, 0, 18]			Hollow
+[p3, 80, 0, 19]			Shmoog
+[p3, 80, 0, 35]			2 Oscillators
+[p3, 80, 0, 64]			Mellow
+[p3, 80, 0, 65]			SoloSine
+[p3, 80, 0, 66]			SineLead
+[p3, 80, 0, 67]			Pulse Lead
+[p3, 80, 0, 68]			Sync Lead
+[p3, 80, 0, 69]			Forced Oscillation
+[p3, 80, 0, 70]			Accent
+[p3, 80, 0, 71]			Brick
+[p3, 80, 0, 72]			Alum
+[p3, 80, 0, 73]			Query
+[p3, 80, 0, 74]			FM Slow Sweep
+[p3, 80, 0, 75]			Sync Lead Double
+[p3, 80, 0, 76]			Curse
+[p3, 80, 0, 77]			Octave Beep
+[p3, 80, 0, 127]			Square Lead 3
+
+[g2]			Saw.Lead
+[p3, 81, 0, 0]			Sawtooth Lead
+[p3, 81, 0, 6]			Sawtooth Lead 2
+[p3, 81, 0, 8]			Thick Sawtooth
+[p3, 81, 0, 18]			Dynamic Sawtooth
+[p3, 81, 0, 19]			Digital Sawtooth
+[p3, 81, 0, 20]			Big Lead
+[p3, 81, 0, 24]			Heavy Synth
+[p3, 81, 0, 25]			Waspy Synth
+[p3, 81, 0, 26]			Mondo
+[p3, 81, 0, 27]			Rezzy Sawtooth
+[p3, 81, 0, 32]			Double Sawtooth
+[p3, 81, 0, 35]			Toy Lead
+[p3, 81, 0, 36]			Dim Sawtooth
+[p3, 81, 0, 40]			Pulse Sawtooth
+[p3, 81, 0, 41]			Dr. Lead
+[p3, 81, 0, 45]			Velocity Lead
+[p3, 81, 0, 64]			Digger
+[p3, 81, 0, 65]			Dunce
+[p3, 81, 0, 66]			Brass Sawtooth
+[p3, 81, 0, 67]			Sawtooth River
+[p3, 81, 0, 68]			Brass Pulse Double
+[p3, 81, 0, 69]			Sawtooth Trumpet
+[p3, 81, 0, 70]			Hue
+[p3, 81, 0, 71]			Straight Sawtooth
+[p3, 81, 0, 72]			Straight Pulse
+[p3, 81, 0, 73]			PWMania
+[p3, 81, 0, 74]			Mod Saw
+[p3, 81, 0, 75]			Toad
+[p3, 81, 0, 76]			Fat Octave
+[p3, 81, 0, 77]			Overdose
+[p3, 81, 0, 78]			PWM Decay
+[p3, 81, 0, 79]			Saw Decay
+[p3, 81, 0, 96]			Sequenced Analog
+[p3, 81, 0, 127]			Sawtooth Lead
+
+[g2]			Calliope Lead
+[p3, 82, 0, 0]			Calliope Lead
+[p3, 82, 0, 40]			Novice
+[p3, 82, 0, 64]			Vent Syn
+[p3, 82, 0, 65]			Pure Pad
+[p3, 82, 0, 66]			Electro Primitive
+[p3, 82, 0, 127]			Calliope Lead  2
+
+
+[g2]			Chiff Lead
+[p3, 83, 0, 0]			Chiff Lead
+[p3, 83, 0, 40]			Salt Lead
+[p3, 83, 0, 64]			Rubby
+[p3, 83, 0, 65]			Hard Sync
+[p3, 83, 0, 127]			Chiff Lead 2
+
+[g2]			Charang Lead
+[p3, 84, 0, 0]			Charang Lead
+[p3, 84, 0, 64]			DistLead
+[p3, 84, 0, 65]			WireLead
+[p3, 84, 0, 66]			Synth Pluck
+[p3, 84, 0, 127]			Charang Lead 2
+
+[g2]			Voice Lead
+[p3, 85, 0, 0]			Voice Lead
+[p3, 85, 0, 24]			Synth Aah
+[p3, 85, 0, 64]			Vox Lead
+[p3, 85, 0, 65]			Breathy Layer
+[p3, 85, 0, 66]			Cypher 1
+[p3, 85, 0, 67]			Cypher 2
+[p3, 85, 0, 68]			Cypher 3
+[p3, 85, 0, 69]			Super Cypher
+[p3, 85, 0, 127]			Voice Lead 2
+
+[g2]			Fifth Lead
+[p3, 86, 0, 0]			Fifths Lead
+[p3, 86, 0, 8]			Fifths Lead Soft
+[p3, 86, 0, 35]			Big Five
+[p3, 86, 0, 127]			Fifths Lead 2
+
+
+[g2]			Bass & Lead
+[p3, 87, 0, 0]			Bass & Lead
+[p3, 87, 0, 16]			Big & Low
+[p3, 87, 0, 64]			Fat & Perky
+[p3, 87, 0, 65]			SoftWurl
+[p3, 87, 0, 66]			Cant
+[p3, 87, 0, 67]			Mogul
+[p3, 87, 0, 68]			Distance
+[p3, 87, 0, 69]			Sync Bass & Lead
+[p3, 89, 0,127]			Bass & Lead 1
+
+[g1]		Synth Pad
+[g2]			NewAgePd
+[p3, 88, 0, 0]			NewAgePd
+[p3, 88, 0, 64]			Fantasy2
+[p3, 88, 0, 65]			Libra
+[p3, 88, 0, 127]			NewAge2
+[g2]			Warm Pad
+[p3, 89, 0, 0]			Warm Pad
+[p3, 89, 0, 16]			ThickPad
+[p3, 89, 0, 17]			Soft Pad
+[p3, 89, 0, 18]			Sine Pad
+[p3, 89, 0, 40]			Vishnu
+[p3, 89, 0, 64]			Horn Pad
+[p3, 89, 0, 65]			RotarStr
+[p3, 89, 0, 127]			Warm2
+[g2]			PolySyPd
+[p3, 90, 0, 0]			PolySyPd
+[p3, 90, 0, 64]			PolyPd80
+[p3, 90, 0, 65]			ClickPad
+[p3, 90, 0, 66]			Ana Pad
+[p3, 90, 0, 67]			SquarPad
+[p3, 90, 0, 68]			SnowPad
+[p3, 90, 0, 69]			Pixie
+[p3, 90, 0, 70]			Pisces
+[p3, 90, 0, 71]			Spiral
+[p3, 90, 0, 127]		Polysy2
+[g2]			ChoirPad
+[p3, 91, 0, 0]			ChoirPad
+[p3, 91, 0, 64]			Heaven 2
+[p3, 91, 0, 65]			Lite Pad
+[p3, 91, 0, 66]			Itopia
+[p3, 91, 0, 67]			CC Pad
+[p3, 91, 0, 68]			Cosmic
+[p3, 91, 0, 127]			Choir2
+[g2]			BowedPad
+[p3, 92, 0, 0]			BowedPad
+[p3, 92, 0, 64]			Glacier
+[p3, 92, 0, 65]			GlassPad
+[p3, 92, 0, 66]			SqrTwang
+[p3, 92, 0, 127]			Bowed2
+[g2]			MetalPad
+[p3, 93, 0, 0]			MetalPad
+[p3, 93, 0, 64]			Tine Pad
+[p3, 93, 0, 65]			Pan Pad
+[p3, 93, 0, 66]			queever
+[p3, 93, 0, 127]			Metal2
+[g2]			Halo Pad
+[p3, 94, 0, 0]			Halo Pad
+[p3, 94, 0, 40]			Tiu
+[p3, 94, 0, 64]			Aries
+[p3, 94, 0, 127]			Halo2
+
+[g2]			SweepPad
+[p3, 95, 0, 0]			SweepPad
+[p3, 95, 0, 20]			Shwimmer
+[p3, 95, 0, 27]			Converge
+[p3, 95, 0, 64]			PolarPad
+[p3, 95, 0, 65]			Sweepy
+[p3, 95, 0, 66]			Celstial
+[p3, 95, 0, 67]			Monsoon
+[p3, 95, 0, 68]			Io
+[p3, 95, 0, 127]			Sweep Pad 2
+[g1]		Synth Effects
+[g2]			Rain
+[p3, 96, 0, 0]			Rain
+[p3, 96, 0, 45]			ClaviPad
+[p3, 96, 0, 64]			HrmoRain
+[p3, 96, 0, 65]			AfrcnWnd
+[p3, 96, 0, 66]			Caribean
+[p3, 96, 0, 127]			Rain 2
+[g2]			SoundTrk
+[p3, 97, 0, 0]			SoundTrk
+[p3, 97, 0, 27]			Prologue
+[p3, 97, 0, 64]			Ancestr1
+[p3, 97, 0, 65]			Rave
+[p3, 97, 0, 66]			Fairy
+[p3, 97, 0, 67]			Hermit
+[p3, 97, 0, 127]			Sound Track
+[g2]			Crystal
+[p3, 98, 0, 0]			Crystal
+[p3, 98, 0, 12]			SynDrCmp
+[p3, 98, 0, 14]			Popcorn
+[p3, 98, 0, 18]			TinyBell
+[p3, 98, 0, 35]			RndGlock
+[p3, 98, 0, 40]			GlockChi
+[p3, 98, 0, 41]			ClearBel
+[p3, 98, 0, 42]			ChorBell
+[p3, 98, 0, 64]			SynMalet
+[p3, 98, 0, 65]			SftCryst
+[p3, 98, 0, 66]			LoudGlok
+[p3, 98, 0, 67]			XmasBell
+[p3, 98, 0, 68]			VibeBell
+[p3, 98, 0, 69]			DigiBell
+[p3, 98, 0, 70]			AirBells
+[p3, 98, 0, 71]			BellHarp
+[p3, 98, 0, 72]			Gamelmba
+[p3, 98, 0, 73]			Bounce
+[p3, 98, 0, 127]			Crystal 2
+
+
+[g2]			Atmosphr
+[p3, 99, 0, 0]			Atmosphr
+[p3, 99, 0, 18]			WarmAtms
+[p3, 99, 0, 19]			HollwRls
+[p3, 99, 0, 40]			NylonEP
+[p3, 99, 0, 64]			NylnHarp
+[p3, 99, 0, 65]			Harp Vox
+[p3, 99, 0, 66]			AtmosPad
+[p3, 99, 0, 67]			Planet
+[p3, 99, 0, 68]			Lyra
+[p3, 99, 0, 69]			Akasaka
+[p3, 99, 0, 70]			Digital Bermuda
+[p3, 99, 0, 127]			Atomsphere 2
+
+
+[g2]			Bright
+[p3, 100, 0, 0]			Brightness
+[p3, 100, 0, 64]			Fantasy Bell
+[p3, 100, 0, 96]			Smokey
+[p3, 100, 0, 127]			Brightness 2
+[g2]			Goblins
+[p3, 101, 0, 0]			Goblins
+[p3, 101, 0, 64]			GobSyn
+[p3, 101, 0, 65]			50sSciFi
+[p3, 101, 0, 66]			Ring Pad
+[p3, 101, 0, 67]			Ritual
+[p3, 101, 0, 68]			ToHeaven
+[p3, 101, 0, 69]			MilkyWay
+[p3, 101, 0, 70]			Night
+[p3, 101, 0, 71]			Glisten
+[p3, 101, 0, 72]			Puffy
+[p3, 101, 0, 72]			Puffy
+[p3, 101, 0, 73]			Mimicry
+[p3, 101, 0, 74]			Parasite
+[p3, 101, 0, 75]			Cicada
+[p3, 101, 0, 76]			Beacon
+[p3, 101, 0, 96]			Bell Choir
+[p3, 101, 0, 97]			Dharma 
+[p3, 101, 0, 127]			Goblins 2
+[g2]			Echoes
+[p3, 102, 0, 0]			Echoes
+[p3, 102, 0, 8]			EchoPad2
+[p3, 102, 0, 14]			Echo Pan
+[p3, 102, 0, 64]			EchoBell
+[p3, 102, 0, 65]			Big Pan
+[p3, 102, 0, 66]			SynPiano
+[p3, 102, 0, 67]			Creation
+[p3, 102, 0, 68]			Stardust
+[p3, 102, 0, 69]			Reso Pan
+[p3, 102, 0, 127]			Echoes 2
+[g2]			Sci-Fi
+[p3, 103, 0, 0]			Sci-Fi
+[p3, 103, 0, 64]			Starz
+[p3, 103, 0, 65]			Odyssey
+[p3, 103, 0, 127]			Sci-Fi 2
+
+
+[g1]		Ethnic
+[g2]			Sitar
+[p3, 104, 0, 0]			Sitar
+[p3, 104, 0, 32]			DetSitar
+
+[p3, 104, 0, 35]			Sitar 2
+[p3, 104, 0, 96]			Tambra
+[p3, 104, 0, 97]			Tamboura
+[p3, 104, 0, 0]			Sitar 2
+[g2]			Banjo
+[p3, 105, 0, 0]			Banjo
+[p3, 105, 0, 28]			MuteBnjo
+[p3, 105, 0, 64]			Electric Banjo
+[p3, 105, 0, 96]			Rabab
+[p3, 105, 0, 97]			Gopichnt
+[p3, 105, 0, 98]			Oud
+[p3, 105, 0, 127]			Banjo 2
+[g2]			Shamisen
+[p3, 106, 0, 0]			Shamisen
+[p3, 106, 0, 96]			Tsugaru
+[p3, 106, 0, 127]			Shamisen 2
+[g2]			Koto
+[p3, 107, 0, 0]			Koto
+[p3, 107, 0, 64]			FM Koto
+[p3, 107, 0, 96]			Taisho Koto
+[p3, 107, 0, 97]			Kanoon
+[p3, 107, 0, 127]			Koto 2
+[g2]			Kalimba
+[p3, 108, 0, 0]			Kalimba
+[p3, 108, 0, 64]			Big Kalima
+[p3, 108, 0, 127]			Kalimba 2
+[g2]			Bagpipe
+[p3, 109, 0, 0]			Bagpipe
+[p3, 109, 0, 64]			Thistle
+[p3, 109, 0, 127]			Bagpipe 2
+[g2]			Fiddle
+[p3, 110, 0, 0]			Fiddle
+[p3, 110, 0, 127]			Fiddle 2
+[g2]			Shanai
+[p3, 111, 0, 0]			Shanai
+[p3, 111, 0, 64]			Shanai 2
+[p3, 111, 0, 96]			Pungi
+[p3, 111, 0, 97]			Hichriki
+[p3, 111, 0, 127]			Shanai 3
+[g1]		Percussive
+[g2]			Tinkle Bell
+[p3, 112, 0, 0]			Tinkle Bell
+[p3, 112, 0, 64]			Tickle Bell
+[p3, 112, 0, 96]			Bonang
+[p3, 112, 0, 97]			Gender
+[p3, 112, 0, 98]			Gamelan
+[p3, 112, 0, 99]			S.Gamlan
+[p3, 112, 0, 100]			Rama Cym
+[p3, 112, 0, 101]			AsianBel
+[p3, 112, 0, 127]			Tinkle Bell 2
+[g2]			Agogo
+[p3, 113, 0, 0]			Agogo
+[p3, 113, 0, 96]			Atrigane
+[p3, 113, 0, 127]			Agogo 2
+[g2]			Steel Drum
+[p3, 114, 0, 0]			Steel Drum
+[p3, 114, 0, 96]			Tablas
+[p3, 114, 0, 97]			GlasPerc
+[p3, 114, 0, 98]			ThaiBell
+[p3, 114, 0, 127]			Steel Drum 2
+
+[g2]			Wood Block
+[p3, 115, 0, 0]			Wood Block
+[p3, 115, 0, 96]			Castanet
+[p3, 115, 0, 127]			Wood Block 2
+[g2]			Taiko Drum
+[p3, 116, 0, 0]			Taiko Drum
+[p3, 116, 0, 96]			Gr.Cassa
+[p3, 116, 0, 127]			Taiko Drum 2
+[g2]			Melodic Tom
+[p3, 117, 0, 0]			Melodic Tom
+[p3, 117, 0, 64]			Mel Tom2
+[p3, 117, 0, 65]			Real Tom
+[p3, 117, 0, 66]			Rock Tom
+[p3, 117, 0, 127]			Melodic Tom 2
+[g2]			Synth Drum
+[p3, 118, 0, 0]			Synth Drum
+[p3, 118, 0, 64]			Ana Tom
+[p3, 118, 0, 65]			ElecPerc
+[p3, 118, 0, 127]			Synth Drum 2
+[g2]			Reverse Cymbal
+[p3, 119, 0, 0]			Reverse Cymbal
+[p3, 119, 0, 64]			Reverse Cymbal 2
+[p3, 119, 0, 96]			Reverse Snare 1
+[p3, 119, 0, 97]			Reverse Snare 2
+[p3, 119, 0, 98]			Reverse Kick1
+[p3, 119, 0, 99]			Reverse Concert BD
+[p3, 119, 0, 100]			Reverse Tom1
+[p3, 119, 0, 101]			Reverse Tom2
+[p3, 119, 0, 127]			Reverse Cymbal 3
+[g1]		Sound Effects
+[g2]			FretNoiz
+[p3, 120, 0, 0]			FretNoiz
+[p3, 120, 0, 127]			FretNz2
+[g2]			BrthNoiz
+[p3, 121, 0, 0]			BrthNoiz
+[p3, 121, 0, 127]			BrthNz2
+[g2]			Seashore
+[p3, 122, 0, 0]			Seashore
+[p3, 122, 0, 127]			Seashr2
+[g2]			Tweet
+[p3, 123, 0, 0]			Tweet
+[p3, 123, 0, 127]			Tweet2
+[g2]			Telphone
+[p3, 124, 0, 0]			Telphone
+[p3, 124, 0, 127]			Telphon2
+[g2]			Helicptr
+[p3, 125, 0, 0]			Helicptr
+[p3, 125, 0, 127]			Helicpt2
+[g2]			Applause
+[p3, 126, 0, 0]			Applause
+[p3, 126, 0, 127]			Applaus2
+[g2]			Gunshot
+[p3, 127, 0, 0]			Gunshot
+[p3, 127, 0, 127]			Gunshot2
+
+[g1]	MU100 Exclusive
+[g2] 			MU100 Exclusive 001
+[p3, 0, 48, 0]			Muted Clavi
+[p3, 0, 48, 8]			Beeline
+[p3, 0, 48, 16]			Rage
+[p3, 0, 48, 24]			Fuss
+[p3, 0, 48, 48]			Reflex 1
+[p3, 0, 48, 56]			Insanity
+[p3, 0, 48, 64]			Distant Fire
+[p3, 0, 48, 72]			Lightning
+[p3, 0, 48, 80]			Zipzap
+[p3, 0, 48, 88]			Escape
+[p3, 0, 48, 96]			Tin Kettle
+[p3, 0, 48, 104]			Satya
+[p3, 0, 48, 120]			Vodou
+
+[g2] 			MU100 Exclusive 002
+[p3, 1, 48, 0]			Orimba
+[p3, 1, 48, 8]			Beeline Hard
+[p3, 1, 48, 16]			Tingle & Chaos
+[p3, 1, 48, 24]			Van Allen
+[p3, 1, 48, 48]			Reflex 2
+[p3, 1, 48, 56]			Habakkuk
+[p3, 1, 48, 64]			Blow Noise
+[p3, 1, 48, 72]			Oof
+[p3, 1, 48, 88]			Zigzag
+[p3, 1, 48, 96]			Kick/Snare Analog
+[p3, 1, 48, 104]			Monastery *4
+
+[g2] 			MU100 Exclusive 003
+
+[p3, 2, 48, 8]			Dwarf
+[p3, 2, 48, 16]			Incontinence
+[p3, 2, 48, 24]			Divinity
+[p3, 2, 48, 48]			Precession
+[p3, 2, 48, 64]			Fall
+[p3, 2, 48, 72]			Lust
+[p3, 2, 48, 88]			Scud
+[p3, 2, 48, 96]			Kick/Snare Humid
+[p3, 2, 48, 104]			Vinaya
+
+[g2] 			MU100 Exclusive 004
+
+[p3, 3, 48, 8]			Byte
+[p3, 3, 48, 16]			Incontinence Click
+[p3, 3, 48, 24]			Paranoia
+[p3, 3, 48, 48]			Random Walk
+[p3, 3, 48, 64]			Chaff
+[p3, 3, 48, 72]			Lust Stereo
+[p3, 3, 48, 88]			Hinayana
+[p3, 3, 48, 96]			Kick/Snare Slap
+[p3, 3, 48, 104]			Prana
+[g2] 			MU100 Exclusive 005
+
+[p3, 4, 48, 8]			Ping
+[p3, 4, 48, 16]			Cheap Oscillator
+[p3, 4, 48, 24]			Vexation
+[p3, 4, 48, 48]			Random Run
+[p3, 4, 48, 72]			Soft Hit Plus
+[p3, 4, 48, 88]			Boot
+[p3, 4, 48, 96]			Reverse/Crash
+[p3, 4, 48, 104]			Delight
+
+[g2] 			MU100 Exclusive 006
+
+[p3, 5, 48, 8]			Nasty Cut
+[p3, 5, 48, 16]			Cheap Oscillator Plus
+[p3, 5, 48, 24]			Calc Organ 1
+[p3, 5, 48, 72]			Cough Plus
+[p3, 5, 48, 88]			Anathema
+[p3, 5, 48, 104]			Puja
+
+
+[g2] 			MU100 Exclusive 007
+[p3, 6, 48, 8]			Nasty Cut Stereo
+[p3, 6, 48, 16]			Nasty Organ Split
+[p3, 6, 48, 24]			Calc Organ 2
+[p3, 6, 48, 72]			Ruin
+[p3, 6, 48, 88]			Germ 1
+[p3, 6, 48, 104]			Bent Tom
+
+[g2] 			MU100 Exclusive 008
+[p3, 7, 48, 8]			Xe
+[p3, 7, 48, 16]			Super Click
+[p3, 7, 48, 24]			Calc Organ 3
+[p3, 7, 48, 72]			Ruin Stereo
+[p3, 7, 48, 88]			Germ 2
+
+[g2] 			MU100 Exclusive 009
+[p3, 8, 48, 8]			Organ Hit
+[p3, 8, 48, 16]			Boomout
+[p3, 8, 48, 24]			Chorus Calc Organ
+[p3, 8, 48, 72]			Vein Plus
+[p3, 8, 48, 88]			Malfunction
+
+[g2] 			MU100 Exclusive 010
+[p3, 9, 48, 8]			Organ Hit Plus
+[p3, 9, 48, 16]			Choir Split
+[p3, 9, 48, 24]			Sodium
+[p3, 9, 48, 72]			Universe
+
+[g2] 			MU100 Exclusive 011
+[p3, 10, 48, 8]			Soft Hit
+[p3, 10, 48, 16]			Veld
+[p3, 10, 48, 72]			Universe Sweep
+
+[g2] 			MU100 Exclusive 012
+[p3, 11, 48, 8]			Vein
+[p3, 11, 48, 16]			Vapor Vox
+[p3, 11, 48, 72]			Xe Plus
+
+[g2] 			MU100 Exclusive 013
+[p3, 12, 48, 8]			Packet
+[p3, 12, 48, 16]			Vox Shoot
+[p3, 12, 48, 72]			Daze
+
+[g2] 			MU100 Exclusive 014
+[p3, 13, 48, 8]			Jolly
+[p3, 13, 48, 16]			Semi-acoustic Organ
+[p3, 13, 48, 72]			Refusal
+
+[g2] 			MU100 Exclusive 015
+[p3, 14, 48, 8]			Jolly Plus
+[p3, 14, 48, 72]			Refusal Plus
+
+[g2] 			MU100 Exclusive 016
+[p3, 15, 48, 8]			Envy
+[p3, 15, 48, 72]			Lie
+
+[g2] 			MU100 Exclusive 017
+[p3, 16, 48, 8]			Envy Short
+[p3, 16, 48, 72]			Malice
+
+[g2] 			MU100 Exclusive 018
+[p3, 17, 48, 8]			Cough
+[p3, 17, 48, 72]			Doubt
+
+[g2] 			MU100 Exclusive 019
+[p3, 18, 48, 8]			Remark
+[p3, 18, 48, 72]			Doubt Double
+
+[g2] 			MU100 Exclusive 020
+[p3, 19, 48, 8]			Potala
+
+[g2] 			MU100 Exclusive 021
+[p3, 20, 48, 8]			Fury
+
+[g2] 			MU100 Exclusive 022
+[p3, 21, 48, 8]			Glockenspiel Plus
+
+
+[g1] 	SW kits + Drums
+[g2]			SFX Kits
+[p3, 0, 126, 0]			SFX Kit 1		
+[p3, 1, 126, 0]			SFX Kit 2
+[p3, 16, 126, 0]			Techno Kit K/S
+[p3, 17, 126, 0]			Techno Kit High
+[p3, 18, 126, 0]			Techno Kit Low
+[p3, 32, 126, 0]			Sakura Kit
+[p3, 33, 126, 0]			Small Latin
+
+[g2]		Drum Kits
+[p3, 0, 127, 0]			Standard Kit
+[p3, 1, 127, 0]			Standard Kit 2
+[p3, 2, 127, 0]			Dry Kit
+[p3, 3, 127, 0]			Bright Kit
+[p3, 4, 127, 0]			Skim Kit
+[p3, 5, 127, 0]			Slim Kit
+[p3, 6, 127, 0]			Rogue Kit
+[p3, 7, 127, 0]			Hob Kit
+[p3, 8, 127, 0]			Room Kit
+[p3, 9, 127, 0]			Dark Room Kit
+[p3, 16, 127, 0]			Rock Kit
+[p3, 17, 127, 0]			Rock Kit 2
+[p3, 24, 127, 0]			Electro Kit
+[p3, 25, 127, 0]			Analog Kit
+[p3, 26, 127, 0]			Analog Kit 2
+[p3, 27, 127, 0]			DAnce Kit
+[p3, 28, 127, 0]			Hip Hop Kit
+[p3, 29, 127, 0]			Jungle Kit
+[p3, 30, 127, 0]			Apogee Kit
+[p3, 31, 127, 0]			Perigree Kit
+[p3, 32, 127, 0]			Jazz Kit
+[p3, 33, 127, 0]			Jazz Kit 2
+[p3, 40, 127, 0]			Brush Kit
+[p3, 41, 127, 0]			Brush Kit 2
+[p3, 48, 127, 0]			Symphony Kit
+[p3, 64, 127, 0]			Tramp Kit
+[p3, 65, 127, 0]			Amber Kit
+[p3, 66, 127, 0]			Coffin Kit
+[p3, 126, 127, 0]			Standard Kit MU100 Native
+[p3, 127, 127, 0]			Standard Kit MU100 Basic
+			
+[g1]	sorted by name
+[g2]		Piano
+[sorted]
+[p3, 0, 0, 0]			GrandPiano
+[p3, 0, 0, 1]			GrndPnoKSP
+[p3, 0, 0, 18]			MelloGrP
+[p3, 0, 0, 40]			PianoStr
+[p3, 0, 0, 41]			Dream
+[p3, 0, 0, 64]			Concert Grand
+[p3, 0, 0, 65]			Concert Grand KSP
+[p3, 0, 0, 66]			Double Concert Grand
+[p3, 0, 0, 67]			MIDI Grand 1
+[p3, 0, 0, 68]			MIDI Grand 2
+[p3, 0, 0,126]			Grand Piano #
+[p3, 0, 0,127]			Grand Piano 2
+[p3, 1, 0, 0]			BritePno
+[p3, 1, 0, 1]			BritPnoK
+[p3, 1, 0, 3] 			Stereo Bright Piano 
+[p3, 1, 0, 20] 			Resonant Bright Piano
+[p3, 1, 0, 32]			Detuned Bright Piano
+[p3, 1, 0, 40]			Synth Pad Piano
+[p3, 1, 0, 64]			Bright Concert Grand
+[p3, 1, 0, 65]			Bright Cncert GrndKSP
+[p3, 1, 0, 66]			MIDI Grand 3 
+[p3, 1, 0, 67]			MIDI Grand 4 
+[p3, 1, 0, 68]			Old Piano 
+[p3, 1, 0, 126]			Bright Piano # 
+[p3, 1, 0, 127]			Bright Piano 2
+[p3, 2, 0, 0]			ELectric Grand Piano
+[p3, 2, 0, 1]			ELectric Grand Piano KSP
+[p3, 2, 0, 32]			Detuned CP80
+[p3, 2, 0, 32]			Synth CP 
+[p3, 2, 0, 40]			Layered CP 1
+[p3, 2, 0, 41]			Layered CP 2
+[p3, 2, 0, 127]			Electric Grand Piano 2
+[p3, 3, 0, 0]			Honky-tonk Piano
+[p3, 3, 0, 1]			Honky-tonk Piano KSP
+[p3, 3, 0, 127]			Honky-tonk Piano 2
+[p3, 4, 0, 0]			Electric Piano 1
+[p3, 4, 0, 1]			Electric Piano 1 KSP
+[p3, 4, 0, 18]			Mellow Electric Piano 1
+[p3, 4, 0, 32]			Chorus Electric Piano 1
+[p3, 4, 0, 40]			Hard Electric Piano
+[p3, 4, 0, 45]			Velo Crossfade E.Pno 1
+[p3, 4, 0, 64]			60's Electric Piano 1
+[p3, 4, 0, 65]			Old Electric Piano
+[p3, 4, 0, 66]			Tribecca
+[p3, 4, 0, 67]			Diploid 1
+[p3, 4, 0, 68]			Flops
+[p3, 4, 0, 69]			Soho
+[p3, 4, 0, 70]			Flops Detuned
+[p3, 4, 0, 71]			Diploid 2
+[p3, 4, 0, 72]			Brooklyn
+[p3, 4, 0, 73]			Diploid 3
+[p3, 4, 0, 74]			Phunky DX
+[p3, 4, 0, 75]			Nasal DX
+[p3, 4, 0, 76]			Nasal DX Detune
+[p3, 4, 0, 77]			Din 
+[p3, 4, 0, 126]			Electric Piano 1 #
+[p3, 4, 0, 127]			Electric Piano 2 
+[p3, 5, 0, 0]			Electric Piano 2
+[p3, 5, 0, 1]			Electric Piano 2 KSP
+[p3, 5, 0, 12]			Chorus E.Piano Decay 
+[p3, 5, 0, 32]			Chorus Electric Piano 2
+[p3, 5, 0, 33]			DX Electric Piano Hard
+[p3, 5, 0, 34]			DX Legend
+[p3, 5, 0, 40]			DX Phase Electric Piano
+[p3, 5, 0, 41]			DX + Analog Electric Piano
+[p3, 5, 0, 42]			DX Koto Electric Piano
+[p3, 5, 0, 45]			Velo Crossfade E.Pno 2
+[p3, 5, 0, 48]			Chorus E.Piano KSP 
+[p3, 5, 0, 52]			DX Mallet 
+[p3, 5, 0, 64]			Shirakawa 
+[p3, 5, 0, 65]			Old Electric Piano Tine 
+[p3, 5, 0, 66]			Flips 
+[p3, 5, 0, 67]			Flips Detuned 
+[p3, 5, 0, 68]			Flicks 
+[p3, 5, 0, 69]			Flicks Detuned 
+[p3, 5, 0, 70]			Bright DX 
+[p3, 5, 0, 71]			Bright DX Detune 
+[p3, 5, 0, 72]			Kitayama 
+[p3, 5, 0, 73]			Turnpike 1 
+[p3, 5, 0, 74]			Turnpike 2 
+[p3, 5, 0, 75]			Cerritos 
+[p3, 5, 0, 76]			Sunset 
+[p3, 5, 0, 77]			Soft DX 
+[p3, 5, 0, 78]			Resonant DX 
+[p3, 5, 0, 79]			Piercing DX 
+[p3, 5, 0, 80]			Shivering DX 
+[p3, 5, 0, 81]			Shivering DX Plus 
+[p3, 5, 0, 82]			Rattling DX 
+[p3, 5, 0, 83]			Rattling DX Plus 
+[p3, 5, 0, 84]			Tinker DX 
+[p3, 5, 0, 85]			Tinker DX Plus 
+[p3, 5, 0, 126]			Electric Piano 2 # 
+[p3, 5, 0, 127]			Electric Piano 2 2
+[p3, 6, 0, 0]			Harpsichord
+[p3, 6, 0, 1]			HarpsichordKSP
+[p3, 6, 0, 25]			Harpsichord2
+[p3, 6, 0, 35]			Harpsichord3
+[p3, 6, 0, 40]			Electric Harpsichord
+[p3, 6, 0, 64]			Synth Harpsichord
+[p3, 6, 0, 127]			Harpsichord 4
+[p3, 7, 0, 0]			Clavi
+[p3, 7, 0, 1]			Clavi KSP
+[p3, 7, 0, 27]			Clavi Wah
+[p3, 7, 0, 40]			Cosmic Clavi
+[p3, 7, 0, 64]			Pulse Clavi
+[p3, 7, 0, 65]			Pierce Clavi
+[p3, 7, 0, 66]			Clear Clavi
+[p3, 7, 0, 67]			Sweep Clavi
+[p3, 7, 0, 68]			Synth Clavi
+[p3, 7, 0, 69]			Super Clavi
+[p3, 7, 0, 70]			Guitar Clavi
+[p3, 7, 0, 71]			Hardy Pluck
+[p3, 7, 0, 72]			Hardy Pluck Plus
+[p3, 7, 0, 73]			FM Clavi Double
+[p3, 7, 0, 126]			Clavi #
+[p3, 7, 0, 127]			Clavi 2
+
+[g2]		Chromatic Percussion
+[sorted]
+[p3, 8, 0, 0]			Celesta
+[p3, 8, 0, 64]			FMCelesta
+[p3, 8, 0, 127]			Celesta2
+[p3, 9, 0, 0]			Glocken
+[p3, 9, 0, 127]			Glocken2
+[p3, 10, 0, 0]			MusicBox
+[p3, 10, 0, 64]			Orgel
+[p3, 10, 0, 65]			Sml.Orgel
+[p3, 10, 0, 127]		MusicBox2
+[p3, 11, 0, 0]			Vibes
+[p3, 11, 0, 1]			VibesK
+[p3, 11, 0, 45]			HardVibe
+[p3, 11, 0, 127]		Vibes2
+[p3, 12, 0, 0]			Marimba
+[p3, 12, 0, 1]			MarimbaK
+[p3, 12, 0, 64]			SineMrmb
+[p3, 12, 0, 96]			Balafon
+[p3, 12, 0, 97]			Balafon2
+[p3, 12, 0, 98]			Log Drum
+[p3, 12, 0, 127]		Marimba2
+[p3, 13, 0, 0]			Xylophon
+[p3, 13, 0, 127]		Xylophn2
+[p3, 14, 0, 0]			TubulBel
+[p3, 14, 0, 96]			ChurchBel
+[p3, 14, 0, 97]			Carillion
+[p3, 14, 0, 127]		Tubular2
+[p3, 15, 0, 0]			Dulcimer
+[p3, 15, 0, 35]			Dulcimr2
+[p3, 15, 0, 96]			Cimbalom
+[p3, 15, 0, 97]			Santur
+[p3, 15, 0, 127]		Dulcimr3
+
+[g2]		Organ
+[sorted]
+[p3, 16, 0, 0]			DrawOrgn
+[p3, 16, 0, 3]			Stereo Drawbar Organ
+[p3, 16, 0, 32]			DetDrwOr
+[p3, 16, 0, 33]			60sDrOr1
+[p3, 16, 0, 34]			60sDrOr2
+[p3, 16, 0, 35]			70sDrOr1
+[p3, 16, 0, 36]			DrawOrg2
+[p3, 16, 0, 37]			60sDrOr3
+[p3, 16, 0, 38]			EvenBar
+[p3, 16, 0, 40]			16+2"2/3
+[p3, 16, 0, 64]			Organ Ba
+[p3, 16, 0, 65]			70sDrOr2
+[p3, 16, 0, 66]			CheezOrg
+[p3, 16, 0, 67]			DrawOrg3
+[p3, 16, 0, 68]			Stadium Organ
+[p3, 16, 0, 69]			Stadium Organ 2
+[p3, 16, 0, 70]			Gospel Organ
+[p3, 16, 0, 71]			Click Gospel Organ
+[p3, 16, 0, 72]			Chapel Organ
+[p3, 16, 0, 73]			Dim Chorus
+[p3, 16, 0, 74]			Dawn
+[p3, 16, 0, 75]			Mellorgan
+[p3, 16, 0, 76]			Fuzzorgan
+[p3, 16, 0, 77]			FMO
+[p3, 16, 0, 126]			Drawbar Organ # 
+[p3, 16, 0, 127]			Drawbar Organ 4
+[p3, 17, 0, 0]			PercOrgn
+[p3, 17, 0, 24]			70sPcOr1
+[p3, 17, 0, 32]			DetPrcOr
+[p3, 17, 0, 33]			LiteOrg
+[p3, 17, 0, 37]			PercOrg2
+[p3, 17, 0, 64]			Jazz Organ
+[p3, 17, 0, 65]			Warm Jazz Organ
+[p3, 17, 0, 66]			Click Organ
+[p3, 17, 0, 67]			Grace
+[p3, 17, 0, 68]			Crunchy Grace
+[p3, 17, 0, 69]			Dim Click
+[p3, 17, 0, 70]			Dusk
+[p3, 17, 0, 71]			FM Click
+[p3, 17, 0, 72]			Spoony
+[p3, 17, 0, 73]			Super Rotary
+[p3, 17, 0, 74]			Lo Fi Organ
+[p3, 17, 0, 75]			Beep Organ
+[p3, 17, 0, 76]			Belief
+[p3, 17, 0, 77]			Snap Organ
+[p3, 17, 0, 126]			Percussive Organ #
+[p3, 17, 0, 127]			Percussive Organ
+[p3, 18, 0, 0]			RockOrgn
+[p3, 18, 0, 64]			RotaryOr
+[p3, 18, 0, 65]			SloRotar
+[p3, 18, 0, 66]			FstRotar
+[p3, 18, 0, 126]			Rock Organ #
+[p3, 18, 0, 127]			Rock Organ 2
+[p3, 19, 0, 0]			ChrchOrg
+[p3, 19, 0, 32]			ChurOrg3
+[p3, 19, 0, 35]			ChurOrg2
+[p3, 19, 0, 40]			NotreDam
+[p3, 19, 0, 64]			OrgFlute
+[p3, 19, 0, 65]			TrmOrgFl
+[p3, 19, 0, 127]			Church Organ
+[p3, 20, 0, 0]			Reed Organ
+[p3, 20, 0, 32]			Reed Organ Detuned
+[p3, 20, 0, 40]			Puff Organ
+[p3, 20, 0, 64]			Synth Reed Dark
+[p3, 20, 0, 127]			Reed Organ
+[p3, 21, 0, 0]			Acordion
+[p3, 21, 0, 32]			AccordIt
+[p3, 21, 0, 127]			Accordion 2
+[p3, 22, 0, 0]			Harmonica
+[p3, 22, 0, 32]			Harmonica 2
+[p3, 22, 0, 127]			Harmonica 3
+[p3, 23, 0, 0]			Tango Accordion
+[p3, 23, 0, 64]			Tango Accordion 2
+[p3, 23, 0, 65]			Tight Accordion 
+[p3, 23, 0, 66]			Tight Acrdion Detuned
+[p3, 23, 0, 126]			Tango Accordion #
+[p3, 23, 0, 127]			Tango Accordion 3
+
+[g2]		Guitar
+[sorted]
+[p3, 24, 0, 0]			Nylon Guitar
+[p3, 24, 0, 16]			Nylon Guitar 2
+[p3, 24, 0, 25]			Nylon Guitar 3
+[p3, 24, 0, 32]			Nylon Guitar Detuned
+[p3, 24, 0, 40]			Wayside
+[p3, 24, 0, 43]			Velo Guitar Harmonics
+[p3, 24, 0, 64]			Spanish Guitar
+[p3, 24, 0, 65]			Spanish Guitar Hard
+[p3, 24, 0, 66]			Spanish Guitar Mellow
+[p3, 24, 0, 67]			Spanish Guitar Decay
+[p3, 24, 0, 96]			Ukulele
+[p3, 24, 0, 126]			Nylon Guitar #
+[p3, 24, 0, 127]			Nylon Guitar 4
+[p3, 25, 0, 0]			Steel Guitar
+[p3, 25, 0, 16]			Steel Guitar 2
+[p3, 25, 0, 32]			Steel Guitar Detuned
+[p3, 25, 0, 35]			12-string Guitar
+[p3, 25, 0, 40]			Nylon & Steel Guitar
+[p3, 25, 0, 41]			SteelGuitar with BodySound
+[p3, 25, 0, 64]			Nashville
+[p3, 25, 0, 65]			Nashville Resonant
+[p3, 25, 0, 66]			Nashville 12
+[p3, 25, 0, 96]			Mandolin
+[p3, 25, 0, 97]			Mandolin Ensemble
+[p3, 25, 0, 126]			Steel Guitar #
+[p3, 25, 0, 127]			Steel Guitar 3
+[p3, 26, 0, 0]			Jazz Guitar
+[p3, 26, 0, 18]			Mellow Guitar
+[p3, 26, 0, 32]			Jazz Amp
+[p3, 26, 0, 40]			Organ Guitar 
+[p3, 26, 0, 41]			Octave Plate
+[p3, 26, 0, 64]			Super Jazz Middle
+[p3, 26, 0, 65]			Super Jazz Bridge
+[p3, 26, 0, 66]			Super Jazz Detuned
+[p3, 26, 0, 67]			Super Jazz Resonant
+[p3, 26, 0, 68]			DX Jazz Guitar
+[p3, 26, 0, 69]			DX Jazz Gtr Detuned
+[p3, 26, 0, 70]			Pulse Jazz
+[p3, 26, 0, 71]			Roughcaster Neck
+[p3, 26, 0, 72]			Roughcaster Middle
+[p3, 26, 0, 96]			Pedal Steel Guitar
+[p3, 26, 0, 126]			Jazz Guitar #
+[p3, 26, 0, 127]			Jazz Guitar 2
+[p3, 27, 0, 0]			Clean Guitar
+[p3, 27, 0, 32]			Chorus Guitar
+[p3, 27, 0, 33]			Chorus Guitar Light
+[p3, 27, 0, 64]			CleanGuitar 2
+[p3, 27, 0, 65]			Mid Tone Guitar
+[p3, 27, 0, 66]			Mid Tone Gtr Stereo
+[p3, 27, 0, 67]			Nasal Guitar
+[p3, 27, 0, 68]			Nasal Guitar Stereo
+[p3, 27, 0, 69]			Hammer Middle
+[p3, 27, 0, 70]			Hammer Bridge
+[p3, 27, 0, 71]			Hammer Double
+[p3, 27, 0, 72]			Hammer Stereo
+[p3, 27, 0, 73]			FM Chorus Guitar
+[p3, 27, 0, 74]			FM Chorus Guitar Soft
+[p3, 27, 0, 75]			Pesky Guitar
+[p3, 27, 0, 76]			Clavi Guitar
+[p3, 27, 0, 127]			Clean Guitar
+[p3, 28, 0, 0]			Muted Guitar
+[p3, 28, 0, 40]			Funk Guitar 1
+[p3, 28, 0, 41]			Muted Steel Guitar
+[p3, 28, 0, 43]			Funk Guitar 2
+[p3, 28, 0, 45]			Jazz Man
+[p3, 28, 0, 64]			Wrench
+[p3, 28, 0, 65]			Wrench Heavy
+[p3, 28, 0, 66]			Wrench Double
+[p3, 28, 0, 67]			Tin
+[p3, 28, 0, 96]			Muted Distortion Guitar
+[p3, 28, 0, 126]			Muted Guitar #
+[p3, 28, 0, 127]			Muted Guitar 2
+[p3, 29, 0, 0]			Overdriven Guitar
+[p3, 29, 0, 32]			OverdriveGtr Detuned 
+[p3, 29, 0, 40]			Parallel 
+[p3, 29, 0, 43]			Guitar Pinch
+[p3, 29, 0, 64]			Manhattan Middle
+[p3, 29, 0, 65]			Manhattan Bridge
+[p3, 29, 0, 66]			Manhattan Detuned
+[p3, 29, 0, 67]			Manhattan Powered
+[p3, 29, 0, 126]			Overdriven Guitar #
+[p3, 29, 0, 127]			Overdriven Guitar 2
+[p3, 30, 0, 0]			Distortion Guitar
+[p3, 30, 0, 12]			Distorted Rhythm Gtr
+[p3, 30, 0, 24]			Distortion Guitar 2
+[p3, 30, 0, 35]			Distortion Guitar 3
+[p3, 30, 0, 36]			Power Guitar 2
+[p3, 30, 0, 37]			Power Guitar 1
+[p3, 30, 0, 38]			Distorted Fifths
+[p3, 30, 0, 40]			Feedback Guitar
+[p3, 30, 0, 41]			Feedback Guitar 2
+[p3, 30, 0, 42]			Twin Distortion
+[p3, 30, 0, 43]			Rock Rhythm Guitar 2
+[p3, 30, 0, 45]			Rock Rhythm Guitar 1
+[p3, 30, 0, 64]			Bite
+[p3, 30, 0, 65]			Bite Resonant
+[p3, 30, 0, 66]			Bite Detuned
+[p3, 30, 0, 67]			Bite Plus
+[p3, 30, 0, 68]			Burnout
+[p3, 30, 0, 69]			Bombay
+[p3, 30, 0, 70]			Bombay Sustained
+[p3, 30, 0, 71]			Jaipur
+[p3, 30, 0, 126]			Distortion Guitar #
+[p3, 30, 0, 127]			Distortion Guitar 4
+[p3, 31, 0, 0]			 Guitar Harmonics
+[p3, 31, 0, 64] 			Acoustic Harmonics
+[p3, 31, 0, 65] 			Guitar Feedback
+[p3, 31, 0, 66] 			Guitar Harmonics 2
+[p3, 31, 0, 67] 			Shimla
+[p3, 31, 0, 127] 			Guitar Harmonics 3
+
+[g2]		Bass
+[sorted]
+[p3, 32, 0, 0]			Acoustic Bass
+[p3, 32, 0, 40]			Jazz Rhythm
+[p3, 32, 0, 41]			Pick Acoustic Bass 
+[p3, 32, 0, 43]			Blink Bass
+[p3, 32, 0, 45]			Velo Crsfade UprightBass
+[p3, 32, 0, 64]			Boston
+[p3, 32, 0, 65]			Boston Bright
+[p3, 32, 0, 66]			Coolth
+[p3, 32, 0, 67]			Coolth Bright
+[p3, 32, 0, 96]			Walking Synth Bass
+[p3, 32, 0, 97]			Dim & Cool
+[p3, 32, 0, 126]			Acoustic Bass #
+[p3, 32, 0, 127]			Acoustic Bass 2
+[p3, 33, 0, 0]			Finger Bass
+[p3, 33, 0, 18]			Finger Dark
+[p3, 33, 0, 27]			Flange Bass
+[p3, 33, 0, 32]			Finger Bass Detuned 
+[p3, 33, 0, 40]			Bass & Distorted E.Gtr
+[p3, 33, 0, 43]			Finger Slap Bass
+[p3, 33, 0, 45]			Finger Bass 2
+[p3, 33, 0, 64]			Jazzy Bass
+[p3, 33, 0, 65]			Modulated Bass
+[p3, 33, 0, 66]			Chase
+[p3, 33, 0, 67]			Chase Resonant
+[p3, 33, 0, 68]			Blue Bass
+[p3, 33, 0, 126]			Finger Bass #
+[p3, 33, 0, 127]			Finger Bass 2 2
+[p3, 34, 0, 0]			Pick Bass
+[p3, 34, 0, 28]			Muted Pick Bass
+[p3, 34, 0, 40]			PickBass & MutedGtr
+[p3, 34, 0, 64]			Hard Pick
+[p3, 34, 0, 65]			Hard Pick Resonant
+[p3, 34, 0, 66]			Pick Bass Plus
+[p3, 34, 0, 127]			Pick Bass
+[p3, 35, 0, 0]			Fretless Bass
+[p3, 35, 0, 32]			Fretless Bass 2
+[p3, 35, 0, 33]			Fretless Bass 3
+[p3, 35, 0, 34]			Fretless Bass 4
+[p3, 35, 0, 64]			Powered Fretless
+[p3, 35, 0, 65]			Power Fretless Reso
+[p3, 35, 0, 66]			Talking Bass
+[p3, 35, 0, 67]			Noisy Fretless
+[p3, 35, 0, 96]			Synth Fretless
+[p3, 35, 0, 97]			Smooth Fretless
+[p3, 35, 0, 126]			Fretless Bass #
+[p3, 35, 0, 127]			Fretless Bass 5
+[p3, 36, 0, 0]			Slap Bass 1
+[p3, 36, 0, 21]			Cosmic Slap
+[p3, 36, 0, 27]			Resonant Slap
+[p3, 36, 0, 32]			Punch Thumb Bass
+[p3, 36, 0, 64]			Slapper
+[p3, 36, 0, 65]			Thumb & Slap
+[p3, 36, 0, 66]			Glitzy Slap
+[p3, 36, 0, 67]			FM Slap
+[p3, 36, 0, 68]			FM Slap Detuned
+[p3, 36, 0, 126]			Slap Bass 1 #
+[p3, 36, 0, 127]			Slap Bass 1
+[p3, 37, 0, 0]			Slap Bass 2
+[p3, 37, 0, 16]			Bright Slap Split
+[p3, 37, 0, 22]			Wah Slap
+[p3, 37, 0, 43]			Velocity Switch Slap
+[p3, 37, 0, 126]			Slap Bass 2 #
+[p3, 37, 0, 127]			Slap Bass 3
+[p3, 38, 0, 0]			Synth Bass 1
+[p3, 38, 0, 18]			Synth Bass 1 Dark
+[p3, 38, 0, 20]			Fast Resonant Bass
+[p3, 38, 0, 21]			TL66
+[p3, 38, 0, 24]			Acid Bass
+[p3, 38, 0, 27]			Resonant Bass 
+[p3, 38, 0, 28]			Muted Pulse Bass
+[p3, 38, 0, 29]			Slow Attack
+[p3, 38, 0, 35]			Clavi Bass
+[p3, 38, 0, 40]			Techno Synth Bass
+[p3, 38, 0, 41]			Kick'n'Bass
+[p3, 38, 0, 42]			NEP
+[p3, 38, 0, 64]			Orbiter
+[p3, 38, 0, 65]			Square Bass
+[p3, 38, 0, 66]			Rubber Bass
+[p3, 38, 0, 67]			Fish
+[p3, 38, 0, 68]			Hard Resonance
+[p3, 38, 0, 69]			Wah Saw
+[p3, 38, 0, 70]			Pluto 
+[p3, 38, 0, 71]			Pluto Plus
+[p3, 38, 0, 72]			Stimuli
+[p3, 38, 0, 73]			Running Pulse
+[p3, 38, 0, 74]			Talking Pulse
+[p3, 38, 0, 75]			Node
+[p3, 38, 0, 76]			Stainer
+[p3, 38, 0, 77]			Stainer Attack
+[p3, 38, 0, 78]			Sweep Square
+[p3, 38, 0, 79]			Sweep Square Plus
+[p3, 38, 0, 80]			Stinks
+[p3, 38, 0, 81]			Stinks Resonant
+[p3, 38, 0, 82]			Resonant Square
+[p3, 38, 0, 83]			Dagger
+[p3, 38, 0, 84]			Zinc
+[p3, 38, 0, 85]			SweePWM
+[p3, 38, 0, 86]			SweePWM Stereo
+[p3, 38, 0, 87]			Slow Wah
+[p3, 38, 0, 88]			Crook
+[p3, 38, 0, 96]			Hammer
+[p3, 38, 0, 127]			Synth Bass 1 2
+[p3, 39, 0, 0]			Synth Bass 2
+[p3, 39, 0, 6]			Mellow Synth Bass
+[p3, 39, 0, 12]			Sequenced Bass
+[p3, 39, 0, 18]			Click Synth Bass
+[p3, 39, 0, 19]			Synth Bass 2 Dark
+[p3, 39, 0, 22]			Zealot
+[p3, 39, 0, 32]			Smooth Synth Bass
+[p3, 39, 0, 40]			Modular Synth Bass
+[p3, 39, 0, 41]			DX Bass
+[p3, 39, 0, 42]			DX Bass Bright
+[p3, 39, 0, 64]			X Wire Bass
+[p3, 39, 0, 65]			Attack Pulse
+[p3, 39, 0, 66]			CS Light
+[p3, 39, 0, 67]			Metal Bass
+[p3, 39, 0, 68]			Forced Osc Bass
+[p3, 39, 0, 69]			Cubit
+[p3, 39, 0, 70]			Cubit Plus
+[p3, 39, 0, 71]			Keel
+[p3, 39, 0, 72]			Keel Powered
+[p3, 39, 0, 73]			Plain Pulse
+[p3, 39, 0, 74]			Powered Pulse
+[p3, 39, 0, 75]			Powered Pulse Bright
+[p3, 39, 0, 76]			Powered Sawtooth
+[p3, 39, 0, 127]			Synth Bass 2 2
+
+[g2]		Strings
+[sorted]
+[p3, 40, 0, 0]			Violin
+[p3, 40, 0, 8]			Slow Violin
+[p3, 40, 0, 40]			Unison
+[p3, 40, 0, 64]			Cadenza
+[p3, 40, 0, 65]			Cadenza Dark
+[p3, 40, 0, 126]			Violin #
+[p3, 40, 0, 127]			Violin 2
+[p3, 41, 0, 0]			Viola
+[p3, 41, 0, 40]			Viola Double
+[p3, 41, 0, 64]			Sonata
+[p3, 41, 0, 127]			Viola 2
+[p3, 42, 0, 0]			Cello
+[p3, 42, 0, 127]			Cello 2
+[p3, 43, 0, 0]			Contra bass
+[p3, 43, 0, 127]			Contra bass 2
+[p3, 44, 0, 0]			Tremolo Strings
+[p3, 44, 0, 8]			Slow Tremolo Strings
+[p3, 44, 0, 40]			Suspense Strings
+[p3, 44, 0, 64]			Fear
+[p3, 44, 0, 65]			Fear Detuned
+[p3, 44, 0, 66]			Apocalypse
+[p3, 44, 0, 126]			Tremolo Strings # 
+[p3, 44, 0, 127]			Tremolo Strings 2
+[p3, 45, 0, 0]			Pizzicato Strings
+[p3, 45, 0, 35]			Pizzicato Octave
+[p3, 45, 0, 40]			Sleep
+[p3, 45, 0, 127]			Pizzicato Strings 2
+[p3, 46, 0, 0]			Orchestral Harp
+[p3, 46, 0, 40]			Yang Chin
+[p3, 46, 0, 96]			Violin Harp
+[p3, 46, 0, 97]			Violin Harp Detuned
+[p3, 46, 0, 127]			Orchestral Harp
+
+[g2]		Ensemble
+[sorted]
+[p3, 48, 0, 0]			Strings 1
+[p3, 48, 0, 3]			Stereo Strings
+[p3, 48, 0, 8]			Slow Strings
+[p3, 48, 0, 14]			Sforzando Strings 
+[p3, 48, 0, 24]			ArcoStr
+[p3, 48, 0, 35]			60sStrng
+[p3, 48, 0, 40]			Orchestr
+[p3, 48, 0, 41]			Orchstr2
+[p3, 48, 0, 42]			TremOrch
+[p3, 48, 0, 45]			VeloStr
+[p3, 48, 0, 52]			Lento
+[p3, 48, 0, 64]			Super Strings
+[p3, 48, 0, 65]			Super Strings Stereo
+[p3, 48, 0, 66]			Triste
+[p3, 48, 0, 67]			Basso
+[p3, 48, 0, 126]			Strings 1 #
+[p3, 48, 0, 127]			Strings 1 2
+[p3, 49, 0, 0]			Strings 2
+[p3, 49, 0, 3]			Stereo Slow Strings
+[p3, 49, 0, 8]			Legato Strings
+[p3, 49, 0, 40]			Warm Strings
+[p3, 49, 0, 41]			Kingdom
+[p3, 49, 0, 64]			70's Strings
+[p3, 49, 0, 65]			String Ensemble 3
+[p3, 49, 0, 126]			Strings 2 #
+[p3, 49, 0, 127]			Strings 2 2
+[p3, 50, 0, 0]			Synth Strings 1
+[p3, 50, 0, 8]			Memory
+[p3, 50, 0, 18]			Zephyr
+[p3, 50, 0, 27]			Resonant Strings
+[p3, 50, 0, 35]			Synth Strings 3
+[p3, 50, 0, 39]			Monarchy
+[p3, 50, 0, 40]			Grand Pad
+[p3, 50, 0, 41]			Sweep Strings
+[p3, 50, 0, 42]			Sweep Strings Octave
+[p3, 50, 0, 64]			Synth Strings 4
+[p3, 50, 0, 65]			Synth Strings 5
+[p3, 50, 0, 66]			Solitude
+[p3, 50, 0, 67]			Fate
+[p3, 50, 0, 68]			Thulium
+[p3, 50, 0, 69]			Brook
+[p3, 50, 0, 70]			Brook Stereo
+[p3, 50, 0, 127]			Synth Strings 1 2
+[p3, 51, 0, 0]			Synth Strings 2
+[p3, 51, 0, 21]			Trade Wind 
+[p3, 51, 0, 39]			Worm Hole
+[p3, 51, 0, 64]			Hope
+[p3, 51, 0, 65]			Virgo
+[p3, 51, 0, 66]			Platinum
+[p3, 51, 0, 67]			Octave PWM
+[p3, 51, 0, 68]			Taurus
+[p3, 51, 0, 69]			Frost
+[p3, 51, 0, 70]			Leo
+[p3, 51, 0, 71]			Solar Plexus
+[p3, 51, 0, 127]			Synth Strings 2 2
+[p3, 52, 0, 0]			Choir Aahs 
+[p3, 52, 0, 3]			Stereo Choir
+[p3, 52, 0, 16]			Choir Aahs 2
+[p3, 52, 0, 32]			Mellow Choir
+[p3, 52, 0, 39]			Gasp
+[p3, 52, 0, 40]			Choir Strings
+[p3, 52, 0, 41]			Dead Sea
+[p3, 52, 0, 64]			Strings & Choir Aahs
+[p3, 52, 0, 65]			Male Choir Aahs
+[p3, 52, 0, 66]			Scroll
+[p3, 52, 0, 67]			Scroll Plus 
+[p3, 52, 0, 127]			Choir Aahs 2 2
+[p3, 53, 0, 0]			Voice Oohs
+[p3, 53, 0, 64]			Voice Doo
+[p3, 53, 0, 65]			Hmn
+[p3, 53, 0, 66]			Whirl Choir
+[p3, 53, 0, 96]			Voice Humming
+[p3, 53, 0, 127]			Voice Oohs 2
+[p3, 54, 0, 0]			Synth Voice
+[p3, 54, 0, 40]			Synth Voice 2
+[p3, 54, 0, 41]			Choral
+[p3, 54, 0, 64]			Analog Voice
+[p3, 54, 0, 65]			Aspirate
+[p3, 54, 0, 66]			Aspirate Detuned
+[p3, 54, 0, 67]			Facula
+[p3, 54, 0, 127]			Synth Voice 2 2
+[p3, 55, 0, 0]			Orchestra Hit
+[p3, 55, 0, 12]			Lo-Fi Hit
+[p3, 55, 0, 35]			Orchestra Hit 2
+[p3, 55, 0, 40]			Throne
+[p3, 55, 0, 64]			Impact
+[p3, 55, 0, 65]			Brass Stab
+[p3, 55, 0, 66]			Double Hit
+[p3, 55, 0, 67]			Brass Stab 80
+[p3, 55, 0, 68]			Bass Hit 
+[p3, 55, 0, 69]			Bass Hit Plus 
+[p3, 55, 0, 70]			6th Hit
+[p3, 55, 0, 71]			6th Hit Plus
+[p3, 55, 0, 72]			Euro Hit
+[p3, 55, 0, 73]			Euro Hit Plus 
+[p3, 55, 0, 74]			Blowout
+[p3, 55, 0, 127]			Orchestra Hit 2 2
+
+[g2]		Brass
+[sorted]
+[p3, 56, 0, 0]			Trumpet 
+[p3, 56, 0, 16]			Trumpet 2
+[p3, 56, 0, 17]			Bright Trumpet
+[p3, 56, 0, 32]			Warm Trumpet
+[p3, 56, 0, 64]			Dark Trumpet
+[p3, 56, 0, 65]			Dark Trumpet Soft
+[p3, 56, 0, 66]			Soft Trumpet 
+[p3, 56, 0, 67]			Blow
+[p3, 56, 0, 68]			Blow Double
+[p3, 56, 0, 96]			Flugel Horn
+[p3, 56, 0, 97]			Cornet
+[p3, 56, 0, 126]			Trumpet #
+[p3, 56, 0, 127]			Trumpet 3
+[p3, 57, 0, 0]			Trombone
+[p3, 57, 0, 18]			Trombone 2
+[p3, 57, 0, 64]			Bright Trombone
+[p3, 57, 0, 65]			Mellow Trombone
+[p3, 57, 0, 66]			JJJ
+[p3, 57, 0, 126]			Trombone #
+[p3, 57, 0, 127]			Trombone 3
+[p3, 58, 0, 0]			Tuba
+[p3, 58, 0, 16]			Tuba 2
+[p3, 58, 0, 127]			Tuba 3
+[p3, 59, 0, 0]			Muted Trumpet
+[p3, 59, 0, 40]			Backyard
+[p3, 59, 0, 64]			Muted Trumpet 2
+[p3, 59, 0, 65]			Backstairs
+[p3, 59, 0, 126]			Muted Trumpet #
+[p3, 59, 0, 127]			Muted Trumpet 3
+[p3, 60, 0, 0]			French Horn
+[p3, 60, 0, 6]			French Horn Solo
+[p3, 60, 0, 32]			French Horn 2
+[p3, 60, 0, 37]			Horn Orchestra
+[p3, 60, 0, 64]			Synth Horn
+[p3, 60, 0, 127]			French Horn 3
+[p3, 61, 0, 0]			Brass Section
+[p3, 61, 0, 3]			Stereo Brass Section
+[p3, 61, 0, 14]			Sforzando Brass
+[p3, 61, 0, 18]			Mild Brass 
+[p3, 61, 0, 35]			Trumpet & Trombone
+[p3, 61, 0, 36]			Trumpet & Trombone 2
+[p3, 61, 0, 39]			Brass Fall
+[p3, 61, 0, 40]			Brass Section 2
+[p3, 61, 0, 41]			High Brass
+[p3, 61, 0, 42]			Mellow Brass
+[p3, 61, 0, 52]			Bund
+[p3, 61, 0, 53]			Fake Horns
+[p3, 61, 0, 54]			Fake Horns Octave
+[p3, 61, 0, 64]			Super Brass
+[p3, 61, 0, 65]			Super Brass Cut
+[p3, 61, 0, 66]			Super Brass Blown
+[p3, 61, 0, 67]			Powered Sforzando
+[p3, 61, 0, 68]			Power Sfrznd Bright
+[p3, 61, 0, 69]			Alto & Trumpet
+[p3, 61, 0, 70]			Tenor & Trumpet
+[p3, 61, 0, 71]			Brass Brothers
+[p3, 61, 0, 72]			Vague Brothers
+[p3, 61, 0, 126]			Brass Section #
+[p3, 61, 0, 127]			Brass Section 3
+[p3, 62, 0, 0]			Synth Brass 1
+[p3, 62, 0, 12]			Quack Brass
+[p3, 62, 0, 20]			Resonant Synth Brass
+[p3, 62, 0, 24]			Poly Brass
+[p3, 62, 0, 27]			Synth Brass 3
+[p3, 62, 0, 29]			Analog Sforzando
+[p3, 62, 0, 32]			Jump Brass
+[p3, 62, 0, 40]			SynBrass with Osc
+[p3, 62, 0, 45]			Analog Velocity Brass 1
+[p3, 62, 0, 64]			Analog Brass 1
+[p3, 62, 0, 65]			Synth Then
+[p3, 62, 0, 66]			Sync Brass
+[p3, 62, 0, 67]			Sync Brass Stereo
+[p3, 62, 0, 68]			Analog Horns 1
+[p3, 62, 0, 69]			Analog Horns 2
+[p3, 62, 0, 70]			Analog Horns Octave
+[p3, 62, 0, 71]			Saw Brass Powered
+[p3, 62, 0, 127]			Synth Brass 1 2
+[p3, 63, 0, 0]			Synth Brass 2
+[p3, 63, 0, 18]			Soft Brass
+[p3, 63, 0, 40]			Synth Brass 4
+[p3, 63, 0, 41]			Choir Brass
+[p3, 63, 0, 42]			Analog Horns Rich
+[p3, 63, 0, 45]			Analog Velocity Brass
+[p3, 63, 0, 64]			Analog Brass 2
+[p3, 63, 0, 65]			Soft Cut
+[p3, 63, 0, 66]			Analog Horns Soft
+[p3, 63, 0, 127]			Synth Brass 2 2
+
+[g2]		Reed
+[sorted]
+[p3, 64, 0, 0]			Soprano Sax
+[p3, 64, 0, 8]			Vague Soprano Sax
+[p3, 64, 0, 64]			Meditation
+[p3, 64, 0, 65]			Meditation Resonant
+[p3, 64, 0, 127]			Soprano Sax
+[p3, 65, 0, 0]			Alto Sax
+[p3, 65, 0, 18]			Alto Sax Legato
+[p3, 65, 0, 40]			Sax Section
+[p3, 65, 0, 43]			Hyper Alto Sax
+[p3, 65, 0, 64]			Alto Sax Powered
+[p3, 65, 0, 65]			Fake Alto
+[p3, 65, 0, 66]			Fake Alto Plus
+[p3, 65, 0, 67]			Fake Alto Detuned
+[p3, 65, 0, 126]			Alto Sax #
+[p3, 65, 0, 127]			Alto Sax 2
+[p3, 66, 0, 0]			Tenor Sax
+[p3, 66, 0, 40]			Breathy Tenor Sax
+[p3, 66, 0, 41]			Soft Tenor Sax
+[p3, 66, 0, 64]			Tenor Sax 2
+[p3, 66, 0, 65]			Super Tenor
+[p3, 66, 0, 66]			Super Tenor Plus
+[p3, 66, 0, 67]			Super Tenor Stereo
+[p3, 66, 0, 68]			Tenor & Alto
+[p3, 66, 0, 127]			Tenor Sax
+[p3, 67, 0, 0]			Bari.Sax
+[p3, 67, 0, 127]			Baritone Sax
+[p3, 68, 0, 0]			Oboe
+[p3, 68, 0, 64]			Heinz
+[p3, 68, 0, 65]			Heinz Unison
+[p3, 68, 0, 126]			Oboe #
+[p3, 68, 0, 127]			Oboe 2
+[p3, 69, 0, 0]			English Horn
+[p3, 69, 0, 127]			English Horn 2
+[p3, 70, 0, 0]			Bassoon
+[p3, 70, 0, 127]			Bassoon 2
+[p3, 71, 0, 0]			Clarinet
+[p3, 71, 0, 40]			Synth & Clarinet
+[p3, 71, 0, 96]			Bass Clarinet
+[p3, 71, 0, 127]			Clarinet
+
+[g2]		Pipe
+[sorted]
+[p3, 72, 0, 0]			Piccolo
+[p3, 72, 0, 127]			Piccolo 2
+[p3, 73, 0, 0]			Flute
+[p3, 73, 0, 40]			Neat Breath
+[p3, 73, 0, 64]			Boehm
+[p3, 73, 0, 65]			Boehm Breathy
+[p3, 73, 0, 66]			Pastorale
+[p3, 73, 0, 67]			Shepherd
+[p3, 73, 0, 126]			Flute #
+[p3, 73, 0, 127]		 	Flute 2
+[p3, 74, 0, 0]			Recorder
+[p3, 74, 0, 64]			Piplith
+[p3, 74, 0, 65]			Home
+[p3, 74, 0, 127]			Recorder
+[p3, 75, 0, 0]			Pan Flute
+[p3, 75, 0, 64]			Pan Flute 2
+[p3, 75, 0, 65]			Meadow
+[p3, 75, 0, 96]			Kawala **
+[p3, 75, 0, 126]			Pan Flute #
+[p3, 75, 0, 127]			Pan Flute 3
+[p3, 76, 0, 0]			Blown Bottle
+[p3, 76, 0, 64]			Bottle Legato
+[p3, 76, 0, 127]			Blown Bottle 2
+[p3, 77, 0, 0]			Shakuhachi
+[p3, 77, 0, 127]			Shakuhachi 2
+[p3, 78, 0, 0]			Whistle
+[p3, 78, 0, 64]			Reverie
+[p3, 78, 0, 127]			Whistle 2
+[p3, 79, 0, 0]			Ocarina
+[p3, 79, 0, 64]			Opalina
+[p3, 79, 0, 127]			Ocarina 2
+
+
+[g2]		Synth Lead
+[sorted]
+[p3, 80, 0, 0]			SquareLd
+[p3, 80, 0, 6]			Square 2
+[p3, 80, 0, 8]			LMSquare
+[p3, 80, 0, 18]			Hollow
+[p3, 80, 0, 19]			Shmoog
+[p3, 80, 0, 35]			2 Oscillators
+[p3, 80, 0, 64]			Mellow
+[p3, 80, 0, 65]			SoloSine
+[p3, 80, 0, 66]			SineLead
+[p3, 80, 0, 67]			Pulse Lead
+[p3, 80, 0, 68]			Sync Lead
+[p3, 80, 0, 69]			Forced Oscillation
+[p3, 80, 0, 70]			Accent
+[p3, 80, 0, 71]			Brick
+[p3, 80, 0, 72]			Alum
+[p3, 80, 0, 73]			Query
+[p3, 80, 0, 74]			FM Slow Sweep
+[p3, 80, 0, 75]			Sync Lead Double
+[p3, 80, 0, 76]			Curse
+[p3, 80, 0, 77]			Octave Beep
+[p3, 80, 0, 127]			Square Lead 3
+[p3, 81, 0, 0]			Sawtooth Lead
+[p3, 81, 0, 6]			Sawtooth Lead 2
+[p3, 81, 0, 8]			Thick Sawtooth
+[p3, 81, 0, 18]			Dynamic Sawtooth
+[p3, 81, 0, 19]			Digital Sawtooth
+[p3, 81, 0, 20]			Big Lead
+[p3, 81, 0, 24]			Heavy Synth
+[p3, 81, 0, 25]			Waspy Synth
+[p3, 81, 0, 26]			Mondo
+[p3, 81, 0, 27]			Rezzy Sawtooth
+[p3, 81, 0, 32]			Double Sawtooth
+[p3, 81, 0, 35]			Toy Lead
+[p3, 81, 0, 36]			Dim Sawtooth
+[p3, 81, 0, 40]			Pulse Sawtooth
+[p3, 81, 0, 41]			Dr. Lead
+[p3, 81, 0, 45]			Velocity Lead
+[p3, 81, 0, 64]			Digger
+[p3, 81, 0, 65]			Dunce
+[p3, 81, 0, 66]			Brass Sawtooth
+[p3, 81, 0, 67]			Sawtooth River
+[p3, 81, 0, 68]			Brass Pulse Double
+[p3, 81, 0, 69]			Sawtooth Trumpet
+[p3, 81, 0, 70]			Hue
+[p3, 81, 0, 71]			Straight Sawtooth
+[p3, 81, 0, 72]			Straight Pulse
+[p3, 81, 0, 73]			PWMania
+[p3, 81, 0, 74]			Mod Saw
+[p3, 81, 0, 75]			Toad
+[p3, 81, 0, 76]			Fat Octave
+[p3, 81, 0, 77]			Overdose
+[p3, 81, 0, 78]			PWM Decay
+[p3, 81, 0, 79]			Saw Decay
+[p3, 81, 0, 96]			Sequenced Analog
+[p3, 81, 0, 127]			Sawtooth Lead
+[p3, 82, 0, 0]			Calliope Lead
+[p3, 82, 0, 40]			Novice
+[p3, 82, 0, 64]			Vent Syn
+[p3, 82, 0, 65]			Pure Pad
+[p3, 82, 0, 66]			Electro Primitive
+[p3, 82, 0, 127]			Calliope Lead  2
+[p3, 83, 0, 0]			Chiff Lead
+[p3, 83, 0, 40]			Salt Lead
+[p3, 83, 0, 64]			Rubby
+[p3, 83, 0, 65]			Hard Sync
+[p3, 83, 0, 127]			Chiff Lead 2
+[p3, 84, 0, 0]			Charang Lead
+[p3, 84, 0, 64]			DistLead
+[p3, 84, 0, 65]			WireLead
+[p3, 84, 0, 66]			Synth Pluck
+[p3, 84, 0, 127]			Charang Lead 2
+[p3, 85, 0, 0]			Voice Lead
+[p3, 85, 0, 24]			Synth Aah
+[p3, 85, 0, 64]			Vox Lead
+[p3, 85, 0, 65]			Breathy Layer
+[p3, 85, 0, 66]			Cypher 1
+[p3, 85, 0, 67]			Cypher 2
+[p3, 85, 0, 68]			Cypher 3
+[p3, 85, 0, 69]			Super Cypher
+[p3, 85, 0, 127]			Voice Lead 2
+[p3, 86, 0, 0]			Fifths Lead
+[p3, 86, 0, 8]			Fifths Lead Soft
+[p3, 86, 0, 35]			Big Five
+[p3, 86, 0, 127]			Fifths Lead 2
+[p3, 87, 0, 0]			Bass & Lead
+[p3, 87, 0, 16]			Big & Low
+[p3, 87, 0, 64]			Fat & Perky
+[p3, 87, 0, 65]			SoftWurl
+[p3, 87, 0, 66]			Cant
+[p3, 87, 0, 67]			Mogul
+[p3, 87, 0, 68]			Distance
+[p3, 87, 0, 69]			Sync Bass & Lead
+[p3, 89, 0,127]			Bass & Lead 1
+
+[g2]		Synth Pad
+[sorted]
+[p3, 88, 0, 0]			NewAgePd
+[p3, 88, 0, 64]			Fantasy2
+[p3, 88, 0, 65]			Libra
+[p3, 88, 0, 127]			NewAge2
+[p3, 89, 0, 0]			Warm Pad
+[p3, 89, 0, 16]			ThickPad
+[p3, 89, 0, 17]			Soft Pad
+[p3, 89, 0, 18]			Sine Pad
+[p3, 89, 0, 40]			Vishnu
+[p3, 89, 0, 64]			Horn Pad
+[p3, 89, 0, 65]			RotarStr
+[p3, 89, 0, 127]			Warm2
+[p3, 90, 0, 0]			PolySyPd
+[p3, 90, 0, 64]			PolyPd80
+[p3, 90, 0, 65]			ClickPad
+[p3, 90, 0, 66]			Ana Pad
+[p3, 90, 0, 67]			SquarPad
+[p3, 90, 0, 68]			SnowPad
+[p3, 90, 0, 69]			Pixie
+[p3, 90, 0, 70]			Pisces
+[p3, 90, 0, 71]			Spiral
+[p3, 90, 0, 127]			Polysy2
+[p3, 91, 0, 0]			ChoirPad
+[p3, 91, 0, 64]			Heaven 2
+[p3, 91, 0, 65]			Lite Pad
+[p3, 91, 0, 66]			Itopia
+[p3, 91, 0, 67]			CC Pad
+[p3, 91, 0, 68]			Cosmic
+[p3, 91, 0, 127]			Choir2
+[p3, 92, 0, 0]			BowedPad
+[p3, 92, 0, 64]			Glacier
+[p3, 92, 0, 65]			GlassPad
+[p3, 92, 0, 66]			SqrTwang
+[p3, 92, 0, 127]			Bowed2
+[p3, 93, 0, 0]			MetalPad
+[p3, 93, 0, 64]			Tine Pad
+[p3, 93, 0, 65]			Pan Pad
+[p3, 93, 0, 66]			queever
+[p3, 93, 0, 127]			Metal2
+[p3, 94, 0, 0]			Halo Pad
+[p3, 94, 0, 40]			Tiu
+[p3, 94, 0, 64]			Aries
+[p3, 94, 0, 127]			Halo2
+[p3, 95, 0, 0]			SweepPad
+[p3, 95, 0, 20]			Shwimmer
+[p3, 95, 0, 27]			Converge
+[p3, 95, 0, 64]			PolarPad
+[p3, 95, 0, 65]			Sweepy
+[p3, 95, 0, 66]			Celstial
+[p3, 95, 0, 67]			Monsoon
+[p3, 95, 0, 68]			Io
+[p3, 95, 0, 127]			Sweep Pad 2
+
+[g2]		Synth Effects
+[sorted]
+[p3, 96, 0, 0]			Rain
+[p3, 96, 0, 45]			ClaviPad
+[p3, 96, 0, 64]			HrmoRain
+[p3, 96, 0, 65]			AfrcnWnd
+[p3, 96, 0, 66]			Caribean
+[p3, 96, 0, 127]			Rain 2
+[p3, 97, 0, 0]			SoundTrk
+[p3, 97, 0, 27]			Prologue
+[p3, 97, 0, 64]			Ancestr1
+[p3, 97, 0, 65]			Rave
+[p3, 97, 0, 66]			Fairy
+[p3, 97, 0, 67]			Hermit
+[p3, 97, 0, 127]			Sound Track
+[p3, 98, 0, 0]			Crystal
+[p3, 98, 0, 12]			SynDrCmp
+[p3, 98, 0, 14]			Popcorn
+[p3, 98, 0, 18]			TinyBell
+[p3, 98, 0, 35]			RndGlock
+[p3, 98, 0, 40]			GlockChi
+[p3, 98, 0, 41]			ClearBel
+[p3, 98, 0, 42]			ChorBell
+[p3, 98, 0, 64]			SynMalet
+[p3, 98, 0, 65]			SftCryst
+[p3, 98, 0, 66]			LoudGlok
+[p3, 98, 0, 67]			XmasBell
+[p3, 98, 0, 68]			VibeBell
+[p3, 98, 0, 69]			DigiBell
+[p3, 98, 0, 70]			AirBells
+[p3, 98, 0, 71]			BellHarp
+[p3, 98, 0, 72]			Gamelmba
+[p3, 98, 0, 73]			Bounce
+[p3, 98, 0, 127]			Crystal 2
+[p3, 99, 0, 0]			Atmosphr
+[p3, 99, 0, 18]			WarmAtms
+[p3, 99, 0, 19]			HollwRls
+[p3, 99, 0, 40]			NylonEP
+[p3, 99, 0, 64]			NylnHarp
+[p3, 99, 0, 65]			Harp Vox
+[p3, 99, 0, 66]			AtmosPad
+[p3, 99, 0, 67]			Planet
+[p3, 99, 0, 68]			Lyra
+[p3, 99, 0, 69]			Akasaka
+[p3, 99, 0, 70]			Digital Bermuda
+[p3, 99, 0, 127]			Atomsphere 2
+[p3, 100, 0, 0]			Brightness
+[p3, 100, 0, 64]			Fantasy Bell
+[p3, 100, 0, 96]			Smokey
+[p3, 100, 0, 127]			Brightness 2
+[p3, 101, 0, 0]			Goblins
+[p3, 101, 0, 64]			GobSyn
+[p3, 101, 0, 65]			50sSciFi
+[p3, 101, 0, 66]			Ring Pad
+[p3, 101, 0, 67]			Ritual
+[p3, 101, 0, 68]			ToHeaven
+[p3, 101, 0, 69]			MilkyWay
+[p3, 101, 0, 70]			Night
+[p3, 101, 0, 71]			Glisten
+[p3, 101, 0, 72]			Puffy
+[p3, 101, 0, 72]			Puffy
+[p3, 101, 0, 73]			Mimicry
+[p3, 101, 0, 74]			Parasite
+[p3, 101, 0, 75]			Cicada
+[p3, 101, 0, 76]			Beacon
+[p3, 101, 0, 96]			Bell Choir
+[p3, 101, 0, 97]			Dharma 
+[p3, 101, 0, 127]			Goblins 2
+[p3, 102, 0, 0]			Echoes
+[p3, 102, 0, 8]			EchoPad2
+[p3, 102, 0, 14]			Echo Pan
+[p3, 102, 0, 64]			EchoBell
+[p3, 102, 0, 65]			Big Pan
+[p3, 102, 0, 66]			SynPiano
+[p3, 102, 0, 67]			Creation
+[p3, 102, 0, 68]			Stardust
+[p3, 102, 0, 69]			Reso Pan
+[p3, 102, 0, 127]			Echoes 2
+[p3, 103, 0, 0]			Sci-Fi
+[p3, 103, 0, 64]			Starz
+[p3, 103, 0, 65]			Odyssey
+[p3, 103, 0, 127]			Sci-Fi 2
+
+
+[g2]		Ethnic
+[sorted]
+[p3, 104, 0, 0]			Sitar
+[p3, 104, 0, 32]			DetSitar
+
+[p3, 104, 0, 35]			Sitar 2
+[p3, 104, 0, 96]			Tambra
+[p3, 104, 0, 97]			Tamboura
+[p3, 104, 0, 0]			Sitar 2
+[p3, 105, 0, 0]			Banjo
+[p3, 105, 0, 28]			MuteBnjo
+[p3, 105, 0, 64]			Electric Banjo
+[p3, 105, 0, 96]			Rabab
+[p3, 105, 0, 97]			Gopichnt
+[p3, 105, 0, 98]			Oud
+[p3, 105, 0, 127]			Banjo 2
+[p3, 106, 0, 0]			Shamisen
+[p3, 106, 0, 96]			Tsugaru
+[p3, 106, 0, 127]			Shamisen 2
+[p3, 107, 0, 0]			Koto
+[p3, 107, 0, 64]			FM Koto
+[p3, 107, 0, 96]			Taisho Koto
+[p3, 107, 0, 97]			Kanoon
+[p3, 107, 0, 127]			Koto 2
+[p3, 108, 0, 0]			Kalimba
+[p3, 108, 0, 64]			Big Kalima
+[p3, 108, 0, 127]			Kalimba 2
+[p3, 109, 0, 0]			Bagpipe
+[p3, 109, 0, 64]			Thistle
+[p3, 109, 0, 127]			Bagpipe 2
+[p3, 110, 0, 0]			Fiddle
+[p3, 110, 0, 127]			Fiddle 2
+[p3, 111, 0, 0]			Shanai
+[p3, 111, 0, 64]			Shanai 2
+[p3, 111, 0, 96]			Pungi
+[p3, 111, 0, 97]			Hichriki
+[p3, 111, 0, 127]			Shanai 3
+
+[g2]		Percussive
+[sorted]
+[p3, 112, 0, 0]			Tinkle Bell
+[p3, 112, 0, 64]			Tickle Bell
+[p3, 112, 0, 96]			Bonang
+[p3, 112, 0, 97]			Gender
+[p3, 112, 0, 98]			Gamelan
+[p3, 112, 0, 99]			S.Gamlan
+[p3, 112, 0, 100]			Rama Cym
+[p3, 112, 0, 101]			AsianBel
+[p3, 112, 0, 127]			Tinkle Bell 2
+[p3, 113, 0, 0]			Agogo
+[p3, 113, 0, 96]			Atrigane
+[p3, 113, 0, 127]			Agogo 2
+[p3, 114, 0, 0]			Steel Drum
+[p3, 114, 0, 96]			Tablas
+[p3, 114, 0, 97]			GlasPerc
+[p3, 114, 0, 98]			ThaiBell
+[p3, 114, 0, 127]			Steel Drum 2
+[p3, 115, 0, 0]			Wood Block
+[p3, 115, 0, 96]			Castanet
+[p3, 115, 0, 127]			Wood Block 2
+[p3, 116, 0, 0]			Taiko Drum
+[p3, 116, 0, 96]			Gr.Cassa
+[p3, 116, 0, 127]			Taiko Drum 2
+[p3, 117, 0, 0]			Melodic Tom
+[p3, 117, 0, 64]			Mel Tom2
+[p3, 117, 0, 65]			Real Tom
+[p3, 117, 0, 66]			Rock Tom
+[p3, 117, 0, 127]			Melodic Tom 2
+[p3, 118, 0, 0]			Synth Drum
+[p3, 118, 0, 64]			Ana Tom
+[p3, 118, 0, 65]			ElecPerc
+[p3, 118, 0, 127]			Synth Drum 2
+[p3, 119, 0, 0]			Reverse Cymbal
+[p3, 119, 0, 64]			Reverse Cymbal 2
+[p3, 119, 0, 96]			Reverse Snare 1
+[p3, 119, 0, 97]			Reverse Snare 2
+[p3, 119, 0, 98]			Reverse Kick1
+[p3, 119, 0, 99]			Reverse Concert BD
+[p3, 119, 0, 100]			Reverse Tom1
+[p3, 119, 0, 101]			Reverse Tom2
+[p3, 119, 0, 127]			Reverse Cymbal 3
+[g2]		Sound Effects
+[sorted]
+[p3, 120, 0, 0]			FretNoiz
+[p3, 120, 0, 127]			FretNz2
+[p3, 121, 0, 0]			BrthNoiz
+[p3, 121, 0, 127]			BrthNz2
+[p3, 122, 0, 0]			Seashore
+[p3, 122, 0, 127]			Seashr2
+[p3, 123, 0, 0]			Tweet
+[p3, 123, 0, 127]			Tweet2
+[p3, 124, 0, 0]			Telphone
+[p3, 124, 0, 127]			Telphon2
+[p3, 125, 0, 0]			Helicptr
+[p3, 125, 0, 127]			Helicpt2
+[p3, 126, 0, 0]			Applause
+[p3, 126, 0, 127]			Applaus2
+[p3, 127, 0, 0]			Gunshot
+[p3, 127, 0, 127]			Gunshot2
+
+[g2]	MU100 Exclusive
+[sorted]
+[p3, 0, 48, 0]			Muted Clavi
+[p3, 0, 48, 8]			Beeline
+[p3, 0, 48, 16]			Rage
+[p3, 0, 48, 24]			Fuss
+[p3, 0, 48, 48]			Reflex 1
+[p3, 0, 48, 56]			Insanity
+[p3, 0, 48, 64]			Distant Fire
+[p3, 0, 48, 72]			Lightning
+[p3, 0, 48, 80]			Zipzap
+[p3, 0, 48, 88]			Escape
+[p3, 0, 48, 96]			Tin Kettle
+[p3, 0, 48, 104]			Satya
+[p3, 0, 48, 120]			Vodou
+[p3, 1, 48, 0]			Orimba
+[p3, 1, 48, 8]			Beeline Hard
+[p3, 1, 48, 16]			Tingle & Chaos
+[p3, 1, 48, 24]			Van Allen
+[p3, 1, 48, 48]			Reflex 2
+[p3, 1, 48, 56]			Habakkuk
+[p3, 1, 48, 64]			Blow Noise
+[p3, 1, 48, 72]			Oof
+[p3, 1, 48, 88]			Zigzag
+[p3, 1, 48, 96]			Kick/Snare Analog
+[p3, 1, 48, 104]			Monastery *4
+[p3, 2, 48, 8]			Dwarf
+[p3, 2, 48, 16]			Incontinence
+[p3, 2, 48, 24]			Divinity
+[p3, 2, 48, 48]			Precession
+[p3, 2, 48, 64]			Fall
+[p3, 2, 48, 72]			Lust
+[p3, 2, 48, 88]			Scud
+[p3, 2, 48, 96]			Kick/Snare Humid
+[p3, 2, 48, 104]			Vinaya
+[p3, 3, 48, 8]			Byte
+[p3, 3, 48, 16]			Incontinence Click
+[p3, 3, 48, 24]			Paranoia
+[p3, 3, 48, 48]			Random Walk
+[p3, 3, 48, 64]			Chaff
+[p3, 3, 48, 72]			Lust Stereo
+[p3, 3, 48, 88]			Hinayana
+[p3, 3, 48, 96]			Kick/Snare Slap
+[p3, 3, 48, 104]			Prana
+[p3, 4, 48, 8]			Ping
+[p3, 4, 48, 16]			Cheap Oscillator
+[p3, 4, 48, 24]			Vexation
+[p3, 4, 48, 48]			Random Run
+[p3, 4, 48, 72]			Soft Hit Plus
+[p3, 4, 48, 88]			Boot
+[p3, 4, 48, 96]			Reverse/Crash
+[p3, 4, 48, 104]			Delight
+[p3, 5, 48, 8]			Nasty Cut
+[p3, 5, 48, 16]			Cheap Oscillator Plus
+[p3, 5, 48, 24]			Calc Organ 1
+[p3, 5, 48, 72]			Cough Plus
+[p3, 5, 48, 88]			Anathema
+[p3, 5, 48, 104]			Puja
+[p3, 6, 48, 8]			Nasty Cut Stereo
+[p3, 6, 48, 16]			Nasty Organ Split
+[p3, 6, 48, 24]			Calc Organ 2
+[p3, 6, 48, 72]			Ruin
+[p3, 6, 48, 88]			Germ 1
+[p3, 6, 48, 104]			Bent Tom
+[p3, 7, 48, 8]			Xe
+[p3, 7, 48, 16]			Super Click
+[p3, 7, 48, 24]			Calc Organ 3
+[p3, 7, 48, 72]			Ruin Stereo
+[p3, 7, 48, 88]			Germ 2
+[p3, 8, 48, 8]			Organ Hit
+[p3, 8, 48, 16]			Boomout
+[p3, 8, 48, 24]			Chorus Calc Organ
+[p3, 8, 48, 72]			Vein Plus
+[p3, 8, 48, 88]			Malfunction
+[p3, 9, 48, 8]			Organ Hit Plus
+[p3, 9, 48, 16]			Choir Split
+[p3, 9, 48, 24]			Sodium
+[p3, 9, 48, 72]			Universe
+[p3, 10, 48, 8]			Soft Hit
+[p3, 10, 48, 16]			Veld
+[p3, 10, 48, 72]			Universe Sweep
+[p3, 11, 48, 8]			Vein
+[p3, 11, 48, 16]			Vapor Vox
+[p3, 11, 48, 72]			Xe Plus
+[p3, 12, 48, 8]			Packet
+[p3, 12, 48, 16]			Vox Shoot
+[p3, 12, 48, 72]			Daze
+[p3, 13, 48, 8]			Jolly
+[p3, 13, 48, 16]			Semi-acoustic Organ
+[p3, 13, 48, 72]			Refusal
+[p3, 14, 48, 8]			Jolly Plus
+[p3, 14, 48, 72]			Refusal Plus
+[p3, 15, 48, 8]			Envy
+[p3, 15, 48, 72]			Lie
+[p3, 16, 48, 8]			Envy Short
+[p3, 16, 48, 72]			Malice
+[p3, 17, 48, 8]			Cough
+[p3, 17, 48, 72]			Doubt
+[p3, 18, 48, 8]			Remark
+[p3, 18, 48, 72]			Doubt Double
+[p3, 19, 48, 8]			Potala
+[p3, 20, 48, 8]			Fury
+[p3, 21, 48, 8]			Glockenspiel Plus
+
+[g2]	SW kits + Drums
+[sorted]
+[p3, 0, 126, 0]			SFX Kit 1		
+[p3, 1, 126, 0]			SFX Kit 2
+[p3, 16, 126, 0]			Techno Kit K/S
+[p3, 17, 126, 0]			Techno Kit High
+[p3, 18, 126, 0]			Techno Kit Low
+[p3, 32, 126, 0]			Sakura Kit
+[p3, 33, 126, 0]			Small Latin
+[p3, 0, 127, 0]			Standard Kit
+[p3, 1, 127, 0]			Standard Kit 2
+[p3, 2, 127, 0]			Dry Kit
+[p3, 3, 127, 0]			Bright Kit
+[p3, 4, 127, 0]			Skim Kit
+[p3, 5, 127, 0]			Slim Kit
+[p3, 6, 127, 0]			Rogue Kit
+[p3, 7, 127, 0]			Hob Kit
+[p3, 8, 127, 0]			Room Kit
+[p3, 9, 127, 0]			Dark Room Kit
+[p3, 16, 127, 0]			Rock Kit
+[p3, 17, 127, 0]			Rock Kit 2
+[p3, 24, 127, 0]			Electro Kit
+[p3, 25, 127, 0]			Analog Kit
+[p3, 26, 127, 0]			Analog Kit 2
+[p3, 27, 127, 0]			DAnce Kit
+[p3, 28, 127, 0]			Hip Hop Kit
+[p3, 29, 127, 0]			Jungle Kit
+[p3, 30, 127, 0]			Apogee Kit
+[p3, 31, 127, 0]			Perigree Kit
+[p3, 32, 127, 0]			Jazz Kit
+[p3, 33, 127, 0]			Jazz Kit 2
+[p3, 40, 127, 0]			Brush Kit
+[p3, 41, 127, 0]			Brush Kit 2
+[p3, 48, 127, 0]			Symphony Kit
+[p3, 64, 127, 0]			Tramp Kit
+[p3, 65, 127, 0]			Amber Kit
+[p3, 66, 127, 0]			Coffin Kit
+[p3, 126, 127, 0]			Standard Kit MU100 Native
+[p3, 127, 127, 0]			Standard Kit MU100 Basic
+
+
+[end]

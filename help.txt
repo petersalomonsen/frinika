@@ -1,0 +1,32 @@
+Plain text help.
+================
+
+
+Recording Multiple Takes.
+
+ Set the loop points and enable looping.
+ Arm the lane by selecting "R" 
+ Hit record.
+ Frinika will store a new take with in each loop if you play anything. 
+
+ For a melodic lane 
+    The last take will be played.
+
+ For a drum lane
+    All the takes are played
+
+ Takes can be edited after recording by right clicking on the part.
+For melodic mode you can select a single take, in drum mode you can
+select which takes are enabled.
+ 
+ 
+
+
+Notes:
+
+ Not tested.
+
+ Recording to multiple tracks is not supported.
+ 
+ Drag and drop of a single part will not effect any of the other takes.
+

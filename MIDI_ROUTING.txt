@@ -1,0 +1,15 @@
+
+The project.getMidiDeviceRouter() can be used to redirect midi events.
+The implementation is is still evolving.
+Possibly the MonitorReceiver could be rewritten using new scheme?
+
+
+MidiInDeviceManager  (switches to current project)  fowards messages using -->
+
+   ProjectContainer.processMidiMessageFromDevice(device,message,stamp){
+        if (midiDeviceRouter.consume(device,message,stamp)) return;
+        sequencer.getReceiver().send(arg0, arg1);
+   }    
+
+  
+ See

@@ -1,0 +1,15 @@
+
+
+
+
+
+
+ CompoundControlPanel extends ControlPanel 
+        ControlKnob 
+
+
+FaderPanel extends ControlPanel 
+         Fader  extends  JSlider
+         
+         
+  FloatControlPanel extends ControlPanel        

@@ -1,0 +1,43 @@
+When creating serializable classes remember ALWAYS to set 
+SerializationUID = 1
+
+This makes sure that project are compatible accross versions.
+
+------------------------------------------
+
+How to repair a project with broken serialVersonUID?
+
+This is a situation that hopefully only will happen to those using the cvs 
+(HEAD) version during development. 
+
+If you have saved a project and when you saved it some serializable project 
+class did not have serialVersionUID = 1L, you will not be able to reload it, 
+when the serialVersionUID finally is set to 1L. This happened to me now with 
+MidiPlayOptions.class...
+
+What you can do - to repair your project is this:
+
+I looked at the exception, which tells the serialVersionUID of the saved 
+object, and inserted it temporarily into MidiPlayOptions.
+
+public class MidiPlayOptions implements java.io.Serializable {
+
+        private static final long serialVersionUID = 2770438632652869105L;
+
+Then I was able to open the project - but my goal is to make this able to open 
+when the serialVersionUID is what it should be (1L) - so I have to save the 
+project with the correct class. You cannot have this two different 
+serialVersionUIDs live simultaneously - so you'll have to remove your 
+projects references to the "damaged" object.
+
+You can do this by modifying writeObject - so that when you save the project - 
+the reference is removed:
+
+        private void writeObject(ObjectOutputStream out) throws IOException {
+                this.playOptions = null;
+
+Your project should now be fine to reload correctly. Revert to the correct 
+code - and all should be fine...
+
+(AND do NOT commit your damaged serialVersionUID to cvs - it should ALWAYS be 
+1L)..

@@ -1,0 +1,53 @@
+* Piano roll does not display correctly if you select triplets (slightly out).
+
+
+* Bug in editing in the controller window. Sometimes will not delete events.
+  TODO 1. should really look at events in previous part.
+       2. should display the defualt controller value (how do we find this?)
+       
+* Can't copy ghost parts?
+
+* Copy of parts to new lanes can get really confused.
+  Looks like notes have the wrong parent. 
+
+* Possible to create invisible ghost parts (maybe related to above).
+
+* Moving audio parts before zero is not handled properly.
+
+* Audio playback can get confused if the audio cache thread is starved.
+  Many xrun messages and looping audio. PJL
+
+   
+* PopupMenu displays then disappears
+
+  This can happen if.
+ 
+        1. You are using KDE with "Focus Strictly Under Mouse"  (Control Center - Window Behaviour.
+  AND   2. Part of the popup menu is outside the Frinika frame.
+ 
+  Workaround
+ 
+       Switch to "focus under mouse". 
+
+* ControllerView - PitchBend - SelectMode.
+
+  Adjusting does not work. (PJL -- Check offsets etc). Possibly a bug in linux JAVA with pitch wheel.
+ 
+
+*Not always able to set the name of the Lane. 
+ - I can not reproduce this (you need to hit return to make sure it is set) PJL
+ - Still a bit dodgy if you escape quickly with the mouse it seems to reset.
+ 
+
+* Scrollbars need a rewrite - some glitches.
+ 
+==== Probably fixed now
+
+* Audio directory stuff is confused if you save file under another directory name.
+  e.g. record than save in a different directory. You get missing audio.
+
+
+* Detaching a panel can crash the program.
+  Work around don't try to detach panels.
+  This might be OK now. Not seen it for while PJL
+ 

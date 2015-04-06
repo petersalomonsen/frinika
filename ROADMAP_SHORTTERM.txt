@@ -1,0 +1,9 @@
+Out of date.
+
+Roadmap on short term
+---------------------------------------------------------------------
+
+PJS: Integrate Toot Mixer with separate mixer slots per audio lane
+
+RasmusDSP script editor and integration with Frinika through TootMixer
+

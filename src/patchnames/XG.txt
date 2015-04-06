@@ -1,0 +1,1877 @@
+[cubase parse file]
+[parser version 0001]
+[comment] XG Device by Janne Roeper 22.04.99
+
+[creators first name]Janne
+[creators last name]Roeper
+[device manufacturer]YAMAHA
+[device name]XG Device
+[script name]XG Device
+[script version]version 1.00
+
+[define patchnames]
+
+[mode]	XG Voices
+
+[g1]		Piano
+[g2]			GrandPno
+[p3, 0, 0, 0]			GrandPno
+[p3, 0, 0, 1]			GrndPnoK
+[p3, 0, 0, 18]			MelloGrP
+[p3, 0, 0, 40]			PianoStr
+[p3, 0, 0, 41]			Dream
+[g2]			BritePno
+[p3, 1, 0, 0]			BritePno
+[p3, 1, 0, 1]			BritPnoK
+[g2]			E.Grand
+[p3, 2, 0, 0]			E.Grand
+[p3, 2, 0, 1]			ElGrPnoK
+[p3, 2, 0, 32]			Det.CP80
+[p3, 2, 0, 40]			ElGrPno1
+[p3, 2, 0, 41]			ElGrPno2
+[g2]			HnkyTonk
+[p3, 3, 0, 0]			HnkyTonk
+[p3, 3, 0, 1]			HnkyTnkK
+[g2]			E.Piano1
+[p3, 4, 0, 0]			E.Piano1
+[p3, 4, 0, 1]			El.Pno1K
+[p3, 4, 0, 18]			MelloEP1
+[p3, 4, 0, 32]			Chor.EP1
+[p3, 4, 0, 40]			HardEl.P
+[p3, 4, 0, 45]			VX El.P1
+[p3, 4, 0, 64]			60sEl.P
+[g2]			E.Piano2
+[p3, 5, 0, 0]			E.Piano2
+[p3, 5, 0, 1]			El.Pno2K
+[p3, 5, 0, 32]			Chor.EP2
+[p3, 5, 0, 33]			DX Hard
+[p3, 5, 0, 34]			DXLegend
+[p3, 5, 0, 40]			DX Phase
+[p3, 5, 0, 41]			DX+Analg
+[p3, 5, 0, 42]			DXKotoEP
+[p3, 5, 0, 45]			VX El.P2
+[g2]			Harpsi.
+[p3, 6, 0, 0]			Harpsi.
+[p3, 6, 0, 1]			Harpsi.K
+[p3, 6, 0, 25]			Harpsi.2
+[p3, 6, 0, 35]			Harpsi.3
+[g2]			Clavi.
+[p3, 7, 0, 0]			Clavi.
+[p3, 7, 0, 1]			Clavi.K
+[p3, 7, 0, 27]			ClaviWah
+[p3, 7, 0, 64]			PulseClv
+[p3, 7, 0, 65]			PierceCl
+[g1]		Chromatic Percussion
+[g2]			Celesta
+[p3, 8, 0, 0]			Celesta
+[g2]			Glocken
+[p3, 9, 0, 0]			Glocken
+[g2]			MusicBox
+[p3, 10, 0, 0]			MusicBox
+[p3, 10, 0, 64]			Orgel
+[g2]			Vibes
+[p3, 11, 0, 0]			Vibes
+[p3, 11, 0, 1]			VibesK
+[p3, 11, 0, 45]			HardVibe
+[g2]			Marimba
+[p3, 12, 0, 0]			Marimba
+[p3, 12, 0, 1]			MarimbaK
+[p3, 12, 0, 64]			SineMrmb
+[p3, 12, 0, 96]			Balafon
+[p3, 12, 0, 97]			Balafon2
+[p3, 12, 0, 98]			Log Drum
+[g2]			Xylophon
+[p3, 13, 0, 0]			Xylophon
+[g2]			TubulBel
+[p3, 14, 0, 0]			TubulBel
+[p3, 14, 0, 96]			ChurchBel
+[p3, 14, 0, 97]			Carillion
+
+[g2]			Dulcimer
+[p3, 15, 0, 0]			Dulcimer
+[p3, 15, 0, 35]			Dulcimr2
+[p3, 15, 0, 96]			Cimbalom
+[p3, 15, 0, 97]			Santur
+[g1]		Organ
+[g2]			DrawOrgn
+[p3, 16, 0, 0]			DrawOrgn
+[p3, 16, 0, 32]			DetDrwOr
+[p3, 16, 0, 33]			60sDrOr1
+[p3, 16, 0, 34]			60sDrOr2
+[p3, 16, 0, 35]			70sDrOr1
+[p3, 16, 0, 36]			DrawOrg2
+[p3, 16, 0, 37]			60sDrOr3
+[p3, 16, 0, 38]			EvenBar
+[p3, 16, 0, 40]			16+2"2/3
+[p3, 16, 0, 64]			Organ Ba
+[p3, 16, 0, 65]			70sDrOr2
+[p3, 16, 0, 66]			CheezOrg
+[p3, 16, 0, 67]			DrawOrg3
+[g2]			PercOrgn
+[p3, 17, 0, 0]			PercOrgn
+[p3, 17, 0, 24]			70sPcOr1
+[p3, 17, 0, 32]			DetPrcOr
+[p3, 17, 0, 33]			LiteOrg
+[p3, 17, 0, 37]			PercOrg2
+[g2]			RockOrgn
+[p3, 18, 0, 0]			RockOrgn
+[p3, 18, 0, 64]			RotaryOr
+[p3, 18, 0, 65]			SloRotar
+[p3, 18, 0, 66]			FstRotar
+[g2]			ChrchOrg
+[p3, 19, 0, 0]			ChrchOrg
+[p3, 19, 0, 32]			ChurOrg3
+[p3, 19, 0, 35]			ChurOrg2
+[p3, 19, 0, 40]			NotreDam
+[p3, 19, 0, 64]			OrgFlute
+[p3, 19, 0, 65]			TrmOrgFl
+[g2]			ReedOrgn
+[p3, 20, 0, 0]			ReedOrgn
+[p3, 20, 0, 40]			Puff Org
+[g2]			Acordion
+[p3, 21, 0, 0]			Acordion
+[p3, 21, 0, 32]			AccordIt
+[g2]			Harmnica
+[p3, 22, 0, 0]			Harmnica
+[p3, 22, 0, 32]			Harmo 2
+[g2]			TangoAcd
+[p3, 23, 0, 0]			TangoAcd
+[p3, 23, 0, 64]			TngoAcd2
+[g1]		Guitar
+[g2]			NylonGtr
+[p3, 24, 0, 0]			NylonGtr
+[p3, 24, 0, 16]			NylonGt2
+[p3, 24, 0, 25]			NylonGt3
+[p3, 24, 0, 43]			VelGtHrm
+[p3, 24, 0, 96]			Ukulele
+[g2]			SteelGtr
+[p3, 25, 0, 0]			SteelGtr
+[p3, 25, 0, 16]			SteelGt2
+[p3, 25, 0, 35]			12StrGtr
+[p3, 25, 0, 40]			Nyln&Stl
+[p3, 25, 0, 41]			Stl&Body
+[p3, 25, 0, 96]			Mandolin
+[g2]			Jazz Gtr
+[p3, 26, 0, 0]			Jazz Gtr
+[p3, 26, 0, 18]			MelloGtr
+[p3, 26, 0, 32]			JazzAmp
+[p3, 26, 0, 96]			PdlSteel
+[g2]			CleanGtr
+[p3, 27, 0, 0]			CleanGtr
+[p3, 27, 0, 32]			ChorusGt
+[p3, 27, 0, 64]			CleanGt2
+[g2]			Mute.Gtr
+[p3, 28, 0, 0]			Mute.Gtr
+[p3, 28, 0, 40]			FunkGtr1
+[p3, 28, 0, 41]			MuteStlG
+[p3, 28, 0, 43]			FunkGtr2
+[p3, 28, 0, 45]			Jazz Man
+[p3, 28, 0, 96]			Mu.DstGt
+[g2]			Ovrdrive
+[p3, 29, 0, 0]			Ovrdrive
+[p3, 29, 0, 43]			Gt.Pinch
+[g2]			Dist.Gtr
+[p3, 30, 0, 0]			Dist.Gtr
+[p3, 30, 0, 12]			DstRthmG
+[p3, 30, 0, 24]			DistGtr2
+[p3, 30, 0, 35]			DistGtr3
+[p3, 30, 0, 36]			PowerGt2
+[p3, 30, 0, 37]			PowerGt1
+[p3, 30, 0, 38]			Dst.5ths
+[p3, 30, 0, 40]			FeedbkGt
+[p3, 30, 0, 41]			FeedbGt2
+[p3, 30, 0, 43]			RkRythm2
+[p3, 30, 0, 45]			RockRthm
+[g2]			GtrHarmo
+[p3, 31, 0, 0]			GtrHarmo
+[p3, 31, 0, 64]			AcoHarmo
+[p3, 31, 0, 65]			GtFeedbk
+[p3, 31, 0, 66]			GtrHrmo2
+[g1]		Bass
+[g2]			Aco.Bass
+[p3, 32, 0, 0]			Aco.Bass
+[p3, 32, 0, 40]			JazzRthm
+[p3, 32, 0, 45]			VXUprght
+[g2]			FngrBass
+[p3, 33, 0, 0]			FngrBass
+[p3, 33, 0, 18]			FingrDrk
+[p3, 33, 0, 27]			FlangeBa
+[p3, 33, 0, 40]			Ba&DstEG
+[p3, 33, 0, 43]			FngrSlap
+[p3, 33, 0, 45]			FngBass2
+[p3, 33, 0, 64]			JazzBass
+[p3, 33, 0, 65]			ModAlem
+[g2]			PickBass
+[p3, 34, 0, 0]			PickBass
+[p3, 34, 0, 28]			MutePkBa
+[g2]			Fretless
+[p3, 35, 0, 0]			Fretless
+[p3, 35, 0, 32]			Fretles2
+[p3, 35, 0, 33]			Fretles3
+[p3, 35, 0, 34]			Fretles4
+[p3, 35, 0, 96]			SynFretl
+[p3, 35, 0, 97]			Smooth
+[g2]			SlapBas1
+[p3, 36, 0, 0]			SlapBas1
+[p3, 36, 0, 27]			ResoSlap
+[p3, 36, 0, 32]			PunchThm
+[g2]			SlapBas2
+[p3, 37, 0, 0]			SlapBas2
+[p3, 37, 0, 43]			VeloSlap
+[g2]			SynBass1
+[p3, 38, 0, 0]			SynBass1
+[p3, 38, 0, 18]			SynBa1Dk
+[p3, 38, 0, 20]			FastResB
+[p3, 38, 0, 24]			AcidBass
+[p3, 38, 0, 35]			Clv Bass
+[p3, 38, 0, 40]			TeknoBa
+[p3, 38, 0, 64]			Oscar
+[p3, 38, 0, 65]			SqrBass
+[p3, 38, 0, 66]			RubberBa
+[p3, 38, 0, 96]			Hammer
+[g2]			SynBass2
+[p3, 39, 0, 0]			SynBass2
+[p3, 39, 0, 6]			MelloSB1
+[p3, 39, 0, 12]			Seq Bass
+[p3, 39, 0, 18]			ClkSynBa
+[p3, 39, 0, 19]			SynBa2Dk
+[p3, 39, 0, 32]			SmthBa 2
+[p3, 39, 0, 40]			ModulrBa
+[p3, 39, 0, 41]			DX Bass
+[p3, 39, 0, 64]			X WireBa
+[g1]		Strings
+[g2]			Violin
+[p3, 40, 0, 0]			Violin
+[p3, 40, 0, 8]			SlowVln
+[g2]			Viola
+[p3, 41, 0, 0]			Viola
+[g2]			Cello
+[p3, 42, 0, 0]			Cello
+[g2]			Contrabs
+[p3, 43, 0, 0]			Contrabs
+[g2]			Trem.Str
+[p3, 44, 0, 0]			Trem.Str
+[p3, 44, 0, 8]			SlowTrStr
+[p3, 44, 0, 40]			Susp Str
+[g2]			Pizz.Str
+[p3, 45, 0, 0]			Pizz.Str
+[g2]			Harp
+[p3, 46, 0, 0]			Harp
+[p3, 46, 0, 40]			YangChin
+[g2]			Timpani
+[p3, 47, 0, 0]			Timpani
+[g1]		Ensemble
+[g2]			Strings1
+[p3, 48, 0, 0]			Strings1
+[p3, 48, 0, 3]			S.Strngs
+[p3, 48, 0, 8]			SlowStr
+[p3, 48, 0, 24]			ArcoStr
+[p3, 48, 0, 35]			60sStrng
+[p3, 48, 0, 40]			Orchestr
+[p3, 48, 0, 41]			Orchstr2
+[p3, 48, 0, 42]			TremOrch
+[p3, 48, 0, 45]			VeloStr
+[g2]			Strings2
+[p3, 49, 0, 0]			Strings2
+[p3, 49, 0, 3]			S.SlwStr
+[p3, 49, 0, 8]			LegatoSt
+[p3, 49, 0, 40]			Warm Str
+[p3, 49, 0, 41]			Kingdom
+[p3, 49, 0, 64]			70s Str
+[p3, 49, 0, 65]			Str Ens3
+[g2]			Syn.Str1
+[p3, 50, 0, 0]			Syn.Str1
+[p3, 50, 0, 27]			ResoStr
+[p3, 50, 0, 35]			Syn Str3
+[p3, 50, 0, 64]			Syn Str4
+[p3, 50, 0, 65]			SS Str
+[g2]			Syn.Str2
+[p3, 51, 0, 0]			Syn.Str2
+[g2]			ChoirAah
+[p3, 52, 0, 0]			ChoirAah
+[p3, 52, 0, 6]			S.Choir
+[p3, 52, 0, 16]			Ch.Aahs2
+[p3, 52, 0, 32]			MelChoir
+[p3, 52, 0, 40]			ChoirStr
+[p3, 52, 0, 64]			StrngAah
+[p3, 52, 0, 65]			Male Aah
+[g2]			VoiceOoh
+[p3, 53, 0, 0]			VoiceOoh
+[p3, 53, 0, 64]			VoiceDoo
+[p3, 53, 0, 96]			VoiceHmn
+[g2]			SynVoice
+[p3, 54, 0, 0]			SynVoice
+[p3, 54, 0, 40]			SynVox2
+[p3, 54, 0, 41]			Choral
+[p3, 54, 0, 64]			AnaVoice
+[g2]			Orch.Hit
+[p3, 55, 0, 0]			Orch.Hit
+[p3, 55, 0, 35]			OrchHit2
+[p3, 55, 0, 64]			Impact
+[p3, 55, 0, 65]			BrssStab
+[p3, 55, 0, 66]			DoublHit
+[p3, 55, 0, 67]			BrStab80
+[g1]		Brass
+[g2]			Trumpet
+[p3, 56, 0, 0]			Trumpet
+[p3, 56, 0, 16]			Trumpet2
+[p3, 56, 0, 17]			BriteTrp
+[p3, 56, 0, 32]			WarmTrp
+[p3, 56, 0, 96]			FluglHrn
+[g2]			Trombone
+[p3, 57, 0, 0]			Trombone
+[p3, 57, 0, 18]			Trmbone2
+[g2]			Tuba
+[p3, 58, 0, 0]			Tuba
+[p3, 58, 0, 16]			Tuba 2
+[g2]			Mute.Trp
+[p3, 59, 0, 0]			Mute.Trp
+[p3, 59, 0, 64]			MuteTrp2
+[g2]			Fr.Horn
+[p3, 60, 0, 0]			Fr.Horn
+[p3, 60, 0, 6]			FrHrSolo
+[p3, 60, 0, 32]			FrHorn2
+[p3, 60, 0, 37]			HornOrch
+[g2]			BrasSect
+[p3, 61, 0, 0]			BrasSect
+[p3, 61, 0, 14]			SfrzndBr
+[p3, 61, 0, 35]			Tp&TbSec
+[p3, 61, 0, 39]			BrssFall
+[p3, 61, 0, 40]			BrssSec2
+[p3, 61, 0, 41]			HiBrass
+[p3, 61, 0, 42]			MelloBrs
+[g2]			SynBras1
+[p3, 62, 0, 0]			SynBras1
+[p3, 62, 0, 12]			QuackBr
+[p3, 62, 0, 20]			RezSynBr
+[p3, 62, 0, 24]			PolyBrss
+[p3, 62, 0, 27]			SynBras3
+[p3, 62, 0, 32]			JumpBrss
+[p3, 62, 0, 45]			AnaVelBr
+[p3, 62, 0, 64]			AnaBrss1
+[g2]			SynBras2
+[p3, 63, 0, 0]			SynBras2
+[p3, 63, 0, 18]			Soft Brs
+[p3, 63, 0, 40]			SynBrss4
+[p3, 63, 0, 41]			ChoirBrs
+[p3, 63, 0, 45]			VelBrss2
+[p3, 63, 0, 64]			AnaBrss2
+[g1]		Reed
+[g2]			SprnoSax
+[p3, 64, 0, 0]			SprnoSax
+[g2]			Alto Sax
+[p3, 65, 0, 0]			Alto Sax
+[p3, 65, 0, 40]			Sax Sect
+[p3, 65, 0, 43]			HyprAlto
+[g2]			TenorSax
+[p3, 66, 0, 0]			TenorSax
+[p3, 66, 0, 40]			BrthTnSx
+[p3, 66, 0, 41]			SoftTenr
+[p3, 66, 0, 64]			TnrSax 2
+[g2]			Bari.Sax
+[p3, 67, 0, 0]			Bari.Sax
+[g2]			Oboe
+[p3, 68, 0, 0]			Oboe
+[g2]			Eng.Horn
+[p3, 69, 0, 0]			Eng.Horn
+[g2]			Bassoon
+[p3, 70, 0, 0]			Bassoon
+[g2]			Clarinet
+[p3, 71, 0, 0]			Clarinet
+[p3, 71, 0, 96]			BassClar
+[g1]		Pipe
+[g2]			Piccolo
+[p3, 72, 0, 0]			Piccolo
+[g2]			Flute
+[p3, 73, 0, 0]			Flute
+[g2]			Recorder
+[p3, 74, 0, 0]			Recorder
+[g2]			PanFlute
+[p3, 75, 0, 0]			PanFlute
+[p3, 75, 0, 64]			PanFlut2
+[p3, 75, 0, 96]			Kawala
+[g2]			Bottle
+[p3, 76, 0, 0]			Bottle
+[g2]			Shakhchi
+[p3, 77, 0, 0]			Shakhchi
+[g2]			Whistle
+[p3, 78, 0, 0]			Whistle
+[g2]			Ocarina
+[p3, 79, 0, 0]			Ocarina
+[g1]		Synth Lead
+[g2]			SquareLd
+[p3, 80, 0, 0]			SquareLd
+[p3, 80, 0, 6]			Square 2
+[p3, 80, 0, 8]			LMSquare
+[p3, 80, 0, 18]			Hollow
+[p3, 80, 0, 19]			Shmoog
+[p3, 80, 0, 64]			Mellow
+[p3, 80, 0, 65]			SoloSine
+[p3, 80, 0, 66]			SineLead
+[g2]			Saw.Lead
+[p3, 81, 0, 0]			Saw.Lead
+[p3, 81, 0, 6]			Saw 2
+[p3, 81, 0, 8]			ThickSaw
+[p3, 81, 0, 18]			DynaSaw
+[p3, 81, 0, 19]			DigiSaw
+[p3, 81, 0, 20]			Big Lead
+[p3, 81, 0, 24]			HeavySyn
+[p3, 81, 0, 25]			WaspySyn
+[p3, 81, 0, 40]			PulseSaw
+[p3, 81, 0, 41]			Dr.Lead
+[p3, 81, 0, 45]			VeloLead
+[p3, 81, 0, 96]			Seq Ana
+[g2]			CaliopLd
+[p3, 82, 0, 0]			CaliopLd
+[p3, 82, 0, 64]			Vent Syn
+[p3, 82, 0, 65]			Pure Pad
+[g2]			Chiff Ld
+[p3, 83, 0, 0]			Chiff Ld
+[p3, 83, 0, 64]			Rubby
+[g2]			CharanLd
+[p3, 84, 0, 0]			CharanLd
+[p3, 84, 0, 64]			DistLead
+[p3, 84, 0, 65]			WireLead
+[g2]			Voice Ld
+[p3, 85, 0, 0]			Voice Ld
+[p3, 85, 0, 24]			Synth Aah
+[p3, 85, 0, 64]			VoxLead
+[g2]			Fifth Ld
+[p3, 86, 0, 0]			Fifth Ld
+[p3, 86, 0, 35]			Big Five
+[g2]			Bass &Ld
+[p3, 87, 0, 0]			Bass &Ld
+[p3, 87, 0, 16]			Big&Low
+[p3, 87, 0, 64]			Fat&Prky
+[p3, 87, 0, 65]			SoftWurl
+[g1]		Synth Pad
+[g2]			NewAgePd
+[p3, 88, 0, 0]			NewAgePd
+[p3, 88, 0, 64]			Fantasy2
+[g2]			Warm Pad
+[p3, 89, 0, 0]			Warm Pad
+[p3, 89, 0, 16]			ThickPad
+[p3, 89, 0, 17]			Soft Pad
+[p3, 89, 0, 18]			Sine Pad
+[p3, 89, 0, 64]			Horn Pad
+[p3, 89, 0, 65]			RotarStr
+[g2]			PolySyPd
+[p3, 90, 0, 0]			PolySyPd
+[p3, 90, 0, 64]			PolyPd80
+[p3, 90, 0, 65]			ClickPad
+[p3, 90, 0, 66]			Ana Pad
+[p3, 90, 0, 67]			SquarPad
+[g2]			ChoirPad
+[p3, 91, 0, 0]			ChoirPad
+[p3, 91, 0, 64]			Heaven 2
+[p3, 91, 0, 65]			Lite Pad
+[p3, 91, 0, 66]			Itopia
+[p3, 91, 0, 67]			CC Pad
+[g2]			BowedPad
+[p3, 92, 0, 0]			BowedPad
+[p3, 92, 0, 64]			Glacier
+[p3, 92, 0, 65]			GlassPad
+[g2]			MetalPad
+[p3, 93, 0, 0]			MetalPad
+[p3, 93, 0, 64]			Tine Pad
+[p3, 93, 0, 65]			Pan Pad
+[g2]			Halo Pad
+[p3, 94, 0, 0]			Halo Pad
+[g2]			SweepPad
+[p3, 95, 0, 0]			SweepPad
+[p3, 95, 0, 20]			Shwimmer
+[p3, 95, 0, 27]			Converge
+[p3, 95, 0, 64]			PolarPad
+[p3, 95, 0, 65]			Sweepy
+[p3, 95, 0, 66]			Celstial
+[g1]		Synth Effects
+[g2]			Rain
+[p3, 96, 0, 0]			Rain
+[p3, 96, 0, 45]			ClaviPad
+[p3, 96, 0, 64]			HrmoRain
+[p3, 96, 0, 65]			AfrcnWnd
+[p3, 96, 0, 66]			Caribean
+[g2]			SoundTrk
+[p3, 97, 0, 0]			SoundTrk
+[p3, 97, 0, 27]			Prologue
+[p3, 97, 0, 64]			Ancestr1
+[p3, 97, 0, 65]			Rave
+[g2]			Crystal
+[p3, 98, 0, 0]			Crystal
+[p3, 98, 0, 12]			SynDrCmp
+[p3, 98, 0, 14]			Popcorn
+[p3, 98, 0, 18]			TinyBell
+[p3, 98, 0, 35]			RndGlock
+[p3, 98, 0, 40]			GlockChi
+[p3, 98, 0, 41]			ClearBel
+[p3, 98, 0, 42]			ChorBell
+[p3, 98, 0, 64]			SynMalet
+[p3, 98, 0, 65]			SftCryst
+[p3, 98, 0, 66]			LoudGlok
+[p3, 98, 0, 67]			XmasBell
+[p3, 98, 0, 68]			VibeBell
+[p3, 98, 0, 69]			DigiBell
+[p3, 98, 0, 70]			AirBells
+[p3, 98, 0, 71]			BellHarp
+[p3, 98, 0, 72]			Gamelmba
+[g2]			Atmosphr
+[p3, 99, 0, 0]			Atmosphr
+[p3, 99, 0, 18]			WarmAtms
+[p3, 99, 0, 19]			HollwRls
+[p3, 99, 0, 40]			NylonEP
+[p3, 99, 0, 64]			NylnHarp
+[p3, 99, 0, 65]			Harp Vox
+[p3, 99, 0, 66]			AtmosPad
+[p3, 99, 0, 67]			Planet
+[g2]			Bright
+[p3, 100, 0, 0]			Bright
+[p3, 100, 0, 64]			FantaBel
+[p3, 100, 0, 96]			Smokey
+[g2]			Goblins
+[p3, 101, 0, 0]			Goblins
+[p3, 101, 0, 64]			GobSyn
+[p3, 101, 0, 65]			50sSciFi
+[p3, 101, 0, 66]			Ring Pad
+[p3, 101, 0, 67]			Ritual
+[p3, 101, 0, 68]			ToHeaven
+[p3, 101, 0, 69]			MilkyWay
+[p3, 101, 0, 70]			Night
+[p3, 101, 0, 71]			Glisten
+[p3, 101, 0, 72]			Puffy
+[p3, 101, 0, 96]			BelChoir
+[g2]			Echoes
+[p3, 102, 0, 0]			Echoes
+[p3, 102, 0, 8]			EchoPad2
+[p3, 102, 0, 14]			Echo Pan
+[p3, 102, 0, 64]			EchoBell
+[p3, 102, 0, 65]			Big Pan
+[p3, 102, 0, 66]			SynPiano
+[p3, 102, 0, 67]			Creation
+[p3, 102, 0, 68]			Stardust
+[p3, 102, 0, 69]			Reso Pan
+[g2]			Sci-Fi
+[p3, 103, 0, 0]			Sci-Fi
+[p3, 103, 0, 64]			Starz
+[p3, 103, 0, 65]			Odyssey
+[g1]		Ethnic
+[g2]			Sitar
+[p3, 104, 0, 0]			Sitar
+[p3, 104, 0, 32]			DetSitar
+[p3, 104, 0, 35]			Sitar 2
+[p3, 104, 0, 96]			Tambra
+[p3, 104, 0, 97]			Tamboura
+[g2]			Banjo
+[p3, 105, 0, 0]			Banjo
+[p3, 105, 0, 28]			MuteBnjo
+[p3, 105, 0, 96]			Rabab
+[p3, 105, 0, 97]			Gopichnt
+[p3, 105, 0, 98]			Oud
+[g2]			Shamisen
+[p3, 106, 0, 0]			Shamisen
+[p3, 106, 0, 96]			Tsugaru
+[g2]			Koto
+[p3, 107, 0, 0]			Koto
+[p3, 107, 0, 96]			T.Koto
+[p3, 107, 0, 97]			Kanoon
+[g2]			Kalimba
+[p3, 108, 0, 0]			Kalimba
+[p3, 108, 0, 64]			BigKalim
+[g2]			Bagpipe
+[p3, 109, 0, 0]			Bagpipe
+[g2]			Fiddle
+[p3, 110, 0, 0]			Fiddle
+[g2]			Shanai
+[p3, 111, 0, 0]			Shanai
+[p3, 111, 0, 64]			Shanai2
+[p3, 111, 0, 96]			Pungi
+[p3, 111, 0, 97]			Hichriki
+[g1]		Percussive
+[g2]			TnklBell
+[p3, 112, 0, 0]			TnklBell
+[p3, 112, 0, 96]			Bonang
+[p3, 112, 0, 97]			Gender
+[p3, 112, 0, 98]			Gamelan
+[p3, 112, 0, 99]			S.Gamlan
+[p3, 112, 0, 100]			Rama Cym
+[p3, 112, 0, 101]			AsianBel
+[g2]			Agogo
+[p3, 113, 0, 0]			Agogo
+[p3, 113, 0, 96]			Atrigane
+[g2]			SteelDrm
+[p3, 114, 0, 0]			SteelDrm
+[p3, 114, 0, 96]			Tablas
+[p3, 114, 0, 97]			GlasPerc
+[p3, 114, 0, 98]			ThaiBell
+[g2]			WoodBlok
+[p3, 115, 0, 0]			WoodBlok
+[p3, 115, 0, 96]			Castanet
+[g2]			TaikoDrm
+[p3, 116, 0, 0]			TaikoDrm
+[p3, 116, 0, 96]			Gr.Cassa
+[g2]			MelodTom
+[p3, 117, 0, 0]			MelodTom
+[p3, 117, 0, 64]			Mel Tom2
+[p3, 117, 0, 65]			Real Tom
+[p3, 117, 0, 66]			Rock Tom
+[g2]			Syn.Drum
+[p3, 118, 0, 0]			Syn.Drum
+[p3, 118, 0, 64]			Ana Tom
+[p3, 118, 0, 65]			ElecPerc
+[g2]			RevCymbl
+[p3, 119, 0, 0]			RevCymbl
+[p3, 119, 0, 64]			Rev Cym2
+[p3, 119, 0, 96]			RevSnar1
+[p3, 119, 0, 97]			RevSnar2
+[p3, 119, 0, 98]			RevKick1
+[p3, 119, 0, 99]			RevConBD
+[p3, 119, 0, 100]			Rev Tom1
+[p3, 119, 0, 101]			Rev Tom2
+[g1]		Sound Effects
+[g2]			FretNoiz
+[p3, 120, 0, 0]			FretNoiz
+[g2]			BrthNoiz
+[p3, 121, 0, 0]			BrthNoiz
+[g2]			Seashore
+[p3, 122, 0, 0]			Seashore
+[g2]			Tweet
+[p3, 123, 0, 0]			Tweet
+[g2]			Telphone
+[p3, 124, 0, 0]			Telphone
+[g2]			Helicptr
+[p3, 125, 0, 0]			Helicptr
+[g2]			Applause
+[p3, 126, 0, 0]			Applause
+[g2]			Gunshot
+[p3, 127, 0, 0]			Gunshot
+
+[g1]	sorted by name
+[g2]		Piano
+[sorted]
+[p3, 0, 0, 0]			GrandPno
+[p3, 0, 0, 1]			GrndPnoK
+[p3, 0, 0, 18]			MelloGrP
+[p3, 0, 0, 40]			PianoStr
+[p3, 0, 0, 41]			Dream
+[p3, 1, 0, 0]			BritePno
+[p3, 1, 0, 1]			BritPnoK
+[p3, 2, 0, 0]			E.Grand
+[p3, 2, 0, 1]			ElGrPnoK
+[p3, 2, 0, 32]			Det.CP80
+[p3, 2, 0, 40]			ElGrPno1
+[p3, 2, 0, 41]			ElGrPno2
+[p3, 3, 0, 0]			HnkyTonk
+[p3, 3, 0, 1]			HnkyTnkK
+[p3, 4, 0, 0]			E.Piano1
+[p3, 4, 0, 1]			El.Pno1K
+[p3, 4, 0, 18]			MelloEP1
+[p3, 4, 0, 32]			Chor.EP1
+[p3, 4, 0, 40]			HardEl.P
+[p3, 4, 0, 45]			VX El.P1
+[p3, 4, 0, 64]			60sEl.P
+[p3, 5, 0, 0]			E.Piano2
+[p3, 5, 0, 1]			El.Pno2K
+[p3, 5, 0, 32]			Chor.EP2
+[p3, 5, 0, 33]			DX Hard
+[p3, 5, 0, 34]			DXLegend
+[p3, 5, 0, 40]			DX Phase
+[p3, 5, 0, 41]			DX+Analg
+[p3, 5, 0, 42]			DXKotoEP
+[p3, 5, 0, 45]			VX El.P2
+[p3, 6, 0, 0]			Harpsi.
+[p3, 6, 0, 1]			Harpsi.K
+[p3, 6, 0, 25]			Harpsi.2
+[p3, 6, 0, 35]			Harpsi.3
+[p3, 7, 0, 0]			Clavi.
+[p3, 7, 0, 1]			Clavi.K
+[p3, 7, 0, 27]			ClaviWah
+[p3, 7, 0, 64]			PulseClv
+[p3, 7, 0, 65]			PierceCl
+[g2]		Chromatic Percussion
+[sorted]
+[p3, 8, 0, 0]			Celesta
+[p3, 9, 0, 0]			Glocken
+[p3, 10, 0, 0]			MusicBox
+[p3, 10, 0, 64]			Orgel
+[p3, 11, 0, 0]			Vibes
+[p3, 11, 0, 1]			VibesK
+[p3, 11, 0, 45]			HardVibe
+[p3, 12, 0, 0]			Marimba
+[p3, 12, 0, 1]			MarimbaK
+[p3, 12, 0, 64]			SineMrmb
+[p3, 12, 0, 96]			Balafon
+[p3, 12, 0, 97]			Balafon2
+[p3, 12, 0, 98]			Log Drum
+[p3, 13, 0, 0]			Xylophon
+[p3, 14, 0, 0]			TubulBel
+[p3, 14, 0, 96]			ChurchBel
+[p3, 14, 0, 97]			Carillion
+[p3, 15, 0, 0]			Dulcimer
+[p3, 15, 0, 35]			Dulcimr2
+[p3, 15, 0, 96]			Cimbalom
+[p3, 15, 0, 97]			Santur
+[g2]		Organ
+[sorted]
+[p3, 16, 0, 0]			DrawOrgn
+[p3, 16, 0, 32]			DetDrwOr
+[p3, 16, 0, 33]			60sDrOr1
+[p3, 16, 0, 34]			60sDrOr2
+[p3, 16, 0, 35]			70sDrOr1
+[p3, 16, 0, 36]			DrawOrg2
+[p3, 16, 0, 37]			60sDrOr3
+[p3, 16, 0, 38]			EvenBar
+[p3, 16, 0, 40]			16+2"2/3
+[p3, 16, 0, 64]			Organ Ba
+[p3, 16, 0, 65]			70sDrOr2
+[p3, 16, 0, 66]			CheezOrg
+[p3, 16, 0, 67]			DrawOrg3
+[p3, 17, 0, 0]			PercOrgn
+[p3, 17, 0, 24]			70sPcOr1
+[p3, 17, 0, 32]			DetPrcOr
+[p3, 17, 0, 33]			LiteOrg
+[p3, 17, 0, 37]			PercOrg2
+[p3, 18, 0, 0]			RockOrgn
+[p3, 18, 0, 64]			RotaryOr
+[p3, 18, 0, 65]			SloRotar
+[p3, 18, 0, 66]			FstRotar
+[p3, 19, 0, 0]			ChrchOrg
+[p3, 19, 0, 32]			ChurOrg3
+[p3, 19, 0, 35]			ChurOrg2
+[p3, 19, 0, 40]			NotreDam
+[p3, 19, 0, 64]			OrgFlute
+[p3, 19, 0, 65]			TrmOrgFl
+[p3, 20, 0, 0]			ReedOrgn
+[p3, 20, 0, 40]			Puff Org
+[p3, 21, 0, 0]			Acordion
+[p3, 21, 0, 32]			AccordIt
+[p3, 22, 0, 0]			Harmnica
+[p3, 22, 0, 32]			Harmo 2
+[p3, 23, 0, 0]			TangoAcd
+[p3, 23, 0, 64]			TngoAcd2
+[g2]		Guitar
+[sorted]
+[p3, 24, 0, 0]			NylonGtr
+[p3, 24, 0, 16]			NylonGt2
+[p3, 24, 0, 25]			NylonGt3
+[p3, 24, 0, 43]			VelGtHrm
+[p3, 24, 0, 96]			Ukulele
+[p3, 25, 0, 0]			SteelGtr
+[p3, 25, 0, 16]			SteelGt2
+[p3, 25, 0, 35]			12StrGtr
+[p3, 25, 0, 40]			Nyln&Stl
+[p3, 25, 0, 41]			Stl&Body
+[p3, 25, 0, 96]			Mandolin
+[p3, 26, 0, 0]			Jazz Gtr
+[p3, 26, 0, 18]			MelloGtr
+[p3, 26, 0, 32]			JazzAmp
+[p3, 26, 0, 96]			PdlSteel
+[p3, 27, 0, 0]			CleanGtr
+[p3, 27, 0, 32]			ChorusGt
+[p3, 27, 0, 64]			CleanGt2
+[p3, 28, 0, 0]			Mute.Gtr
+[p3, 28, 0, 40]			FunkGtr1
+[p3, 28, 0, 41]			MuteStlG
+[p3, 28, 0, 43]			FunkGtr2
+[p3, 28, 0, 45]			Jazz Man
+[p3, 28, 0, 96]			Mu.DstGt
+[p3, 29, 0, 0]			Ovrdrive
+[p3, 29, 0, 43]			Gt.Pinch
+[p3, 30, 0, 0]			Dist.Gtr
+[p3, 30, 0, 12]			DstRthmG
+[p3, 30, 0, 24]			DistGtr2
+[p3, 30, 0, 35]			DistGtr3
+[p3, 30, 0, 36]			PowerGt2
+[p3, 30, 0, 37]			PowerGt1
+[p3, 30, 0, 38]			Dst.5ths
+[p3, 30, 0, 40]			FeedbkGt
+[p3, 30, 0, 41]			FeedbGt2
+[p3, 30, 0, 43]			RkRythm2
+[p3, 30, 0, 45]			RockRthm
+[p3, 31, 0, 0]			GtrHarmo
+[p3, 31, 0, 64]			AcoHarmo
+[p3, 31, 0, 65]			GtFeedbk
+[p3, 31, 0, 66]			GtrHrmo2
+[g2]		Bass
+[sorted]
+[p3, 32, 0, 0]			Aco.Bass
+[p3, 32, 0, 40]			JazzRthm
+[p3, 32, 0, 45]			VXUprght
+[p3, 33, 0, 0]			FngrBass
+[p3, 33, 0, 18]			FingrDrk
+[p3, 33, 0, 27]			FlangeBa
+[p3, 33, 0, 40]			Ba&DstEG
+[p3, 33, 0, 43]			FngrSlap
+[p3, 33, 0, 45]			FngBass2
+[p3, 33, 0, 64]			JazzBass
+[p3, 33, 0, 65]			ModAlem
+[p3, 34, 0, 0]			PickBass
+[p3, 34, 0, 28]			MutePkBa
+[p3, 35, 0, 0]			Fretless
+[p3, 35, 0, 32]			Fretles2
+[p3, 35, 0, 33]			Fretles3
+[p3, 35, 0, 34]			Fretles4
+[p3, 35, 0, 96]			SynFretl
+[p3, 35, 0, 97]			Smooth
+[p3, 36, 0, 0]			SlapBas1
+[p3, 36, 0, 27]			ResoSlap
+[p3, 36, 0, 32]			PunchThm
+[p3, 37, 0, 0]			SlapBas2
+[p3, 37, 0, 43]			VeloSlap
+[p3, 38, 0, 0]			SynBass1
+[p3, 38, 0, 18]			SynBa1Dk
+[p3, 38, 0, 20]			FastResB
+[p3, 38, 0, 24]			AcidBass
+[p3, 38, 0, 35]			Clv Bass
+[p3, 38, 0, 40]			TeknoBa
+[p3, 38, 0, 64]			Oscar
+[p3, 38, 0, 65]			SqrBass
+[p3, 38, 0, 66]			RubberBa
+[p3, 38, 0, 96]			Hammer
+[p3, 39, 0, 0]			SynBass2
+[p3, 39, 0, 6]			MelloSB1
+[p3, 39, 0, 12]			Seq Bass
+[p3, 39, 0, 18]			ClkSynBa
+[p3, 39, 0, 19]			SynBa2Dk
+[p3, 39, 0, 32]			SmthBa 2
+[p3, 39, 0, 40]			ModulrBa
+[p3, 39, 0, 41]			DX Bass
+[p3, 39, 0, 64]			X WireBa
+[g2]		Strings
+[sorted]
+[p3, 40, 0, 0]			Violin
+[p3, 40, 0, 8]			SlowVln
+[p3, 41, 0, 0]			Viola
+[p3, 42, 0, 0]			Cello
+[p3, 43, 0, 0]			Contrabs
+[p3, 44, 0, 0]			Trem.Str
+[p3, 44, 0, 8]			SlowTrStr
+[p3, 44, 0, 40]			Susp Str
+[p3, 45, 0, 0]			Pizz.Str
+[p3, 46, 0, 0]			Harp
+[p3, 46, 0, 40]			YangChin
+[p3, 47, 0, 0]			Timpani
+[g2]		Ensemble
+[sorted]
+[p3, 48, 0, 0]			Strings1
+[p3, 48, 0, 3]			S.Strngs
+[p3, 48, 0, 8]			SlowStr
+[p3, 48, 0, 24]			ArcoStr
+[p3, 48, 0, 35]			60sStrng
+[p3, 48, 0, 40]			Orchestr
+[p3, 48, 0, 41]			Orchstr2
+[p3, 48, 0, 42]			TremOrch
+[p3, 48, 0, 45]			VeloStr
+[p3, 49, 0, 0]			Strings2
+[p3, 49, 0, 3]			S.SlwStr
+[p3, 49, 0, 8]			LegatoSt
+[p3, 49, 0, 40]			Warm Str
+[p3, 49, 0, 41]			Kingdom
+[p3, 49, 0, 64]			70s Str
+[p3, 49, 0, 65]			Str Ens3
+[p3, 50, 0, 0]			Syn.Str1
+[p3, 50, 0, 27]			ResoStr
+[p3, 50, 0, 35]			Syn Str3
+[p3, 50, 0, 64]			Syn Str4
+[p3, 50, 0, 65]			SS Str
+[p3, 51, 0, 0]			Syn.Str2
+[p3, 52, 0, 0]			ChoirAah
+[p3, 52, 0, 6]			S.Choir
+[p3, 52, 0, 16]			Ch.Aahs2
+[p3, 52, 0, 32]			MelChoir
+[p3, 52, 0, 40]			ChoirStr
+[p3, 52, 0, 64]			StrngAah
+[p3, 52, 0, 65]			Male Aah
+[p3, 53, 0, 0]			VoiceOoh
+[p3, 53, 0, 64]			VoiceDoo
+[p3, 53, 0, 96]			VoiceHmn
+[p3, 54, 0, 0]			SynVoice
+[p3, 54, 0, 40]			SynVox2
+[p3, 54, 0, 41]			Choral
+[p3, 54, 0, 64]			AnaVoice
+[p3, 55, 0, 0]			Orch.Hit
+[p3, 55, 0, 35]			OrchHit2
+[p3, 55, 0, 64]			Impact
+[p3, 55, 0, 65]			BrssStab
+[p3, 55, 0, 66]			DoublHit
+[p3, 55, 0, 67]			BrStab80
+[g2]		Brass
+[sorted]
+[p3, 56, 0, 0]			Trumpet
+[p3, 56, 0, 16]			Trumpet2
+[p3, 56, 0, 17]			BriteTrp
+[p3, 56, 0, 32]			WarmTrp
+[p3, 56, 0, 96]			FluglHrn
+[p3, 57, 0, 0]			Trombone
+[p3, 57, 0, 18]			Trmbone2
+[p3, 58, 0, 0]			Tuba
+[p3, 58, 0, 16]			Tuba 2
+[p3, 59, 0, 0]			Mute.Trp
+[p3, 59, 0, 64]			MuteTrp2
+[p3, 60, 0, 0]			Fr.Horn
+[p3, 60, 0, 6]			FrHrSolo
+[p3, 60, 0, 32]			FrHorn2
+[p3, 60, 0, 37]			HornOrch
+[p3, 61, 0, 0]			BrasSect
+[p3, 61, 0, 14]			SfrzndBr
+[p3, 61, 0, 35]			Tp&TbSec
+[p3, 61, 0, 39]			BrssFall
+[p3, 61, 0, 40]			BrssSec2
+[p3, 61, 0, 41]			HiBrass
+[p3, 61, 0, 42]			MelloBrs
+[p3, 62, 0, 0]			SynBras1
+[p3, 62, 0, 12]			QuackBr
+[p3, 62, 0, 20]			RezSynBr
+[p3, 62, 0, 24]			PolyBrss
+[p3, 62, 0, 27]			SynBras3
+[p3, 62, 0, 32]			JumpBrss
+[p3, 62, 0, 45]			AnaVelBr
+[p3, 62, 0, 64]			AnaBrss1
+[p3, 63, 0, 0]			SynBras2
+[p3, 63, 0, 18]			Soft Brs
+[p3, 63, 0, 40]			SynBrss4
+[p3, 63, 0, 41]			ChoirBrs
+[p3, 63, 0, 45]			VelBrss2
+[p3, 63, 0, 64]			AnaBrss2
+[g2]		Reed
+[sorted]
+[p3, 64, 0, 0]			SprnoSax
+[p3, 65, 0, 0]			Alto Sax
+[p3, 65, 0, 40]			Sax Sect
+[p3, 65, 0, 43]			HyprAlto
+[p3, 66, 0, 0]			TenorSax
+[p3, 66, 0, 40]			BrthTnSx
+[p3, 66, 0, 41]			SoftTenr
+[p3, 66, 0, 64]			TnrSax 2
+[p3, 67, 0, 0]			Bari.Sax
+[p3, 68, 0, 0]			Oboe
+[p3, 69, 0, 0]			Eng.Horn
+[p3, 70, 0, 0]			Bassoon
+[p3, 71, 0, 0]			Clarinet
+[p3, 71, 0, 96]			BassClar
+[g2]		Pipe
+[sorted]
+[p3, 72, 0, 0]			Piccolo
+[p3, 73, 0, 0]			Flute
+[p3, 74, 0, 0]			Recorder
+[p3, 75, 0, 0]			PanFlute
+[p3, 75, 0, 64]			PanFlut2
+[p3, 75, 0, 96]			Kawala
+[p3, 76, 0, 0]			Bottle
+[p3, 77, 0, 0]			Shakhchi
+[p3, 78, 0, 0]			Whistle
+[p3, 79, 0, 0]			Ocarina
+[g2]		Synth Lead
+[sorted]
+[p3, 80, 0, 0]			SquareLd
+[p3, 80, 0, 6]			Square 2
+[p3, 80, 0, 8]			LMSquare
+[p3, 80, 0, 18]			Hollow
+[p3, 80, 0, 19]			Shmoog
+[p3, 80, 0, 64]			Mellow
+[p3, 80, 0, 65]			SoloSine
+[p3, 80, 0, 66]			SineLead
+[p3, 81, 0, 0]			Saw.Lead
+[p3, 81, 0, 6]			Saw 2
+[p3, 81, 0, 8]			ThickSaw
+[p3, 81, 0, 18]			DynaSaw
+[p3, 81, 0, 19]			DigiSaw
+[p3, 81, 0, 20]			Big Lead
+[p3, 81, 0, 24]			HeavySyn
+[p3, 81, 0, 25]			WaspySyn
+[p3, 81, 0, 40]			PulseSaw
+[p3, 81, 0, 41]			Dr.Lead
+[p3, 81, 0, 45]			VeloLead
+[p3, 81, 0, 96]			Seq Ana
+[p3, 82, 0, 0]			CaliopLd
+[p3, 82, 0, 64]			Vent Syn
+[p3, 82, 0, 65]			Pure Pad
+[p3, 83, 0, 0]			Chiff Ld
+[p3, 83, 0, 64]			Rubby
+[p3, 84, 0, 0]			CharanLd
+[p3, 84, 0, 64]			DistLead
+[p3, 84, 0, 65]			WireLead
+[p3, 85, 0, 0]			Voice Ld
+[p3, 85, 0, 24]			Synth Aah
+[p3, 85, 0, 64]			VoxLead
+[p3, 86, 0, 0]			Fifth Ld
+[p3, 86, 0, 35]			Big Five
+[p3, 87, 0, 0]			Bass &Ld
+[p3, 87, 0, 16]			Big&Low
+[p3, 87, 0, 64]			Fat&Prky
+[p3, 87, 0, 65]			SoftWurl
+[g2]		Synth Pad
+[sorted]
+[p3, 88, 0, 0]			NewAgePd
+[p3, 88, 0, 64]			Fantasy2
+[p3, 89, 0, 0]			Warm Pad
+[p3, 89, 0, 16]			ThickPad
+[p3, 89, 0, 17]			Soft Pad
+[p3, 89, 0, 18]			Sine Pad
+[p3, 89, 0, 64]			Horn Pad
+[p3, 89, 0, 65]			RotarStr
+[p3, 90, 0, 0]			PolySyPd
+[p3, 90, 0, 64]			PolyPd80
+[p3, 90, 0, 65]			ClickPad
+[p3, 90, 0, 66]			Ana Pad
+[p3, 90, 0, 67]			SquarPad
+[p3, 91, 0, 0]			ChoirPad
+[p3, 91, 0, 64]			Heaven 2
+[p3, 91, 0, 65]			Lite Pad
+[p3, 91, 0, 66]			Itopia
+[p3, 91, 0, 67]			CC Pad
+[p3, 92, 0, 0]			BowedPad
+[p3, 92, 0, 64]			Glacier
+[p3, 92, 0, 65]			GlassPad
+[p3, 93, 0, 0]			MetalPad
+[p3, 93, 0, 64]			Tine Pad
+[p3, 93, 0, 65]			Pan Pad
+[p3, 94, 0, 0]			Halo Pad
+[p3, 95, 0, 0]			SweepPad
+[p3, 95, 0, 20]			Shwimmer
+[p3, 95, 0, 27]			Converge
+[p3, 95, 0, 64]			PolarPad
+[p3, 95, 0, 65]			Sweepy
+[p3, 95, 0, 66]			Celstial
+[g2]		Synth Effects
+[sorted]
+[p3, 96, 0, 0]			Rain
+[p3, 96, 0, 45]			ClaviPad
+[p3, 96, 0, 64]			HrmoRain
+[p3, 96, 0, 65]			AfrcnWnd
+[p3, 96, 0, 66]			Caribean
+[p3, 97, 0, 0]			SoundTrk
+[p3, 97, 0, 27]			Prologue
+[p3, 97, 0, 64]			Ancestr1
+[p3, 97, 0, 65]			Rave
+[p3, 98, 0, 0]			Crystal
+[p3, 98, 0, 12]			SynDrCmp
+[p3, 98, 0, 14]			Popcorn
+[p3, 98, 0, 18]			TinyBell
+[p3, 98, 0, 35]			RndGlock
+[p3, 98, 0, 40]			GlockChi
+[p3, 98, 0, 41]			ClearBel
+[p3, 98, 0, 42]			ChorBell
+[p3, 98, 0, 64]			SynMalet
+[p3, 98, 0, 65]			SftCryst
+[p3, 98, 0, 66]			LoudGlok
+[p3, 98, 0, 67]			XmasBell
+[p3, 98, 0, 68]			VibeBell
+[p3, 98, 0, 69]			DigiBell
+[p3, 98, 0, 70]			AirBells
+[p3, 98, 0, 71]			BellHarp
+[p3, 98, 0, 72]			Gamelmba
+[p3, 99, 0, 0]			Atmosphr
+[p3, 99, 0, 18]			WarmAtms
+[p3, 99, 0, 19]			HollwRls
+[p3, 99, 0, 40]			NylonEP
+[p3, 99, 0, 64]			NylnHarp
+[p3, 99, 0, 65]			Harp Vox
+[p3, 99, 0, 66]			AtmosPad
+[p3, 99, 0, 67]			Planet
+[p3, 100, 0, 0]			Bright
+[p3, 100, 0, 64]			FantaBel
+[p3, 100, 0, 96]			Smokey
+[p3, 101, 0, 0]			Goblins
+[p3, 101, 0, 64]			GobSyn
+[p3, 101, 0, 65]			50sSciFi
+[p3, 101, 0, 66]			Ring Pad
+[p3, 101, 0, 67]			Ritual
+[p3, 101, 0, 68]			ToHeaven
+[p3, 101, 0, 69]			MilkyWay
+[p3, 101, 0, 70]			Night
+[p3, 101, 0, 71]			Glisten
+[p3, 101, 0, 72]			Puffy
+[p3, 101, 0, 96]			BelChoir
+[p3, 102, 0, 0]			Echoes
+[p3, 102, 0, 8]			EchoPad2
+[p3, 102, 0, 14]			Echo Pan
+[p3, 102, 0, 64]			EchoBell
+[p3, 102, 0, 65]			Big Pan
+[p3, 102, 0, 66]			SynPiano
+[p3, 102, 0, 67]			Creation
+[p3, 102, 0, 68]			Stardust
+[p3, 102, 0, 69]			Reso Pan
+[p3, 103, 0, 0]			Sci-Fi
+[p3, 103, 0, 64]			Starz
+[p3, 103, 0, 65]			Odyssey
+[g2]		Ethnic
+[sorted]
+[p3, 104, 0, 0]			Sitar
+[p3, 104, 0, 32]			DetSitar
+[p3, 104, 0, 35]			Sitar 2
+[p3, 104, 0, 96]			Tambra
+[p3, 104, 0, 97]			Tamboura
+[p3, 105, 0, 0]			Banjo
+[p3, 105, 0, 28]			MuteBnjo
+[p3, 105, 0, 96]			Rabab
+[p3, 105, 0, 97]			Gopichnt
+[p3, 105, 0, 98]			Oud
+[p3, 106, 0, 0]			Shamisen
+[p3, 106, 0, 96]			Tsugaru
+[p3, 107, 0, 0]			Koto
+[p3, 107, 0, 96]			T.Koto
+[p3, 107, 0, 97]			Kanoon
+[p3, 108, 0, 0]			Kalimba
+[p3, 108, 0, 64]			BigKalim
+[p3, 109, 0, 0]			Bagpipe
+[p3, 110, 0, 0]			Fiddle
+[p3, 111, 0, 0]			Shanai
+[p3, 111, 0, 64]			Shanai2
+[p3, 111, 0, 96]			Pungi
+[p3, 111, 0, 97]			Hichriki
+[g2]		Percussive
+[sorted]
+[p3, 112, 0, 0]			TnklBell
+[p3, 112, 0, 96]			Bonang
+[p3, 112, 0, 97]			Gender
+[p3, 112, 0, 98]			Gamelan
+[p3, 112, 0, 99]			S.Gamlan
+[p3, 112, 0, 100]			Rama Cym
+[p3, 112, 0, 101]			AsianBel
+[p3, 113, 0, 0]			Agogo
+[p3, 113, 0, 96]			Atrigane
+[p3, 114, 0, 0]			SteelDrm
+[p3, 114, 0, 96]			Tablas
+[p3, 114, 0, 97]			GlasPerc
+[p3, 114, 0, 98]			ThaiBell
+[p3, 115, 0, 0]			WoodBlok
+[p3, 115, 0, 96]			Castanet
+[p3, 116, 0, 0]			TaikoDrm
+[p3, 116, 0, 96]			Gr.Cassa
+[p3, 117, 0, 0]			MelodTom
+[p3, 117, 0, 64]			Mel Tom2
+[p3, 117, 0, 65]			Real Tom
+[p3, 117, 0, 66]			Rock Tom
+[p3, 118, 0, 0]			Syn.Drum
+[p3, 118, 0, 64]			Ana Tom
+[p3, 118, 0, 65]			ElecPerc
+[p3, 119, 0, 0]			RevCymbl
+[p3, 119, 0, 64]			Rev Cym2
+[p3, 119, 0, 96]			RevSnar1
+[p3, 119, 0, 97]			RevSnar2
+[p3, 119, 0, 98]			RevKick1
+[p3, 119, 0, 99]			RevConBD
+[p3, 119, 0, 100]			Rev Tom1
+[p3, 119, 0, 101]			Rev Tom2
+[g2]		Sound Effects
+[sorted]
+[p3, 120, 0, 0]			FretNoiz
+[p3, 121, 0, 0]			BrthNoiz
+[p3, 122, 0, 0]			Seashore
+[p3, 123, 0, 0]			Tweet
+[p3, 124, 0, 0]			Telphone
+[p3, 125, 0, 0]			Helicptr
+[p3, 126, 0, 0]			Applause
+[p3, 127, 0, 0]			Gunshot
+
+[mode 10]	XG Drumkits
+
+[p1,  0, 16128]		XG SFX 1
+[k 36]		Guitar Cutting Noise
+[k 37]		Guitar Cutting Noise 2
+[k 38]		Dist. Cut Noise
+[k 39]		String Slap
+[k 40]		Bass Slide
+[k 41]		Pick Scrape
+[k 52]		FL.Key Click
+[k 68]		Rain
+[k 69]		Thunder
+[k 70]		Wind
+[k 71]		Stream
+[k 72]		Bubble
+[k 73]		Feed
+[k 84]		Dog
+[k 85]		Horse Gallop
+[k 86]		Bird 2
+[k 87]		Kitty
+[k 88]		Growl
+[k 89]		Haunted
+[k 90]		Ghost
+[k 91]		Maou
+
+[p1,  1, 16128]		XG SFX 2
+[k 36]		Dial Tone
+[k 37]		Door Creaking
+[k 38]		Door Slam
+[k 39]		Scratch
+[k 40]		Scratch 2
+[k 41]		Windchime
+[k 42]		Telephone Ring2
+[k 52]		Engine Start
+[k 53]		Tire Screech
+[k 54]		Car Passing
+[k 55]		Crash
+[k 56]		Siren
+[k 57]		Train
+[k 58]		Jetplane
+[k 59]		Starship
+[k 60]		Burst Noise
+[k 61]		Coaster
+[k 62]		SbMarine
+
+[p1,  0, 16256]		XG Standard Kit
+[k 13]		Surdo Mute
+[k 14]		Surdo Open
+[k 15]		Hi Q
+[k 16]		Whip Slap
+[k 17]		Scratch Push
+[k 18]		Scratch Pull
+[k 19]		Finger Snap
+[k 20]		Click Noise
+[k 21]		Metronome Click
+[k 22]		Metronome Bell
+[k 23]		Seq Click L
+[k 24]		Seq Click H
+[k 25]		Brush Tap
+[k 26]		Brush Swirl L
+[k 27]		Brush Slap
+[k 28]		Brush Swirl H
+[k 29]		Snare Roll
+[k 30]		Castanet
+[k 31]		Snare L
+[k 32]		Sticks
+[k 33]		Bass Drum L
+[k 34]		Open Rim Shot
+[k 35]		Bass Drum M
+[k 36]		Bass Drum H
+[k 37]		Side Stick
+[k 38]		Snare M
+[k 39]		Hand Clap
+[k 40]		Snare H
+[k 41]		Floor Tom L
+[k 42]		Hi-Hat Closed
+[k 43]		Floor Tom H
+[k 44]		Hi-Hat Pedal
+[k 45]		Low Tom
+[k 46]		Hi-Hat Open
+[k 47]		Mid Tom L
+[k 48]		Mid Tom H
+[k 49]		Crash Cymbal 1
+[k 50]		High Tom
+[k 51]		Ride Cymbal 1
+[k 52]		Chinese Cymbal
+[k 53]		Ride Cymbal Cup
+[k 54]		Tambourine
+[k 55]		Splash Cymbal
+[k 56]		Cowbell
+[k 57]		Crash Cymbal 2
+[k 58]		Vibraslap
+[k 59]		Ride Cymbal 2
+[k 60]		Bongo H
+[k 61]		Bongo L
+[k 62]		Conga H Mute
+[k 63]		Conga H Open
+[k 64]		Conga L
+[k 65]		Timbale H
+[k 66]		Timbale L
+[k 67]		Agogo H
+[k 68]		Agogo L
+[k 69]		Cabasa
+[k 70]		Maracas
+[k 71]		Samba Whistle H
+[k 72]		Samba Whistle L
+[k 73]		Guiro Short
+[k 74]		Guiro Long
+[k 75]		Claves
+[k 76]		Wood Block H
+[k 77]		Wood Block L
+[k 78]		Cuica Mute
+[k 79]		Cuica Open
+[k 80]		Triangle Mute
+[k 81]		Triangle Open
+[k 82]		Shaker
+[k 83]		Jingle Bell
+[k 84]		Bell Tree
+
+[p1,  1, 16256]		XG Standard2 Kit
+[k 13]		Surdo Mute
+[k 14]		Surdo Open
+[k 15]		Hi Q
+[k 16]		Whip Slap
+[k 17]		Scratch Push
+[k 18]		Scratch Pull
+[k 19]		Finger Snap
+[k 20]		Click Noise
+[k 21]		Metronome Click
+[k 22]		Metronome Bell
+[k 23]		Seq Click L
+[k 24]		Seq Click H
+[k 25]		Brush Tap
+[k 26]		Brush Swirl L
+[k 27]		Brush Slap
+[k 28]		Brush Swirl H
+[k 29]		Snare Roll
+[k 30]		Castanet
+[k 31]		Snare L
+[k 32]		Sticks
+[k 33]		Bass Drum L
+[k 34]		Open Rim Shot 2
+[k 35]		Bass Drum M 2
+[k 36]		Bass Drum H 2
+[k 37]		Side Stick
+[k 38]		Snare M 2
+[k 39]		Hand Clap
+[k 40]		Snare H 2
+[k 41]		Floor Tom L
+[k 42]		Hi-Hat Closed
+[k 43]		Floor Tom H
+[k 44]		Hi-Hat Pedal
+[k 45]		Low Tom
+[k 46]		Hi-Hat Open
+[k 47]		Mid Tom L
+[k 48]		Mid Tom H
+[k 49]		Crash Cymbal 1
+[k 50]		High Tom
+[k 51]		Ride Cymbal 1
+[k 52]		Chinese Cymbal
+[k 53]		Ride Cymbal Cup
+[k 54]		Tambourine
+[k 55]		Splash Cymbal
+[k 56]		Cowbell
+[k 57]		Crash Cymbal 2
+[k 58]		Vibraslap
+[k 59]		Ride Cymbal 2
+[k 60]		Bongo H
+[k 61]		Bongo L
+[k 62]		Conga H Mute
+[k 63]		Conga H Open
+[k 64]		Conga L
+[k 65]		Timbale H
+[k 66]		Timbale L
+[k 67]		Agogo H
+[k 68]		Agogo L
+[k 69]		Cabasa
+[k 70]		Maracas
+[k 71]		Samba Whistle H
+[k 72]		Samba Whistle L
+[k 73]		Guiro Short
+[k 74]		Guiro Long
+[k 75]		Claves
+[k 76]		Wood Block H
+[k 77]		Wood Block L
+[k 78]		Cuica Mute
+[k 79]		Cuica Open
+[k 80]		Triangle Mute
+[k 81]		Triangle Open
+[k 82]		Shaker
+[k 83]		Jingle Bell
+[k 84]		Bell Tree
+
+[p1,  8, 16256]		XG Room Kit
+[k 13]		Surdo Mute
+[k 14]		Surdo Open
+[k 15]		Hi Q
+[k 16]		Whip Slap
+[k 17]		Scratch Push
+[k 18]		Scratch Pull
+[k 19]		Finger Snap
+[k 20]		Click Noise
+[k 21]		Metronome Click
+[k 22]		Metronome Bell
+[k 23]		Seq Click L
+[k 24]		Seq Click H
+[k 25]		Brush Tap
+[k 26]		Brush Swirl L
+[k 27]		Brush Slap
+[k 28]		Brush Swirl H
+[k 29]		Snare Roll
+[k 30]		Castanet
+[k 31]		Snare L
+[k 32]		Sticks
+[k 33]		Bass Drum L
+[k 34]		Open Rim Shot
+[k 35]		Bass Drum M
+[k 36]		BD Room
+[k 37]		Side Stick
+[k 38]		Snare M
+[k 39]		Hand Clap
+[k 40]		Snare H
+[k 41]		Room Tom 1
+[k 42]		Hi-Hat Closed
+[k 43]		Room Tom 2
+[k 44]		Hi-Hat Pedal
+[k 45]		Room Tom 3
+[k 46]		Hi-Hat Open
+[k 47]		Room Tom 4
+[k 48]		Room Tom 5
+[k 49]		Crash Cymbal 1
+[k 50]		Room Tom 6
+[k 51]		Ride Cymbal 1
+[k 52]		Chinese Cymbal
+[k 53]		Ride Cymbal Cup
+[k 54]		Tambourine
+[k 55]		Splash Cymbal
+[k 56]		Cowbell
+[k 57]		Crash Cymbal 2
+[k 58]		Vibraslap
+[k 59]		Ride Cymbal 2
+[k 60]		Bongo H
+[k 61]		Bongo L
+[k 62]		Conga H Mute
+[k 63]		Conga H Open
+[k 64]		Conga L
+[k 65]		Timbale H
+[k 66]		Timbale L
+[k 67]		Agogo H
+[k 68]		Agogo L
+[k 69]		Cabasa
+[k 70]		Maracas
+[k 71]		Samba Whistle H
+[k 72]		Samba Whistle L
+[k 73]		Guiro Short
+[k 74]		Guiro Long
+[k 75]		Claves
+[k 76]		Wood Block H
+[k 77]		Wood Block L
+[k 78]		Cuica Mute
+[k 79]		Cuica Open
+[k 80]		Triangle Mute
+[k 81]		Triangle Open
+[k 82]		Shaker
+[k 83]		Jingle Bell
+[k 84]		Bell Tree
+
+[p1, 16, 16256]		XG Rock Kit
+[k 13]		Surdo Mute
+[k 14]		Surdo Open
+[k 15]		Hi Q
+[k 16]		Whip Slap
+[k 17]		Scratch Push
+[k 18]		Scratch Pull
+[k 19]		Finger Snap
+[k 20]		Click Noise
+[k 21]		Metronome Click
+[k 22]		Metronome Bell
+[k 23]		Seq Click L
+[k 24]		Seq Click H
+[k 25]		Brush Tap
+[k 26]		Brush Swirl L
+[k 27]		Brush Slap
+[k 28]		Brush Swirl H
+[k 29]		Snare Roll
+[k 30]		Castanet
+[k 31]		SD Rock M
+[k 32]		Sticks
+[k 33]		Bass Drum M
+[k 34]		Open Rim Shot
+[k 35]		Bass Drum H 3
+[k 36]		BD Rock
+[k 37]		Side Stick
+[k 38]		SD Rock
+[k 39]		Hand Clap
+[k 40]		SD Rock Rim
+[k 41]		Rock Tom 1
+[k 42]		Hi-Hat Closed
+[k 43]		Rock Tom 2
+[k 44]		Hi-Hat Pedal
+[k 45]		Rock Tom 3
+[k 46]		Hi-Hat Open
+[k 47]		Rock Tom 4
+[k 48]		Rock Tom 5
+[k 49]		Crash Cymbal 1
+[k 50]		Rock Tom 6
+[k 51]		Ride Cymbal 1
+[k 52]		Chinese Cymbal
+[k 53]		Ride Cymbal Cup
+[k 54]		Tambourine
+[k 55]		Splash Cymbal
+[k 56]		Cowbell
+[k 57]		Crash Cymbal 2
+[k 58]		Vibraslap
+[k 59]		Ride Cymbal 2
+[k 60]		Bongo H
+[k 61]		Bongo L
+[k 62]		Conga H Mute
+[k 63]		Conga H Open
+[k 64]		Conga L
+[k 65]		Timbale H
+[k 66]		Timbale L
+[k 67]		Agogo H
+[k 68]		Agogo L
+[k 69]		Cabasa
+[k 70]		Maracas
+[k 71]		Samba Whistle H
+[k 72]		Samba Whistle L
+[k 73]		Guiro Short
+[k 74]		Guiro Long
+[k 75]		Claves
+[k 76]		Wood Block H
+[k 77]		Wood Block L
+[k 78]		Cuica Mute
+[k 79]		Cuica Open
+[k 80]		Triangle Mute
+[k 81]		Triangle Open
+[k 82]		Shaker
+[k 83]		Jingle Bell
+[k 84]		Bell Tree
+
+[p1, 24, 16256]		XG Electro Kit
+[k 13]		Surdo Mute
+[k 14]		Surdo Open
+[k 15]		Hi Q
+[k 16]		Whip Slap
+[k 17]		Scratch Push
+[k 18]		Scratch Pull
+[k 19]		Finger Snap
+[k 20]		Click Noise
+[k 21]		Metronome Click
+[k 22]		Metronome Bell
+[k 23]		Seq Click L
+[k 24]		Seq Click H
+[k 25]		Brush Tap
+[k 26]		Brush Swirl L
+[k 27]		Brush Slap
+[k 28]		Reverse Cymbal
+[k 29]		Snare Roll
+[k 30]		Hi Q
+[k 31]		Snare M
+[k 32]		Sticks
+[k 33]		Bass Drum H 4
+[k 34]		Open Rim Shot
+[k 35]		BD Rock
+[k 36]		BD Gate
+[k 37]		Side Stick
+[k 38]		SD Rock L
+[k 39]		Hand Clap
+[k 40]		SD Rock H
+[k 41]		E Tom 1
+[k 42]		Hi-Hat Closed
+[k 43]		E Tom 2
+[k 44]		Hi-Hat Pedal
+[k 45]		E Tom 3
+[k 46]		Hi-Hat Open
+[k 47]		E Tom 4
+[k 48]		E Tom 5
+[k 49]		Crash Cymbal 1
+[k 50]		E Tom 6
+[k 51]		Ride Cymbal 1
+[k 52]		Chinese Cymbal
+[k 53]		Ride Cymbal Cup
+[k 54]		Tambourine
+[k 55]		Splash Cymbal
+[k 56]		Cowbell
+[k 57]		Crash Cymbal 2
+[k 58]		Vibraslap
+[k 59]		Ride Cymbal 2
+[k 60]		Bongo H
+[k 61]		Bongo L
+[k 62]		Conga H Mute
+[k 63]		Conga H Open
+[k 64]		Conga L
+[k 65]		Timbale H
+[k 66]		Timbale L
+[k 67]		Agogo H
+[k 68]		Agogo L
+[k 69]		Cabasa
+[k 70]		Maracas
+[k 71]		Samba Whistle H
+[k 72]		Samba Whistle L
+[k 73]		Guiro Short
+[k 74]		Guiro Long
+[k 75]		Claves
+[k 76]		Wood Block H
+[k 77]		Wood Block L
+[k 78]		Scratch Push
+[k 79]		Scratch Pull
+[k 80]		Triangle Mute
+[k 81]		Triangle Open
+[k 82]		Shaker
+[k 83]		Jingle Bell
+[k 84]		Bell Tree
+
+[p1, 25, 16256]		XG Analog Kit
+[k 13]		Surdo Mute
+[k 14]		Surdo Open
+[k 15]		Hi Q
+[k 16]		Whip Slap
+[k 17]		Scratch Push
+[k 18]		Scratch Pull
+[k 19]		Finger Snap
+[k 20]		Click Noise
+[k 21]		Metronome Click
+[k 22]		Metronome Bell
+[k 23]		Seq Click L
+[k 24]		Seq Click H
+[k 25]		Brush Tap
+[k 26]		Brush Swirl L
+[k 27]		Brush Slap
+[k 28]		Reverse Cymbal
+[k 29]		Snare Roll
+[k 30]		Hi Q
+[k 31]		SD Rock H
+[k 32]		Sticks
+[k 33]		Bass Drum M
+[k 34]		Open Rim Shot
+[k 35]		BD Analog L
+[k 36]		BD Analog H
+[k 37]		Analog Side Stick
+[k 38]		Analog Snare L
+[k 39]		Hand Clap
+[k 40]		Analog Snare H
+[k 41]		Analog Tom 1
+[k 42]		Analog HH Closed 1
+[k 43]		Analog Tom 2
+[k 44]		Analog HH Closed 2
+[k 45]		Analog Tom 3
+[k 46]		Analog HH Open
+[k 47]		Analog Tom 4
+[k 48]		Analog Tom 5
+[k 49]		Analog Cymbal
+[k 50]		Analog Tom 6
+[k 51]		Ride Cymbal 1
+[k 52]		Chinese Cymbal
+[k 53]		Ride Cymbal Cup
+[k 54]		Tambourine
+[k 55]		Splash Cymbal
+[k 56]		Analog Cowbell
+[k 57]		Crash Cymbal 2
+[k 58]		Vibraslap
+[k 59]		Ride Cymbal 2
+[k 60]		Bongo H
+[k 61]		Bongo L
+[k 62]		Analog Conga H
+[k 63]		Analog Conga M
+[k 64]		Analog Conga L
+[k 65]		Timbale H
+[k 66]		Timbale L
+[k 67]		Agogo H
+[k 68]		Agogo L
+[k 69]		Cabasa
+[k 70]		Analog Maracas
+[k 71]		Samba Whistle H
+[k 72]		Samba Whistle L
+[k 73]		Guiro Short
+[k 74]		Guiro Long
+[k 75]		Analog Claves
+[k 76]		Wood Block H
+[k 77]		Wood Block L
+[k 78]		Scratch Push
+[k 79]		Scratch Pull
+[k 80]		Triangle Mute
+[k 81]		Triangle Open
+[k 82]		Shaker
+[k 83]		Jingle Bell
+[k 84]		Bell Tree
+
+[p1, 32, 16256]		XG Jazz Kit
+[k 13]		Surdo Mute
+[k 14]		Surdo Open
+[k 15]		Hi Q
+[k 16]		Whip Slap
+[k 17]		Scratch Push
+[k 18]		Scratch Pull
+[k 19]		Finger Snap
+[k 20]		Click Noise
+[k 21]		Metronome Click
+[k 22]		Metronome Bell
+[k 23]		Seq Click L
+[k 24]		Seq Click H
+[k 25]		Brush Tap
+[k 26]		Brush Swirl L
+[k 27]		Brush Slap
+[k 28]		Brush Swirl H
+[k 29]		Snare Roll
+[k 30]		Castanet
+[k 31]		Snare L
+[k 32]		Sticks
+[k 33]		Bass Drum L
+[k 34]		Open Rim Shot
+[k 35]		Bass Drum M
+[k 36]		BD Jazz
+[k 37]		Side Stick
+[k 38]		Snare M
+[k 39]		Hand Clap
+[k 40]		Snare H
+[k 41]		Jazz Tom 1
+[k 42]		Hi-Hat Closed
+[k 43]		Jazz Tom 2
+[k 44]		Hi-Hat Pedal
+[k 45]		Jazz Tom 3
+[k 46]		Hi-Hat Open
+[k 47]		Jazz Tom 4
+[k 48]		Jazz Tom 5
+[k 49]		Crash Cymbal 1
+[k 50]		Jazz Tom 6
+[k 51]		Ride Cymbal 1
+[k 52]		Chinese Cymbal
+[k 53]		Ride Cymbal Cup
+[k 54]		Tambourine
+[k 55]		Splash Cymbal
+[k 56]		Cowbell
+[k 57]		Crash Cymbal 2
+[k 58]		Vibraslap
+[k 59]		Ride Cymbal 2
+[k 60]		Bongo H
+[k 61]		Bongo L
+[k 62]		Conga H Mute
+[k 63]		Conga H Open
+[k 64]		Conga L
+[k 65]		Timbale H
+[k 66]		Timbale L
+[k 67]		Agogo H
+[k 68]		Agogo L
+[k 69]		Cabasa
+[k 70]		Maracas
+[k 71]		Samba Whistle H
+[k 72]		Samba Whistle L
+[k 73]		Guiro Short
+[k 74]		Guiro Long
+[k 75]		Claves
+[k 76]		Wood Block H
+[k 77]		Wood Block L
+[k 78]		Cuica Mute
+[k 79]		Cuica Open
+[k 80]		Triangle Mute
+[k 81]		Triangle Open
+[k 82]		Shaker
+[k 83]		Jingle Bell
+[k 84]		Bell Tree
+
+[p1, 40, 16256]		XG Brush Kit
+[k 13]		Surdo Mute
+[k 14]		Surdo Open
+[k 15]		Hi Q
+[k 16]		Whip Slap
+[k 17]		Scratch Push
+[k 18]		Scratch Pull
+[k 19]		Finger Snap
+[k 20]		Click Noise
+[k 21]		Metronome Click
+[k 22]		Metronome Bell
+[k 23]		Seq Click L
+[k 24]		Seq Click H
+[k 25]		Brush Tap
+[k 26]		Brush Swirl L
+[k 27]		Brush Slap
+[k 28]		Brush Swirl H
+[k 29]		Snare Roll
+[k 30]		Castanet
+[k 31]		Brush Slap L
+[k 32]		Sticks
+[k 33]		Bass Drum L
+[k 34]		Open Rim Shot
+[k 35]		Bass Drum M
+[k 36]		BD Soft
+[k 37]		Side Stick
+[k 38]		Brush Slap
+[k 39]		Hand Clap
+[k 40]		Brush Tap
+[k 41]		Brush Tom 1
+[k 42]		Hi-Hat Closed
+[k 43]		Brush Tom 2
+[k 44]		Hi-Hat Pedal
+[k 45]		Brush Tom 3
+[k 46]		Hi-Hat Open
+[k 47]		Brush Tom 4
+[k 48]		Brush Tom 5
+[k 49]		Crash Cymbal 1
+[k 50]		Brush Tom 6
+[k 51]		Ride Cymbal 1
+[k 52]		Chinese Cymbal
+[k 53]		Ride Cymbal Cup
+[k 54]		Tambourine
+[k 55]		Splash Cymbal
+[k 56]		Cowbell
+[k 57]		Crash Cymbal 2
+[k 58]		Vibraslap
+[k 59]		Ride Cymbal 2
+[k 60]		Bongo H
+[k 61]		Bongo L
+[k 62]		Conga H Mute
+[k 63]		Conga H Open
+[k 64]		Conga L
+[k 65]		Timbale H
+[k 66]		Timbale L
+[k 67]		Agogo H
+[k 68]		Agogo L
+[k 69]		Cabasa
+[k 70]		Maracas
+[k 71]		Samba Whistle H
+[k 72]		Samba Whistle L
+[k 73]		Guiro Short
+[k 74]		Guiro Long
+[k 75]		Claves
+[k 76]		Wood Block H
+[k 77]		Wood Block L
+[k 78]		Cuica Mute
+[k 79]		Cuica Open
+[k 80]		Triangle Mute
+[k 81]		Triangle Open
+[k 82]		Shaker
+[k 83]		Jingle Bell
+[k 84]		Bell Tree
+
+[p1, 48, 16256]		XG Classic Kit
+[k 13]		Surdo Mute
+[k 14]		Surdo Open
+[k 15]		Hi Q
+[k 16]		Whip Slap
+[k 17]		Scratch Push
+[k 18]		Scratch Pull
+[k 19]		Finger Snap
+[k 20]		Click Noise
+[k 21]		Metronome Click
+[k 22]		Metronome Bell
+[k 23]		Seq Click L
+[k 24]		Seq Click H
+[k 25]		Brush Tap
+[k 26]		Brush Swirl L
+[k 27]		Brush Slap
+[k 28]		Brush Swirl H
+[k 29]		Snare Roll
+[k 30]		Castanet
+[k 31]		Snare L
+[k 32]		Sticks
+[k 33]		Bass Drum L
+[k 34]		Open Rim Shot
+[k 35]		Bass Drum M
+[k 36]		Gran Casa
+[k 37]		Side Stick
+[k 38]		Snare M
+[k 39]		Hand Clap
+[k 40]		Snare H
+[k 41]		Jazz Tom 1
+[k 42]		Hi-Hat Closed
+[k 43]		Jazz Tom 2
+[k 44]		Hi-Hat Pedal
+[k 45]		Jazz Tom 3
+[k 46]		Hi-Hat Open
+[k 47]		Jazz Tom 4
+[k 48]		Jazz Tom 5
+[k 49]		Hand Cym.Open L
+[k 50]		Jazz Tom 6
+[k 51]		Hand Cym.Closed L
+[k 52]		Chinese Cymbal
+[k 53]		Ride Cymbal Cup
+[k 54]		Tambourine
+[k 55]		Splash Cymbal
+[k 56]		Cowbell
+[k 57]		Hand Cym.Open H
+[k 58]		Vibraslap
+[k 59]		Hand Cym.Closed H
+[k 60]		Bongo H
+[k 61]		Bongo L
+[k 62]		Conga H Mute
+[k 63]		Conga H Open
+[k 64]		Conga L
+[k 65]		Timbale H
+[k 66]		Timbale L
+[k 67]		Agogo H
+[k 68]		Agogo L
+[k 69]		Cabasa
+[k 70]		Maracas
+[k 71]		Samba Whistle H
+[k 72]		Samba Whistle L
+[k 73]		Guiro Short
+[k 74]		Guiro Long
+[k 75]		Claves
+[k 76]		Wood Block H
+[k 77]		Wood Block L
+[k 78]		Cuica Mute
+[k 79]		Cuica Open
+[k 80]		Triangle Mute
+[k 81]		Triangle Open
+[k 82]		Shaker
+[k 83]		Jingle Bell
+[k 84]		Bell Tree
+
+[end]

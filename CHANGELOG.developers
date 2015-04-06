@@ -1,0 +1,382 @@
+Developer changelog (see also userland version CHANGELOG)
+
+2009-??-?? Version 0.6
+----------------------------------------------------------------------------------------------
+
+(PJL) - built against toot-r3-beta2  (without vst reference for free software guys)
+        also using latest audioServer-beta2.jar
+(PJL) - added README.thirdPartySources to help packagers of free software find the code
+(PJL) - added fields to Part to help manage ejb persistance.
+(PJL) - trying out latest toot  now toot-r3-beta1.jar  (only one minor change of a class name in frinika)
+(PJS) - Introduced "Dependency injection" using @Resource annotation for injecting Frinika configuration properties like samplerate into synths
+(PJS) - Introduced communication with Frinika server, first test case is the new version notification
+
+2008-11-18 Version 0.5.1
+----------------------------------------------------------------------------------------------
+???
+- (PJL) removed uk.co.simphoney.music package (1.6 java)
+- (PJS) Introduced boolean usePhysicalAudioOutput in FrinikaAudioSystem - so that wav exports can be done without injecting a physical audio output into the projectcontainer
+- (PJL) Merged PJL_2008_10_05
+-       Frame work for assigning midi controls  to toot controls. (MidiInDeviceManager rewrite)
+-       Plugable record managers.
+-       Parts now have a MultiPart (part list) for multiple takes and possible future use for history.
+- PJL-30-June_08  Fix null tempolist bug when importing midi.
+                Assign voice patch to lane when importing midi.     
+- (PJS) Fixed bug: [ 1804344 ] Track looping doesn't include first tick/note    
+- (PJS) Fixed bug: [ 2148005 ] When saving with a new name the title bar is not updated
+- (PJS) Gervill build for java 1.5 [ 2159122 ] Java 5 support
+
+2008-02-25 Version 0.5.0
+----------------------------------------------------------------------------------------------
+- (PJS) Removed Frinika Synthrack dependency of sequencer injection
+- (PJL) Send tempo events to all midi device associated with midi lanes. 
+- (PJL) BUGFIX: (intermittent?) bug in audio export.
+- (PJS) BUGFIX: that prevented having a loop start point at the same tick as a tempo change (e.g. start tick 0)
+- (PJS) Virtual keyboard octave selection moved to trackerpanel, as it only applies there
+- (PJS) Ctrl-S (save) now works from tracker panel
+- (PJL) Part drag and drop now working with tempochanges.
+- (PJL) Deleted priority lib native source code (it lives https://tootaudioservers.googlecode.com/svn/trunk)
+- (PJL) Note that the frinika project is now free of native code.
+- (PJL) Added all GM2 controllers to the pianoroll controller view.
+- (PJL) Tempo box now edits current tempo event.
+- (PJL) FEATURE/BUG.  Solo/Mute logic now works for midi+audio.
+- (PJL) BUGFIX: partview scrolling range now sensible. 
+- (PJL) BUGFIX: New note placement now correct in piano roll.
+- (PJL) BUGFIX: Invalid note pitch created by dragging in piano roll.
+- (PJL) BUGFIX: infinite loop in piano roll when snapto is bar.
+- (PJL) Piano roll. Drum note write mode. Press+drag creates new notes at quantization pionts.
+- (PJS) BUGIX: Multi-take recording should only be active when loop is active  
+- (PJL) Sequencer now changes tempo whilst playing (changes to tempo box). But jumps!!!
+- (KH) Gervill 0.9
+- (PJL) BUGFIX: Stop trying to close AudioParts more than once.
+- (PJL) BUGFIX: partview bar quantize was incorrect. 
+- (PJL) BUGFIX: drag midi across lane (was broken by tempolist)
+- (PJL) BUGFIX: exception reading project with audio parts.
+- (PJL) added more to the locale (message.properties)
+- (PJL) allow users to use cubase style patch map for a device
+- (PJL) BUGFIX: split audio lane fixes.
+- (PJL) Allow start of part to be before zero.
+- (PJL) Fix bug (just introduced) the caused exception setting audio device.
+- (PJS) Fix bug that synth rack organ crashed the patch name view
+
+2007-12-12 Version 0.5.0-pre
+----------------------------------------------------------------------------------------------
+- (PJL) Fixed bug in import midi to lane.
+- (PJL) Reverted Metronome (no longer using invokeLater).
+- (PJL) Sequencer player thread can now use real time priority (see settings panel).
+- (PJL) Implemented tempo change list (setting tempo using normal box disabled).
+- (KH) Gervill 0.3 (pre), added support for getKeys() and getChannels() on instruments.
+                          And mixer interface isn't no longer implemented
+                          instead we are using new AudioSynthesizer interface.
+                          - currently only draft, interface may change in future -
+- (KH) Gervill 0.2
+- (PJS) BUGFIX: [ 1804660 ] Frinika SynthRack instrument names are repeated in patchlist
+- (PJS) BUGFIX: [ 1805116 ] Copy a part for repeat, source part virtually doubled
+- (PJL) BUGFIX: Export wav fixed (was broken by last audioserver update)
+- (PJS) Netbeans project setup (for those who want to use netbeans)
+
+2007-09-21 Version 0.5.0-pre
+----------------------------------------------------------------------------------------------
+- (PJL) Fixed cntrl+drag to copy audio parts.
+- (PJL) Refactored audio file reading. Possibly quicker now? 
+- (PJL) AudioPart resize and splitting implemented.
+- (PJL) Implemented trapazoidal envelope for audio parts. 
+- (PJL) Alt + drag start of note/part snaps to grid.
+- (PJS) Using JJack javasound provider, JJack jar to replace internal outdated sources
+- (PJL) Now using the toot-r2  + TootAudioServers.
+- (PJL) Allow lanes to be flagged as "drum" lanes. 
+- (PJL) Implemented drumpad version of virtual piano.
+- (PJL) Right click on a drumpad note popups a drum note mapper. 
+- (PJL) Optimized the panel/part view painting w.r.t. the play position cursor. 
+        Considerable saving of GUI CPU especially with large windows.
+- (PJL) Added time signature list. 
+- (PJL) Setup for audio server now integrated with welcome splash.
+- (PJL) Added colour palette to allow colour of parts to be set.
+- (PJL) Copy/paste from one project to another.
+- (PJL/ST) Fixed intermittent hang due to a bug in toot (new toot-r2.jar).
+- (PJS) FrinikaSynthRack now uses SynthWrapper, to get a common interface for soft synth plugins
+			Aims for Soundbank interface implementation in order to display patch names
+- (PJS) Code cleanup - all unused imports removed
+		unused com.frinika.tracker classes removed
+- (PJL) Allow projects to load even with missing audio.
+   - // disabled due to problems closing rasmusDSP in exit hook code (PJL) Close all midiout devices on exit.
+- (PJS) IN PROGRESS - Program Change and soundbank loading support for SynthRack
+- (PJL) Toot mixer state saved in project file.
+- (PJL) Created toot plugin version of the Freeverb reverb.
+- (PJL) native libraries now all live in lib/${OS}/${ARCH}
+- (PJL) IN PROGRESS - Midi control of mixer knobs.
+- (PJL) Fixed various bugs in audioserver.
+- (PJS) Automated build date for snapshot releases.
+- (PJL) Changed saving of recorded audio. Now using a configurable directory to store all audio recording.
+- (PJL) Fixed a bug so mdidi control messages get channel assigned
+
+2007-05-06 Version 0.4.0
+----------------------------------------------------------------------------------------------
+- Notation editor (View/Edit)
+- Added import of Midi to existing project (TODO tempo logic)
+- Moved some menu items from file to edit.
+- Selecting new creates a project called "New" (removed file dialog)
+- rasmusDSP drum soundfonts now play zero length notes.
+- now using toot-r2-beta8 mixer (some API changes)
+- pianoroll now treats zero duration notes as drum beats and displays as diamonds  
+- All libraries are now properties in build.xml 
+- (PJS) If somehow libpriority fails, don't crash the audioserver because of that....
+- (PJS) libpriority for amd64
+- (PJS) Added ant run target (runs the jar with 512m)
+- (PJL) added configure setting for javasound server. Allow setting of: priority of audioprocess thread /  underruns before server aborts START/STOP
+- (PJL) support for multiplexed javasound IO devices. (e.g. 10 inputs appear in a single line)
+- (PJL) Configure frame for adjusting audioserver setting (Javasound)
+- (PJS) Watchdog-like functionality in PriorityAudioServer to prevent system from hanging
+- (PJS) setVisible before setSize assures that the window doesn't open blank (happens always when using XGL (compiz/beryl))
+- (PJL) Added setting to disable views or set cursor jump increment when playing (allows reduction of CPU load)
+- (PJS) Frinika SynthRack only supported NoteOn vel 0, and not NoteOff messages
+- (KH) Bugfix so that window doesn't become blank during playback
+
+2007-04-03 Version 0.4.0 beta2
+----------------------------------------------------------------------------------------------
+- Added jack autoconnect as a config option (restart required default is false)
+- Audio Analysis frame for audio part (right click menu)
+- Chopped the buffer for JackAudioServer (preparation for finer event resolution) 
+- Sample Accurate metronome implemented.
+- Round trip latency measurement/setting added to settings menu.  
+- When inserting a note in Tracker, it's played back using the edit velocity
+- Added output buffer size to the setting menu (for Javasound users).
+
+2007-03-17 Version 0.4.0 beta1
+----------------------------------------------------------------------------------------------
+- Master panel replaced with Toot Mixer
+- Added small monitor meters in audio lane headers.
+- Increased maximum lanes in the partview to about 50
+- Implemented import of multiple audio files.
+- Right click menu for parts implemented.
+- Separated Audio tracks from softsynths in toot mixer
+- Separated Mixer MidiDevices as separate Toot Mixer strips (RasmusDSP)
+- Added show button to MidiDeviceMixerPanel  (RasmusDSP)
+- Updated rasmusdsp.jar (0.2-build 10 feb 2007)
+- com.frinika.project.MidiDeviceDescriptorClass annotation added so that custom soft synths could provide Frinika project save/reload by implementing a custom MidiDeviceDescriptor
+- Added support for MidiDeviceDescriptor
+- RasmusSynthesizer can be serialized and support for it has been added to MidiDeviceDescriptor (RasmusDSP)
+- Added setSaveReferencedData method to SynthWrapper which can be used in serialized soft synths. (RasmusDSP)
+- TootVoiceServer for plugging voiceserver based synths into a Toot mixer slot
+- "Ghost" parts: Parts that are a transparent, immutable copies of other parts (also called 
+  "reference-copy" or "link" sometimes). MidiPartGhosts always refer to exactly one original MidiPart. 
+  They can be placed anywhere in a MidiLane and will represent all the events of the original MidiPart 
+  at that position. If the original MidiPart changes, every ghost created from that part will also 
+  change.
+- System exclusive midi data: When hitting Ctrl-ALT-S in the tracker's note-column, an event labeled 
+  "SYX" will be inserted and the user is prompted to enter a string of system exclusive data. To make 
+  this more comfortable, not only any raw hex-string can be entered, but there are also "SysexMacros" 
+  which can be added to package com.frinika.sequencer.midi.sysex. Such a SysexMacro allows e.g. 
+  specifying strings of the form "e70fx <reverb-number> <reverb-intensity> <chorus-number> 
+  <chorus-intensity>" as value for the SYX-event, and will internally generate the corresponding 
+  sequence of system-exclusive data.
+- Text lanes: a type of Lane which allows writing text inside the PartView. With this it becomes 
+  possible to write lyrics together with composing music, without having to use an external text 
+  editor. Each TextPart is in-place editable, i.e. a double-click on it lets you edit the text right 
+  inside the PartView.
+- Non-destructive changes to midi notes while playing: velocity compression/expansion, velocity 
+  offset, transposition, time-shifting of the whole lane by n ticks
+- "Looped-mode" of a MidiLane: after the end of the track, keep on repeating the last n ticks (e.g. 
+  4 bars) continuously. This feature is a compromise between a track-based sequencer approach (like 
+  Frinika), and at least some loop-oriented capability (in the most extreme case, you can use each 
+  track in looped mode and can create live-performances by subsequently switching on/off individual 
+  tracks)
+- Step Recording
+- Some tool functions in the menus (ordinary swiss-knife tools that most sequencers have):
+  "Repeat" (when repeating MidiParts, the repetitions may be created as "Ghosts", see above)
+  "Quantize" (optionally 'loose' quantization, e.g. by 50%)
+  "Transpose"
+  "Shift"
+  "Duration"
+  "Time-Stretch"
+  "Reverse"
+  "Insert Controllers" (allows for automatically inserting a series of controller-values, e.g. a 
+  sine-curve, sawtooth, square etc.)
+- Minor changes to the "choose controller type" button in the pianoroll (it was not visible under 
+  Linux since version 0.3.0), plus the ability to set the right marker of the loop-range with 
+  Ctrl-Shift-click (Alt-click didn't work for me on Linux).
+- and a simple "System Info" tab added to the AboutPanel.
+- Metronome now attach to Toot mixer output
+- JackAudioServer now skip processing if AudioProcess is to slow (prevents system hang)
+- Frinika scripting using Rhino javascript engine
+- Audio recording direct to disk (please report any problems). 
+- Toot audio servers for javasound and jack working for playback and record.
+   (still need to fix latency estimation and glitch correction)
+- Added right click menu for midiPart.
+- Export wav now uses Toot mixer
+- Fixed audio metering for lanes.
+- Added very nice welcome dialog.
+- Floating and dockable windows using FlexDock.
+- New look and feel using Jgoodies
+- View perspectives, and show view menu items
+- Build file updated with classpath support for new library jars
+- Frinika synthrack now provides RasmusDSP freeverb reverb using control change 91
+- JJack autoconnect by default. (Maybe no good for older kernels e.g 2.16 and before)
+- Fixed stereo recording.
+- Fixed bug that tracker didn't paste into the correct row - reason was that it was using snap setting from Piano Roll
+- MOD/S3M/XM/IT Module loader using jmod.
+- Audio play back. File reading moved to a seperate thread with a cyclic cahce PJL
+- AudioPart thumbnails. Now constructed on a seperate thread and optimized. PJL
+- Shift+Backspace in tracker to move notes up one row
+
+2006-12-30 Version 0.3.0-FIX1
+----------------------------------------------------------------------------------------------
+- IMPORTANT BUGFIX: Unable to reload projects correctly since the "installed" property of MidiDeviceDescriptor was saved as true
+
+2006-12-28 Version 0.3.0
+----------------------------------------------------------------------------------------------
+- Extended opening dialog with three choices: open last, existing or new project
+- Analogika bugfix: Show instrument names in Lane view
+- Tracker bugfix: Preserve selected Cell when adding column
+- Automatic row jump on inserting notes in tracker
+- Next similar column hotkeys feature Ctrl + Right / Ctrl + Left hotkeys in tracker
+- Bugfix: If you had never opened a project before, the opening of last project confused the startup
+- Export wav now also supports audio tracks - by using the sequencer for exporting
+- Added DrumMapper device (maps note numbers)
+- Added ExitHandler for ProjectContainer to close midi devices.
+- Copy paste of audio parts implemented.
+- Don't forward midi events to a lane that is muted
+
+2006-11-15 Version 0.3.0-pre2
+----------------------------------------------------------------------------------------------
+- BUGFIX: Sometimes audio recording stop would hang (caused by nByte = 0 in AudioInOscillator)
+- Support for Jack 0.100
+- removed virtual piano from frinika source (now just in the rasmusDSP .jar)
+- Native allocation of Jack jni buffers are now only done once (instead of each process call)
+- Audio recording for Jack
+
+2006-10-01 Version 0.3.0-pre1
+----------------------------------------------------------------------------------------------
+- Correct latency compensation for Audio recording
+- Implemented getLatency for soft synths and voiceServer in order to make latency compensation for the sequencer
+- Added initial dialog to select last project or open a new project.
+- Force user to name a project on creation (to save audio wav files with meaningful names)
+- Fix bug in AudioPart (infinite loop generating filename).
+- Pianoroll GUI enhancements.
+- Implemented import of audio into audio lane.
+- Will now use the language set by your operating system - if available
+- Now displaying thumb nails for audio.
+- Initial support for javasound synthesizer plugins implementing both Synthesizer and Mixer interfaces
+- RasmusDSP javasound synthesizer plugin bundled into Frinika
+- Support for reading patchnames from Javasound Soundbanks
+- Added "Remove mididevice" button
+- Added "Rename mididevice" button for customizing names on MidiDevices
+- Now reloads Java synthesizer soundbanks (remembers the last loaded soundbank)
+- Fileformat support for extended midi device descriptors
+- Added audio thread max priority option
+- Frinika SynthRack is now a Javasound Synthesizer plugin
+- On add midiout device a new instance is created - no reuse of existing (allows multiple instances of same type)
+- Added release ant target - so that Frinika is now released as a zip file also containing dependency libraries
+- Windows exe file using jsmooth (jsmooth.sourceforge.net)
+- implemented drag and drop of AudioParts
+
+
+2006-07-17 Version 0.2.1
+----------------------------------------------------------------------------------------------
+- Some Windows: Now able to click "Apply" on Audio out device settings - lineOut.drain() hanged on my newly installed windows xp. Might be the reason on the similar reported bug for Win2K
+- MySampler RecorderGUI didn't show on Windows - now it does
+- Possibility to select audio in device in mySampler (not only the first)
+- Better latency compensation for MySampler when using high latencies
+- No audio in data lost in recording on output glitches (MySampler)
+- MySampler can now record and store stereo samples
+- Choose stereo/mono when recording from JACK (MySampler)
+- Will not fail opening projects even required external midi device is not connected
+- Now supports different samplerate settings in JACK
+
+2006-07-04 Version 0.2.0 Maintenance release
+----------------------------------------------------------------------------------------------
+
+- Fixed bug so that MIDI files exports even though a midi channel is not defined for a track
+
+2006-06-25 Version 0.2.0
+----------------------------------------------------------------------------------------------
+
+- Latency is now saved in FrinikaConfig.
+- Fix for importing Midi files with different tick resolution than Frinika default
+- split and glueing of parts (implementation and bug fixes)
+- Concurrent modification of selection fixes.
+- focus/selection behavior fixes.
+- Fixed bug that caused wrong Lane->Mididevice mapping when having multiple softsynths and external midi devices
+- Fixed bug that <=0.1.7 project files played with the wrong tempo (too fast)
+- When saving a new project the file name is remembered when reopening the save dialog later
+- Fixed bug so that you're not asked to save changes on close/quit if you've already done it.
+- Added an asterix to the project title to indicate that there are changes since last save
+- Implemented CTRL-S hotkey for quick save - and separated project- "save" and "save as"
+- Tracker panel cleared when selecting a null-part or a non-midi part
+- Tracker cursor now doesn't jump to the top row after a cut operation
+
+2006-06-05 Version 0.2.0-pre4
+----------------------------------------------------------------------------------------------
+
+- Deleting items should now remove them from selections. 
+- Fixed bug casting to recordable lane.
+
+2006-06-02 Version 0.2.0-pre3
+----------------------------------------------------------------------------------------------
+
+- Parts keep color of lane in which they were created.
+- Autocolor for lane fixed to start at maxColor+1 when loading a project.
+- Fixed problem with export wav (didn't read Track channel and mididevice mapping)
+
+2006-05-31 Version 0.2.0-pre2
+----------------------------------------------------------------------------------------------
+- Piano Roll
+- Controller View
+- Part View
+- MultiTrack sequencer
+- Support for external midi devices
+- Revised tracker panel
+
+2005-12-26 Version 0.1.7
+----------------------------------------------------------------------------------------------
+- Added some more audio device tuning parameters. For flexibility and individual tuning on specific systems
+- Support for javasound framepos detection (seems to be the best on Mac OSX)
+- Support for javasound standard latency control model (source data line write blocking)
+- Applied menu decoration patch by Edward H
+- Bezier synth by Bob Lang
+- Undo/redo functionality
+- Menus for virtual keyboard octave selection
+- Auto scroll on play (feature request)
+- JACK support for AMD64 Linux
+
+----------------------------------------------------------------------------------------------
+2005-11-20 Version 0.1.6
+
+- ULTRA-low latency switch. For turning on/off cpu intensity needed on extreme low latencies.
+- Export one wav file per track
+- Added peak level indicator
+- Added Master panel and master volume control
+- Audio stability and low latency fixes (again)
+- New sine waveform in analogika
+- BUGFIX: Analogika didn't load LoPassSustain settings
+
+----------------------------------------------------------------------------------------------
+2005-10-09 Version 0.1.5
+
+- BUGFIX: Metronome prevented jre-1.5.0_01 to run...
+- BUGFIX: Event edits were not registered correctly in the chase function
+
+----------------------------------------------------------------------------------------------
+2005-09-25 Version 0.1.5-pre1
+
+- No more 30 sec limit on sampler recording
+- Sample recording GUI showing free memory left
+- Lower latency fixes on Mac OSX
+- Replaced built-in JSE RealtimeSequencer with custom Frinika Sequencer in order to solve
+      the following issues:
+		* Smooth looping
+		* Don't skip notes / events on the first tick when starting to play
+		* Able to insert / remove events from the sequence while playing
+		* Avoid time drifting
+		* Better abilities for song position monitoring
+	NOTE: The Frinika sequencer is not a complete implementation of the Java sequencer. Its
+		  primary goals is to solve the needs of Frinika, and the implementation subset
+		  is thereafter.
+- Transpose function
+- Import wav in sampler
+- Scale velocity functions
+- Metronome with volume slider
+
+----------------------------------------------------------------------------------------------
+
+2005-05-26 Version 0.1.4	Will log all changes after this release

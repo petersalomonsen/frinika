@@ -1,0 +1,84 @@
+What's left for before next release...
+**********************************************************************************
+
+
+PJS
+--------------------------------------------------------------------------------- 
+- Save / load gear
+
+
+Release after next ?
+*****************************************************************************************
+
+PJS / PJL
+--------------------------------------------------------------------------------- 
+- Merge drums into single part recording midi?
+- Overall master volume slider for Soft synths
+- Zoom should keep timeCursor on screen.
+- paste into another project.   (copy paste parts now working)
+- autosize for parts  (e.g. when pasting into).
+- Replace ticks with samples as the finest time resolution. 
+- Part start/end adjust on pianoroll.
+
+Sequencer/Notation
+------------------
+* Support for Key Signature
+  (both Time and Key signatures are stored in Midi Files)
+   so I plan to is MetaMessages for them (just like Tempo)
+* Add support for addding/edit tempo effects. (We need to discuss this)
+* Add simple notation printing
+* Add more notation features
+* Add raw event view/editor
+* Add edit fields for 
+  the controllers: Reverb,Chorus,Volume,Pan... 
+  into (partview) Lane properties,
+
+Audio
+-----
+* Add support for insert effect on audio and midi parts using rasmusdsp
+  - e.g. you click on midi/audio and select edit/add insert effect
+  (insert effect could do non realtime-effects like: 
+     resample/pitch shifting and stretching)
+* Create more user friendly rasmusdsp script editor
+  more graphical   (I like the scripting PJL)
+* Create simple wave editor editing audio parts
+* Create RasmusDSP toot plugins (transformer and analyzer)
+  and also create simple and more user friendly
+  Reverb,FFT Reverb(FFT Convolution),DeHiss,DeReverb,Disortion,
+  Pitch Shifter.
+  which uses RasmusDSP behind the scenes.
+* Add support for VST instrument and effects
+  (KH: I am currently experimenting with JaVaSTyle for that support)
+* Frinika audio synthesis on mac os x
+* 24 bit recording
+* Save audio in serialized form (like the synths)
+
+
+
+Misc
+----
+* Sondfont/Midi/Audio/Project Open/Save Dialog should remember last selected directory used.
+
+[ these are done ?  --------------------------------------------------------
+* Make possible to cancel frinika on startup dialog by added X button there
+* Move all settings inside "Settings" menu into a new settings dialog
+  and stop asking for selectin audio device on startup
+  instead add "Set settings" on startup dialog if user want to change and settings
+  before running frinika.
+  Some settings can not be done once frinika has started without a restart. (e.g. switch audio server)
+  The initial input dialog could have a set up option to do this. 
+  If you do not hot this then you get the previous settings.  
+  
+* When frinika is runned for first time or new version was installed then
+  we should display the new settings dialog (see above I sometimes use diffferent setups for record playback etc)
+ ---------------------------------------------------------------------------
+  
+  
+* The settings dialog should include all settings in tabs
+  and that should include for example: Midi In, Audio Out devices and more....
+  
+  (PJL:  I think only setting that can be done after audio server is started)
+  
+* When you save your song under different name then 
+  the project window title should also change. (PJL: it use to  in the old days!)
+* Remove channel 10 limitation for drum patches ?

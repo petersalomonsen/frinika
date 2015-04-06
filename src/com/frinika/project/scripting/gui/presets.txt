@@ -1,0 +1,277 @@
+Frinika JavaScript example presets
+created 2007-02-18
+author Jens Gulden
+
+format: 3 #'s initiate a new preset, 6 #'s insert a JSeperator
+
+
+### Control Structures
+// Some JavaScript control structures:
+
+function repeatString(s, count) {
+  r = "";
+  for (i = 0; i < count; i++) {
+    r += s;
+  }
+  return r;
+}
+
+for (i = 0; i < 10; i++) {
+  println( repeatString("*", i) );
+}
+
+a = 7.5;
+while (a > 3.8) {
+  println(a);
+  a = a - 0.3;
+}
+
+b = 4+5;
+switch (b) {
+  case 3: println("never"); 
+          break;
+  case 9: println("yes"); 
+          break;
+  default: println("uuh"); 
+           break;
+}
+
+######
+### Project Info
+// Project Info:
+
+println("Project Info:");
+println("Filename:         " + song.filename);
+println("Ticks per beat:   " + song.ticksPerBeat);
+println("Beats per minute: " + song.beatsPerMinute);
+println("Number of lanes:  " + song.lanes.length);
+for (i = 0; i < song.lanes.length; i++) {
+    print("Lane #" + i + ": type ");
+    /*switch (song.lanes[i].type) {
+        case 1: print("Midi");
+                break;
+        case 2: print("Audio");
+                break;
+        case 4: print("Text");
+                break;
+    }*/
+    print( typeName(song.lanes[i].type) );
+    print(", name ");
+    println(song.lanes[i].name);
+}
+
+// show menu items
+
+for ( i = 0; i < menu.length; i++ ) {
+  println( "Menu '"+ menu[i][0].menuLabel +"'" );
+  for ( j = 0; j < menu[i].length; j++ ) {
+    println( "- " + menu[i][j].label );
+  }
+}
+
+// project-persistent properties
+persist = persistent.get("test-persistent-property");
+println("current value of persistent property 'test-persistent-property': " + persist);
+println("storing a value.");
+persistent.set("test-persistent-property", "HELLO");
+persist = persistent.get("test-persistent-property");
+println("current value of persistent property 'test-persistent-property': " + persist);
+
+// global-persistent properties
+globalPersist = global.get("test-global-property");
+println("current value of persistent property 'test-global-property': " + globalPersist);
+println("storing a value.");
+global.set("test-global-property", "HELLO-GLOBAL");
+globalPersist = global.get("test-global-property");
+println("current value of persistent property 'test-global-property': " + globalPersist);
+
+// programmatically invoke menu action
+println("now opening about dialog...");
+menu[5][0].execute(); // About-Box 
+// (could also be done with e.g. menu[0][3] for save-as, which, in contrast to
+// song.saveAs(), also shows the file-dialog as if the user invoked the menu)
+
+
+### Text Parts
+// Text Parts
+
+if ( (selection.lane != null) && ( selection.lane.type == type("Text") ) ) {
+  println( selection.lane.name + ":" );
+  for (i = 0; i < selection.lane.parts.length; i++) { // (note that operator 'in' simply lets i iterate over indices, not elements of the array)
+    part = selection.lane.parts[i];
+    print( "" + (i+1) + ". ");
+    println( part.text );
+  }
+  println();
+  println("All text:");
+  println( selection.lane.text );
+} else {
+  message("Please select a text-lane.");
+}
+
+### Interaction
+// Interaction
+
+str = prompt("Please enter something:");
+
+b = confirm("Are you sure you have entered '"+str+"' ?");
+
+if ( b ) {
+  message("That's right.");
+} else {
+  message("But you did!");
+}
+
+filename = promptFile("script-test.txt", "png Portable Network Graphics;txt Text Files"); // loading
+
+if (filename != null) {
+  message("The file you have chosen is " + filename);
+} else {
+  message("Canceled.");
+  filename = "";
+}
+
+filename = promptFile(filename, "png Portable Network Graphics;txt Text Files", true); // saving
+
+if (filename != null) {
+  message("The file you have chosen now is " + filename);
+} else {
+  message("Canceled.");
+}
+
+
+### Math
+// Math
+
+a = Math.sin(0.5);
+println("sin(0.5) = " + a);
+
+a = Math.random();
+println("random a = " + a);
+
+a = Math.sqrt(a);
+println("sqrt(a) = " + a);
+
+
+### Waiting
+// Waiting
+
+for (i = 1; i <= 5; i+=2) {
+  println(i);
+  println("now waiting 3 seconds...");
+  wait(3000);
+  println(i+1);
+  println("now waiting 1 bar...");
+  waitTicks( 4 * song.ticksPerBeat ); // or: waitTicks(time("4.0:000"));
+}
+
+
+### Times and Positions
+// Times and Positions
+
+ppq = song.ticksPerBeat;
+barTicks = 4 * ppq;
+println("PPQ are " + ppq + ", ticks per bar are " + barTicks );
+barTicks += ppq * 2 + 64;
+println( "" + barTicks + " ticks are " + formatTime(barTicks) + "," );
+println("12.1:016 are " + time("12.1:016") + " ticks." );
+
+
+### Play Stop Rewind
+// Play Stop Rewind
+
+song.stop();
+
+println("current position: " + song.position);
+println("setting position to 4.0:000");
+song.position = time("4.0:000"); // or: song.setPosition(..);
+
+println("playing until 12.0:000");
+song.playUntil( time("12.0:000") );
+println("current position: " + song.position);
+
+println("rewinding");
+song.rewind();
+println("current position: " + song.position);
+
+println("playing 4 seconds");
+song.play();
+wait(4000);
+
+song.stop();
+
+######
+### File Operations
+// File Operations
+
+f = "script-test.txt"
+
+b = fileExists( f );
+
+println("File " + f + " does " + ( b ? "" : "not " ) + "exist.");
+
+b = fileDelete( f );
+
+println("Deleting was " + ( b ? "" : "not " ) + "successful.");
+
+text = "This is my test text.\nThanks for reading.";
+
+b = fileWrite(f, text);
+
+println("Writing file " + f + " was " + ( b ? "" : "not " ) + "successful.");
+
+len = fileLen( f );
+
+println("File length: " + len);
+
+textFromFile = fileRead( f );
+
+println("File content:");
+println( textFromFile );
+
+b = fileDelete( f );
+
+println("Deleting was " + ( b ? "" : "not " ) + "successful.");
+
+
+### Shell Execution
+// Shell Execution
+
+result = shellExecute("mozilla http://www.frinika.com");
+
+println("Exit code: " + result);
+
+######
+### Modify Selection
+// Modify Selection - the louder, the shorter / the softer, the longer:
+
+threshold = 80;
+sensitivity = 1.5;
+
+for (i in selection.notes) {
+    d = selection.notes[i].duration;
+    v = selection.notes[i].velocity;
+    d = d - ((v - threshold) * sensitivity);
+    if (d < 1) {
+        d = 1;
+    }
+    selection.notes[i].duration = d; // (undoable modification on selection)
+}
+
+### Insert New
+// Insert New
+
+song.newLane("MyMidiLane", type("Midi"));
+lane = song.getLane("MyMidiLane");
+
+part = lane.newPart( time("10.0:000"), time("4.0:000") );
+
+part.insertNote(note("c#3"), time("11.2:000"), time("2:0"), 120 );
+part.insertNote(note("f3"), time("11.3:000"), time("1:0"), 100 );
+part.insertNote(note("g#3"), time("11.3:000"), time("1:0"), 100 );
+part.insertNote(note("b3"), time("11.3:000"), time("0:64"), 100 );
+part.removeNote(note("f3"), time("11.3:000"));
+
+part = song.newLane("MyTextLane", type("Text")).newPart(time("24.0:000"), time("10.0:000"));
+part.text = "This is the test text to be inserted.";
+part.lane.parts[0].remove(); // remove initially inserted text-part
