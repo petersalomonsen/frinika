@@ -39,9 +39,11 @@ import javax.sound.sampled.AudioFileFormat;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.TargetDataLine;
-import org.mortbay.jetty.Server;
-import org.mortbay.jetty.servlet.Context;
-import org.mortbay.jetty.servlet.ServletHolder;
+import org.eclipse.jetty.io.EofException;
+import org.eclipse.jetty.server.Server;
+import org.eclipse.jetty.servlet.ServletContextHandler.Context;
+import org.eclipse.jetty.servlet.ServletHandler;
+import org.eclipse.jetty.servlet.ServletHolder;
 
 
 /**
@@ -66,8 +68,9 @@ public class LocalOGGHttpRadio {
         project.getMixer().getMainBus().setOutputProcess(rap);
 
         Server server = new Server(15000);
-        Context root = new Context(server,"/",Context.SESSIONS);
-        root.addServlet(new ServletHolder(new HttpServlet() {
+        ServletHandler handler = new ServletHandler();
+	server.setHandler(handler);
+        handler.addServletWithMapping(new ServletHolder(new HttpServlet() {
 
             @Override
             protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -96,7 +99,7 @@ public class LocalOGGHttpRadio {
                     tdl = rap.getNewTargetDataLine();
                     AudioSystem.write(new AudioInputStream(tdl), oggType, os);
                     System.out.println("Done writing");
-               } catch(org.mortbay.jetty.EofException ex) {
+               } catch(EofException ex) {
                     System.out.println("Connection closed by listener");
                }
                catch (Exception ex) {
@@ -111,7 +114,7 @@ public class LocalOGGHttpRadio {
             }
 
         }),
-                "/*");
+                "/frinika.ogg");
         try {
             server.start();
         } catch (Exception ex) {
