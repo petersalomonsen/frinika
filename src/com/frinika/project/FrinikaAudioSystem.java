@@ -54,6 +54,9 @@ import uk.org.toot.audio.server.IOAudioProcess;
 import uk.org.toot.audio.server.MultiIOJavaSoundAudioServer;
 import uk.org.toot.audio.server.SwitchedAudioClient;
 import static com.frinika.localization.CurrentLocale.getMessage;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import sun.util.logging.PlatformLogger;
 
 public class FrinikaAudioSystem {
 
@@ -117,7 +120,7 @@ public class FrinikaAudioSystem {
 			audioServer.setClient(mixerSwitch);
 			return audioServer;
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.getLogger(FrinikaAudioSystem.class.getName()).log(Level.SEVERE,"Unable to create audio server",e);
 			System.err.println(" Too frightened to carry on !!!");
 			System.exit(-1);
 			return null;
