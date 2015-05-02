@@ -41,9 +41,13 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.TargetDataLine;
 import org.eclipse.jetty.io.EofException;
 import org.eclipse.jetty.server.Server;
+import org.eclipse.jetty.server.handler.ContextHandler;
+import org.eclipse.jetty.server.handler.HandlerCollection;
+import org.eclipse.jetty.server.handler.ResourceHandler;
 import org.eclipse.jetty.servlet.ServletContextHandler.Context;
 import org.eclipse.jetty.servlet.ServletHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
+import org.eclipse.jetty.util.resource.Resource;
 
 
 /**
@@ -68,8 +72,16 @@ public class LocalOGGHttpRadio {
         project.getMixer().getMainBus().setOutputProcess(rap);
 
         Server server = new Server(15000);
+	HandlerCollection hc = new HandlerCollection();
         ServletHandler handler = new ServletHandler();
-	server.setHandler(handler);
+	
+	ResourceHandler rh = new ResourceHandler();
+	rh.setBaseResource(Resource.newClassPathResource("/com/frinika/web/content/"));
+
+	hc.addHandler(rh);
+	hc.addHandler(handler);
+	
+	server.setHandler(hc);
         handler.addServletWithMapping(new ServletHolder(new HttpServlet() {
 
             @Override
