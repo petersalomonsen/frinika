@@ -91,7 +91,7 @@ public class PostOscillator extends Oscillator {
                                     echoBuffer[echoBufferPos] += sample;
                                 } else {
                                     // Invert one channel to get stereo effect
-                                    echoBuffer[echoBufferPos] -= sample;
+                                    echoBuffer[echoBufferPos] += sample;
                                 }
 				sample+=echoBufferSample;
 
