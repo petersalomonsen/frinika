@@ -24,6 +24,7 @@
 
 package com.frinika.audio.io;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 
@@ -59,7 +60,8 @@ public class AudioWavReader {
 		long filesize = (fis.length()); // get file
 
 		readChunkHeader(fis);
-
+		Integer dataChunkSize = null;
+		
 		while (bytecount < riffdata) { // check for chunks inside RIFF data
 			// area.
 			sfield = "";
@@ -76,6 +78,7 @@ public class AudioWavReader {
 				// S ystem.out.println(" Audio offset " +
 				// audioDataStartBytePtr);
 				audioDataByteLength = (int) (filesize - audioDataStartBytePtr);
+				dataChunkSize = chunkSize;
 			}
 
 			bytecount += (8 + chunkSize);
@@ -83,16 +86,18 @@ public class AudioWavReader {
 			if (sfield.equals("fmt ")) { // extract info from "format"
 
 				readFormat(fis, chunkSize);
-			} else
+			} else {
 				// if NOT the fmt chunk.
 				fis.skipBytes(chunkSize);
+			}
 
-			lengthInFrames = chunkSize / format.getFrameSize();
+			
 
 			// S ystem.out.println(lengthInFrames + " " + audioDataByteLength
 			// + " " + format.getFrameSize());
 		} // end while.
 
+		lengthInFrames = dataChunkSize / format.getFrameSize();
 		if ((8 + bytecount) != (int) filesize)
 			System.out.println(sp
 					+ "!!!!!!! Problem with file structure  !!!!!!!!! ");
@@ -207,4 +212,8 @@ public class AudioWavReader {
 		return nChannels;
 	}
 
+	public static void main(String[] args) throws Exception {
+	    AudioWavReader audioWavReader = new AudioWavReader(new RandomAccessFile(new File("/Users/peter/Music/PianoSlow16.WAV"),"r"));
+	    System.out.println(audioWavReader.getLengthInFrames());
+	}
 }
