@@ -126,17 +126,20 @@ public class TempoListEditAction extends AbstractAction {
 						public boolean isCellEditable(int row, int col) {
 							if (row == 0 && col == 0)
 								return false;
-							return col == 0 || col == 2;
+							return col == 0 || (col == 1 && row>0) || col == 2;
 						}
 
 						public void setValueAt(Object value, int row, int col) {
 							boolean newE = row >= list.size();
 
 							TempoList.MyTempoEvent ev = null;
-							if (!newE) {
+							if (!newE && col == 1 && row>0) {
+							    // This will alter the tempo of the row before
+							    ev = list.elementAt(row-1);
+							} else if (!newE) {
 								ev = list.elementAt(row);
 							} else {
-								ev = list.elementAt(list.size() - 1);
+							    ev = list.elementAt(list.size() - 1);
 							}
 
 							tick = (int) ev.getTick();
@@ -146,9 +149,15 @@ public class TempoListEditAction extends AbstractAction {
 								if (col == 0) {
 									tick = (int) timeUtil
 											.barBeatTickToTick((String) value);
-
+								} else if(col==1 && row>0) {	
+								    double ticks = (list.elementAt(row).getTick()-ev.getTick());
+								    double beats = ticks / timeUtil.ticksPerBeat();
+								    double secs = (Double.parseDouble((String)value)-ev.getTime());
+								    
+								    bpm = beats*60.0/secs;								    
+								    //System.out.println(list.elementAt(row).getTick()+" "+ev.getTick()+" "+ticks+" "+beats+" "+secs+" "+bpm);
 								} else if (col == 2) {
-									bpm = Double.parseDouble((String) value);
+								    bpm = Double.parseDouble((String) value);
 								}
 								if (!newE)
 									list.remove(ev.getTick(), ev.getTick() + 1);

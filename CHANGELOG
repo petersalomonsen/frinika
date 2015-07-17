@@ -1,5 +1,7 @@
 Userland change log (see CHANGELOG.developer for internals)
 
+- (PJS) Added possibility to set time in tempo change list (and previous tempo will be adjusted thereafter).
+
 2014-06-01 Version 0.7.5
 ----------------------------------------------------------------------------------------------
 - (PJS) Fix for RasmusDSP to work with Java 7 update 55
