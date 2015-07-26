@@ -11,7 +11,7 @@ import com.frinika.notation.NotationPanel;
 import com.frinika.project.FrinikaAudioSystem;
 import com.frinika.project.ProjectContainer;
 import com.frinika.project.mididevices.gui.MidiDevicesPanel;
-import com.frinika.radio.LocalOGGHttpRadio;
+import com.frinika.web.WebServicesController;
 import com.frinika.sequencer.FrinikaSequencer;
 import com.frinika.sequencer.gui.GlobalToolBar;
 import com.frinika.sequencer.gui.menu.CreateAudioLaneAction;
@@ -2187,11 +2187,11 @@ public class ProjectFrame extends JFrame {
                 public void itemStateChanged(ItemEvent e) {
                     if(item.getState())
                     {
-                        LocalOGGHttpRadio.startRadio(project);
+                        WebServicesController.startRadio(project);
                     }
                     else
                     {
-                        LocalOGGHttpRadio.stopRadio();
+                        WebServicesController.stopRadio();
                     }
                 }
             });

@@ -22,9 +22,11 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-package com.frinika.radio;
+package com.frinika.web;
 
 import com.frinika.project.ProjectContainer;
+import com.sun.jersey.spi.container.servlet.ServletContainer;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -41,10 +43,9 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.TargetDataLine;
 import org.eclipse.jetty.io.EofException;
 import org.eclipse.jetty.server.Server;
-import org.eclipse.jetty.server.handler.ContextHandler;
 import org.eclipse.jetty.server.handler.HandlerCollection;
 import org.eclipse.jetty.server.handler.ResourceHandler;
-import org.eclipse.jetty.servlet.ServletContextHandler.Context;
+import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 import org.eclipse.jetty.util.resource.Resource;
@@ -53,15 +54,15 @@ import org.eclipse.jetty.util.resource.Resource;
 /**
  * @author Peter Johan Salomonsen
  */
-public class LocalOGGHttpRadio {
+public class WebServicesController {
 
-    static LocalOGGHttpRadio instance = new LocalOGGHttpRadio();
+    static WebServicesController instance = new WebServicesController();
 
     final int port = 15000;
 
     ProjectContainer project = null;
 
-    private LocalOGGHttpRadio()
+    private WebServicesController()
     {
 
     }
@@ -69,20 +70,21 @@ public class LocalOGGHttpRadio {
     private void startListener()
     {
         final RadioAudioProcess rap = new RadioAudioProcess(project);
-        project.getMixer().getMainBus().setOutputProcess(rap);
-
+	if(project!=null) {
+	    project.getMixer().getMainBus().setOutputProcess(rap);
+	}
         Server server = new Server(15000);
 	HandlerCollection hc = new HandlerCollection();
-        ServletHandler handler = new ServletHandler();
+        ServletContextHandler handler = new ServletContextHandler(ServletContextHandler.SESSIONS);
 	
 	ResourceHandler rh = new ResourceHandler();
 	rh.setBaseResource(Resource.newClassPathResource("/com/frinika/web/content/"));
 
 	hc.addHandler(rh);
 	hc.addHandler(handler);
-	
+		
 	server.setHandler(hc);
-        handler.addServletWithMapping(new ServletHolder(new HttpServlet() {
+        handler.addServlet(new ServletHolder(new HttpServlet() {
 
             @Override
             protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -115,7 +117,7 @@ public class LocalOGGHttpRadio {
                     System.out.println("Connection closed by listener");
                }
                catch (Exception ex) {
-                    Logger.getLogger(LocalOGGHttpRadio.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(WebServicesController.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 finally {
                     if(tdl!=null)
@@ -127,10 +129,18 @@ public class LocalOGGHttpRadio {
 
         }),
                 "/frinika.ogg");
-        try {
+        
+	ServletHolder sh = new ServletHolder(ServletContainer.class);  
+	sh.setInitParameter("com.sun.jersey.config.property.resourceConfigClass", "com.sun.jersey.api.core.PackagesResourceConfig");
+        sh.setInitParameter("com.sun.jersey.config.property.packages", "com.frinika.web.rest");//Set the package where the services reside
+        sh.setInitOrder(1);
+	
+	handler.addServlet(sh, "/restservices/*");
+	
+	try {
             server.start();
         } catch (Exception ex) {
-            Logger.getLogger(LocalOGGHttpRadio.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(WebServicesController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -139,11 +149,16 @@ public class LocalOGGHttpRadio {
         instance.project = project;
         instance.startListener();
         
-        Logger.getLogger(LocalOGGHttpRadio.class.getName()).info("Local OGG Http Radio started");
+        Logger.getLogger(WebServicesController.class.getName()).info("Local OGG Http Radio started");
     }
 
     public static void stopRadio()
     {
-        Logger.getLogger(LocalOGGHttpRadio.class.getName()).info("Local OGG Http Radio stopped");
+        Logger.getLogger(WebServicesController.class.getName()).info("Local OGG Http Radio stopped");
+    }
+    
+    
+    public static void main(String[] args) {
+	WebServicesController.startRadio(null);
     }
 }

@@ -26,7 +26,7 @@ import javax.sound.sampled.Clip;
 import javax.sound.sampled.AudioFormat;
 import com.frinika.global.FrinikaConfig;
 import java.io.ByteArrayInputStream;
-import com.frinika.radio.LocalOGGHttpRadio;
+import com.frinika.web.WebServicesController;
 import java.io.ByteArrayOutputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
@@ -114,7 +114,7 @@ public class LocalOGGHttpRadioTest {
         projectContainer.getAudioServer().start();
                
         final boolean[] readerDone = new boolean[] {false};
-        LocalOGGHttpRadio.startRadio(projectContainer);
+        WebServicesController.startRadio(projectContainer);
         new Thread() {
 
             @Override
@@ -145,7 +145,7 @@ public class LocalOGGHttpRadioTest {
         while(!readerDone[0])
             Thread.sleep(100);
 
-        LocalOGGHttpRadio.stopRadio();
+        WebServicesController.stopRadio();
         assertEquals("VORBISENC",returnedEncoding[0]);
     }
 
