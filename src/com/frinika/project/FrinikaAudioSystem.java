@@ -56,7 +56,6 @@ import uk.org.toot.audio.server.SwitchedAudioClient;
 import static com.frinika.localization.CurrentLocale.getMessage;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import sun.util.logging.PlatformLogger;
 
 public class FrinikaAudioSystem {
 

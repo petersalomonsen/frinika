@@ -25,7 +25,7 @@
 package com.frinika.web;
 
 import com.frinika.project.ProjectContainer;
-import com.sun.jersey.spi.container.servlet.ServletContainer;
+
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -48,6 +48,7 @@ import org.eclipse.jetty.server.handler.ResourceHandler;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 import org.eclipse.jetty.util.resource.Resource;
+import org.glassfish.jersey.servlet.ServletContainer;
 
 
 /**
@@ -130,10 +131,8 @@ public class WebServicesController {
                 "/frinika.ogg");
         
 	ServletHolder sh = new ServletHolder(ServletContainer.class);  
-	sh.setInitParameter("com.sun.jersey.config.property.resourceConfigClass", "com.sun.jersey.api.core.PackagesResourceConfig");
-        sh.setInitParameter("com.sun.jersey.config.property.packages", "com.frinika.web.rest");//Set the package where the services reside
-        sh.setInitOrder(1);
-	
+        sh.setInitOrder(1);	
+	sh.setInitParameter("jersey.config.server.provider.packages","com.frinika.web.rest");
 	handler.addServlet(sh, "/restservices/*");
 	
 	try {
