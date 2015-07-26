@@ -23,43 +23,28 @@
  */
 package com.frinika.web.rest;
 
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.sound.midi.MidiDevice;
-import javax.sound.midi.MidiSystem;
-import javax.sound.midi.MidiUnavailableException;
-
+import com.frinika.global.FrinikaConfig;
+import java.util.Arrays;
+import java.util.Vector;
 
 /**
  *
  * @author Peter Johan Salomonsen
  */
 public class MidiDeviceInfo {
-    MidiDevice.Info[] infos;
+    public String[] getAvailableMidiInDevices() {
+	return FrinikaConfig.getAvailableMidiInDevices().toArray(new String[0]);
+    }
 
-    public MidiDeviceInfo() {
-	ArrayList<MidiDevice.Info> midiInDevices = new ArrayList<>();
-	for(MidiDevice.Info info : MidiSystem.getMidiDeviceInfo()) {
-	    try {
-		MidiDevice dev = MidiSystem.getMidiDevice(info);
-		if (dev.getMaxTransmitters() == 0 ) {
-		    continue;
-		}
-		midiInDevices.add(info);
-	    } catch (MidiUnavailableException ex) {
-		Logger.getLogger(MidiDeviceInfo.class.getName()).log(Level.SEVERE, null, ex);
-	    }
-	}
-	infos = midiInDevices.toArray(new MidiDevice.Info[0]);
+    public void setAvailableMidiInDevices(String[] infos) {
+	
+    }          
+    
+    public String[] getCurrentMidiInDevices() {
+	return FrinikaConfig.getMidiInDeviceList().toArray(new String[0]);
     }
     
-
-    public MidiDevice.Info[] getInfos() {
-	return infos;
+    public void setCurrentMidiInDevices(String[] midiInDevices) {
+	FrinikaConfig.setMidiInDeviceList(new Vector<String>(Arrays.asList(midiInDevices)));
     }
-
-    public void setInfos(MidiDevice.Info[] infos) {
-	this.infos = infos;
-    }                
 }

@@ -753,7 +753,7 @@ public class FrinikaConfig {
 				a.add(str);
 			} catch (MidiUnavailableException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				//e.printStackTrace();
 			}
 		
 		}

@@ -91,7 +91,7 @@ public class MidiInDevicePanel extends JPanel {
 				}
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
-				Logger.getLogger(getClass().getName()).log(Level.SEVERE,"Error opening mididevice "+info.getName(),e1);
+				//Logger.getLogger(getClass().getName()).log(Level.SEVERE,"Error opening mididevice "+info.getName(),e1);
 			}
 		}
 

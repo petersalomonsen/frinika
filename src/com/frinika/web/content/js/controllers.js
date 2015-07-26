@@ -28,7 +28,36 @@ controllers.controller("mainCtrl", ['$scope','$http','$location',function($scope
 }]);
 
 controllers.controller("midiSetupCtrl", ['$scope','$http','$location',function($scope,$http,$location) {
+    $scope.refresh = function() {
 	$http.get("restservices/mididevices/indevices").success(function(data) {
-	    $scope.midiInDevices = data;
+	    $scope.midiDeviceInfo = data;
+	    $scope.midiInDevices = {};
+
+	    for(var n=0;n<data.availableMidiInDevices.length;n++) {
+		var md = data.availableMidiInDevices[n];
+		$scope.midiInDevices[md] = {};
+	    }
+
+	    for(var n=0;n<data.currentMidiInDevices.length;n++) {
+		var md = data.currentMidiInDevices[n];
+		$scope.midiInDevices[md].connected = true;
+	    }
+
+
+	});        
+    };
+    
+    $scope.reconnect = function() {
+	$scope.midiDeviceInfo.currentMidiInDevices = [];
+	for(var k in $scope.midiInDevices) {
+	    if($scope.midiInDevices[k].connected) {
+		$scope.midiDeviceInfo.currentMidiInDevices.push(k);
+	    }
+	}
+	$http.post("restservices/mididevices/indevices",$scope.midiDeviceInfo).success(function() {
+	    $scope.refresh();
 	});
+    };
+    
+    $scope.refresh();
 }]);

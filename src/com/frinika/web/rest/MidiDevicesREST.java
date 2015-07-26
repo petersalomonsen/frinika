@@ -23,7 +23,13 @@
  */
 package com.frinika.web.rest;
 
+import com.frinika.global.FrinikaConfig;
+import com.frinika.project.gui.ProjectFrame;
+import java.util.Arrays;
+import java.util.Vector;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 
@@ -38,7 +44,17 @@ public class MidiDevicesREST {
     @GET
     @Path("indevices")
     @Produces("application/json")
-    public MidiDeviceInfo listMidiDevices(){
+    public MidiDeviceInfo listMidiInDevices(){
 	return new MidiDeviceInfo();
+    }
+    
+    @POST
+    @Path("indevices")
+    @Consumes("application/json")
+    public boolean setMidiInDevices(MidiDeviceInfo midiDeviceInfo) {
+	FrinikaConfig.setMidiInDeviceList(new Vector<String>(Arrays.asList(midiDeviceInfo.getCurrentMidiInDevices())));
+	FrinikaConfig.store();
+	ProjectFrame.midiInDeviceChange();
+	return true;
     }
 }

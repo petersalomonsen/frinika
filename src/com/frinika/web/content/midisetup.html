@@ -2,11 +2,10 @@
     <div class="panel panel-default">
       <div class="panel-heading">
 	<h3 class="panel-title">Midi-in devices</h3>
-      </div>
+      </div>	
       <div class="panel-body">
-	  <div class="row" ng-repeat="md in midiInDevices.infos">
-	      <div class="col-md-12"><input type="checkbox" /> {{md}}</div>
-	      
+	  <div class="row" ng-repeat="(md,cfg) in midiInDevices">
+	      <div class="col-md-12"><label class="control-label"><input type="checkbox" ng-model="cfg.connected" ng-change="reconnect()" /> {{md}}</label></div>	      
 	  </div>
       </div>
     </div>
