@@ -31,7 +31,9 @@ app.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
 	    when('/midisetup', {
-        templateUrl: 'midisetup.html'       
+        templateUrl: 'midisetup.html',
+	controller: 'midiSetupCtrl'
+
       }). 
       when('/start', {
         templateUrl: 'start.html'    

@@ -26,3 +26,9 @@ var controllers = angular.module('frinikaControllers', []);
 controllers.controller("mainCtrl", ['$scope','$http','$location',function($scope,$http,$location) {
 	
 }]);
+
+controllers.controller("midiSetupCtrl", ['$scope','$http','$location',function($scope,$http,$location) {
+	$http.get("restservices/mididevices/indevices").success(function(data) {
+	    $scope.midiInDevices = data;
+	});
+}]);

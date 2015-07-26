@@ -1,1 +1,13 @@
-Midi setup
+<div class="container">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+	<h3 class="panel-title">Midi-in devices</h3>
+      </div>
+      <div class="panel-body">
+	  <div class="row" ng-repeat="md in midiInDevices.infos">
+	      <div class="col-md-12"><input type="checkbox" /> {{md}}</div>
+	      
+	  </div>
+      </div>
+    </div>
+</div>
