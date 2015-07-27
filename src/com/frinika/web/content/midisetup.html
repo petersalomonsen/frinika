@@ -4,9 +4,37 @@
 	<h3 class="panel-title">Midi-in devices</h3>
       </div>	
       <div class="panel-body">
-	  <div class="row" ng-repeat="(md,cfg) in midiInDevices">
-	      <div class="col-md-12"><label class="control-label"><input type="checkbox" ng-model="cfg.connected" ng-change="reconnect()" /> {{md}}</label></div>	      
-	  </div>
+	    <ul class="list-group">
+		<li class="list-group-item" ng-repeat="(md,cfg) in midiInDevices track by $index">
+		    <div class="row">
+			<div class="col-xs-11">
+			    <label class="control-label">
+				<input type="checkbox" ng-model="cfg.connected" ng-change="reconnect()" /> 
+				{{md}}			
+			    </label>	      
+			</div>
+			<div class="col-xs-1">
+			    <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#midiDeviceCollapse{{$index}}" aria-expanded="false" aria-controls="midiDeviceCollapse{{$index}}">
+				<span class="glyphicon glyphicon glyphicon-wrench"></span>
+			    </button>
+			</div>
+		    </div>
+		    
+		    <div class="collapse" id="midiDeviceCollapse{{$index}}">
+			<br />
+			<div class="well">
+			    <div class="row">
+				
+				<div class="col-md-2">
+				    <label class="control-label">Min velocity</label><input class="form-control" type="number" min="0" max="127">
+				    <label class="control-label">Max velocity</label><input class="form-control" type="number" min="0" max="127">
+				</div>
+			    </div>
+			</div>
+		    </div>
+		    
+		</li>
+	    </ul>
       </div>
     </div>
 </div>

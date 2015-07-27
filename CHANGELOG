@@ -1,10 +1,11 @@
 Userland change log (see CHANGELOG.developer for internals)
 
-2015-XX-XX Version 0.7.6
+2015-XX-XX Version 0.8.0
 ----------------------------------------------------------------------------------------------
 
 - (PJS) Added possibility to set time in tempo change list (and previous tempo will be adjusted thereafter).
 - (PJS) Automatic version check removed - frinika.appspot.com is not in operation anymore
+- (PJS) Web GUI foundation to enable more efficient GUI development and accessibility from mobile devices.
 
 2014-06-01 Version 0.7.5
 ----------------------------------------------------------------------------------------------
