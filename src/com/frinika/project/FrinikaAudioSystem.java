@@ -31,6 +31,7 @@
 package com.frinika.project;
 
 import com.frinika.audio.frogdisco.FrogDiscoAudioServer;
+import com.frinika.audio.jnajack.JNAJackAudioServer;
 import java.util.List;
 import java.util.Observer;
 import java.util.Observable;
@@ -95,6 +96,7 @@ public class FrinikaAudioSystem {
 			if (!multiplexIO) {
                             realAudioServer = new MultiIOJavaSoundAudioServer();
                             //realAudioServer = new FrogDiscoAudioServer();
+                            //realAudioServer = new JNAJackAudioServer();
 			} else {
 				System.out
 						.println(" WARNING USING EXPERIMENTAL MULTIPLEXED AUDIO SERVER ");
