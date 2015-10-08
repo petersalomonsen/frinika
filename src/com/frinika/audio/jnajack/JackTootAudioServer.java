@@ -47,74 +47,76 @@ import uk.org.toot.audio.server.IOAudioProcess;
  *
  * @author Peter Johan Salomonsen
  */
-public class JNAJackAudioServer extends AbstractAudioServer implements AudioClient, ExtendedAudioServer {
+public class JackTootAudioServer extends AbstractAudioServer implements AudioClient, ExtendedAudioServer {
 
     AudioBuffer audioOut;
     AudioConfiguration audioConfiguration;
 
+    FrinikaJackAudioServer server;
+    
     boolean running = false;
 
-    public JNAJackAudioServer() {
+    public JackTootAudioServer() throws Exception {
         bufferFrames = 128;
+        
+        String lib = "JACK"; 
+
+        AudioServerProvider provider = null;
+        for (AudioServerProvider p : ServiceLoader.load(AudioServerProvider.class)) {
+            if (lib.equals(p.getLibraryName())) {
+                provider = p;
+                break;
+            }
+        }
+        if (provider == null) {
+            throw new NullPointerException("No AudioServer found that matches : " + lib);
+        }
+
+        /* Create an instance of our client - see methods in the implementation 
+         * below for more information.
+         */
+
+
+        AudioConfiguration config = new AudioConfiguration(
+                44100.0f, //sample rate
+                0, // input channels
+                2, // output channels
+                256, //buffer size
+                // extensions
+                new ClientID("Frinika"),
+                Connections.OUTPUT);
+
+
+        /* Use the AudioServerProvider to create an AudioServer for the client. 
+         */
+        server = (FrinikaJackAudioServer) provider.createServer(config, this);
+        audioConfiguration = server.getAudioContext();
+        ((FrinikaJackAudioServer)server).init();
+
+        
     }
     
     
     @Override
     protected void startImpl() {
-        try {
-            String lib = "JACK"; 
-
-            AudioServerProvider provider = null;
-            for (AudioServerProvider p : ServiceLoader.load(AudioServerProvider.class)) {
-                if (lib.equals(p.getLibraryName())) {
-                    provider = p;
-                    break;
+        /* Create a Thread to run our server. All servers require a Thread to run in.
+         */   
+        Thread runner = new Thread(new Runnable() {
+            public void run() {
+                // The server's run method can throw an Exception so we need to wrap it
+                try {
+                    server.run();
+                    running = true;
+                } catch (Exception ex) {
+                    Logger.getLogger(JackTootAudioServer.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-            if (provider == null) {
-                throw new NullPointerException("No AudioServer found that matches : " + lib);
-            }
-
-            /* Create an instance of our client - see methods in the implementation 
-             * below for more information.
-             */
-            
-
-            AudioConfiguration config = new AudioConfiguration(
-                    44100.0f, //sample rate
-                    0, // input channels
-                    2, // output channels
-                    256, //buffer size
-                    // extensions
-                    new ClientID("Frinika"),
-                    Connections.OUTPUT);
-
-
-            /* Use the AudioServerProvider to create an AudioServer for the client. 
-             */
-            final org.jaudiolibs.audioservers.AudioServer server = provider.createServer(config, this);
-            audioConfiguration = server.getAudioContext();
-            
-            /* Create a Thread to run our server. All servers require a Thread to run in.
-             */   
-            Thread runner = new Thread(new Runnable() {
-                public void run() {
-                    // The server's run method can throw an Exception so we need to wrap it
-                    try {
-                        server.run();
-                        running = true;
-                    } catch (Exception ex) {
-                        Logger.getLogger(JNAJackAudioServer.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
-            });
-            // set the Thread priority as high as possible.
-            runner.setPriority(Thread.MAX_PRIORITY);
-            // and start processing audio - you'll have to kill the program manually!
-            runner.start();
-        } catch(Exception e) {
-            Logger.getLogger(JNAJackAudioServer.class.getName()).log(Level.SEVERE, null, e);
-        }
+        });
+        // set the Thread priority as high as possible.
+        runner.setPriority(Thread.MAX_PRIORITY);
+        // and start processing audio - you'll have to kill the program manually!
+        runner.start();
+        
     }
 
     @Override

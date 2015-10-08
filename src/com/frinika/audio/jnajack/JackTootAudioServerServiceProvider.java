@@ -34,15 +34,15 @@ import uk.org.toot.audio.server.spi.AudioServerServiceProvider;
  *
  * @author Peter Johan Salomonsen
  */
-public class JNAJackAudioServerServiceProvider extends AudioServerServiceProvider {
-    public JNAJackAudioServerServiceProvider() {
+public class JackTootAudioServerServiceProvider extends AudioServerServiceProvider {
+    public JackTootAudioServerServiceProvider() {
         super(ProviderId.FRINIKA_PROVIDER_ID, "JNAJack", "JNAJack Audio Server", "0.1");	
         
     }
 
     @Override
     public AudioServerConfiguration createServerConfiguration(AudioServer server) {	
-    	if ( server instanceof JNAJackAudioServer ) {
+    	if ( server instanceof JackTootAudioServer ) {
     		return new AudioServerConfiguration() {
 
                         @Override
