@@ -92,8 +92,7 @@ public class AboutDialog extends JDialog {
     "Steve Taylor - Toot integration<br>"+
     "Jens Gulden - Ghosts parts, Midi Tools menu, step recording, ctrl tools, scripting and more<br>"+
     "<br>"+
-    "<b>Libraries:</b><br>"+
-    "JJack Copyright "+C+" Jens Gulden<br>"+
+    "<b>Libraries:</b><br>"+    
     "RasmusDSP Copyright "+C+" Karl Helgason<br>"+
     "Toot audio foundation - Steve Taylor<br>"+
     "Tritonus Copyright "+C+" by Florian Bomers and Matthias Pfisterer<br>"+
@@ -106,6 +105,7 @@ public class AboutDialog extends JDialog {
     "jVorbisEnc - Zbigniew Sudnik - XIPHOPHORUS, http://www.xiph.org/<br>"+
     "MRJ Adapter - http://homepage.mac.com/sroy/mrjadapter/<br>" +
     "JVSTHost - http://github.com/mhroth/jvsthost<br>" +
+    "JNAJack/JAudioLibs - https://github.com/jaudiolibs by Neil C Smith<br>"+
     "<br>"+
     "<b>Other contributors:</b><br>"+
     "Bob Lang - Bezier synth (http://www.cems.uwe.ac.uk/~lrlang/BezierSynth/index.html)<br>"+
