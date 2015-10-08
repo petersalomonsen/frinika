@@ -56,9 +56,7 @@ public class JackTootAudioServer extends AbstractAudioServer implements AudioCli
     
     boolean running = false;
 
-    public JackTootAudioServer() throws Exception {
-        bufferFrames = 128;
-        
+    public JackTootAudioServer() throws Exception {                
         String lib = "JACK"; 
 
         AudioServerProvider provider = null;
@@ -91,6 +89,8 @@ public class JackTootAudioServer extends AbstractAudioServer implements AudioCli
          */
         server = (FrinikaJackAudioServer) provider.createServer(config, this);
         audioConfiguration = server.getAudioContext();
+        bufferFrames = audioConfiguration.getMaxBufferSize();
+        System.out.println("Buffer frames = "+bufferFrames);
         ((FrinikaJackAudioServer)server).init();
 
         
