@@ -88,11 +88,13 @@ public class JackTootAudioServer extends AbstractAudioServer implements AudioCli
         /* Use the AudioServerProvider to create an AudioServer for the client. 
          */
         server = (FrinikaJackAudioServer) provider.createServer(config, this);
-        audioConfiguration = server.getAudioContext();
-        bufferFrames = audioConfiguration.getMaxBufferSize();
-        System.out.println("Buffer frames = "+bufferFrames);
         ((FrinikaJackAudioServer)server).init();
 
+        audioConfiguration = server.getAudioContext();
+        bufferFrames = audioConfiguration.getMaxBufferSize();
+        
+        System.out.println("Jack buffer frames = "+bufferFrames);
+        
         
     }
     

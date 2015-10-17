@@ -142,24 +142,23 @@ public class FrinikaJackAudioServer implements AudioServer {
             outputPorts[i] = jackclient.registerPort("Output_" + (i + 1),
                     JackPortType.AUDIO, JackPortFlags.JackPortIsOutput);
         }
-        
+        ClientID id = clientID;
+        String actualID = jackclient.getName();
+        if (!id.getIdentifier().equals(actualID)) {
+            id = new ClientID(actualID);
+        }
+        context = new AudioConfiguration(jackclient.getSampleRate(),
+                inputPorts.length,
+                outputPorts.length,
+                jackclient.getBufferSize(),
+                id,
+                connections,
+                jackclient);
     }
 
     private void runImpl() {
         try {
             // make sure context is correct.
-            ClientID id = clientID;
-            String actualID = jackclient.getName();
-            if (!id.getIdentifier().equals(actualID)) {
-                id = new ClientID(actualID);
-            }
-            context = new AudioConfiguration(jackclient.getSampleRate(),
-                    inputPorts.length,
-                    outputPorts.length,
-                    jackclient.getBufferSize(),
-                    id,
-                    connections,
-                    jackclient);
             LOG.log(Level.FINE, "Configuring AudioClient\n{0}", context);
             client.configure(context);
             jackclient.setProcessCallback(new Callback());
@@ -244,6 +243,7 @@ public class FrinikaJackAudioServer implements AudioServer {
         }
     }
 
+    @Override
     public AudioConfiguration getAudioContext() {
         return context;
     }
