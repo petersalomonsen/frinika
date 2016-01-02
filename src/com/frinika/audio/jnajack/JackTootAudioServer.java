@@ -102,8 +102,10 @@ public class JackTootAudioServer extends AbstractAudioServer implements AudioCli
     
     @Override
     protected void startImpl() {
+        running = true;
+        
         if(runner!=null) {
-            running = true;
+            
             return;            
         }
         
@@ -114,7 +116,7 @@ public class JackTootAudioServer extends AbstractAudioServer implements AudioCli
                 // The server's run method can throw an Exception so we need to wrap it
                 try {
                     server.run();
-                    JackTootAudioServer.this.running = true;
+                    
                 } catch (Exception ex) {
                     Logger.getLogger(JackTootAudioServer.class.getName()).log(Level.SEVERE, null, ex);
                 }
