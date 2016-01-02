@@ -55,7 +55,8 @@ public class JackTootAudioServer extends AbstractAudioServer implements AudioCli
     FrinikaJackAudioServer server;
     
     boolean running = false;
-
+    Thread runner;
+    
     public JackTootAudioServer() throws Exception {                
         String lib = "JACK"; 
 
@@ -101,14 +102,21 @@ public class JackTootAudioServer extends AbstractAudioServer implements AudioCli
     
     @Override
     protected void startImpl() {
+        running = true;
+        
+        if(runner!=null) {
+            
+            return;            
+        }
+        
         /* Create a Thread to run our server. All servers require a Thread to run in.
          */   
-        Thread runner = new Thread(new Runnable() {
+        runner = new Thread(new Runnable() {
             public void run() {
                 // The server's run method can throw an Exception so we need to wrap it
                 try {
                     server.run();
-                    running = true;
+                    
                 } catch (Exception ex) {
                     Logger.getLogger(JackTootAudioServer.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -122,8 +130,8 @@ public class JackTootAudioServer extends AbstractAudioServer implements AudioCli
     }
 
     @Override
-    protected void stopImpl() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    protected void stopImpl() {        
+        running = false;
     }
 
     @Override
@@ -163,10 +171,11 @@ public class JackTootAudioServer extends AbstractAudioServer implements AudioCli
             @Override
             public int processAudio(AudioBuffer ab) {
                 if ( !ab.isRealTime() ) {
-                    return AUDIO_OK;
+                   return AUDIO_OK;                  
                 }
                 
-                audioOut = ab;
+                audioOut = ab;                                
+                
                 return AUDIO_OK;
             }
 
@@ -253,8 +262,8 @@ public class JackTootAudioServer extends AbstractAudioServer implements AudioCli
     }
 
     @Override
-    public void shutdown() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void shutdown() {        
+        running = false;
     }
 
     @Override
