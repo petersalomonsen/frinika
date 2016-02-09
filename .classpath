@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry excluding="org/apache/commons/logging/|uk/co/simphoney/music/" kind="src" path="src"/>
+	<classpathentry excluding="ProjectCompatibilityTest.java|TestGearSavingLoading.java|TestSaveAndLoadProject.java" kind="src" path="src_unit_tests"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="var" path="JUNIT_HOME/junit.jar"/>
+	<classpathentry kind="lib" path="lib/js.jar"/>
+	<classpathentry kind="lib" path="lib/flexdock-0.5.1.jar"/>
+	<classpathentry kind="lib" path="lib/jmod_0_9k.jar"/>
+	<classpathentry kind="lib" path="lib/jVorbisEnc.jar"/>
+	<classpathentry kind="lib" path="lib/MRJAdapter.jar"/>
+	<classpathentry kind="lib" path="lib/jjack.jar" sourcepath="/jjack"/>
+	<classpathentry kind="lib" path="lib/commons-logging.jar"/>
+	<classpathentry kind="lib" path="lib/rasmusdsp.jar" sourcepath="/RasmusDSP"/>
+	<classpathentry kind="lib" path="lib/gervill.jar"/>
+	<classpathentry kind="lib" path="lib/looks-2.1.3.jar"/>
+	<classpathentry kind="lib" path="lib/FrinikaServerInterfaces.jar"/>
+	<classpathentry kind="lib" path="lib/javax.servlet.jar"/>
+	<classpathentry kind="lib" path="lib/jetty-6.1.12rc1.jar"/>
+	<classpathentry kind="lib" path="lib/jetty-util-6.1.12rc1.jar"/>
+	<classpathentry kind="lib" path="lib/jogg-0.0.7.jar"/>
+	<classpathentry kind="lib" path="lib/jorbis-0.0.15.jar"/>
+	<classpathentry kind="lib" path="lib/Logging.jar"/>
+	<classpathentry kind="lib" path="lib/MacStub.jar"/>
+	<classpathentry kind="lib" path="lib/RasmusDSP.jar"/>
+	<classpathentry kind="lib" path="lib/toot.jar"/>
+	<classpathentry kind="lib" path="lib/TootAudioServers.jar"/>
+	<classpathentry kind="lib" path="lib/tritonus_share.jar"/>
+	<classpathentry kind="lib" path="lib/lmappletserver_core.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
