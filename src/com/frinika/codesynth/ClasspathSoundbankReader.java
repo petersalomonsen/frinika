@@ -10,6 +10,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLClassLoader;
+import java.security.Policy;
 import java.util.Enumeration;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,10 +28,13 @@ public class ClasspathSoundbankReader extends SoundbankReader {
     public Soundbank getSoundbank(URL url) throws InvalidMidiDataException, IOException {
         try {
             System.out.println("Loading soundbank");
-            URLClassLoader ucl = new URLClassLoader(new URL[]{url});
-            BufferedReader br = new BufferedReader(new InputStreamReader(ucl.findResource("codesynthsoundbank.properties").openStream()));
-            String soundbankClassName = br.readLine();
-            return (Soundbank) ucl.loadClass(soundbankClassName).newInstance();
+	    
+	    Policy.setPolicy(new CodeSynthSecurityPolicy());
+	    System.setSecurityManager(new SecurityManager());
+	    
+            CodeSynthClassLoader ucl = new CodeSynthClassLoader(new URL[]{url}); 		;
+            
+            return (Soundbank) ucl.loadClass("FrinikaCodeSynthSoundbank").newInstance();
         } catch (Exception ex) {
             Logger.getLogger(ClasspathSoundbankReader.class.getName()).log(Level.SEVERE, null, ex);
             throw new InvalidMidiDataException(ex.getMessage());
