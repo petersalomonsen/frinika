@@ -6,6 +6,7 @@ package com.frinika.codesynth;
 
 import com.frinika.codesynth.control.ChannelControlMaster;
 import com.frinika.codesynth.note.Note;
+import com.frinika.synth.envelope.MidiVolume;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.logging.Level;
@@ -24,7 +25,8 @@ public class CodeSynthMidiChannel implements MidiChannel {
     CodeSynth synth;
 
     int pitchBend = 8192;
-
+    int midiVolume = 100;
+    
     ArrayList<Note> newNotes = new ArrayList<Note>();
     HashSet<Note> playingNotes = new HashSet<Note>();
     ArrayList<Note> finishedNotes = new ArrayList<Note>();
@@ -65,7 +67,7 @@ public class CodeSynthMidiChannel implements MidiChannel {
     }
 
     public void noteOff(int noteNumber) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        noteOff(noteNumber,0);
     }
 
     public void setPolyPressure(int noteNumber, int pressure) {
@@ -85,7 +87,11 @@ public class CodeSynthMidiChannel implements MidiChannel {
     }
 
     public void controlChange(int controller, int value) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        switch(controller) {
+	    case 7:
+		midiVolume = value;
+		break;
+	}
     }
 
     public int getController(int controller) {
@@ -198,10 +204,12 @@ public class CodeSynthMidiChannel implements MidiChannel {
             for(Note note : playingNotes)
                 note.fillBuffer(midiChannelFloatBuffer,numberOfFrames,channels);
 
+	    double midiVolumeRatio = MidiVolume.midiVolumeToAmplitudeRatio(midiVolume);
+	    
             // Mix into given float buffer
             for(int n=0;n<midiChannelFloatBuffer.length;n++)
             {
-                floatBuffer[n]+=midiChannelFloatBuffer[n];
+                floatBuffer[n]+=midiChannelFloatBuffer[n]*midiVolumeRatio;
             }
         }
 

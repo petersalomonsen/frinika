@@ -156,6 +156,9 @@ public class CodeSynth implements Synthesizer,Mixer {
                         case ShortMessage.NOTE_OFF:
                             channel.noteOff(shm.getData1());
                             break;
+			case ShortMessage.CONTROL_CHANGE:
+			    channel.controlChange(shm.getData1(), shm.getData2());
+			    break;
                         case ShortMessage.PITCH_BEND:
                              channel.setPitchBend((0xff & shm.getData1())+((0xff & shm.getData2()) << 7));
                              break;
