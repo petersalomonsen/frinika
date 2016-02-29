@@ -25,7 +25,11 @@ public class CodeSynthMidiChannel implements MidiChannel {
     CodeSynth synth;
 
     int pitchBend = 8192;
-    int midiVolume = 100;
+    
+    int[] controllers = new int[128];
+    {
+	controllers[7] = 100;
+    }
     
     ArrayList<Note> newNotes = new ArrayList<Note>();
     HashSet<Note> playingNotes = new HashSet<Note>();
@@ -38,7 +42,7 @@ public class CodeSynthMidiChannel implements MidiChannel {
         midiChannelFloatBuffer = new float[floatBufferSize];
     }
 
-
+    
     public void noteOn(int noteNumber, int velocity) {
         if(notes[noteNumber]!=null)
             noteOff(noteNumber,velocity);
@@ -87,15 +91,11 @@ public class CodeSynthMidiChannel implements MidiChannel {
     }
 
     public void controlChange(int controller, int value) {
-        switch(controller) {
-	    case 7:
-		midiVolume = value;
-		break;
-	}
+        controllers[controller] = value;
     }
 
-    public int getController(int controller) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public int getController(int controller) {	
+        return controllers[controller];
     }
 
     public void programChange(int program) {
@@ -181,9 +181,14 @@ public class CodeSynthMidiChannel implements MidiChannel {
     void fillBuffer(float[] floatBuffer,int numberOfFrames,int channels)
     {
         ChannelControlMaster ccm = synth.getChannelControlMasterByPatch(patch);
-        // Apply channel control master before notes
+	ccm.setMidiChannel(this);
+        
+	// Clear midi channel float buffer
+	java.util.Arrays.fill(midiChannelFloatBuffer,0);
+	
+	// Apply channel control master before notes
         if(ccm!=null) {
-            ccm.fillBufferBeforeNotes(floatBuffer, numberOfFrames, channels);
+            ccm.fillBufferBeforeNotes(midiChannelFloatBuffer, numberOfFrames, channels);
         }
 
         // Add new notes to playingNotes
@@ -195,27 +200,22 @@ public class CodeSynthMidiChannel implements MidiChannel {
             playingNotes.remove(finishedNotes.remove(0));
 
         if(!playingNotes.isEmpty())
-        {
-            // Clear midi channel float buffer
-            for(int n=0;n<midiChannelFloatBuffer.length;n++)
-                midiChannelFloatBuffer[n] = 0;
-            
+        {                        
             // Go on and play notes
             for(Note note : playingNotes)
-                note.fillBuffer(midiChannelFloatBuffer,numberOfFrames,channels);
-
-	    double midiVolumeRatio = MidiVolume.midiVolumeToAmplitudeRatio(midiVolume);
-	    
-            // Mix into given float buffer
-            for(int n=0;n<midiChannelFloatBuffer.length;n++)
-            {
-                floatBuffer[n]+=midiChannelFloatBuffer[n]*midiVolumeRatio;
-            }
+                note.fillBuffer(midiChannelFloatBuffer,numberOfFrames,channels);	    	    
+            
         }
 
         // Apply channel control master after notes
-        if(ccm!=null) {
-            ccm.fillBufferAfterNotes(floatBuffer, numberOfFrames, channels);
+        if(ccm!=null) {	    
+            ccm.fillBufferAfterNotes(midiChannelFloatBuffer, numberOfFrames, channels);
         }
+	
+	// Mix into given float buffer
+	for(int n=0;n<midiChannelFloatBuffer.length;n++)
+	{
+	    floatBuffer[n]+=midiChannelFloatBuffer[n];
+	}
     }
 }

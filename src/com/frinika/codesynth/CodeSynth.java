@@ -65,7 +65,7 @@ public class CodeSynth implements Synthesizer,Mixer {
     }
 
     public MidiChannel[] getChannels() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return midiChannels;
     }
 
     public VoiceStatus[] getVoiceStatus() {

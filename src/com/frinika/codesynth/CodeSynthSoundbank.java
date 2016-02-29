@@ -23,6 +23,8 @@
  */
 package com.frinika.codesynth;
 
+import com.frinika.codesynth.control.ChannelControlMaster;
+import com.frinika.codesynth.control.DefaultChannelControlMaster;
 import java.util.ArrayList;
 import java.util.List;
 import javax.sound.midi.Instrument;
@@ -58,9 +60,15 @@ public class CodeSynthSoundbank implements Soundbank {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public SoundbankResource[] getResources() {
-        System.out.println("No resources");
-        return new SoundbankResource[] {};
+    public SoundbankResource[] getResources() {        
+        return new SoundbankResource[] {
+	    new SoundbankResource(CodeSynthSoundbank.this,"ChannelControlMaster",DefaultChannelControlMaster.class) {
+		@Override
+		public Object getData() {
+		    return null;
+		}
+	    }		    
+	};
     }
 
     
