@@ -181,8 +181,10 @@ public class CodeSynthMidiChannel implements MidiChannel {
     void fillBuffer(float[] floatBuffer,int numberOfFrames,int channels)
     {
         ChannelControlMaster ccm = synth.getChannelControlMasterByPatch(patch);
-	ccm.setMidiChannel(this);
-        
+	if(ccm!=null) {
+	    ccm.setMidiChannel(this);
+	}
+	
 	// Clear midi channel float buffer
 	java.util.Arrays.fill(midiChannelFloatBuffer,0);
 	
