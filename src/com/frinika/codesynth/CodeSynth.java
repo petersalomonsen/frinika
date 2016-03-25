@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.sound.midi.Instrument;
+import javax.sound.midi.MetaMessage;
 import javax.sound.midi.MidiChannel;
 import javax.sound.midi.MidiDevice;
 import javax.sound.midi.MidiMessage;
@@ -40,7 +41,7 @@ import javax.sound.sampled.TargetDataLine;
  *
  * @author Peter Johan Salomonsen
  */
-public class CodeSynth implements Synthesizer,Mixer {
+public class CodeSynth implements Synthesizer,Mixer,SynthContext {
 
     static final long serialVersionUID = 1L;
 
@@ -55,6 +56,8 @@ public class CodeSynth implements Synthesizer,Mixer {
     private transient HashMap<CodeSynthPatch,ChannelControlMaster> channelControlMasterMap = new HashMap<CodeSynthPatch,ChannelControlMaster>();
 
     transient TargetDataLine targetDataLine;
+    
+    private float tempoBPM = 100f;
     
     public int getMaxPolyphony() {
         throw new UnsupportedOperationException("Not supported yet.");
@@ -163,6 +166,16 @@ public class CodeSynth implements Synthesizer,Mixer {
                              channel.setPitchBend((0xff & shm.getData1())+((0xff & shm.getData2()) << 7));
                              break;
 
+                    }
+                } else if(MetaMessage.class.isInstance(message)) {
+                    byte[] msgBytes = message.getMessage();
+                    // Handle tempo message
+                    if (msgBytes[0] == -1 && msgBytes[1] == 0x51 && msgBytes[2] == 3) {
+                            int mpq = ((msgBytes[3] & 0xff) << 16)
+                                            | ((msgBytes[4] & 0xff) << 8) | (msgBytes[5] & 0xff);
+
+                            tempoBPM = ((60000000f / mpq));
+                            java.util.logging.Logger.getLogger(this.getClass().getName()).fine("Tempo set to "+tempoBPM+" bpm");
                     }
                 }
             }
@@ -451,4 +464,15 @@ public class CodeSynth implements Synthesizer,Mixer {
     final ChannelControlMaster getChannelControlMasterByPatch(CodeSynthPatch patch) {
         return channelControlMasterMap.get(patch);
     }
+
+    public float getTempoBPM() {
+	return tempoBPM;
+    }        
+
+    @Override
+    public float getSampleRate() {
+	return format.getSampleRate();
+    }
+    
+    
 }

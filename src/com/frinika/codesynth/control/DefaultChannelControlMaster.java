@@ -23,6 +23,7 @@
  */
 package com.frinika.codesynth.control;
 
+import com.frinika.codesynth.control.effects.Echo;
 import com.frinika.synth.envelope.MidiVolume;
 import rasmus.interpreter.sampled.util.Freeverb;
 
@@ -32,14 +33,20 @@ import rasmus.interpreter.sampled.util.Freeverb;
  */
 public class DefaultChannelControlMaster extends ChannelControlMaster {
     Freeverb freeverb;
+    Echo echo;
     
     final void createEffects() {
-	if(this.midiChannel!=null && freeverb==null) {
-	    freeverb = new Freeverb(this.midiChannel.getSynth().getFormat().getSampleRate(),1);
-	    freeverb.setdry(0);
-	    freeverb.setroomsize(0.9f);				
-	    freeverb.setdamp(0.9f);	
-	    freeverb.setwet(1);
+	if(this.midiChannel!=null) {
+	    if(freeverb==null) {
+		freeverb = new Freeverb(this.midiChannel.getSynth().getFormat().getSampleRate(),1);
+		freeverb.setdry(0);
+		freeverb.setroomsize(0.9f);				
+		freeverb.setdamp(0.9f);	
+		freeverb.setwet(1);
+	    }
+	    if(echo==null) {
+		echo = new Echo(midiChannel.getSynth());
+	    }
 	}
     }
     
@@ -49,8 +56,12 @@ public class DefaultChannelControlMaster extends ChannelControlMaster {
     }
 
     @Override
-    public void fillBufferAfterNotes(float[] floatBuffer, int numberOfFrames, int channels) {
+    public void fillBufferAfterNotes(final float[] floatBuffer, final int numberOfFrames, final int channels) {
 	createEffects();
+	
+	echo.setEchoAmount(this.midiChannel.getController(22));
+	echo.setEchoLength(this.midiChannel.getController(23));
+	echo.fillBuffer(floatBuffer, numberOfFrames, channels);
 	
 	float midiVolRatio = MidiVolume.midiVolumeToAmplitudeRatio(this.midiChannel.getController(7));
 	float reverbRatio = MidiVolume.midiVolumeToAmplitudeRatio(this.midiChannel.getController(91));
@@ -62,12 +73,14 @@ public class DefaultChannelControlMaster extends ChannelControlMaster {
 	    floatBuffer[n]*=midiVolRatio;	    
 	    reverbIn[n] = floatBuffer[n];
 	}			
-	
+		
 	freeverb.processReplace(reverbIn, reverbOut , 0, numberOfFrames*channels, channels);	
 			
 	for(int n=0;n<numberOfFrames*channels;n++) {
 	    floatBuffer[n] += reverbOut[n]*reverbRatio;	
 	}
+	
+	
     }
     
     

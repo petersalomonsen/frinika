@@ -18,7 +18,7 @@ public class CodeSynthProvider extends MidiDeviceProvider {
     static final class CodeSynthProviderInfo extends Info {
 
         public CodeSynthProviderInfo() {
-            super("CodeSynth Provider","frinika.com",
+            super("CodeSynth","frinika.com",
                     "Javasound mididevice provider for CodeSynth","0.1");
         }
 
