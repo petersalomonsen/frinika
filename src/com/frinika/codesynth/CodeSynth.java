@@ -53,7 +53,7 @@ public class CodeSynth implements Synthesizer,Mixer,SynthContext {
     transient AudioFormat format;    
 
     private transient HashMap<CodeSynthPatch,Instrument> patchInstrumentMap = new HashMap<CodeSynthPatch,Instrument>();
-    private transient HashMap<CodeSynthPatch,ChannelControlMaster> channelControlMasterMap = new HashMap<CodeSynthPatch,ChannelControlMaster>();
+    private transient HashMap<CodeSynthPatch,Class> channelControlMasterMap = new HashMap<CodeSynthPatch,Class>();
 
     transient TargetDataLine targetDataLine;
     
@@ -82,16 +82,10 @@ public class CodeSynth implements Synthesizer,Mixer,SynthContext {
     public boolean loadInstrument(Instrument instrument) {
         patchInstrumentMap.put(new CodeSynthPatch(instrument.getPatch()),instrument);
 
-        for(SoundbankResource sbr : instrument.getSoundbank().getResources())
-        {
-            if(ChannelControlMaster.class.isAssignableFrom(sbr.getDataClass()))
-                try {
-                channelControlMasterMap.put(new CodeSynthPatch(instrument.getPatch()), (ChannelControlMaster) sbr.getDataClass().newInstance());
-            } catch (InstantiationException ex) {
-                Logger.getLogger(CodeSynth.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IllegalAccessException ex) {
-                Logger.getLogger(CodeSynth.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        for(SoundbankResource sbr : instrument.getSoundbank().getResources()) {
+            if(ChannelControlMaster.class.isAssignableFrom(sbr.getDataClass())) {
+                channelControlMasterMap.put(new CodeSynthPatch(instrument.getPatch()), sbr.getDataClass());		
+	    }
         }
         return true;
     }
@@ -118,8 +112,9 @@ public class CodeSynth implements Synthesizer,Mixer,SynthContext {
     }
 
     public boolean loadAllInstruments(Soundbank soundbank) {
-        for(Instrument instrument : soundbank.getInstruments())
+        for(Instrument instrument : soundbank.getInstruments()) {
             loadInstrument(instrument);
+	}
         return true;
     }
 
@@ -461,7 +456,7 @@ public class CodeSynth implements Synthesizer,Mixer,SynthContext {
         return patchInstrumentMap.get(patch);
     }
 
-    final ChannelControlMaster getChannelControlMasterByPatch(CodeSynthPatch patch) {
+    final Class getChannelControlMasterByPatch(CodeSynthPatch patch) {
         return channelControlMasterMap.get(patch);
     }
 

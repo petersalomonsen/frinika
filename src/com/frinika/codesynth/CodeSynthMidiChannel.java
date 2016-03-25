@@ -24,6 +24,8 @@ public class CodeSynthMidiChannel implements MidiChannel {
     CodeSynthPatch patch = new CodeSynthPatch(0,0);
     CodeSynth synth;
 
+    ChannelControlMaster ccm = null;
+    
     int pitchBend = 8192;
     
     int[] controllers = new int[128];
@@ -180,7 +182,17 @@ public class CodeSynthMidiChannel implements MidiChannel {
 
     void fillBuffer(float[] floatBuffer,int numberOfFrames,int channels)
     {
-        ChannelControlMaster ccm = synth.getChannelControlMasterByPatch(patch);
+	Class channelControlMasterClass = synth.getChannelControlMasterByPatch(patch);
+	if(ccm==null || !ccm.getClass().equals(channelControlMasterClass)) {
+	    try {
+		ccm = (ChannelControlMaster) channelControlMasterClass.newInstance();
+	    } catch (InstantiationException ex) {
+		Logger.getLogger(CodeSynthMidiChannel.class.getName()).log(Level.SEVERE, null, ex);
+	    } catch (IllegalAccessException ex) {
+		Logger.getLogger(CodeSynthMidiChannel.class.getName()).log(Level.SEVERE, null, ex);
+	    }
+	}
+	
 	if(ccm!=null) {
 	    ccm.setMidiChannel(this);
 	}

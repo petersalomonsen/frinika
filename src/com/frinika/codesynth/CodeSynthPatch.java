@@ -23,16 +23,13 @@ class CodeSynthPatch extends Patch {
 
     @Override
     public boolean equals(Object obj) {
-        if(Patch.class.isAssignableFrom(obj.getClass()) &&
-                ((Patch)obj).getBank()==getBank() &&
-                ((Patch)obj).getProgram()==getProgram())
-                        return true;
-        else
-            return false;
+	return Patch.class.isAssignableFrom(obj.getClass()) &&
+		((Patch)obj).getBank()==getBank() &&
+		((Patch)obj).getProgram()==getProgram();
     }
 
     @Override
     public int hashCode() {
-        return getProgram() + getBank() * 128;
+        return 1 + getProgram() + getBank() * 128;
     }    
 }

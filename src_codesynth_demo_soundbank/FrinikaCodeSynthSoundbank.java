@@ -111,8 +111,9 @@ public class FrinikaCodeSynthSoundbank extends CodeSynthSoundbank {
     }
     
     public FrinikaCodeSynthSoundbank() {
-	this.addInstrument(new CodeSynthInstrument(this, new Patch(0,1),"Sawtooth",SawToothNote.class));
+	
 	this.addInstrument(new CodeSynthInstrument(this, new Patch(0,0),"Sine",SineWaveNote.class));
+	this.addInstrument(new CodeSynthInstrument(this, new Patch(0,1),"Sawtooth",SawToothNote.class));
 	this.addInstrument(new CodeSynthInstrument(this, new Patch(0,2),"Fantasy",FantasyNote.class));
 	this.addInstrument(new CodeSynthInstrument(this, new Patch(0,3),"Drumkit",Drumkit.class));
     }
