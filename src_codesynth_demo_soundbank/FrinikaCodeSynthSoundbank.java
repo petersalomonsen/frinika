@@ -82,7 +82,7 @@ public class FrinikaCodeSynthSoundbank extends CodeSynthSoundbank {
         }
     }
     
-    public static class Drumkit extends ChromaticScaleNote {
+    public static class Noise extends ChromaticScaleNote {
 
 	boolean released = false;
         float att = 0.5f;
@@ -110,12 +110,47 @@ public class FrinikaCodeSynthSoundbank extends CodeSynthSoundbank {
         }
     }
     
+    public static class Kick extends ChromaticScaleNote {
+
+	double radians = 0;
+        double t = 10.0;
+        
+	boolean released = false;
+        float att = 0.5f;
+        
+        @Override
+        public void release(int velocity) {
+            released = true;
+        }
+	
+        @Override
+        public void fillFrame(float[] floatBuffer, int bufferPos, int channels) {
+        
+	    radians += (1.0/t);
+	    
+	    t+=0.03;
+	    	    
+            floatBuffer[bufferPos] += (float) ((Math.sin(radians) * (0.7+0.3*velocity/127f) * att));
+            floatBuffer[bufferPos+1] += (float)((Math.sin(radians) * (0.7+0.3*velocity/127f) * att));
+	    
+	    if(t>1000.0)
+            {
+                att-=0.001f;
+                if(att<0)
+                {
+                    super.release(0);
+                }
+            }
+        }
+    }
+    
     public FrinikaCodeSynthSoundbank() {
 	
 	this.addInstrument(new CodeSynthInstrument(this, new Patch(0,0),"Sine",SineWaveNote.class));
 	this.addInstrument(new CodeSynthInstrument(this, new Patch(0,1),"Sawtooth",SawToothNote.class));
 	this.addInstrument(new CodeSynthInstrument(this, new Patch(0,2),"Fantasy",FantasyNote.class));
-	this.addInstrument(new CodeSynthInstrument(this, new Patch(0,3),"Drumkit",Drumkit.class));
+	this.addInstrument(new CodeSynthInstrument(this, new Patch(0,3),"Noise",Noise.class));
+	this.addInstrument(new CodeSynthInstrument(this, new Patch(0,4),"Kick",Kick.class));
     }
        
 }

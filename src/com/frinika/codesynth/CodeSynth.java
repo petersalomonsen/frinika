@@ -431,10 +431,20 @@ public class CodeSynth implements Synthesizer,Mixer,SynthContext {
     }
 
 
+    Exception previousFillBufferException;
+    
     private void fillBuffer(float[] floatBuffer,int numberOfFrames,int channels)
     {
-        for(CodeSynthMidiChannel mc : midiChannels)
-            mc.fillBuffer(floatBuffer,numberOfFrames,channels);
+        for(CodeSynthMidiChannel mc : midiChannels) {
+            try {
+		mc.fillBuffer(floatBuffer,numberOfFrames,channels);
+	    } catch (Exception ex) {
+		if(!ex.equals(previousFillBufferException)) {
+		    Logger.getLogger(CodeSynth.class.getName()).log(Level.SEVERE, null, ex);
+		    previousFillBufferException = ex;
+		}
+	    }
+	}
     }
 
     private void writeObject(java.io.ObjectOutputStream out)

@@ -180,17 +180,11 @@ public class CodeSynthMidiChannel implements MidiChannel {
         finishedNotes.add(note);
     }
 
-    void fillBuffer(float[] floatBuffer,int numberOfFrames,int channels)
+    void fillBuffer(float[] floatBuffer,int numberOfFrames,int channels) throws Exception
     {
 	Class channelControlMasterClass = synth.getChannelControlMasterByPatch(patch);
-	if(ccm==null || !ccm.getClass().equals(channelControlMasterClass)) {
-	    try {
-		ccm = (ChannelControlMaster) channelControlMasterClass.newInstance();
-	    } catch (InstantiationException ex) {
-		Logger.getLogger(CodeSynthMidiChannel.class.getName()).log(Level.SEVERE, null, ex);
-	    } catch (IllegalAccessException ex) {
-		Logger.getLogger(CodeSynthMidiChannel.class.getName()).log(Level.SEVERE, null, ex);
-	    }
+	if(ccm==null || !ccm.getClass().equals(channelControlMasterClass)) {	   
+	    ccm = (ChannelControlMaster) channelControlMasterClass.newInstance();	    
 	}
 	
 	if(ccm!=null) {
@@ -228,7 +222,10 @@ public class CodeSynthMidiChannel implements MidiChannel {
 	
 	// Mix into given float buffer
 	for(int n=0;n<midiChannelFloatBuffer.length;n++)
-	{
+	{	    
+	    if(!Float.isFinite(midiChannelFloatBuffer[n])) {
+		midiChannelFloatBuffer[n] = 0f;
+	    }
 	    floatBuffer[n]+=midiChannelFloatBuffer[n];
 	}
     }
