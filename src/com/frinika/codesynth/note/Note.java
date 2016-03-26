@@ -18,7 +18,13 @@ public abstract class Note {
     protected CodeSynthMidiChannel midiChannel;
 
     float sampleRate;
-
+    int elapsedFrames;
+    
+    public double getElapsedBeats() {
+	return (elapsedFrames / sampleRate) * // Seconds				
+		(midiChannel.getSynth().getTempoBPM() / 60.0); // Beats per second
+    }
+    
     public void setNoteNumber(int noteNumber) {
         this.noteNumber = noteNumber;
     }
@@ -44,8 +50,9 @@ public abstract class Note {
     public void fillBuffer(float[] floatBuffer,int numberOfFrames,int channels)
     {
         beforeFill();
-        for(int n=0;n<numberOfFrames*channels;n+=channels) {
+        for(int n=0;n<numberOfFrames*channels;n+=channels) {	    
             fillFrame(floatBuffer,n,channels);            
+	    elapsedFrames++;
         }
     }
 
