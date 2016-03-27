@@ -46,6 +46,9 @@ public abstract class Note {
         midiChannel.removePlayingNote(this);
     }
 
+    public float getSampleRate() {
+	return sampleRate;
+    }    
     
     public void fillBuffer(float[] floatBuffer,int numberOfFrames,int channels)
     {

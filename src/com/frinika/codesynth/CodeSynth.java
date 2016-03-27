@@ -5,16 +5,21 @@
 package com.frinika.codesynth;
 
 import com.frinika.codesynth.control.ChannelControlMaster;
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
+import java.security.Policy;
 import java.util.HashMap;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.sound.midi.Instrument;
+import javax.sound.midi.InvalidMidiDataException;
 import javax.sound.midi.MetaMessage;
 import javax.sound.midi.MidiChannel;
 import javax.sound.midi.MidiDevice;
@@ -28,6 +33,7 @@ import javax.sound.midi.SoundbankResource;
 import javax.sound.midi.Synthesizer;
 import javax.sound.midi.Transmitter;
 import javax.sound.midi.VoiceStatus;
+import javax.sound.midi.spi.SoundbankReader;
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.Control;
 import javax.sound.sampled.Control.Type;
@@ -41,7 +47,7 @@ import javax.sound.sampled.TargetDataLine;
  *
  * @author Peter Johan Salomonsen
  */
-public class CodeSynth implements Synthesizer,Mixer,SynthContext {
+public class CodeSynth  extends SoundbankReader implements Synthesizer,Mixer,SynthContext {
 
     static final long serialVersionUID = 1L;
 
@@ -478,6 +484,33 @@ public class CodeSynth implements Synthesizer,Mixer,SynthContext {
     public float getSampleRate() {
 	return format.getSampleRate();
     }
-    
+
+    @Override
+    public Soundbank getSoundbank(URL url) throws InvalidMidiDataException, IOException {
+        try {
+            System.out.println("Loading soundbank");
+	    
+	    Policy.setPolicy(new CodeSynthSecurityPolicy());
+	    System.setSecurityManager(new SecurityManager());
+	    
+            CodeSynthClassLoader ucl = new CodeSynthClassLoader(new URL[]{url}); 		;
+            
+            return (Soundbank) ucl.loadClass("FrinikaCodeSynthSoundbank").newInstance();
+        } catch (Exception ex) {
+            Logger.getLogger(CodeSynth.class.getName()).log(Level.SEVERE, null, ex);
+            throw new InvalidMidiDataException(ex.getMessage());
+        }
+    }
+
+    @Override
+    public Soundbank getSoundbank(InputStream stream) throws InvalidMidiDataException, IOException {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public Soundbank getSoundbank(File file) throws InvalidMidiDataException, IOException {
+        return getSoundbank(file.toURI().toURL());
+    }
+
     
 }
