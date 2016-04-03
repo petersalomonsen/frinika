@@ -183,7 +183,8 @@ public class CodeSynthMidiChannel implements MidiChannel {
     void fillBuffer(float[] floatBuffer,int numberOfFrames,int channels) throws Exception
     {
 	Class channelControlMasterClass = synth.getChannelControlMasterByPatch(patch);
-	if(ccm==null || !ccm.getClass().equals(channelControlMasterClass)) {	   
+	if(ccm==null && channelControlMasterClass!=null || 
+		(ccm!=null && channelControlMasterClass!=null && !ccm.getClass().equals(channelControlMasterClass))) {	   
 	    ccm = (ChannelControlMaster) channelControlMasterClass.newInstance();	    
 	}
 	
