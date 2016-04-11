@@ -59,6 +59,8 @@ public class FrinikaMain {
 	 */
 	public static void main(String[] args) throws Exception {
 		
+		parseArguments(args);
+		
 		prepareRunningFromSingleJar();
 		
 		configureUI();
@@ -202,6 +204,38 @@ public class FrinikaMain {
 						ioe.printStackTrace();
 					}
 				}
+			}
+		}
+	}
+	
+	public static void parseArguments(String[] args) {
+		for(int i = 0; i < args.length; i++) {
+			String arg = args[i];
+			if(arg.equalsIgnoreCase("-h") || arg.equalsIgnoreCase("--help")) {
+				System.out.println("Command usage is java -jar frinika.jar [options]");
+				System.out.println("Available options:");
+				System.out.println("-h, --help: Display this help message and exit.");
+				System.out.println("-v, --version: Display the version number and exit");
+				System.out.println("-c, --config [path]: Specifies an alternate file at 'path' to use as a config.");
+				System.out.println("\tExample: java -jar frinika.jar -c ~/Documents/Config.xml");
+				System.exit(0);
+			}
+			else if(arg.equalsIgnoreCase("-v") || arg.equalsIgnoreCase("--version")) {
+				System.out.println("Frinika version " + VersionProperties.getVersion() + " (build date " + VersionProperties.getBuildDate() + ")");
+				System.exit(0);
+			}
+			else if(arg.equalsIgnoreCase("-c") || arg.equalsIgnoreCase("--config")) {
+				i++;
+				if(i >= args.length) {
+					System.err.println("Error: a path must be specified to with the " + arg + " argument.");
+					System.exit(-1);
+				}
+				String path = args[i];
+				FrinikaConfig.setConfigLocation(path);
+			}
+			else {
+				System.out.println("Unknown argument " + arg + ", ignoring.");
+				System.out.println("For help with command line usage, please see java -jar frinika.jar --help");
 			}
 		}
 	}

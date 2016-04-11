@@ -220,9 +220,9 @@ public class FrinikaConfig {
 	
 	private static final String META_PREFIX = "_";
 	
-	private static File userFrinikaDir = new File(System.getProperty("user.home"), "frinika");
+	private static File defaultUserFrinikaDir = new File(System.getProperty("user.home"), "frinika");
 	
-	private static File configFile = new File(userFrinikaDir, CONFIG_FILE_NAME);
+	private static File configFile = new File(defaultUserFrinikaDir, CONFIG_FILE_NAME);
 
 	/**
 	 * If a field is of tpe java.io.File, this suffix denotes that a directory,
@@ -284,17 +284,10 @@ public class FrinikaConfig {
 			metasByField.put(field, meta);
 		}
 		
-		if (!userFrinikaDir.exists()) {
-			System.out.println(" Creating frinka user settings directory  " + userFrinikaDir);
-			if (!userFrinikaDir.mkdir()) {
-				System.err.println(" Failed to create " + userFrinikaDir);
-			}
-		}
-		
 		try {
 			load();
 		} catch (FileNotFoundException fnfe) {
-			System.out.println("Can't find file " + configFile.getAbsolutePath() + ". It will be created when you quit the program or change configuration options.");
+			System.out.println("Can't find find config at " + configFile.getAbsolutePath() + ". If you have not specified a custom config, it will be created when you quit the program or change configuration options.");
 		} catch (Exception e) {
 			System.err.println("error loading configuration. defaults will be used where possible.");
 			e.printStackTrace();
@@ -394,6 +387,13 @@ public class FrinikaConfig {
 	}
 	
 	public static boolean store() {
+		if (!configFile.getParentFile().exists()) {
+			if (!configFile.getParentFile().mkdirs()) {
+				System.err.println(" Failed to create " + configFile.getParent());
+				return false;
+			}
+		}
+		
 		try {
 			OutputStream w = new FileOutputStream(configFile);
 			save(w);
@@ -707,6 +707,35 @@ public class FrinikaConfig {
 	public static void setJackAutoconnect(boolean auto) {
 		_JACK_AUTO_CONNECT.set(auto);
 	}
+    
+    public static void setConfigLocation(String path) {
+        setConfigLocation(new File(path));
+    }
+    
+    public static void setConfigLocation(File file) {
+    	if(file.exists() && file.isDirectory()) {
+    		file = new File(file, CONFIG_FILE_NAME);
+    	}
+    	else {
+    		file.getParentFile().mkdirs();
+    	}
+    	
+    	if(!file.getParentFile().isDirectory()) {
+    		System.out.println("Warning: Could not create the directory path '" + file.getParent() + "'. Using default config.");
+    		return;
+    	}
+    	
+    	configFile = file;
+    	
+    	try {
+			load();
+		} catch (FileNotFoundException fnfe) {
+			System.out.println("Can't find find config at " + configFile.getAbsolutePath() + ". It will be created when you quit the program or change configuration options.");
+		} catch (Exception e) {
+			System.err.println("error loading configuration. defaults will be used where possible.");
+			e.printStackTrace();
+		}
+    }
 
 	public static String lastProjectFile() { // TODO: direct read-access to field instead
 		return LAST_PROJECT_FILENAME;
