@@ -83,13 +83,15 @@ public abstract class AbstractAudioServer implements AudioServer
     }
 
     protected void work() {
-		prevStartTimeNanos = startTimeNanos;
-        startTimeNanos = System.nanoTime();
-        client.work(bufferFrames);
-        endTimeNanos = System.nanoTime();
+	if(client!=null) {
+	    prevStartTimeNanos = startTimeNanos;
+	    startTimeNanos = System.nanoTime();
+	    client.work(bufferFrames);
+	    endTimeNanos = System.nanoTime();
 
-        // calculate client load
-        load = (float)(endTimeNanos - startTimeNanos) / (startTimeNanos - prevStartTimeNanos);
+	    // calculate client load
+	    load = (float)(endTimeNanos - startTimeNanos) / (startTimeNanos - prevStartTimeNanos);
+	}
     }
 
     public void start() {

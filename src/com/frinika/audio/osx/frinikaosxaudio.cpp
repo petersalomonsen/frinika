@@ -175,8 +175,19 @@ extern "C" void startAudioWithCallback(FrinikaAudioCallback func) {
     
     
     result = AudioUnitSetProperty(player->audioUnits[1], kAudioUnitProperty_StreamFormat, kAudioUnitScope_Output, 0, &ASBD, sizeof(ASBD));
+    
+  
+
     printf("err: %d\n", result);
     
+    UInt32 inIOBufferFrameSize = 128;
+    result = AudioUnitSetProperty(player->audioUnits[0],
+                         kAudioDevicePropertyBufferFrameSize,
+                         kAudioUnitScope_Global,
+                         0,
+                         &inIOBufferFrameSize, sizeof(UInt32));
+    
+    printf("err: %d\n", result);
     
     OSStatus status = AUGraphInitialize(player->graph);
     printf("err: %d\n", status);

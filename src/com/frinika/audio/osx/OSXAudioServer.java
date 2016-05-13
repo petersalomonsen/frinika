@@ -13,6 +13,8 @@ import com.sun.jna.Native;
 import com.sun.jna.Pointer;
 import java.util.Arrays;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import uk.org.toot.audio.core.AudioBuffer;
 import static uk.org.toot.audio.core.AudioProcess.AUDIO_OK;
 import uk.org.toot.audio.core.ChannelFormat;
@@ -28,12 +30,7 @@ import uk.org.toot.audio.server.IOAudioProcess;
 public class OSXAudioServer extends AbstractAudioServer implements ExtendedAudioServer{
     AudioBuffer audioOut;
     boolean running = false;
-
-    public OSXAudioServer() {
-	bufferFrames = 512;
-    }
-    
-    
+      
     public interface CLibrary extends Library {
 	
 	interface FrinikaAudioCallback extends Callback {
@@ -42,46 +39,45 @@ public class OSXAudioServer extends AbstractAudioServer implements ExtendedAudio
 	void startAudioWithCallback(FrinikaAudioCallback fn);
 
     }
-     
-    final static double freq = 440.0;
-    static double phaseStep = (freq / 44100.) * (Math.PI * 2.);
-    static double currentPhase = 0;
-    static long lastt = 0;
-    
+         
     CLibrary lib = (CLibrary)Native.loadLibrary("/Users/peter/Library/Developer/Xcode/DerivedData/frinikaosxaudio-bqwtuyohscfhsrgdhmbfrlhgprbm/Build/Products/Debug/libfrinikaosxaudio.dylib", CLibrary.class);
     final CLibrary.FrinikaAudioCallback fn = new CLibrary.FrinikaAudioCallback() {
 	public final void invoke(int inNumberFrames,int inBusNumber,Pointer bufferLeft,Pointer bufferRight) {		
-	    bufferFrames = inNumberFrames;		
-	    work();
-
-	    if(audioOut.getSampleCount()==inNumberFrames) {
-		//System.out.println(inNumberFrames+" "+inBusNumber+" "+audioOut.getSampleCount()+" "+audioOut.getChannelCount());
-		for(int i = 0; i < inNumberFrames; i++) {
-		    bufferLeft.setFloat(i*Native.getNativeSize(Float.TYPE), (float) audioOut.getChannel(0)[i]);		    		    
-		    bufferRight.setFloat(i*Native.getNativeSize(Float.TYPE), (float) audioOut.getChannel(1)[i]);		    		    
-		        		    
-		}
-	    } else {
+	    if(bufferFrames==0) {
+		bufferFrames = inNumberFrames;	
 		for(int i = 0; i < inNumberFrames; i++) {
 		    bufferLeft.setFloat(i*Native.getNativeSize(Float.TYPE), 0);		    		    
 		    bufferRight.setFloat(i*Native.getNativeSize(Float.TYPE), 0);		    		    
 		}
-	    }
-
-/*	    for(int i = 0; i < inNumberFrames; i++) {
-		buffer.setFloat(i*Native.getNativeSize(Float.TYPE), (float) Math.sin(currentPhase));		    
-		currentPhase += phaseStep;
-	    }		*/
+	    } else {
+		try {
+		    work();		
+		    for(int i = 0; i < inNumberFrames; i++) {
+			bufferLeft.setFloat(i*Native.getNativeSize(Float.TYPE), (float) audioOut.getChannel(0)[i]);		    		    
+			bufferRight.setFloat(i*Native.getNativeSize(Float.TYPE), (float) audioOut.getChannel(1)[i]);		    		    
+		    }		
+		} catch(Exception e) {}
+	    }	    
 	}
     };  
-    
+
+    public OSXAudioServer() {    
+	lib.startAudioWithCallback(fn);
+	while(bufferFrames==0) {
+	    try {
+		Thread.sleep(10);
+	    } catch (InterruptedException ex) {
+		Logger.getLogger(OSXAudioServer.class.getName()).log(Level.SEVERE, null, ex);
+	    }
+	}
+    }
     
     @Override
     protected void startImpl() {
 	if(running) {
 	    return;
 	} 
-	lib.startAudioWithCallback(fn);
+	
 	System.out.println("OSX Audio started");
 	running = true;
     }

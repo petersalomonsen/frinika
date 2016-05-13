@@ -37,7 +37,7 @@ public class JNATest {
 	
 	CLibrary.FrinikaAudioCallback fn = new CLibrary.FrinikaAudioCallback() {
 	    public final void invoke(int inNumberFrames,int inBusNumber,Pointer bufferLeft ,Pointer bufferRight) {
-		
+		System.out.println(inNumberFrames);
 		for(int i = 0; i < inNumberFrames; i++) {
 		    bufferLeft.setFloat(i*Native.getNativeSize(Float.TYPE), (float) Math.sin(currentPhase));		    
 		    bufferRight.setFloat(i*Native.getNativeSize(Float.TYPE), (float) Math.sin(currentPhase));		    
