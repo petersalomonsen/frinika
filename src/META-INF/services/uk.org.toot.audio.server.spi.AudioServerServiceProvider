@@ -1,4 +1,4 @@
-com.frinika.audio.frogdisco.FrogDiscoAudioServerServiceProvider
+com.frinika.audio.osx.OSXAudioServerServiceProvider
 com.frinika.audio.jnajack.JackTootAudioServerServiceProvider
 uk.org.toot.audio.server.TootAudioServerServiceProvider
 com.frinika.toot.FrinikaAudioServerServiceProvider
