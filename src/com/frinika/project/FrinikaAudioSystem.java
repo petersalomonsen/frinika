@@ -95,7 +95,7 @@ public class FrinikaAudioSystem {
 			// .getPropertyBoolean("multiplexed_audio");
 
 			if (!multiplexIO) {
-			    if(System.getProperty("os.name").contains("Mac")) {
+			    if(System.getProperty("os.name").contains("NOTREADYForMac")) {
 				realAudioServer = new OSXAudioServer();
 			    } else {
 				try {
