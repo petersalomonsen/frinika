@@ -21,7 +21,7 @@ public class JNATest {
     public interface CLibrary extends Library {
 	
 	interface FrinikaAudioCallback extends Callback {
-	    void invoke(int inNumberFrames,int inBusNumber,Pointer buffer);
+	    void invoke(int inNumberFrames,int inBusNumber,Pointer bufferLeft,Pointer bufferRight);
 	}
 	void startAudioWithCallback(FrinikaAudioCallback fn);
 
@@ -36,10 +36,11 @@ public class JNATest {
 
 	
 	CLibrary.FrinikaAudioCallback fn = new CLibrary.FrinikaAudioCallback() {
-	    public final void invoke(int inNumberFrames,int inBusNumber,Pointer buffer) {
+	    public final void invoke(int inNumberFrames,int inBusNumber,Pointer bufferLeft ,Pointer bufferRight) {
 		
 		for(int i = 0; i < inNumberFrames; i++) {
-		    buffer.setFloat(i*Native.getNativeSize(Float.TYPE), (float) Math.sin(currentPhase));		    
+		    bufferLeft.setFloat(i*Native.getNativeSize(Float.TYPE), (float) Math.sin(currentPhase));		    
+		    bufferRight.setFloat(i*Native.getNativeSize(Float.TYPE), (float) Math.sin(currentPhase));		    
 		    currentPhase += phaseStep;
 		}
 		//System.out.println((System.currentTimeMillis()-lastt)+"");

@@ -37,7 +37,7 @@ public class OSXAudioServer extends AbstractAudioServer implements ExtendedAudio
     public interface CLibrary extends Library {
 	
 	interface FrinikaAudioCallback extends Callback {
-	    void invoke(int inNumberFrames,int inBusNumber,Pointer buffer);
+	    void invoke(int inNumberFrames,int inBusNumber,Pointer bufferLeft,Pointer bufferRight);
 	}
 	void startAudioWithCallback(FrinikaAudioCallback fn);
 
@@ -50,20 +50,21 @@ public class OSXAudioServer extends AbstractAudioServer implements ExtendedAudio
     
     CLibrary lib = (CLibrary)Native.loadLibrary("/Users/peter/Library/Developer/Xcode/DerivedData/frinikaosxaudio-bqwtuyohscfhsrgdhmbfrlhgprbm/Build/Products/Debug/libfrinikaosxaudio.dylib", CLibrary.class);
     final CLibrary.FrinikaAudioCallback fn = new CLibrary.FrinikaAudioCallback() {
-	public final void invoke(int inNumberFrames,int inBusNumber,Pointer buffer) {		
+	public final void invoke(int inNumberFrames,int inBusNumber,Pointer bufferLeft,Pointer bufferRight) {		
 	    bufferFrames = inNumberFrames;		
 	    work();
 
 	    if(audioOut.getSampleCount()==inNumberFrames) {
 		//System.out.println(inNumberFrames+" "+inBusNumber+" "+audioOut.getSampleCount()+" "+audioOut.getChannelCount());
 		for(int i = 0; i < inNumberFrames; i++) {
-		    buffer.setFloat(i*Native.getNativeSize(Float.TYPE), (float) audioOut.getChannel(0)[i]);		    		    
-		    //buffer.setFloat(i*Native.getNativeSize(Float.TYPE), 0);	
-		    //buffer.setFloat(i*Native.getNativeSize(Float.TYPE), 0);		    		    
+		    bufferLeft.setFloat(i*Native.getNativeSize(Float.TYPE), (float) audioOut.getChannel(0)[i]);		    		    
+		    bufferRight.setFloat(i*Native.getNativeSize(Float.TYPE), (float) audioOut.getChannel(1)[i]);		    		    
+		        		    
 		}
 	    } else {
 		for(int i = 0; i < inNumberFrames; i++) {
-		    buffer.setFloat(i*Native.getNativeSize(Float.TYPE), 0);		    		    
+		    bufferLeft.setFloat(i*Native.getNativeSize(Float.TYPE), 0);		    		    
+		    bufferRight.setFloat(i*Native.getNativeSize(Float.TYPE), 0);		    		    
 		}
 	    }
 
