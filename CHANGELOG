@@ -1,6 +1,14 @@
 Userland change log (see CHANGELOG.developer for internals)
 
-2015-XX-XX Version 0.7.6
+2016-XX-XX Version 0.8.0
+----------------------------------------------------------------------------------------------
+
+- (Scribblemaniac) Command line options for custom config location 
+- (PJS) Experimental low latency audio for Mac OSX by using Audio Unit -DuseOSXAudioServer=true
+- (PJS) Experimental CodeSynth for creating custom soundbanks from Java code
+- (PJS) Fixed that export wav didn't work when using Jack
+
+2015-10-24 Version 0.7.6
 ----------------------------------------------------------------------------------------------
 
 - (PJS) Added possibility to set time in tempo change list (and previous tempo will be adjusted thereafter).
