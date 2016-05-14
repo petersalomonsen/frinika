@@ -11,6 +11,9 @@ import com.sun.jna.Callback;
 import com.sun.jna.Library;
 import com.sun.jna.Native;
 import com.sun.jna.Pointer;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
 import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Level;
@@ -39,30 +42,51 @@ public class OSXAudioServer extends AbstractAudioServer implements ExtendedAudio
 	void startAudioWithCallback(FrinikaAudioCallback fn);
 
     }
-         
-    CLibrary lib = (CLibrary)Native.loadLibrary("/Users/peter/Library/Developer/Xcode/DerivedData/frinikaosxaudio-bqwtuyohscfhsrgdhmbfrlhgprbm/Build/Products/Debug/libfrinikaosxaudio.dylib", CLibrary.class);
-    final CLibrary.FrinikaAudioCallback fn = new CLibrary.FrinikaAudioCallback() {
-	public final void invoke(int inNumberFrames,int inBusNumber,Pointer bufferLeft,Pointer bufferRight) {		
-	    if(bufferFrames==0) {
-		bufferFrames = inNumberFrames;	
-		for(int i = 0; i < inNumberFrames; i++) {
-		    bufferLeft.setFloat(i*Native.getNativeSize(Float.TYPE), 0);		    		    
-		    bufferRight.setFloat(i*Native.getNativeSize(Float.TYPE), 0);		    		    
-		}
-	    } else {
-		try {
-		    work();		
-		    for(int i = 0; i < inNumberFrames; i++) {
-			bufferLeft.setFloat(i*Native.getNativeSize(Float.TYPE), (float) audioOut.getChannel(0)[i]);		    		    
-			bufferRight.setFloat(i*Native.getNativeSize(Float.TYPE), (float) audioOut.getChannel(1)[i]);		    		    
-		    }		
-		} catch(Exception e) {}
-	    }	    
-	}
-    };  
 
-    public OSXAudioServer() {    
+    final CLibrary lib;
+    final CLibrary.FrinikaAudioCallback fn;
+    
+    public OSXAudioServer() throws Exception  {   
+	
+	String nativeLibName = "libfrinikaosxaudio.dylib";
+	InputStream is = OSXAudioServer.class.getResourceAsStream(nativeLibName);
+	
+	File tmpLibFile = new File(System.getProperty("java.io.tmpdir"),nativeLibName);
+	System.out.println("Extracting libfrinikaosxaudio.dylib native library to "+tmpLibFile.getAbsolutePath());
+	FileOutputStream fos = new FileOutputStream(tmpLibFile);
+	byte[] buf = new byte[1024];
+	int len = is.read(buf);
+	while(len>-1)
+	{
+	    fos.write(buf,0,len);
+	    len = is.read(buf);
+	}
+	fos.close();
+
+	lib = (CLibrary)Native.loadLibrary(tmpLibFile.getAbsolutePath(), CLibrary.class);
+	fn = new CLibrary.FrinikaAudioCallback() {
+	    public final void invoke(int inNumberFrames,int inBusNumber,Pointer bufferLeft,Pointer bufferRight) {		
+		if(bufferFrames==0) {
+		    bufferFrames = inNumberFrames;	
+		    for(int i = 0; i < inNumberFrames; i++) {
+			bufferLeft.setFloat(i*Native.getNativeSize(Float.TYPE), 0);		    		    
+			bufferRight.setFloat(i*Native.getNativeSize(Float.TYPE), 0);		    		    
+		    }
+		} else {
+		    try {
+			work();		
+			for(int i = 0; i < inNumberFrames; i++) {
+			    bufferLeft.setFloat(i*Native.getNativeSize(Float.TYPE), (float) audioOut.getChannel(0)[i]);		    		    
+			    bufferRight.setFloat(i*Native.getNativeSize(Float.TYPE), (float) audioOut.getChannel(1)[i]);		    		    
+			}		
+		    } catch(Exception e) {}
+		}	    
+	    }
+	};  
+	
 	lib.startAudioWithCallback(fn);
+	
+	// Wait for number of bufferframes to be set
 	while(bufferFrames==0) {
 	    try {
 		Thread.sleep(10);
