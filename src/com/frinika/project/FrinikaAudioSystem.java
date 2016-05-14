@@ -30,7 +30,6 @@
 
 package com.frinika.project;
 
-import com.frinika.audio.frogdisco.FrogDiscoAudioServer;
 import com.frinika.audio.jnajack.JackTootAudioServer;
 import com.frinika.audio.osx.OSXAudioServer;
 import java.util.List;

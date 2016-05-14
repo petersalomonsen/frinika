@@ -23,7 +23,7 @@
  */
 package com.frinika.audio.jnajack;
 
-import com.frinika.audio.frogdisco.FrogDiscoAudioServer;
+
 import java.util.Properties;
 import uk.org.toot.audio.id.ProviderId;
 import uk.org.toot.audio.server.AudioServer;
