@@ -30,6 +30,7 @@
 
 package com.frinika.project;
 
+import com.frinika.audio.asio.AsioAudioServer;
 import com.frinika.audio.jnajack.JackTootAudioServer;
 import com.frinika.audio.osx.OSXAudioServer;
 import java.util.List;
@@ -96,6 +97,8 @@ public class FrinikaAudioSystem {
 			if (!multiplexIO) {
 			    if(System.getProperty("os.name").contains("Mac") && "true".equals(System.getProperty("useOSXAudioServer"))) {
 				realAudioServer = new OSXAudioServer();
+			    } else if(System.getProperty("os.name").contains("Windows") && "true".equals(System.getProperty("useASIOAudioServer"))) {
+				realAudioServer = new AsioAudioServer();
 			    } else {
 				try {
 				    // Try Jack first
