@@ -62,7 +62,7 @@ public class AudioWavReader {
 		readChunkHeader(fis);
 		Integer dataChunkSize = null;
 		
-		while (bytecount < riffdata) { // check for chunks inside RIFF data
+		while (bytecount < (riffdata-1)) { // check for chunks inside RIFF data
 			// area.
 			sfield = "";
 			for (int i = 1; i <= 4; i++)
