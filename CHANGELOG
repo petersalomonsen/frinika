@@ -5,8 +5,10 @@ Userland change log (see CHANGELOG.developer for internals)
 
 - (Scribblemaniac) Command line options for custom config location 
 - (PJS) Experimental low latency audio for Mac OSX by using Audio Unit -DuseOSXAudioServer=true
+- (PJS) Experimental low latency audio for Windows by using ASIO -DuseASIOAudioServer=true
 - (PJS) Experimental CodeSynth for creating custom soundbanks from Java code
 - (PJS) Fixed that export wav didn't work when using Jack
+- (PJS) Eclipse project settings in sync with NetBeans project settings (so that also Eclipse can be used as an IDE for developing)
 
 2015-10-24 Version 0.7.6
 ----------------------------------------------------------------------------------------------
