@@ -53,6 +53,8 @@ import java.util.Map.Entry;
  */
 public class TimeSignatureList implements Serializable {
 
+    public static final long serialVersionUID = -8923231671375097352L;
+    
     transient private TreeMap<Integer, TimeSignatureEvent> eventByBar;
     private Vector<TimeSignatureEvent> list;
     transient private boolean dirty = true;
