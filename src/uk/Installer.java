@@ -1,6 +1,7 @@
 /* ZipSelfExtractor.java */
 /* Author: Z.S. Jin
    Updates: John D. Mitchell */
+package uk;
 
 import java.io.*;
 import java.net.*;
