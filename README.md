@@ -1,6 +1,7 @@
 # Frinika
 
-Frinika is a free, complete music workstation software for Linux, Windows, Mac OSX and other operating systems running Java. It features sequencer, soft-synths, realtime effects and audio recording.
+Frinika is a free, complete music workstation software for Linux, Windows, Mac OSX and other operating systems running Java. 
+It features sequencer, soft-synths, realtime effects and audio recording.
 
 Some of the features:
 

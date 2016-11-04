@@ -1,42 +1,36 @@
 Quick instructions for install & run (any operating system):
 -------------------------------------------------------------
 
-Make sure that you have Java 1.5 or greater installed (http://www.java.com)
+Remember that this is free software with absolutely NO WARRANTY and no responsibility
+for damaging your system or speakers or hearing or anything else. 
 
-Windows users: just launch frinika.exe
+Use at own risk and keep volume control down before launching or starting to 
+play anything. Otherwise you may experience loud sound or noise that may 
+damage your speakers or even your hearing.
 
-alternatively (for all operating systems (also windows))
+Before proceeding you should read and accept the GNU General Public License which is 
+in the LICENSE.md file and you can also read more here: 
 
-Doubleclick frinika.jar (if your system support it), or run Frinika from command line by typing: java -jar frinika.jar 
+https://www.gnu.org/licenses/gpl-2.0.html
 
-Remember to check out example projects to see/hear how things can be done with Frinika:
+Make sure that you have Java 8 or greater installed (http://www.java.com)
 
-http://sourceforge.net/project/showfiles.php?group_id=131823&package_id=148904
+If you've downloaded this as a zip file, remember to extract all the files.
 
-(both 0.2.0 example projects and the earlier example projects will work.)
+From the extracted folder either launch frinika.jar from your desktop, or enter
+a command prompt terminal and type:
 
-If you want to run Frinika with support for more memory than 64MB, try this:
+java -jar frinika.jar
 
-java -Xmx256m -jar frinika.jar
+If you want lowest latency possible you can try the following:
 
-(Or replace 256 with the amount of megabytes that suits you).
+Windows users:
+java -DuseASIOAudioServer=true -jar frinika.jar 
 
-If you get problems with glitches then try turning on incremental garbage collection.
+Linux users:
+Simply start Jack before launching Frinika
 
-java -Xmx256m -Xincgc -jar frinika.jar 
+Mac OSX (warning: Sometimes using this option causes a terrible noise,
+so turn the volume down before launching. If it happens, try restarting.)
 
-
-I have found with my dual processor machine this helps. 
-
-java -Xmx512m -XX:+UseParNewGC frinika.jar
-
-(please report if you find this helps).
-
-For jack using java 1.6 you need to add -Xss20m to increase the stack size for the native thread.  
-
-
-SuSE linux users - get packages here:
-http://sourceforge.net/project/showfiles.php?group_id=131823&package_id=181208
-
-MAC users: If you want to connect a MIDI keyboard - you should download Plumstone. (http://www.mandolane.co.uk)
-
+java -DuseOSXAudioServer=true -jar frinika.jar 

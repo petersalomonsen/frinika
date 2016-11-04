@@ -25,6 +25,12 @@
                 <include name="*.txt" />
             </fileset>
         </copy>
+	<copy todir="${dist.dir}/" overwrite="true">
+	    <fileset dir=".">
+		<include name="README.txt" />
+		<include name="LICENSE.md" />
+	    </fileset>
+	</copy>
         
     </target>
     <!--
