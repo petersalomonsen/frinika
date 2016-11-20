@@ -52,16 +52,23 @@ typedef struct MyAUGraphPlayer
 } MyAUGraphPlayer;
 
 double currentPhase = 0;
-OSStatus SineWaveRenderCallback(void * inRefCon,
+OSStatus FrinikaRenderCallback(void * inRefCon,
                                 AudioUnitRenderActionFlags * ioActionFlags,
                                 const AudioTimeStamp * inTimeStamp,
                                 UInt32 inBusNumber,
                                 UInt32 inNumberFrames,
                                 AudioBufferList * ioData)
-{
+{        
+    for(int channel=0;channel<2;channel++) {
+	for(int frame=0;frame<inNumberFrames;frame++) {
+	    // Fill with zeros so that we don't get unwanted noise if the callback doesn't do its job
+	    ((Float32 * )ioData->mBuffers[channel].mData)[frame] = 0.0;
+	}
+    }
     
-    frinikaAudioCallback(inNumberFrames,inBusNumber,(Float32 * )ioData->mBuffers[0].mData,(Float32 * )ioData->mBuffers[1].mData);
-    
+    frinikaAudioCallback(inNumberFrames,inBusNumber,
+	    (Float32 * )ioData->mBuffers[0].mData,
+	    (Float32 * )ioData->mBuffers[1].mData);
     
     return noErr;
 }
@@ -171,7 +178,7 @@ extern "C" void startAudioWithCallback(FrinikaAudioCallback func) {
     for (UInt32 i = 0; i <= numbuses; ++i) {
         // setup render callback struct
         AURenderCallbackStruct rcbs;
-        rcbs.inputProc = &SineWaveRenderCallback;
+        rcbs.inputProc = &FrinikaRenderCallback;
         rcbs.inputProcRefCon = &player;
         
         printf("set AUGraphSetNodeInputCallback\n");
