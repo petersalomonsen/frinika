@@ -1,5 +1,11 @@
 Userland change log (see CHANGELOG.developer for internals)
 
+2016-11-21 Version 0.8.1
+----------------------------------------------------------------------------------------------
+- (PJS) Fixed that Midi multi cast devices from RasmusDSP caused slow startup on OSX. 
+- (PJS) OSX audio improvements: Fixed glitches caused by Java garbage collection
+- (PJS) OSX audio improvements: Bugfix for noise that could occur on startup
+
 2016-11-04 Version 0.8.0
 ----------------------------------------------------------------------------------------------
 
