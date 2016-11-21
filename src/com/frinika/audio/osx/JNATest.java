@@ -27,8 +27,10 @@ package com.frinika.audio.osx;
 import com.sun.jna.Callback;
 import com.sun.jna.Library;
 import com.sun.jna.Native;
-import com.sun.jna.Platform;
 import com.sun.jna.Pointer;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
 
 /**
  *
@@ -37,39 +39,50 @@ import com.sun.jna.Pointer;
 public class JNATest {
     
 
-    public interface CLibrary extends Library {
+    public static interface CLibrary extends Library {
 	
-	interface FrinikaAudioCallback extends Callback {
+	static interface FrinikaAudioCallback extends Callback {
 	    void invoke(int inNumberFrames,int inBusNumber,Pointer bufferLeft,Pointer bufferRight);
 	}
 	void startAudioWithCallback(FrinikaAudioCallback fn);
 
     }
+    static Thread currentThread;
     
     static double frequency = 500.0;
     static double phaseStep = (frequency / 44100.) * (Math.PI * 2.);
     static double currentPhase = 0;
     static long lastt = 0;
     public static void main(String[] args) throws Exception {
-	CLibrary lib = (CLibrary)Native.loadLibrary("/Users/peter/Library/Developer/Xcode/DerivedData/frinikaosxaudio-bqwtuyohscfhsrgdhmbfrlhgprbm/Build/Products/Debug/libfrinikaosxaudio.dylib", CLibrary.class);
-
+	String nativeLibName = "libfrinikaosxaudio.dylib";
+	InputStream is = OSXAudioServer.class.getResourceAsStream(nativeLibName);
 	
-	CLibrary.FrinikaAudioCallback fn = new CLibrary.FrinikaAudioCallback() {
-	    public final void invoke(int inNumberFrames,int inBusNumber,Pointer bufferLeft ,Pointer bufferRight) {
-		System.out.println(inNumberFrames);
-		for(int i = 0; i < inNumberFrames; i++) {
-		    bufferLeft.setFloat(i*Native.getNativeSize(Float.TYPE), (float) Math.sin(currentPhase));		    
-		    bufferRight.setFloat(i*Native.getNativeSize(Float.TYPE), (float) Math.sin(currentPhase));		    
-		    currentPhase += phaseStep;
-		}
-		//System.out.println((System.currentTimeMillis()-lastt)+"");
-		lastt = System.currentTimeMillis();
-		//System.out.println(inBusNumber+" "+inBusNumber+" "+buffer);
-	    }
+	File tmpLibFile = new File(System.getProperty("java.io.tmpdir"),nativeLibName);
+	System.out.println("Extracting libfrinikaosxaudio.dylib native library to "+tmpLibFile.getAbsolutePath());
+	FileOutputStream fos = new FileOutputStream(tmpLibFile);
+	byte[] buf = new byte[1024];
+	int len = is.read(buf);
+	while(len>-1)
+	{
+	    fos.write(buf,0,len);
+	    len = is.read(buf);
+	}
+	fos.close();
+
+	CLibrary lib = (CLibrary)Native.loadLibrary(tmpLibFile.getAbsolutePath(), CLibrary.class);
+	
+	final CLibrary.FrinikaAudioCallback fn = (int inNumberFrames, int inBusNumber, Pointer bufferLeft, Pointer bufferRight) -> {
+	    if (currentThread != Thread.currentThread()) { 
+		currentThread = Thread.currentThread(); 
+		Native.detach(false); 
+	      } 
+	   for(int i = 0; i < inNumberFrames; i++) {
+		bufferLeft.setFloat(i*Native.getNativeSize(Float.TYPE), (float) Math.sin(currentPhase));
+		bufferRight.setFloat(i*Native.getNativeSize(Float.TYPE), (float) Math.sin(currentPhase));
+		currentPhase += phaseStep;
+	    }	    
 	};  
 	lib.startAudioWithCallback(fn);
-
-	//lib.DoSomething();
 	
 	System.in.read();
 	

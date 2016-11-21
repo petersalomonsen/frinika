@@ -53,6 +53,8 @@ public class OSXAudioServer extends AbstractAudioServer implements ExtendedAudio
     AudioBuffer audioOut;
     boolean running = false;
       
+    Thread audioThread;
+    
     public interface CLibrary extends Library {
 	
 	interface FrinikaAudioCallback extends Callback {
@@ -83,24 +85,25 @@ public class OSXAudioServer extends AbstractAudioServer implements ExtendedAudio
 	fos.close();
 
 	lib = (CLibrary)Native.loadLibrary(tmpLibFile.getAbsolutePath(), CLibrary.class);
-	fn = new CLibrary.FrinikaAudioCallback() {
-	    public final void invoke(int inNumberFrames,int inBusNumber,Pointer bufferLeft,Pointer bufferRight) {		
-		if(bufferFrames==0) {
-		    bufferFrames = inNumberFrames;	
+	final int floatNativeSize = Native.getNativeSize(Float.TYPE);
+	fn = (int inNumberFrames, int inBusNumber, Pointer bufferLeft, Pointer bufferRight) -> {
+	    // Audio callback function
+	    if(bufferFrames==0) {
+		bufferFrames = inNumberFrames;		
+	    } else {
+		work();
+		if(audioOut!=null) {
 		    for(int i = 0; i < inNumberFrames; i++) {
-			bufferLeft.setFloat(i*Native.getNativeSize(Float.TYPE), 0);		    		    
-			bufferRight.setFloat(i*Native.getNativeSize(Float.TYPE), 0);		    		    
-		    }
-		} else {
-		    try {
-			work();		
-			for(int i = 0; i < inNumberFrames; i++) {
-			    bufferLeft.setFloat(i*Native.getNativeSize(Float.TYPE), (float) audioOut.getChannel(0)[i]);		    		    
-			    bufferRight.setFloat(i*Native.getNativeSize(Float.TYPE), (float) audioOut.getChannel(1)[i]);		    		    
-			}		
-		    } catch(Exception e) {}
-		}	    
-	    }
+			bufferLeft.setFloat(i*floatNativeSize, (float) audioOut.getChannel(0)[i]);
+			bufferRight.setFloat(i*floatNativeSize, (float) audioOut.getChannel(1)[i]);		    		    
+		    }		
+		}
+	    }	
+
+	    if (audioThread != Thread.currentThread()) { 
+		audioThread = Thread.currentThread(); 
+		Native.detach(false); 
+	    } 
 	};  
 	
 	lib.startAudioWithCallback(fn);

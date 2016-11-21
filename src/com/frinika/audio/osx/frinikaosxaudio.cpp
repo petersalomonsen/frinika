@@ -64,7 +64,7 @@ OSStatus FrinikaRenderCallback(void * inRefCon,
 	    // Fill with zeros so that we don't get unwanted noise if the callback doesn't do its job
 	    ((Float32 * )ioData->mBuffers[channel].mData)[frame] = 0.0;
 	}
-    }
+    }    
     
     frinikaAudioCallback(inNumberFrames,inBusNumber,
 	    (Float32 * )ioData->mBuffers[0].mData,
@@ -103,12 +103,12 @@ extern "C" void startAudioWithCallback(FrinikaAudioCallback func) {
             .componentManufacturer = kAudioUnitManufacturer_Apple
         };
         result = AUGraphAddNode(player->graph, &description, &player->output);
-        printf("err: %d\n", result);
+        //printf("err: %d\n", result);
         AudioComponent comp = AudioComponentFindNext(NULL, &description);
         result = AudioComponentInstanceNew(comp, &player->audioUnits[0]);
-        printf("err: %d\n", result);
+        //printf("err: %d\n", result);
         result = AudioUnitInitialize(player->audioUnits[0]);
-        printf("err: %d\n", result);
+        //printf("err: %d\n", result);
         
     }
     
@@ -120,16 +120,16 @@ extern "C" void startAudioWithCallback(FrinikaAudioCallback func) {
             .componentManufacturer = kAudioUnitManufacturer_Apple
         };
         result = AUGraphAddNode(player->graph, &description, &player->mixer);
-        printf("err: %d\n", result);
+        //printf("err: %d\n", result);
         AudioComponent comp = AudioComponentFindNext(NULL, &description);
         result = AudioComponentInstanceNew(comp, &player->audioUnits[1]);
-        printf("err: %d\n", result);
+        //printf("err: %d\n", result);
         
         
     }
     
     
-    //Sine
+    //Frinika Render
     {
         AudioComponentDescription description = {
             .componentType = kAudioUnitType_Generator,
@@ -137,12 +137,12 @@ extern "C" void startAudioWithCallback(FrinikaAudioCallback func) {
             .componentManufacturer = kAudioUnitManufacturer_Apple
         };
         result = AUGraphAddNode(player->graph, &description, &player->sine);
-        printf("err: %d\n", result);
+        //printf("err: %d\n", result);
         AudioComponent comp = AudioComponentFindNext(NULL, &description);
         result = AudioComponentInstanceNew(comp, &player->audioUnits[2]);
-        printf("err: %d\n", result);
+        //printf("err: %d\n", result);
         result = AudioUnitInitialize(player->audioUnits[2]);
-        printf("err: %d\n", result);
+        //printf("err: %d\n", result);
         
     }
     
@@ -154,24 +154,24 @@ extern "C" void startAudioWithCallback(FrinikaAudioCallback func) {
                                      0,
                                      player->mixer,
                                      0);
-    printf("err: %d\n", result);
+    //printf("err: %d\n", result);
     
     result = AUGraphConnectNodeInput(player->graph,
                                      player->mixer,
                                      0,
                                      player->output,
                                      0);
-    printf("err: %d\n", result);
+    //printf("err: %d\n", result);
     
     result = AUGraphOpen(player->graph);
-    printf("err: %d\n", result);
+    //printf("err: %d\n", result);
     
     
     UInt32 numbuses = 1;
     
     
     result = AudioUnitSetProperty(player->audioUnits[1], kAudioUnitProperty_ElementCount, kAudioUnitScope_Input, 0, &numbuses, sizeof(numbuses));
-    printf("err: %d\n", result);
+    //printf("err: %d\n", result);
     
     frinikaAudioCallback = func;
     
@@ -181,17 +181,17 @@ extern "C" void startAudioWithCallback(FrinikaAudioCallback func) {
         rcbs.inputProc = &FrinikaRenderCallback;
         rcbs.inputProcRefCon = &player;
         
-        printf("set AUGraphSetNodeInputCallback\n");
+        //printf("set AUGraphSetNodeInputCallback\n");
         
         // set a callback for the specified node's specified input
         result = AUGraphSetNodeInputCallback(player->graph, player->mixer, i, &rcbs);
-        printf("AUGraphSetNodeInputCallback err: %d\n", result);
+        //printf("AUGraphSetNodeInputCallback err: %d\n", result);
         
-        printf("set input bus %d, client kAudioUnitProperty_StreamFormat\n", (unsigned int)i);
+        //printf("set input bus %d, client kAudioUnitProperty_StreamFormat\n", (unsigned int)i);
         
         // set the input stream format, this is the format of the audio for mixer input
         result = AudioUnitSetProperty(player->audioUnits[1], kAudioUnitProperty_StreamFormat, kAudioUnitScope_Input, i, &ASBD, sizeof(ASBD));
-        printf("err: %d\n", result);
+        //printf("err: %d\n", result);
     }
     
     
@@ -200,7 +200,7 @@ extern "C" void startAudioWithCallback(FrinikaAudioCallback func) {
     
   
 
-    printf("err: %d\n", result);
+    //printf("err: %d\n", result);
     
     UInt32 inIOBufferFrameSize = 128;
     result = AudioUnitSetProperty(player->audioUnits[0],
@@ -209,14 +209,13 @@ extern "C" void startAudioWithCallback(FrinikaAudioCallback func) {
                          0,
                          &inIOBufferFrameSize, sizeof(UInt32));
     
-    printf("err: %d\n", result);
+    //printf("err: %d\n", result);
     
     OSStatus status = AUGraphInitialize(player->graph);
-    printf("err: %d\n", status);
+    printf("AUGraph initialized with status: %d\n", status);
     
     
     player->firstOutputSampleTime = -1;
     AudioOutputUnitStart(player->audioUnits[0]);
-    AUGraphStart(player->graph);
-
+    AUGraphStart(player->graph); 
 }
