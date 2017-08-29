@@ -129,7 +129,7 @@ public class RecordingManager implements SongPositionListener, MidiMessageListen
 
                 MidiPart part = new MidiPart(ml);
 
-                for (MultiEvent event : currentRecordingTake) {
+                for (MultiEvent event : currentRecordingTake.toArray(new MultiEvent[0])) {
 
                     try {
                         part.add((MultiEvent) event.clone());
