@@ -5,22 +5,12 @@
  */
 package com.frinika.audio.asio;
 
-import com.sun.jna.Callback;
-import com.sun.jna.Library;
-import com.sun.jna.Native;
-import com.sun.jna.Pointer;
 import com.synthbot.jasiohost.AsioChannel;
 import com.synthbot.jasiohost.AsioDriver;
 import com.synthbot.jasiohost.AsioDriverListener;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import uk.org.toot.audio.core.AudioBuffer;
 import static uk.org.toot.audio.core.AudioProcess.AUDIO_OK;
 import uk.org.toot.audio.core.ChannelFormat;
@@ -113,7 +103,8 @@ public class AsioAudioServer extends AbstractAudioServer implements ExtendedAudi
 
     @Override
     protected void stopImpl() {
-
+        System.out.println("Stopping ASIO driver");
+        asioDriver.shutdownAndUnloadDriver();
     }
 
     @Override
