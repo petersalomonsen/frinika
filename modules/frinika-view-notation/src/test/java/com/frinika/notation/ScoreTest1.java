@@ -23,6 +23,7 @@
  */
 package com.frinika.notation;
 
+import com.frinika.notation.NotationGraphics;
 import com.frinika.notation.NotationGraphics.Note;
 import java.awt.BorderLayout;
 import java.awt.Color;

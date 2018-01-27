@@ -21,7 +21,7 @@
  * along with Frinika; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
-package com.frinika.notation.model;
+package com.frinika.sequencer.model.notation;
 
 import com.frinika.model.EditHistoryRecordable;
 import com.frinika.notation.NotationGraphics;

@@ -24,7 +24,7 @@
 package com.frinika.notation;
 
 import com.frinika.gui.util.WindowUtils;
-import com.frinika.notation.model.ClefChange;
+import com.frinika.sequencer.model.notation.ClefChange;
 import com.frinika.sequencer.model.MidiLane;
 import com.frinika.sequencer.model.MidiPart;
 import com.frinika.sequencer.model.MultiEvent;

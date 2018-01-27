@@ -24,6 +24,7 @@ import com.frinika.tools.ProgressObserver;
 import javax.annotation.Nonnull;
 
 /**
+ * Progress panel for indication of progress of long operation.
  *
  * @author hajdam
  */
@@ -50,21 +51,61 @@ public class ProgressPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        titleLabel = new javax.swing.JLabel();
+        actionLabel = new javax.swing.JLabel();
         progressBar = new javax.swing.JProgressBar();
         cancelButton = new javax.swing.JButton();
-        actionLabel = new javax.swing.JLabel();
 
         setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        setLayout(new java.awt.BorderLayout());
-        add(progressBar, java.awt.BorderLayout.CENTER);
+
+        titleLabel.setBackground(java.awt.SystemColor.activeCaptionBorder);
+        titleLabel.setForeground(java.awt.SystemColor.activeCaptionText);
+        titleLabel.setText(" Opening project");
+        titleLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        titleLabel.setOpaque(true);
+
+        actionLabel.setText("Loading...");
 
         cancelButton.setText("Cancel");
         cancelButton.setEnabled(false);
-        add(cancelButton, java.awt.BorderLayout.EAST);
+        cancelButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelButtonActionPerformed(evt);
+            }
+        });
 
-        actionLabel.setText("Loading...");
-        add(actionLabel, java.awt.BorderLayout.PAGE_START);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(actionLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(progressBar, javax.swing.GroupLayout.DEFAULT_SIZE, 658, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cancelButton)))
+                .addContainerGap())
+            .addComponent(titleLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(actionLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
+        cancelListener.cancel();
+    }//GEN-LAST:event_cancelButtonActionPerformed
 
     /**
      * Test method for this panel.
@@ -79,14 +120,16 @@ public class ProgressPanel extends javax.swing.JPanel {
     private javax.swing.JLabel actionLabel;
     private javax.swing.JButton cancelButton;
     private javax.swing.JProgressBar progressBar;
+    private javax.swing.JLabel titleLabel;
     // End of variables declaration//GEN-END:variables
 
     public ProgressObserver getProgressObserver() {
         return new ProgressObserver() {
             @Override
-            public void goal(long maximumProgress) {
+            public void setGoal(long maximumProgress) {
                 goal = maximumProgress;
                 progressBar.setMaximum((int) goal);
+                progressBar.setIndeterminate(maximumProgress == 0);
                 repaint();
             }
 
@@ -112,10 +155,15 @@ public class ProgressPanel extends javax.swing.JPanel {
 
     public void setCancelListener(@Nonnull CancelListener cancelListener) {
         this.cancelListener = cancelListener;
+        cancelButton.setEnabled(true);
     }
 
-    public void setActionText(String actionText) {
+    public void setActionText(@Nonnull String actionText) {
         actionLabel.setText(actionText);
+    }
+
+    public void setActionTitle(@Nonnull String actionTitle) {
+        titleLabel.setText(" " + actionTitle);
     }
 
     public interface CloseListener {
@@ -126,10 +174,5 @@ public class ProgressPanel extends javax.swing.JPanel {
     public interface CancelListener {
 
         void cancel();
-    }
-
-    public interface ProgressOperation {
-
-        void run(ProgressPanel panel);
     }
 }

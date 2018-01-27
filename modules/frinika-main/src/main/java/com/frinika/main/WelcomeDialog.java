@@ -51,6 +51,10 @@ import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 import javax.swing.SwingConstants;
 
+/**
+ * @deprecated TODO remove
+ */
+@Deprecated
 public class WelcomeDialog extends JDialog {
 
     private static final long serialVersionUID = 1L;

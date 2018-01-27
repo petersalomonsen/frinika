@@ -1,6 +1,6 @@
-0.9.0 (Frinika "Studio" fork)
+0.9.0
 - Project modularized (internal)
 - Added Darcula dark look and feel https://github.com/bulenkov/Darcula
 - Added SoundHelix generator http://soundhelix.com/
-- About dialog made animated
+- Logo in about dialog is now animated
 - Replaced welcome dialog

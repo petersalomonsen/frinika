@@ -98,7 +98,7 @@ public class RenderDialog extends JDialog implements Runnable {
         try {
             ProgressObserver observer = new ProgressObserver() {
                 @Override
-                public void goal(long maximumProgress) {
+                public void setGoal(long maximumProgress) {
                     progressBar.setMaximum((int) maximumProgress);
                 }
 

@@ -29,7 +29,7 @@ import com.frinika.model.EditHistoryAction;
 import com.frinika.model.EditHistoryContainer;
 import com.frinika.model.EditHistoryListener;
 import com.frinika.notation.NotationGraphics.Note;
-import com.frinika.notation.model.ClefChange;
+import com.frinika.sequencer.model.notation.ClefChange;
 import com.frinika.sequencer.FrinikaSequence;
 import com.frinika.sequencer.SwingSongPositionListenerWrapper;
 import com.frinika.sequencer.gui.DragViewTool;

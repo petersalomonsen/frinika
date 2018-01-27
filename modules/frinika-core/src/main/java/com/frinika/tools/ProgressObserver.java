@@ -30,7 +30,7 @@ public interface ProgressObserver {
      *
      * @param maximumProgress
      */
-    void goal(long maximumProgress);
+    void setGoal(long maximumProgress);
 
     /**
      * Sets progress related to goal.

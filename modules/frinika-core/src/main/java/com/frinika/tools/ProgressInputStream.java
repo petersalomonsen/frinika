@@ -28,11 +28,10 @@ import java.io.InputStream;
 import javax.annotation.Nonnull;
 
 /**
- * Generic inputstream for updating a progressbar while reading. Use this
- * between an input stream reader and the inputstream to read.
+ * Generic input stream for updating a progressbar while reading. Use this
+ * between an input stream reader and the input stream to read.
  *
  * @author Peter Johan Salomonsen
- *
  */
 public class ProgressInputStream extends InputStream {
 
@@ -49,12 +48,6 @@ public class ProgressInputStream extends InputStream {
     public ProgressInputStream(@Nonnull ProgressObserver observer, @Nonnull InputStream inputStream) {
         this.observer = observer;
         this.inputStream = inputStream;
-
-        try {
-            // TODO might not be accurate
-            observer.goal(inputStream.available());
-        } catch (IOException ex) {
-        }
     }
 
     @Override
@@ -68,8 +61,8 @@ public class ProgressInputStream extends InputStream {
     }
 
     @Override
-    public int read(byte[] b, int off, int len) throws IOException {
-        int read = inputStream.read(b, off, len);
+    public int read(@Nonnull byte[] buffer, int offset, int length) throws IOException {
+        int read = inputStream.read(buffer, offset, length);
         if (read >= 0) {
             processed += read;
             observer.progress(processed);
@@ -78,8 +71,8 @@ public class ProgressInputStream extends InputStream {
     }
 
     @Override
-    public int read(byte[] b) throws IOException {
-        int read = inputStream.read(b);
+    public int read(@Nonnull byte[] buffer) throws IOException {
+        int read = inputStream.read(buffer);
         if (read >= 0) {
             processed += read;
             observer.progress(processed);

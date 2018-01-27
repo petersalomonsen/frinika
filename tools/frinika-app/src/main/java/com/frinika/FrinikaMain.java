@@ -31,39 +31,24 @@ import com.frinika.global.property.RecentProjectRecord;
 import com.frinika.gui.util.SupportedLaf;
 import com.frinika.gui.util.WindowUtils;
 import com.frinika.main.FrinikaFrame;
+import com.frinika.main.ProgressOperation;
 import com.frinika.main.action.CreateProjectAction;
 import com.frinika.main.action.OpenProjectAction;
 import com.frinika.main.model.ExampleProjectFile;
 import com.frinika.main.model.ProjectFileRecord;
-import com.frinika.main.panel.ProgressPanel;
 import com.frinika.main.panel.WelcomePanel;
 import com.frinika.project.FrinikaProjectContainer;
-import com.frinika.tools.ProgressObserver;
 import com.frinika.project.dialog.VersionProperties;
 import com.frinika.settings.SetupDialog;
-import com.frinika.tools.ProgressInputStream;
 import com.frinika.tootX.midi.MidiInDeviceManager;
-import java.awt.GraphicsDevice;
-import java.awt.GraphicsEnvironment;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.nio.channels.Channels;
-import java.nio.channels.ReadableByteChannel;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import javax.swing.JDialog;
 import javax.swing.JFrame;
 
 /**
@@ -240,17 +225,7 @@ public class FrinikaMain {
                     FrinikaConfig.setLastProject(filePath, projectName);
                     File file = new File(filePath);
                     FrinikaFrame projectFrame = new FrinikaFrame();
-
-                    showProgressDialog(projectFrame, (ProgressPanel progressPanel) -> {
-                        try {
-                            ProgressObserver progressObserver = progressPanel.getProgressObserver();
-                            FrinikaProjectContainer project = FrinikaProjectContainer.loadProject(file, progressObserver);
-                            projectFrame.setProject(project);
-                        } catch (Exception ex) {
-                            Logger.getLogger(FrinikaMain.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                    });
-
+                    ProgressOperation.openProjectFile(projectFrame, file);
                     welcomeFrame.setVisible(false);
                 } catch (Exception ex) {
                     Logger.getLogger(FrinikaMain.class.getName()).log(Level.SEVERE, null, ex);
@@ -264,19 +239,14 @@ public class FrinikaMain {
 
                     final File projectFile = getSampleFile(projectFileRecord.getFilePath());
                     if (!projectFile.exists()) {
-                        downloadSampleFile(projectFrame, projectFile, projectFileRecord.getFilePath());
+                        String downloadUrl = DOWNLOAD_PATH_PREFIX + projectFileRecord.getFilePath() + DOWNLOAD_PATH_POSTFIX;
+                        ProgressOperation.downloadSampleFile(projectFrame, projectFile, downloadUrl);
                     }
 
-                    showProgressDialog(projectFrame, (ProgressPanel progressPanel) -> {
-                        try {
-                            ProgressObserver progressObserver = progressPanel.getProgressObserver();
-                            FrinikaProjectContainer project = FrinikaProjectContainer.loadProject(projectFile, progressObserver);
-                            projectFrame.setProject(project);
-                        } catch (Exception ex) {
-                            Logger.getLogger(FrinikaMain.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                    });
-                    welcomeFrame.setVisible(false);
+                    if (projectFile.exists()) {
+                        ProgressOperation.openProjectFile(projectFrame, projectFile);
+                        welcomeFrame.setVisible(false);
+                    }
                 } catch (Exception ex) {
                     Logger.getLogger(FrinikaMain.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -334,53 +304,6 @@ public class FrinikaMain {
         return new File(exampleFilesPath, projectFileName);
     }
 
-    @Nonnull
-    private static void downloadSampleFile(@Nonnull FrinikaFrame frame, @Nonnull File targetFile, @Nonnull String projectFileName) {
-        try {
-            URL downloadUrl = new URL(DOWNLOAD_PATH_PREFIX + projectFileName + DOWNLOAD_PATH_POSTFIX);
-            HttpURLConnection connection = (HttpURLConnection) downloadUrl.openConnection();
-            connection.setInstanceFollowRedirects(true);
-            long length = 0;
-            do {
-                int status = connection.getResponseCode();
-                boolean redirect = status == HttpURLConnection.HTTP_MOVED_TEMP
-                        || status == HttpURLConnection.HTTP_MOVED_PERM
-                        || status == HttpURLConnection.HTTP_SEE_OTHER;
-
-                if (!redirect) {
-                    length = connection.getContentLengthLong();
-                    break;
-                }
-
-                String newUrl = connection.getHeaderField("Location");
-                connection = (HttpURLConnection) new URL(newUrl).openConnection();
-                connection.setInstanceFollowRedirects(true);
-            } while (true);
-
-            final InputStream inputStream = connection.getInputStream();
-            final long downloadLength = length;
-            showProgressDialog(frame, (ProgressPanel progressPanel) -> {
-                progressPanel.setActionText("Downloading...");
-                try {
-                    ProgressObserver progressObserver = progressPanel.getProgressObserver();
-                    ProgressInputStream progressInputStream = new ProgressInputStream(progressObserver, inputStream);
-                    progressObserver.goal(downloadLength);
-                    ReadableByteChannel rbc = Channels.newChannel(progressInputStream);
-                    FileOutputStream fos = new FileOutputStream(targetFile);
-                    fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
-                } catch (IOException ex) {
-                    Logger.getLogger(FrinikaMain.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            });
-        } catch (MalformedURLException ex) {
-            Logger.getLogger(FrinikaMain.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(FrinikaMain.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(FrinikaMain.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
     static class FrinikaExitHandler extends Thread {
 
         @Override
@@ -396,39 +319,8 @@ public class FrinikaMain {
         }
     }
 
-    @Nonnull
-    public static void showProgressDialog(@Nonnull FrinikaFrame projectFrame, @Nonnull ProgressPanel.ProgressOperation operation) {
-        GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        GraphicsDevice[] allDevices = env.getScreenDevices();
-
-        final JDialog progressDialog = new JDialog(projectFrame, true);
-        progressDialog.setUndecorated(true);
-        progressDialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-        ProgressPanel progressPanel = new ProgressPanel();
-        progressDialog.add(progressPanel);
-        progressDialog.pack();
-
-        progressPanel.setCloseListener(() -> {
-            progressDialog.setVisible(false);
-        });
-
-        int screenWidth = allDevices[0].getDefaultConfiguration().getBounds().width;
-        progressDialog.setSize(screenWidth / 2, progressDialog.getHeight());
-        WindowUtils.setWindowCenterPosition(progressDialog);
-
-        progressDialog.addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowOpened(WindowEvent e) {
-                new Thread(() -> {
-                    operation.run(progressPanel);
-                }).start();
-            }
-        });
-        progressDialog.setVisible(true);
-    }
-
     /**
-     * Detect whether running from a single .jar-file (e.g. via "java -jar
+     * Detects whether running from a single .jar-file (e.g. via "java -jar
      * frinika.jar"). In this case, copy native binary libraries to a
      * file-system accessible location where the JVM can load them from. (There
      * is a comparable mechanism already implemented in
@@ -459,7 +351,7 @@ public class FrinikaMain {
         }
     }
 
-    public static void parseArguments(String[] args) {
+    public static void parseArguments(@Nonnull String[] args) {
         for (int i = 0; i < args.length; i++) {
             String arg = args[i];
             if (arg.equalsIgnoreCase("-h") || arg.equalsIgnoreCase("--help")) {

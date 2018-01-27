@@ -51,9 +51,9 @@ public class MidiInDeviceManager {
         Info devInfo;
         private MidiDevice device;
 
-        DeviceReceiver(MidiDevice dev) {
-            this.device = dev;
-            this.devInfo = dev.getDeviceInfo();
+        DeviceReceiver(MidiDevice device) {
+            this.device = device;
+            this.devInfo = device.getDeviceInfo();
         }
 
         @Override
@@ -133,13 +133,13 @@ public class MidiInDeviceManager {
         if (!isOpen) {
             return;
         }
-        for (DeviceReceiver devRecv : deviceReceivers) {
+        deviceReceivers.forEach((devRecv) -> {
             try {
                 devRecv.getDevice().close();
             } catch (Throwable t) {
                 t.printStackTrace();
             }
-        }
+        });
         deviceReceivers.clear();
         isOpen = false;
     }
