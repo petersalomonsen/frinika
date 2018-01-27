@@ -1,0 +1,9 @@
+group = 'com.frinika'
+ext.libraryName = 'Frinika audio Toot library'
+ext.libraryDescription = 'Audio Toot library for Frinika'
+
+apply from: '../modules.gradle'
+
+dependencies {
+    compile ':toot'
+}

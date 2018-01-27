@@ -1,0 +1,13 @@
+group = 'com.frinika'
+ext.libraryName = 'Frinika SoundHelix library'
+ext.libraryDescription = 'SoundHelix library for Frinika'
+
+apply from: '../modules.gradle'
+
+dependencies {
+    compile(project(':modules:frinika-audio'))
+    compile(project(':modules:frinika-sequencer'))
+    compile 'log4j:log4j:1.2.17'
+    compile ':soundhelix-legacy:20101010'
+    compile ':soundhelix:0.9'
+}

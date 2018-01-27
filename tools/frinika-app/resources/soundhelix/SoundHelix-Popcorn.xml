@@ -1,0 +1,394 @@
+<?xml version="1.0"?>
+<!-- Example XML file for SoundHelix. Author: Thomas Schuerger. -->
+<SoundHelix version="0.8+" xmlns:xi="http://www.w3.org/2001/XInclude">
+	<xi:include href="Standard-SongNameEngine.xml" />
+	<structure>
+		<bars>
+			<random min="192" max="300" step="16" />
+		</bars>
+		<beatsPerBar>4</beatsPerBar>
+		<ticksPerBeat>12</ticksPerBeat>
+		<maxVelocity>1000</maxVelocity>
+	</structure>
+	<harmonyEngine class="PatternHarmonyEngine">
+		<crossoverPitch>5</crossoverPitch>
+		<minimizeChordDistance>false</minimizeChordDistance>
+		<chordPattern>Am/10,G/2,F/2,Am/12,G/2,F/2,Am/2,+C/8,Em/2,D/2,C/12,Em/2,D/2,C/4</chordPattern>
+	</harmonyEngine>
+	<arrangementEngine class="SimpleArrangementEngine">
+		<constraintMode>greedy</constraintMode>
+		<maxIterations>2500</maxIterations>
+		<minActivityCount>3</minActivityCount>
+		<maxActivityCount>6</maxActivityCount>
+		<maxActivityChangeCount>1</maxActivityChangeCount>
+		<startActivityCounts>
+			<random list="1,2,3|2,3,4" />
+		</startActivityCounts>
+		<stopActivityCounts>
+			<random list="4,3|5,3,2|5,4,2|5,4,3" />
+		</stopActivityCounts>
+		<activityVector name="base_snare">
+			<startAfterSection>1</startAfterSection>
+			<startBeforeSection>4</startBeforeSection>
+			<stopBeforeSection>0</stopBeforeSection>
+			<stopAfterSection>3</stopAfterSection>
+			<minActive>50</minActive>
+			<maxActive>90</maxActive>
+			<minSegmentLength>2</minSegmentLength>
+			<maxSegmentLength>8</maxSegmentLength>
+			<maxPauseLength>3</maxPauseLength>
+			<minSegmentCount>2</minSegmentCount>
+			<maxSegmentCount>5</maxSegmentCount>
+		</activityVector>
+		<activityVector name="clap">
+			<startAfterSection>1</startAfterSection>
+			<minActive>15</minActive>
+			<minSegmentLength>2</minSegmentLength>
+		</activityVector>
+		<activityVector name="hihat">
+			<startAfterSection>0</startAfterSection>
+			<minActive>30</minActive>
+			<minSegmentLength>3</minSegmentLength>
+			<minSegmentCount>2</minSegmentCount>
+		</activityVector>
+		<activityVector name="melody">
+			<startAfterSection>0</startAfterSection>
+			<startBeforeSection>3</startBeforeSection>
+			<minActive>30</minActive>
+			<startShift>-12</startShift>
+			<stopShift>-12</stopShift>
+			<minSegmentLength>2</minSegmentLength>
+		</activityVector>
+		<activityVector name="chords">
+			<startBeforeSection>1</startBeforeSection>
+			<minActive>20</minActive>
+			<minSegmentLength>2</minSegmentLength>
+		</activityVector>
+		<activityVector name="accomp">
+			<startBeforeSection>2</startBeforeSection>
+			<minActive>20</minActive>
+			<minSegmentLength>2</minSegmentLength>
+		</activityVector>
+		<activityVector name="bass">
+			<startAfterSection>1</startAfterSection>
+			<minActive>20</minActive>
+			<minSegmentLength>2</minSegmentLength>
+		</activityVector>
+		<activityVector name="string">
+			<startAfterSection>3</startAfterSection>
+			<minActive>20</minActive>
+			<minSegmentLength>2</minSegmentLength>
+		</activityVector>
+		<activityVector name="pad">
+			<startAfterSection>1</startAfterSection>
+			<minActive>20</minActive>
+			<minSegmentLength>2</minSegmentLength>
+		</activityVector>
+		<activityVector name="arpeggio">
+			<startAfterSection>4</startAfterSection>
+			<minActive>10</minActive>
+			<minSegmentLength>2</minSegmentLength>
+		</activityVector>
+
+		<track>
+			<instrument>percussion</instrument>
+			<sequenceEngine class="DrumSequenceEngine">
+				<pattern>
+					<!-- base drum -->
+					<pitch>36</pitch>
+					<patternEngine class="RandomFragmentPatternEngine">
+						<patternTicks>16</patternTicks>
+						<ticksPerBeat>4</ticksPerBeat>
+						<patternString>
+							<random list="A1,B1,A1,B2,A1,B1,A1,B3|A1,A1,A1,B1,A1,A1,A1,B2,A1,A1,A1,B1,A1,A1,A1,B3" />
+						</patternString>
+						<pattern group="A">0,-,-,-,-,-,-,-,0,-,-,-,-,-,-,-</pattern>
+						<pattern group="B">0,-,0,-,-,-,-,-,0,-,-,-,-,-,-,-|0,-,-,0,-,-,-,-,0,-,-,-,-,-,-,-|0,-,-,-,-,-,-,-,0,-,-,-,-,-,0,-|0,-,-,-,-,-,-,-,0,-,-,-,-,-,-,0|0,-,-,-,-,-,-,-,0,-,-,-,-,-,0,0|0,-,-,-,-,-,-,0,-,-,0,-,-,-,-,-|0,-,-,-,-,-,-,0,-,0,0,-,-,-,-,-|0,-,-,-,-,-,0,-,0,-,-,-,-,-,-,-</pattern>
+					</patternEngine>
+				</pattern>
+				<pattern>
+					<!-- snare drum -->
+					<pitch>38</pitch>
+					<patternEngine class="RandomFragmentPatternEngine">
+						<patternTicks>8</patternTicks>
+						<ticksPerBeat>4</ticksPerBeat>
+						<patternString>
+							<random list="A1,A1,A1,B1,A1,A1,A1,C1,A1,A1,A1,B1,A1,A1,A1,C2|A1,A1,A1,A1,A1,A1,A1,B1,A1,A1,A1,A1,A1,A1,A1,C1,A1,A1,A1,A1,A1,A1,A1,B1,A1,A1,A1,A1,A1,A1,A1,C2"/>
+						</patternString>
+						<pattern group="A">-,-,-,-,0,-,-,-</pattern>
+						<pattern group="B">-,-,-,-,0,-,-,-|-,-,-,-,0,-,-,0</pattern>
+						<pattern group="C">-,-,-,-,0,-,-,0|-,-,-,0,0,-,0,-|-,-,-,0,0,0,-,0|-,-,-,0,0,0,0,-|-,0,-,0,0,0,0,-|-,-,-,0,-,-,0,-|-,-,-,0,-,0,-,-|-,-,-,0,-,0,-,0</pattern>
+					</patternEngine>
+				</pattern>
+				<pattern>
+					<!-- clap -->
+					<pitch>39</pitch>
+					<patternEngine class="RandomFragmentPatternEngine">
+						<patternTicks>16</patternTicks>
+						<ticksPerBeat>4</ticksPerBeat>
+						<patternString>
+							<random list="A1,B1,A1,B2|A1,B1,A1,B2,A1,B1,A1,B3|A1,A1,A1,B1,A1,A1,A1,B2,A1,A1,A1,B1,A1,A1,A1,B3|C1,A1,C1,B1,C1,A1,C1,B2"/>
+						</patternString>
+						<pattern group="A">-/12,0,-/3</pattern>
+						<pattern group="B">-/11,0:500,0,-/3|-/12,0,0,-/2|-/12,0,0,-,0|-/9,0,-,-,0,-/3|-/9,0,-,-,0,-,0,-</pattern>
+						<pattern group="C">-/16</pattern>
+					</patternEngine>
+				</pattern>
+				<pattern>
+					<!-- closed hihat -->
+					<pitch>42</pitch>
+					<patternEngine class="RandomFragmentPatternEngine">
+						<patternTicks>4</patternTicks>
+						<ticksPerBeat>4</ticksPerBeat>
+						<patternString>A1,A2,A1,A3,A1,A2,A1,A4</patternString>
+						<pattern group="A">0:800,0:800,0:800,0:800|0:800,0:800,-,0:800|0:800,-,-,-|0:800,-,0:800,-|0:800,0:800,0:800,-</pattern>
+					</patternEngine>
+				</pattern>
+				<pattern>
+					<!-- open hihat -->
+					<pitch>46</pitch>
+					<patternEngine class="RandomFragmentPatternEngine">
+						<patternTicks>8</patternTicks>
+						<ticksPerBeat>4</ticksPerBeat>
+						<patternString>
+							<random list="A1,B1,A1,B2,A1,B1,A1,B3|A1,A1,A1,B1,A1,A1,A1,B2|A1,A1,A1,B1,A1,A1,A1,B2,A1,A1,A1,B1,A1,A1,A1,B3"/>
+						</patternString>
+						<pattern group="A">-,-,0:600,-,-,-,0:600,-</pattern>
+						<pattern group="B">-,-,0:600,-,-,-,0:600,-|-,-,0:600,-,-,-,0:600,-|-,-,0:600,-,-,-,0:600,-|-,-,0:600,-,-,-,-,0:600|-,-,0:600,-,-,0:600,-,0:600</pattern>
+					</patternEngine>
+				</pattern>
+				<pattern>
+					<!-- empty melody (used so that we can have a conditional pattern using the melody in conditions) -->
+					<pitch>46</pitch>
+					<patternEngine class="StringPatternEngine">
+						<string>-</string>
+					</patternEngine>
+				</pattern>
+				<pattern>
+					<!-- empty track for crash cymbal -->
+					<pitch>57</pitch>
+					<patternEngine class="StringPatternEngine">
+						<string>-</string>
+					</patternEngine>
+				</pattern>
+
+				<conditionalPattern>
+					<target>0</target>
+					<precondition>-base_snare</precondition>
+					<postcondition>+base_snare</postcondition>
+					<mode>replace</mode>
+					<probability>60</probability>
+					<patternEngine class="CrescendoPatternEngine">
+						<patternTicks>
+							<random list="48|96" />
+						</patternTicks>
+						<minVelocity>1</minVelocity>
+						<maxVelocity>1000</maxVelocity>
+						<velocityExponent>1</velocityExponent>
+						<pattern ticksPerBeat="4">
+							<random list="0,-,-,-|0" />
+						</pattern>
+					</patternEngine>
+				</conditionalPattern>
+				<conditionalPattern>
+					<target>1</target>
+					<precondition>-base_snare</precondition>
+					<postcondition>+base_snare</postcondition>
+					<mode>replace</mode>
+					<probability>60</probability>
+					<patternEngine class="CrescendoPatternEngine">
+						<patternTicks>
+							<random list="96|192" />
+						</patternTicks>
+						<minVelocity>1</minVelocity>
+						<maxVelocity>1000</maxVelocity>
+						<velocityExponent>1</velocityExponent>
+						<pattern ticksPerBeat="4">
+							<random list="0/1|0/1:1000,0/1:700|0,-,-,0,-,-,0,-" />
+						</pattern>
+						<suffixPattern ticksPerBeat="6">
+							<random list="(0)*6|(0)*12|0/2,0/2,0/2,0/2,-/4"/>
+						</suffixPattern>
+					</patternEngine>
+				</conditionalPattern>
+				<conditionalPattern>
+					<target>6</target>
+					<precondition>-base_snare</precondition>
+					<postcondition>+base_snare</postcondition>
+					<mode>replace</mode>
+					<probability>70</probability>
+					<patternEngine class="CrescendoPatternEngine">
+						<patternTicks>
+							<random list="48" />
+						</patternTicks>
+						<minVelocity>600</minVelocity>
+						<maxVelocity>1000</maxVelocity>
+						<velocityExponent>1</velocityExponent>
+						<pattern ticksPerBeat="1">
+							<random list="0" />
+						</pattern>
+					</patternEngine>
+				</conditionalPattern>
+				<conditionalPattern>
+					<target>0,1</target>
+					<precondition>+base_snare,-hihat</precondition>
+					<postcondition>+base_snare,+hihat</postcondition>
+					<mode>replace</mode>
+					<probability>60</probability>
+					<patternEngine class="StringPatternEngine">
+						<string ticksPerBeat="4">
+							<random list="-/16|-/8" />
+						</string>
+					</patternEngine>
+				</conditionalPattern>
+				<conditionalPattern>
+					<target>0</target>
+					<precondition>-melody</precondition>
+					<postcondition>+melody,+base_snare</postcondition>
+					<mode>replace</mode>
+					<probability>100</probability>
+					<patternEngine class="StringPatternEngine">
+						<string ticksPerBeat="3">0,0,0,0,-,-</string>
+					</patternEngine>
+				</conditionalPattern>
+			</sequenceEngine>
+			<activityVector>base_snare</activityVector>
+			<activityVector>base_snare</activityVector>
+			<activityVector>clap</activityVector>
+			<activityVector>hihat</activityVector>
+			<activityVector>hihat</activityVector>
+			<activityVector>melody</activityVector>
+			<activityVector>base_snare</activityVector>
+		</track>
+
+		<track>
+			<instrument>melody</instrument>
+			<transposition>0</transposition>
+			<sequenceEngine class="FreePatternSequenceEngine">
+				<patternEngine class="StringPatternEngine">
+					<string ticksPerBeat="4">9,-,4,-,0,-,4,-,-3,-,-,-,9,-,7,-,9,-,4,-,0,-,4,-,-3,-,-,-,9,-,11,-,12,-,11,-,12,-,9,-,11,-,9,-,11,-,7,-,9,-,7,-,9,-,5,-,9,-,-,-,9,-,7,-,9,-,4,-,0,-,4,-,-3,-,-,-,9,-,7,-,9,-,4,-,0,-,4,-,-3,-,-,-,9,-,11,-,12,-,11,-,12,-,9,-,11,-,9,-,11,-,7,-,9,-,7,-,9,-,5,-,9,-,-,-,16,-,14,-,16,-,12,-,7,-,12,-,4,-,-,-,16,-,14,-,16,-,12,-,7,-,12,-,4,-,-,-,16,-,18,-,19,-,18,-,19,-,16,-,18,-,16,-,18,-,14,-,16,-,14,-,16,-,12,-,16,-,-,-,16,-,14,-,16,-,12,-,7,-,12,-,4,-,-,-,16,-,14,-,16,-,12,-,7,-,12,-,4,-,-,-,16,-,18,-,19,-,18,-,19,-,16,-,18,-,16,-,18,-,14,-,16,-,14,-,16,-,12,-,16,-,-,-,9,-,7,-,9,-,4,-,0,4,-,-3,-,-,-,-,9,-,7,-,9,-,4,-,0,4,-,-3,-,-,-,-,9,-,11,-,12,-,11,12,-,12,9,-,11,-,9,11,-,11,7,-,9,-,7,9,-,9,5,-,9,-,-,-,9,-,7,-,9,-,4,-,0,4,-,-3,-,-,-,-,9,-,7,-,9,-,4,-,0,4,-,-3,-,-,-,-,9,-,11,-,12,-,11,12,-,12,9,-,11,-,9,11,-,11,7,-,9,-,7,9,-,9,5,-,9,-,-,-,16,-,14,-,16,-,12,-,7,12,-,4,-,-,-,-,16,-,14,-,16,-,12,-,7,12,-,4,-,-,-,-,16,-,18,-,19,-,18,19,-,19,16,-,18,-,16,18,-,18,14,-,16,-,14,16,-,16,12,-,16,-,-,-,16,-,14,-,16,-,12,-,7,12,-,4,-,-,-,-,16,-,14,-,16,-,12,-,7,12,-,4,-,-,-,-,16,-,18,-,19,-,18,19,-,19,16,-,18,-,16,18,-,18,14,-,16,-,14,16,-,16,12,-,16,-,-,-,9,-,7,-</string>
+				</patternEngine>
+			</sequenceEngine>
+			<activityVector>melody</activityVector>
+		</track>	  
+
+		<track>
+			<instrument>accomp</instrument>
+			<velocity>600</velocity>
+			<transposition>-24</transposition>
+			<sequenceEngine class="PatternSequenceEngine">
+				<patternEngine class="StringPatternEngine">
+					<string ticksPerBeat="4">0,-,3,2,-1,-,3,2,0,-,3,2,-1,0,2,3,0,-,3,2,-1,-,3,2,0,-,3,2,-1,0,2,3,0,-,3,2,-1,0,2,3,0,-,3,2,-1,0,2,3,0,-,3,2,-1,-,3,2,0,-,3,2,-1,0,2,3</string>
+				</patternEngine>
+			</sequenceEngine>
+			<activityVector>accomp</activityVector>
+		</track>	  
+
+		<track>
+			<instrument>chords</instrument>
+			<transposition>0</transposition>
+			<velocity>600</velocity>
+			<sequenceEngine class="ChordSequenceEngine">
+				<patternEngine class="StringPatternEngine">
+					<string ticksPerBeat="4">0,-,-,0,-,-,0,-</string>
+					<string ticksPerBeat="4">0,-,-,0,-,-,0,-,0,-,-,0,-,-,0,-,0,-,-,0,-,-,0,-,0,-,-,0,-,0,-,0</string>
+				</patternEngine>
+			</sequenceEngine>
+			<activityVector>chords</activityVector>
+		</track>
+
+		<track>
+			<transposition>-36</transposition>
+			<instrument>bass</instrument>
+			<sequenceEngine class="PatternSequenceEngine">
+				<patternEngine class="RandomPatternEngine">
+					<patternTicks>16</patternTicks>
+					<patternString>
+						<random list="A1,A2,A1,A3|A1,A2,A1,A3"/>
+					</patternString>
+					<noteProbability>70</noteProbability>
+					<legatoProbability>0</legatoProbability>
+					<minVelocity>1000</minVelocity>
+					<maxVelocity>1000</maxVelocity>
+					<minActiveTicks>10</minActiveTicks>
+					<maxActiveTicks>14</maxActiveTicks>
+					<offsets>0,0,0,3</offsets>
+					<noteLengths>1,1,1,1,1,2,1</noteLengths>
+					<pauseLengths>1</pauseLengths>
+					<pitchVelocityCorrelation>0</pitchVelocityCorrelation>
+					<velocityExponent>1</velocityExponent>
+					<ticksPerBeat>4</ticksPerBeat>
+				</patternEngine>
+			</sequenceEngine>
+			<activityVector>bass</activityVector>
+		</track>
+
+		<track>
+			<instrument>string</instrument>
+			<velocity>600</velocity>
+			<transposition>-12</transposition>
+			<sequenceEngine class="FreePatternSequenceEngine">
+				<patternEngine class="StringPatternEngine">
+					<string ticksPerBeat="4">(0/14,-1/2,0/4,-3/8,0/2,2/2,4/6,0/2,2/6,-1/2,0/8,-3/8)*2,4/14,2/2,4/4,0/8,4/2,6/2,7/6,4/2,6/6,2/2,4/8,0/8,4/14,2/2,4/4,0/8,4/2,6/2,7/6,4/2,6/6,2/2,4/16</string>
+				</patternEngine>
+			</sequenceEngine>
+			<activityVector>string</activityVector>
+		</track>	  
+
+		<track>
+			<transposition>0</transposition>
+			<velocity>400</velocity>
+			<instrument>pad</instrument>
+			<sequenceEngine class="PadSequenceEngine">
+				<offsets>
+					<random list="-3,0,1,2,3|-1,0,1,2"/>
+				</offsets>
+			</sequenceEngine>
+			<activityVector>pad</activityVector>
+		</track>
+
+		<track>
+			<instrument>arpeggio</instrument>
+			<velocity>600</velocity>
+			<transposition>0</transposition>
+			<sequenceEngine class="PatternSequenceEngine">
+				<patternEngine class="RandomFragmentPatternEngine">
+					<patternTicks>24</patternTicks>
+					<ticksPerBeat>12</ticksPerBeat>
+					<uniquePatternParts>false</uniquePatternParts>
+					<patternString>
+						<random list="A1,B1,A2,B2,A1,B1,A2,B3|A1,A1,A1,B1,A1,A1,A1,B2|A1,A1,A1,B1,A1,A1,A1,B2,A1,A1,A1,B1,A1,A1,A1,B3"/>
+					</patternString>
+					<pattern group="A">0/3,1/3,2/3,3/3,4/3,1/3,4/3,3/3|0/3,1/3,2/3,3/3,4/3,5/3,4/3,2/3|0/3,1/3,3/3,5/3,4/3,2/3,3/3,1/3</pattern>
+					<pattern group="B">0/3,1/3,2/3,3/3,-/3,5/3,4/3,-/3|0/3,1/3,-/3,3/3,6/3,-/3,4/3,2/3|0/3,1/3,4/3,-/3,3/2,5/2,4/2,1/2,4/2,3/2|0/3,4/3,-/3,2/3,5/2,3/2,6/2,2/2,4/2,1/2</pattern>
+				</patternEngine>
+			</sequenceEngine>
+			<activityVector>arpeggio</activityVector>
+		</track>	  
+
+	</arrangementEngine>
+
+	<player class="MidiPlayer">
+		<bpm>
+			<random min="124" max="138" type="normal" variance="7" />
+		</bpm>
+		<transposition><random min="65" max="68"/></transposition>
+		<beforePlayWaitTicks>16</beforePlayWaitTicks>
+		<afterPlayWaitTicks>16</afterPlayWaitTicks>
+		<groove>
+			<random list="100|110,110,110,90,90,90|115,115,115,85,85,85" />
+		</groove>
+		<!-- uncomment the following line if you want to write all generated songs as MIDI files in the subdirectory "midifiles" -->
+		<!-- <midiFilename>midifiles/SoundHelix-Popcorn_-_${safeSongName}.mid</midiFilename> -->
+		<device name="device1" clockSynchronization="true">Gervill,Microsoft GS Wavetable Synth,Microsoft GS Wavetable SW Synth,Java Sound Synthesizer</device>
+		<!-- <synchronizationDevice waitForStart="true">timingport</synchronizationDevice> -->
+		<map instrument="percussion" device="device1" channel="10" />
+		<map instrument="melody" device="device1" channel="1" program="1" />
+		<map instrument="chords" device="device1" channel="2" program="1" />
+		<map instrument="accomp" device="device1" channel="3" program="1" />
+		<map instrument="bass" device="device1" channel="4" program="36"/>
+		<map instrument="string" device="device1" channel="5" program="41"/>
+		<map instrument="pad" device="device1" channel="8" program="83"/>
+		<map instrument="arpeggio" device="device1" channel="9" program="9"/>
+	</player>
+</SoundHelix>

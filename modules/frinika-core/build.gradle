@@ -1,0 +1,21 @@
+group = 'com.frinika'
+ext.libraryName = 'Frinika core library'
+ext.libraryDescription = 'Core library for Frinika'
+
+apply from: '../modules.gradle'
+
+if (!hasProperty('mainClass')) {
+    ext.mainClass = ''
+}
+
+dependencies {
+    compile(project(':modules:frinika-audio-toot'))
+    compile(project(':modules:frinika-driver-osx'))
+    compile(project(':modules:frinika-driver-jack'))
+    compile 'commons-logging:commons-logging:1.2'
+    compile ':toot'
+    compile ':tootvst'
+    compile 'com.jgoodies:looks:2.1.4'
+    compile ':darcula'
+    compile ':iconloader'
+}

@@ -1,6 +1,8 @@
-/build/
-/dist/
-/nbproject/private/
-/src/com/frinika/audio/osx/frinikaosxaudio.o
-/bin/
-/testsoundbank/TestSoundBank.class
+.gradle
+.nb-gradle
+build/
+target/
+/release
+*~
+/resources/private/
+modules/frinika-core/src/main/resources/version.properties

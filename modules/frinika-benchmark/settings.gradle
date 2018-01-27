@@ -1,0 +1,9 @@
+rootProject.name = 'frinika-benchmark'
+
+apply from: '../modules-settings.gradle'
+
+include ":modules:frinika-core"
+include ":modules:frinika-audio"
+include ":modules:frinika-synth"
+include ":modules:frinika-tracker"
+include ":modules:frinika-sequencer"

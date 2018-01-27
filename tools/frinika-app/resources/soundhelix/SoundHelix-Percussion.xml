@@ -1,0 +1,457 @@
+<?xml version="1.0"?>
+<!-- Example XML file for SoundHelix. Author: Thomas Schuerger. -->
+<SoundHelix version="0.7+" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <xi:include href="Standard-SongNameEngine.xml" />
+  <structure>
+    <bars>
+      <random min="160" max="256" step="16" />
+    </bars>
+    <beatsPerBar>4</beatsPerBar>
+    <ticksPerBeat>4</ticksPerBeat>
+    <maxVelocity>1000</maxVelocity>
+  </structure>
+  <harmonyEngine class="PatternHarmonyEngine">
+    <!-- we're not using chords anywhere, this just defines the length of each chord section in # of beats -->
+    <chordPattern>Am/32</chordPattern>
+  </harmonyEngine>
+  <arrangementEngine class="SimpleArrangementEngine">
+    <constraintMode>greedy</constraintMode>
+    <maxIterations>1000</maxIterations>
+    <minActivityCount>4</minActivityCount>
+    <maxActivityCount>11</maxActivityCount>
+    <maxActivityChangeCount>2</maxActivityChangeCount>
+    <startActivityCounts>
+      <random list="1,2,3|2,3,4|3,4,5" />
+    </startActivityCounts>
+    <stopActivityCounts>
+      <random list="4,3|5,3,2|5,4,2|5,4,3" />
+    </stopActivityCounts>
+    <!-- make sure the constraints are not too restrictive; with a large number of AVs it may easily become infeasible to find a valid song matrix which fulfills all constraints -->
+    <activityVector name="base">
+      <startAfterSection>1</startAfterSection>
+      <startBeforeSection>4</startBeforeSection>
+      <stopBeforeSection>0</stopBeforeSection>
+      <stopAfterSection>3</stopAfterSection>
+      <minActive>50</minActive>
+      <maxActive>90</maxActive>
+      <minSegmentLength>2</minSegmentLength>
+      <maxSegmentLength>7</maxSegmentLength>
+      <maxPauseLength>3</maxPauseLength>
+      <minSegmentCount>2</minSegmentCount>
+      <maxSegmentCount>4</maxSegmentCount>
+    </activityVector>
+    <activityVector name="snare">
+      <startAfterSection>0</startAfterSection>
+      <minActive>40</minActive>
+      <maxActive>100</maxActive>
+      <minSegmentLength>2</minSegmentLength>
+      <maxSegmentLength>10</maxSegmentLength>
+      <maxPauseLength>5</maxPauseLength>
+      <minSegmentCount>2</minSegmentCount>
+      <maxSegmentCount>4</maxSegmentCount>
+    </activityVector>
+    <activityVector name="clap">
+      <startAfterSection>1</startAfterSection>
+      <minActive>20</minActive>
+      <maxActive>100</maxActive>
+      <minSegmentLength>2</minSegmentLength>
+    </activityVector>
+    <activityVector name="hihat">
+      <startAfterSection>0</startAfterSection>
+      <minActive>30</minActive>
+      <maxActive>100</maxActive>
+      <minSegmentLength>2</minSegmentLength>
+      <minSegmentCount>2</minSegmentCount>
+    </activityVector>
+    <activityVector name="clave">
+      <minActive>10</minActive>
+      <maxActive>100</maxActive>
+      <minSegmentLength>2</minSegmentLength>
+    </activityVector>
+    <activityVector name="bell">
+      <minActive>10</minActive>
+      <maxActive>100</maxActive>
+      <minSegmentLength>2</minSegmentLength>
+    </activityVector>
+    <activityVector name="whistle">
+      <minActive>10</minActive>
+      <maxActive>100</maxActive>
+      <minSegmentLength>2</minSegmentLength>
+    </activityVector>
+    <activityVector name="cowbell">
+      <minActive>10</minActive>
+      <maxActive>100</maxActive>
+      <minSegmentLength>2</minSegmentLength>
+    </activityVector>
+    <activityVector name="low tom">
+      <minActive>10</minActive>
+      <maxActive>100</maxActive>
+      <minSegmentLength>2</minSegmentLength>
+    </activityVector>
+    <activityVector name="mid+high tom">
+      <minActive>10</minActive>
+      <maxActive>100</maxActive>
+      <minSegmentLength>2</minSegmentLength>
+    </activityVector>
+    <activityVector name="low wood block">
+      <minActive>10</minActive>
+      <maxActive>100</maxActive>
+      <minSegmentLength>2</minSegmentLength>
+    </activityVector>
+    <activityVector name="high wood block">
+      <minActive>10</minActive>
+      <maxActive>100</maxActive>
+      <minSegmentLength>2</minSegmentLength>
+    </activityVector>
+    <activityVector name="cymbal">
+      <startAfterSection>2</startAfterSection>
+      <minActive>10</minActive>
+      <maxActive>90</maxActive>
+      <minSegmentLength>2</minSegmentLength>
+    </activityVector>
+    <activityVector name="congas">
+      <minSegmentLength>2</minSegmentLength>
+    </activityVector>
+    <activityVector name="timbales">
+      <minSegmentLength>2</minSegmentLength>
+    </activityVector>
+    <activityVector name="maracas">
+      <minSegmentLength>2</minSegmentLength>
+    </activityVector>
+    <activityVector name="tambourine">
+      <minSegmentLength>2</minSegmentLength>
+    </activityVector>
+    <activityVector name="cabasa">
+      <minSegmentLength>2</minSegmentLength>
+    </activityVector>
+    
+    <track>
+      <instrument>percussion</instrument>
+      <sequenceEngine class="DrumSequenceEngine">
+        <pattern>
+          <!-- base drum -->
+          <pitch>36</pitch>
+          <patternEngine class="RandomFragmentPatternEngine">
+            <patternTicks>16</patternTicks>
+            <patternString>
+              <random list="A1,B1,A1,B2,A1,B1,A1,B3|A1,A1,A1,B1,A1,A1,A1,B2,A1,A1,A1,B1,A1,A1,A1,B3" />
+            </patternString>
+            <pattern group="A">0,-,-,-,-,-,-,-,0,-,-,-,-,-,-,-</pattern>
+            <pattern group="B">0,-,0,-,-,-,-,-,0,-,-,-,-,-,-,-|0,-,-,0,-,-,-,-,0,-,-,-,-,-,-,-|0,-,-,-,-,-,-,-,0,-,-,-,-,-,0,-|0,-,-,-,-,-,-,-,0,-,-,-,-,-,-,0|0,-,-,-,-,-,-,-,0,-,-,-,-,-,0,0|0,-,-,-,-,-,-,0,-,-,0,-,-,-,-,-|0,-,-,-,-,-,-,0,-,0,0,-,-,-,-,-|0,-,-,-,-,-,0,-,0,-,-,-,-,-,-,-</pattern>
+          </patternEngine>
+        </pattern>
+        <pattern>
+          <!-- snare drum -->
+          <pitch>38</pitch>
+          <patternEngine class="RandomFragmentPatternEngine">
+            <patternTicks>8</patternTicks>
+            <patternString><random list="A1,A1,A1,B1,A1,A1,A1,C1,A1,A1,A1,B1,A1,A1,A1,C2|A1,A1,A1,A1,A1,A1,A1,B1,A1,A1,A1,A1,A1,A1,A1,C1,A1,A1,A1,A1,A1,A1,A1,B1,A1,A1,A1,A1,A1,A1,A1,C2"/></patternString>
+            <pattern group="A">-,-,-,-,0,-,-,-</pattern>
+            <pattern group="B">-,-,-,-,0,-,-,-|-,-,-,-,0,-,-,0</pattern>
+            <pattern group="C">-,-,-,-,0,-,-,0|-,-,-,0,0,-,0,-|-,-,-,0,0,0,-,0|-,-,-,0,0,0,0,-|-,0,-,0,0,0,0,-|-,-,-,0,-,-,0,-|-,-,-,0,-,0,-,-|-,-,-,0,-,0,-,0</pattern>
+          </patternEngine>
+        </pattern>
+        <pattern>
+          <!-- clap -->
+          <pitch>39</pitch>
+          <patternEngine class="RandomFragmentPatternEngine">
+            <patternTicks>16</patternTicks>
+            <patternString><random list="A1,B1,A1,B2|A1,B1,A1,B2,A1,B1,A1,B3|A1,A1,A1,B1,A1,A1,A1,B2,A1,A1,A1,B1,A1,A1,A1,B3|C1,A1,C1,B1,C1,A1,C1,B2"/></patternString>
+            <pattern group="A">-/12,0,-/3</pattern>
+            <pattern group="B">-/11,0:500,0,-/3|-/12,0,0,-/2|-/12,0,0,-,0|-/9,0,-,-,0,-/3|-/9,0,-,-,0,-,0,-</pattern>
+            <pattern group="C">-/16</pattern>
+          </patternEngine>
+        </pattern>
+        <pattern>
+          <!-- closed hihat -->
+          <pitch>42</pitch>
+          <patternEngine class="RandomFragmentPatternEngine">
+            <patternTicks>4</patternTicks>
+            <patternString>A1,A2,A1,A3,A1,A2,A1,A4</patternString>
+            <pattern group="A">0:800,0:800,0:800,0:800|0:800,0:800,-,0:800|0:800,-,-,-|0:800,-,0:800,-|0:800,0:800,0:800,-</pattern>
+          </patternEngine>
+        </pattern>
+        <pattern>
+          <!-- open hihat -->
+          <pitch>46</pitch>
+          <patternEngine class="RandomFragmentPatternEngine">
+            <patternTicks>8</patternTicks>
+            <patternString><random list="A1,B1,A1,B2,A1,B1,A1,B3|A1,A1,A1,B1,A1,A1,A1,B2|A1,A1,A1,B1,A1,A1,A1,B2,A1,A1,A1,B1,A1,A1,A1,B3"/></patternString>
+            <pattern group="A">-,-,0:600,-,-,-,0:600,-</pattern>
+            <pattern group="B">-,-,0:600,-,-,-,0:600,-|-,-,0:600,-,-,-,-,0:600|-,-,0:600,-,-,0:600,-,0:600</pattern>
+          </patternEngine>
+        </pattern>
+        <pattern>
+          <!-- clave -->
+          <pitch>75</pitch>
+          <patternEngine class="RandomFragmentPatternEngine">
+            <patternTicks>16</patternTicks>
+            <patternString><random list="A1,B1,A1,B2,A1,B1,A1,B3|A1,A1,A1,B1,A1,A1,A1,B2|A1,A1,A1,B1,A1,A1,A1,B2,A1,A1,A1,B1,A1,A1,A1,B3"/></patternString>
+            <pattern group="A">E(5,16,0:800,-)|E(6,16,0:800,-)|E(7,16,0:800,-)</pattern>
+            <pattern group="B">E(9,16,0:800,-)|E(11,16,0:800,-)|E(13,16,0:800,-)</pattern>
+          </patternEngine>
+        </pattern>
+        <pattern>
+          <!-- bell -->
+          <pitch>53</pitch>
+          <patternEngine class="RandomPatternEngine">
+            <patternTicks>16</patternTicks>
+            <patternString><random list="A1,A2,A1,A3|A1,A2,A1,A3,A1,A2,A1,A4"/></patternString>
+            <noteProbability>70</noteProbability>
+            <legatoProbability>0</legatoProbability>
+            <minVelocity>450</minVelocity>
+            <maxVelocity>850</maxVelocity>
+            <minActiveTicks>5</minActiveTicks>
+            <maxActiveTicks>11</maxActiveTicks>
+            <offsets>0</offsets>
+            <noteLengths>1</noteLengths>
+            <pauseLengths>1,2</pauseLengths>
+            <pitchVelocityCorrelation>100</pitchVelocityCorrelation>
+            <velocityExponent>1</velocityExponent>
+          </patternEngine>
+        </pattern>
+        <pattern>
+          <!-- whistle -->
+          <pitch>71</pitch>
+          <patternEngine class="RandomPatternEngine">
+            <patternTicks>16</patternTicks>
+            <patternString><random list="A1,A2,A1,A3|A1,A2,A1,A3,A1,A2,A1,A4"/></patternString>
+            <noteProbability>70</noteProbability>
+            <legatoProbability>0</legatoProbability>
+            <minVelocity>500</minVelocity>
+            <maxVelocity>850</maxVelocity>
+            <minActiveTicks>5</minActiveTicks>
+            <maxActiveTicks>11</maxActiveTicks>
+            <offsets>0</offsets>
+            <noteLengths>1</noteLengths>
+            <pauseLengths>1,2</pauseLengths>
+            <pitchVelocityCorrelation>100</pitchVelocityCorrelation>
+            <velocityExponent>1</velocityExponent>
+          </patternEngine>
+        </pattern>
+        <pattern>
+          <!-- cowbell -->
+          <pitch>56</pitch>
+          <patternEngine class="RandomFragmentPatternEngine">
+            <patternTicks>16</patternTicks>
+            <patternString><random list="A1,B1,A1,B2,A1,B1,A1,B3|A1,A2,A1,A3,A1,A2,A1,A4|A1,A1,A1,B1,A1,A1,A1,B2|A1,A1,A1,B1,A1,A1,A1,B2,A1,A1,A1,B1,A1,A1,A1,B3"/></patternString>
+            <pattern group="A">E(4,16,0:650,-)|E(5,16,0:650,-)|E(6,16,0:650,-)|E(7,16,0:650,-)</pattern>
+            <pattern group="B">E(9,16,0:650,-)|E(10,16,0:650,-)|E(11,16,0:650,-)|E(12,16,0:650,-)</pattern>
+          </patternEngine>
+        </pattern>
+        <pattern>
+          <!-- low tom -->
+          <!-- uses Low Tom 1 (43) and Low Tom 2 (41) -->
+          <pitch>41</pitch>
+          <patternEngine class="RandomPatternEngine">
+            <patternTicks>16</patternTicks>
+            <patternString><random list="A1,A2,A1,A3|A1,A2,A1,A3,A1,A2,A1,A4"/></patternString>
+            <noteProbability>60</noteProbability>
+            <legatoProbability>0</legatoProbability>
+            <minVelocity>600</minVelocity>
+            <maxVelocity>850</maxVelocity>
+            <minActiveTicks>6</minActiveTicks>
+            <maxActiveTicks>11</maxActiveTicks>
+            <offsets>0,2,2,2</offsets>
+            <noteLengths>1</noteLengths>
+            <pauseLengths>1,2</pauseLengths>
+            <pitchVelocityCorrelation>100</pitchVelocityCorrelation>
+            <velocityExponent>3</velocityExponent>
+          </patternEngine>
+        </pattern>
+        <pattern>
+          <!-- mid+high tom -->
+          <!-- uses Mid Tom 1 (47), Mid Tom 2 (45), High Tom 1 (50) and High Tom 2 (48) -->
+          <pitch>45</pitch>
+          <patternEngine class="RandomPatternEngine">
+            <patternTicks>16</patternTicks>
+            <patternString><random list="A1,A2,A1,A3|A1,A2,A1,A3,A1,A2,A1,A4"/></patternString>
+            <noteProbability>70</noteProbability>
+            <legatoProbability>0</legatoProbability>
+            <minVelocity>600</minVelocity>
+            <maxVelocity>1000</maxVelocity>
+            <minActiveTicks>6</minActiveTicks>
+            <maxActiveTicks>13</maxActiveTicks>
+            <offsets>0,0,0,0,0,2,3,3,3,3,3,5</offsets>
+            <noteLengths>1</noteLengths>
+            <pauseLengths>1,2</pauseLengths>
+            <pitchVelocityCorrelation>0</pitchVelocityCorrelation>
+            <velocityExponent>3</velocityExponent>
+          </patternEngine>
+        </pattern>
+        <pattern>
+          <!-- low wood block -->
+          <pitch>77</pitch>
+          <patternEngine class="RandomPatternEngine">
+            <patternTicks>16</patternTicks>
+            <patternString><random list="A1,A2,A1,A3|A1,A2,A1,A3,A1,A2,A1,A4"/></patternString>
+            <noteProbability>70</noteProbability>
+            <legatoProbability>0</legatoProbability>
+            <minVelocity>600</minVelocity>
+            <maxVelocity>850</maxVelocity>
+            <minActiveTicks>6</minActiveTicks>
+            <maxActiveTicks>13</maxActiveTicks>
+            <offsets>0</offsets>
+            <noteLengths>1</noteLengths>
+            <pauseLengths>1,2</pauseLengths>
+            <pitchVelocityCorrelation>100</pitchVelocityCorrelation>
+            <velocityExponent>3</velocityExponent>
+          </patternEngine>
+        </pattern>
+        <pattern>
+          <!-- high wood block -->
+          <pitch>76</pitch>
+          <patternEngine class="RandomPatternEngine">
+            <patternTicks>16</patternTicks>
+            <patternString><random list="A1,A2,A1,A3|A1,A2,A1,A3,A1,A2,A1,A4"/></patternString>
+            <noteProbability>70</noteProbability>
+            <legatoProbability>0</legatoProbability>
+            <minVelocity>600</minVelocity>
+            <maxVelocity>850</maxVelocity>
+            <minActiveTicks>6</minActiveTicks>
+            <maxActiveTicks>13</maxActiveTicks>
+            <offsets>0</offsets>
+            <noteLengths>1</noteLengths>
+            <pauseLengths>1,2</pauseLengths>
+            <pitchVelocityCorrelation>100</pitchVelocityCorrelation>
+            <velocityExponent>3</velocityExponent>
+          </patternEngine>
+        </pattern>
+        <pattern>
+          <!-- cymbal -->
+          <pitch>49</pitch>
+          <patternEngine class="StringPatternEngine">
+            <string>0,-/63</string>
+            <string>0,-/127</string>
+          </patternEngine>
+        </pattern>
+        <pattern>
+          <!-- congas -->
+          <!-- uses Low Conga (64), Mute High Conga (62) and Open High Conga (63) -->
+          <pitch>62</pitch>
+          <patternEngine class="RandomPatternEngine" salt="49911">
+            <patternTicks>16</patternTicks>
+            <patternString><random list="A1,A2,A1,A3|A1,A2,A1,A3,A1,A2,A1,B1"/></patternString>
+            <noteProbability>60</noteProbability>
+            <legatoProbability>0</legatoProbability>
+            <minVelocity>550</minVelocity>
+            <maxVelocity>750</maxVelocity>
+            <minActiveTicks>7</minActiveTicks>
+            <maxActiveTicks>12</maxActiveTicks>
+            <offsets>0,0,1,1,1,1,1,2,2,2,2</offsets>
+            <noteLengths>1</noteLengths>
+            <pauseLengths>1,2</pauseLengths>
+            <pitchVelocityCorrelation>0</pitchVelocityCorrelation>
+            <velocityExponent>1</velocityExponent>
+          </patternEngine>
+        </pattern>
+        <pattern>
+          <!-- timbales -->
+          <!-- uses Mute Cuica (78) and Open Cuica (79) -->
+          <pitch>65</pitch>
+          <patternEngine class="RandomPatternEngine">
+            <patternTicks>16</patternTicks>
+            <patternString><random list="A1,A2,A1,A3|A1,A2,A1,A3,A1,A2,A1,B1"/></patternString>
+            <noteProbability>60</noteProbability>
+            <legatoProbability>0</legatoProbability>
+            <minVelocity>350</minVelocity>
+            <maxVelocity>600</maxVelocity>
+            <minActiveTicks>9</minActiveTicks>
+            <maxActiveTicks>14</maxActiveTicks>
+            <offsets>0,1</offsets>
+            <noteLengths>1,2</noteLengths>
+            <pauseLengths>1,2,2</pauseLengths>
+            <pitchVelocityCorrelation>0</pitchVelocityCorrelation>
+            <velocityExponent>1</velocityExponent>
+          </patternEngine>
+        </pattern>
+        <pattern>
+          <!-- maracas -->
+          <pitch>70</pitch>
+          <patternEngine class="RandomPatternEngine">
+            <patternTicks>16</patternTicks>
+            <patternString><random list="A1,A2,A1,A3|A1,A2,A1,A3,A1,A2,A1,B1"/></patternString>
+            <noteProbability>60</noteProbability>
+            <legatoProbability>0</legatoProbability>
+            <minVelocity>750</minVelocity>
+            <maxVelocity>1000</maxVelocity>
+            <minActiveTicks>12</minActiveTicks>
+            <maxActiveTicks>15</maxActiveTicks>
+            <offsets>0</offsets>
+            <noteLengths>1,2</noteLengths>
+            <pauseLengths>1,2,2</pauseLengths>
+            <pitchVelocityCorrelation>0</pitchVelocityCorrelation>
+            <velocityExponent>1</velocityExponent>
+          </patternEngine>
+        </pattern>
+        <pattern>
+          <!-- tambourine -->
+          <pitch>54</pitch>
+          <patternEngine class="RandomFragmentPatternEngine">
+            <patternTicks>16</patternTicks>
+            <patternString><random list="A1,B1,A1,B2,A1,B1,A1,B3|A1,A1,A1,B1,A1,A1,A1,B2|A1,A1,A1,B1,A1,A1,A1,B2,A1,A1,A1,B1,A1,A1,A1,B3"/></patternString>
+            <pattern group="A">E(6,16,0:700,-)|E(7,16,0:700,-)|E(9,16,0:700,-)</pattern>
+            <pattern group="B">E(10,16,0:700,-)|E(11,16,0:700,-)|E(13,16,0:700,-)</pattern>
+          </patternEngine>
+        </pattern>
+	    <pattern>
+          <!-- cabasa -->
+          <pitch>69</pitch>
+          <patternEngine class="RandomPatternEngine">
+            <patternTicks>16</patternTicks>
+            <patternString><random list="A1,A2,A1,A3|A1,A2,A1,A3,A1,A2,A1,B1"/></patternString>
+            <noteProbability>60</noteProbability>
+            <legatoProbability>0</legatoProbability>
+            <minVelocity>550</minVelocity>
+            <maxVelocity>800</maxVelocity>
+            <minActiveTicks>12</minActiveTicks>
+            <maxActiveTicks>15</maxActiveTicks>
+            <offsets>0</offsets>
+            <noteLengths>1,2</noteLengths>
+            <pauseLengths>1,2,2</pauseLengths>
+            <pitchVelocityCorrelation>0</pitchVelocityCorrelation>
+            <velocityExponent>1</velocityExponent>
+          </patternEngine>
+        </pattern>
+
+      </sequenceEngine>
+      <activityVector>base</activityVector>
+      <activityVector>snare</activityVector>
+      <activityVector>clap</activityVector>
+      <activityVector>hihat</activityVector>
+      <activityVector>hihat</activityVector>
+      <activityVector>clave</activityVector>
+      <activityVector>bell</activityVector>
+      <activityVector>whistle</activityVector>
+      <activityVector>cowbell</activityVector>
+      <activityVector>low tom</activityVector>
+      <activityVector>mid+high tom</activityVector>
+      <activityVector>low wood block</activityVector>
+      <activityVector>high wood block</activityVector>
+      <activityVector>cymbal</activityVector>
+      <activityVector>congas</activityVector>
+      <activityVector>timbales</activityVector>
+      <activityVector>maracas</activityVector>
+      <activityVector>tambourine</activityVector>
+      <activityVector>cabasa</activityVector>
+      </track>
+  </arrangementEngine>
+
+  <player class="MidiPlayer">
+    <bpm>
+      <random min="124" max="138" type="normal" variance="7" />
+    </bpm>
+    <!-- transposition is not relevant, because only percussion is used -->
+    <transposition>65</transposition>
+    <beforePlayWaitTicks>16</beforePlayWaitTicks>
+    <afterPlayWaitTicks>16</afterPlayWaitTicks>
+    <groove>
+      <random list="100|110,90" />
+    </groove>
+    <!-- uncomment the following line if you want to write all generated songs as MIDI files in the subdirectory "midifiles" -->
+    <!-- <midiFilename>midifiles/SoundHelix-Percussion_-_${safeSongName}.mid</midiFilename> -->
+    <device name="device1" clockSynchronization="true">Gervill,Microsoft GS Wavetable Synth,Microsoft GS Wavetable SW Synth,Java Sound Synthesizer</device>
+    <!-- <synchronizationDevice waitForStart="true">timingport</synchronizationDevice> -->
+    <map instrument="percussion" device="device1" channel="10" />
+  </player>
+</SoundHelix>

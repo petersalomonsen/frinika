@@ -1,0 +1,12 @@
+group = 'com.frinika'
+ext.libraryName = 'Frinika sequencer library'
+ext.libraryDescription = 'Sequencer library for Frinika'
+
+apply from: '../modules.gradle'
+
+dependencies {
+    compile(project(':modules:frinika-core'))
+    compile(project(':modules:frinika-audio'))
+    compile(project(':modules:frinika-device-synthrack'))
+    compile(project(':modules:frinika-view-tracker'))
+}

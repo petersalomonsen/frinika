@@ -1,0 +1,13 @@
+group = 'com.frinika'
+ext.libraryName = 'Frinika radio library'
+ext.libraryDescription = 'Radio library for Frinika'
+
+apply from: '../modules.gradle'
+
+dependencies {
+    compile(project(':modules:frinika-core'))
+    compile(project(':modules:frinika-project'))
+    compile 'javax.servlet:servlet-api:2.4'
+    compile 'org.mortbay.jetty:jetty:6.1.12'
+    compile 'org.mortbay.jetty:jetty-util:6.1.12'
+}

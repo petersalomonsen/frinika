@@ -1,6 +1,0 @@
-# midi providers
-com.frinika.synth.FrinikaSynthRackProvider
-com.frinika.midi.DrumMapperProvider
-com.frinika.midi.MidiDebugDeviceProvider
-com.frinika.codesynth.CodeSynthProvider
-com.frinika.jvstsynth.FrinikaJVSTSynthProvider

@@ -1,0 +1,3 @@
+rootProject.name = 'frinika-audio-toot'
+
+apply from: '../modules-settings.gradle'

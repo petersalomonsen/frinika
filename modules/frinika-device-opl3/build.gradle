@@ -1,0 +1,10 @@
+group = 'com.frinika'
+ext.libraryName = 'Frinika OPL 3 emulator library'
+ext.libraryDescription = 'OPL3 library for Frinika'
+
+apply from: '../modules.gradle'
+
+dependencies {
+    compile(project(':modules:frinika-core'))
+    compile(project(':modules:frinika-sequencer'))
+}

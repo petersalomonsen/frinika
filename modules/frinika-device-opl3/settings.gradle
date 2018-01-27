@@ -1,0 +1,6 @@
+rootProject.name = 'frinika-device-opl3'
+
+apply from: '../modules-settings.gradle'
+
+include ":modules:frinika-core"
+include ":modules:frinika-audio"

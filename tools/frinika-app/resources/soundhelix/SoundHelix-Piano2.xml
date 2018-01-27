@@ -1,0 +1,208 @@
+<?xml version="1.0"?>
+<!-- Example XML file for SoundHelix. Author: Thomas Schuerger. -->
+<SoundHelix version="0.5+" xmlns:xi="http://www.w3.org/2001/XInclude">
+	<xi:include href="Standard-SongNameEngine.xml" />
+  <structure>
+    <bars>
+      <random min="96" max="160" step="16" />
+    </bars>
+    <beatsPerBar>4</beatsPerBar>
+    <ticksPerBeat>4</ticksPerBeat>
+  </structure>
+  <xi:include href="Standard-HarmonyEngine.xml" />
+  <arrangementEngine class="SimpleArrangementEngine">
+    <maxIterations>5000000</maxIterations>
+    <minActivityCount>2</minActivityCount>
+    <maxActivityCount>4</maxActivityCount>
+    <maxActivityChangeCount>2</maxActivityChangeCount>
+    <startActivityCounts>
+      <random list="2,3" />
+    </startActivityCounts>
+    <stopActivityCounts>
+      <random list="3,2" />
+    </stopActivityCounts>
+    <activityVector name="accompbass">
+      <minActive>20</minActive>
+      <maxActive>60</maxActive>
+    </activityVector>
+    <activityVector name="accomp">
+      <minActive>10</minActive>
+      <minSegmentLength>2</minSegmentLength>
+    </activityVector>
+    <activityVector name="melody">
+      <startAfterSection>3</startAfterSection>
+      <stopBeforeSection>1</stopBeforeSection>
+      <minActive>30</minActive>
+      <maxActive>60</maxActive>
+      <minSegmentLength>2</minSegmentLength>
+      <maxSegmentLength>5</maxSegmentLength>
+    </activityVector>
+    <activityVector name="melody2">
+      <minActive>25</minActive>
+      <maxActive>60</maxActive>
+      <minSegmentLength>2</minSegmentLength>
+      <maxSegmentLength>5</maxSegmentLength>
+    </activityVector>
+
+    <track>
+      <instrument>accomp</instrument>
+      <transposition>-12</transposition>
+      <sequenceEngine class="MultiPatternSequenceEngine">
+        <patternEngines>
+          <patternEngine class="StringPatternEngine">
+            <string>-,-,-,-,2:28000,-,-,-</string>
+          </patternEngine>
+          <patternEngine class="StringPatternEngine">
+            <string>-,-,-,-,1:28000,-,-,-</string>
+          </patternEngine>
+          <patternEngine class="StringPatternEngine">
+            <string>-,-,-,-,0:28000,-,-,-</string>
+          </patternEngine>
+        </patternEngines>
+      </sequenceEngine>
+      <activityVector>accomp</activityVector>
+    </track>
+    <track>
+      <instrument>accompbass</instrument>
+      <transposition>-24</transposition>
+      <sequenceEngine class="PatternSequenceEngine">
+        <patternEngine class="RandomFragmentPatternEngine">
+          <patternTicks>16</patternTicks>
+          <patternString>A1,A2,A1,A3,A1,A2,A1,A4</patternString>
+          <pattern group="A">0,-,-,-,0,-,-,-|0,-,-,0,-,-,2,-|0,-,-,-,2,-,-,-|0,-,-,1,-,-,2,-|0,-,-,2,-,-,-1,-</pattern>
+        </patternEngine>
+      </sequenceEngine>
+      <activityVector>accompbass</activityVector>
+    </track>
+    <track>
+      <instrument>melody</instrument>
+      <transposition>12</transposition>
+      <sequenceEngine class="MelodySequenceEngine">
+        <melodies>2,3,4</melodies>
+        <minPitch>0</minPitch>
+        <maxPitch>9</maxPitch>
+        <pitchDistances>-2,-2,-1,-1,-1,-1,0,0,1,1,1,1,2,2</pitchDistances>
+        <patternEngine class="RandomPatternEngine">
+          <patternTicks>16</patternTicks>
+          <patternString>
+            <random list="A1,A2,A1,A3,A1,A2,A1,B1" />
+          </patternString>
+          <noteProbability>75</noteProbability>
+          <legatoProbability>0</legatoProbability>
+          <minVelocity>32767</minVelocity>
+          <maxVelocity>32767</maxVelocity>
+          <minActiveTicks>7</minActiveTicks>
+          <maxActiveTicks>13</maxActiveTicks>
+          <offsets>0,0,+,+</offsets>
+          <noteLengths>2,2,2,3,2,2,2,1,2,1</noteLengths>
+          <pauseLengths>2,2,2,2,1,2</pauseLengths>
+          <pitchVelocityCorrelation>100</pitchVelocityCorrelation>
+          <velocityExponent>3</velocityExponent>
+        </patternEngine>
+      </sequenceEngine>
+      <activityVector>melody</activityVector>
+    </track>
+    <track>
+      <instrument>melody2</instrument>
+      <transposition>0</transposition>
+      <sequenceEngine class="MelodySequenceEngine">
+        <melodies>2,2,3</melodies>
+        <minPitch>0</minPitch>
+        <maxPitch>11</maxPitch>
+        <pitchDistances>-2,-2,-1,-1,-1,-1,0,0,1,1,1,1,2,2</pitchDistances>
+        <patternEngine class="RandomPatternEngine">
+          <patternTicks>16</patternTicks>
+          <patternString>
+            <random list="A1,A2,A1,A3,A1,A2,A1,B1,A1,A2,A1,A4,A1,A2,A1,B2" />
+          </patternString>
+          <noteProbability>75</noteProbability>
+          <legatoProbability>0</legatoProbability>
+          <minVelocity>32767</minVelocity>
+          <maxVelocity>32767</maxVelocity>
+          <minActiveTicks>7</minActiveTicks>
+          <maxActiveTicks>13</maxActiveTicks>
+          <offsets>0,0,0,0,0,0,+,+</offsets>
+          <noteLengths>2,2,2,4,2</noteLengths>
+          <pauseLengths>2,2,2,2,4,2</pauseLengths>
+          <pitchVelocityCorrelation>100</pitchVelocityCorrelation>
+          <velocityExponent>3</velocityExponent>
+        </patternEngine>
+      </sequenceEngine>
+      <activityVector>melody2</activityVector>
+    </track>
+  </arrangementEngine>
+
+  <player class="MidiPlayer">
+    <bpm>
+      <random min="120" max="134" type="normal" variance="7" />
+    </bpm>
+    <transposition>
+      <random min="65" max="69" />
+    </transposition>
+    <beforePlayWaitTicks>16</beforePlayWaitTicks>
+    <afterPlayWaitTicks>16</afterPlayWaitTicks>
+    <groove>
+      <random list="100|110,90|120,80|115,85" />
+    </groove>
+    <!-- uncomment the following line if you want to write all generated songs as MIDI files -->
+    <!-- <midiFilename>midifiles/${safeSongName}-${safeDeviceName}.mid</midiFilename> -->
+    <device name="device1" clockSynchronization="true">Gervill,Microsoft GS Wavetable Synth,Microsoft GS Wavetable SW Synth,Java Sound Synthesizer</device>
+    <map instrument="accompbass" device="device1" channel="1" program="1" />
+    <map instrument="accomp" device="device1" channel="2" program="1" />
+    <map instrument="melody" device="device1" channel="3" program="2" />
+    <map instrument="melody2" device="device1" channel="4" program="2" />
+    <!-- fade out all instruments at the end of the song -->
+    <controllerLFO>
+      <lfo class="SawtoothLFO" />
+      <rotationUnit>song</rotationUnit>
+      <speed>1</speed>
+      <phase>0</phase>
+      <minAmplitude>0</minAmplitude>
+      <maxAmplitude>3000</maxAmplitude>
+      <minValue>0</minValue>
+      <maxValue>127</maxValue>
+      <controller>volume</controller>
+      <channel>1</channel>
+      <device>device1</device>
+    </controllerLFO>
+    <controllerLFO>
+      <lfo class="SawtoothLFO" />
+      <rotationUnit>song</rotationUnit>
+      <speed>1</speed>
+      <phase>0</phase>
+      <minAmplitude>0</minAmplitude>
+      <maxAmplitude>3000</maxAmplitude>
+      <minValue>0</minValue>
+      <maxValue>127</maxValue>
+      <controller>volume</controller>
+      <channel>2</channel>
+      <device>device1</device>
+    </controllerLFO>
+    <controllerLFO>
+      <lfo class="SawtoothLFO" />
+      <rotationUnit>song</rotationUnit>
+      <speed>1</speed>
+      <phase>0</phase>
+      <minAmplitude>0</minAmplitude>
+      <maxAmplitude>3000</maxAmplitude>
+      <minValue>0</minValue>
+      <maxValue>127</maxValue>
+      <controller>volume</controller>
+      <channel>3</channel>
+      <device>device1</device>
+    </controllerLFO>
+    <controllerLFO>
+      <lfo class="SawtoothLFO" />
+      <rotationUnit>song</rotationUnit>
+      <speed>1</speed>
+      <phase>0</phase>
+      <minAmplitude>0</minAmplitude>
+      <maxAmplitude>3000</maxAmplitude>
+      <minValue>0</minValue>
+      <maxValue>127</maxValue>
+      <controller>volume</controller>
+      <channel>4</channel>
+      <device>device1</device>
+    </controllerLFO>
+  </player>
+</SoundHelix>
