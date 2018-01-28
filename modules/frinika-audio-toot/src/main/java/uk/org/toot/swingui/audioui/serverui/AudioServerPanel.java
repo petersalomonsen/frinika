@@ -5,19 +5,23 @@
 
 package uk.org.toot.swingui.audioui.serverui;
 
-import com.frinika.toot.PriorityAudioServer;
+import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.DateFormat;
-import java.util.Date;
-import java.util.List;
-import javax.swing.*;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-import uk.org.toot.audio.server.*;
+
 import uk.org.toot.swingui.SpringUtilities;
+import uk.org.toot.audio.server.*;
+//import uk.org.toot.swing.DisposablePanel;
+import java.util.List;
+import java.util.Date;
+import java.text.DateFormat;
+//import java.beans.PropertyChangeListener;
+//import java.beans.PropertyChangeEvent;
+import com.frinika.toot.PriorityAudioServer;
 
 /**
  * An AudioServerPanel provides a UI for an AudioServer which allows control
@@ -57,7 +61,6 @@ public class AudioServerPanel extends AbstractAudioServerPanel
         add(buildButtonPanel(), BorderLayout.SOUTH);
     }
 
-    @Override
   	protected void updatePeriodic() {
         if ( server == null ) return;
         if ( !isShowing() ) return;
@@ -96,7 +99,6 @@ public class AudioServerPanel extends AbstractAudioServerPanel
     	JPanel p = new JPanel();
     	JButton reset = new JButton("Reset");
     	reset.addActionListener(new ActionListener() {
-                    @Override
     		public void actionPerformed(ActionEvent ae) {
     			server.resetMetrics(true);
     		}
@@ -120,7 +122,6 @@ public class AudioServerPanel extends AbstractAudioServerPanel
             final JSpinner priority = new Spinner(priorityModel);
             priority.addChangeListener(
                 new ChangeListener() {
-                        @Override
                 	public void stateChanged(ChangeEvent e) {
                     	pas.requestPriority(priorityModel.getNumber().intValue());
                     	config.update();
@@ -135,7 +136,6 @@ public class AudioServerPanel extends AbstractAudioServerPanel
         bufferMillis = new Spinner(bufferModel);
         bufferMillis.addChangeListener(
             new ChangeListener() {
-                    @Override
             	public void stateChanged(ChangeEvent e) {
                 	server.setBufferMilliseconds((float)bufferModel.getNumber().intValue());
                 	config.update();
@@ -149,7 +149,6 @@ public class AudioServerPanel extends AbstractAudioServerPanel
         latencyMillis = new Spinner(latencyModel);
         latencyMillis.addChangeListener(
             new ChangeListener() {
-                    @Override
             	public void stateChanged(ChangeEvent e) {
             		float latencyms = (float)latencyModel.getNumber().intValue();
            			server.setLatencyMilliseconds(latencyms);
@@ -201,12 +200,10 @@ public class AudioServerPanel extends AbstractAudioServerPanel
             super(model);
         }
 
-        @Override
         public Dimension getMaximumSize() {
             return spinnerSize;
         }
 
-        @Override
         public Dimension getPreferredSize() {
             return spinnerSize;
         }

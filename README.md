@@ -1,14 +1,10 @@
 Frinika
 =======
 
-Note: This is fork of Frinika under development, see
-https://sourceforge.net/p/frinika/discussion/447356/thread/bf64b5f5/
-
-
 Frinika is a free music workstation software for Linux, Windows, Mac OSX and other operating systems running Java. 
 It features sequencer, soft-synths, realtime effects, MIDI and audio recording. 
 
-See http://frinika.com for more 
+Visit http://frinika.com for more information 
 
 Screenshot
 ----------

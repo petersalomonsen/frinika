@@ -1,0 +1,70 @@
+<body>
+<p>This package addresses issues with MidiMessage, such as the subclass problems (what is a MidiMessage that isn't one of the specified subclasses?). Here the client need only be concerned with MidiMessage. Specialised classes are provided to create, access and mutate Channel Voice, Channel Mode, System Common, System Real Time, System Exclusive and Meta messages, regardless of their specific implementation class.</p>
+<p>It does not currently address transport GC-inefficiency (mutability defensive cloning)</p>
+<p>
+Some examples which show the relative ease of use compared to javax.sound.midi
+<h3>Setting the Track Name Meta Event with <code>MidiMessage msg, String name</code></h3>
+<blockquote><pre>
+import javax.sound.midi.MetaMessage;
+...
+if (msg instanceof MetaMessage) {
+	MetaMessage mm = (MetaMessage)msg;
+	if (mm.getType() == 0x03) {
+		byte[] bytes = name.getBytes();
+		mm.setMessage(0x03, bytes, bytes.length);
+	}
+	
+}
+</pre></blockquote>
+becomes
+<blockquote><pre>
+import static uk.org.toot.midi.message.MetaMsg.*;
+...
+if (isMeta(msg) && getType(msg) == TRACK_NAME) {
+	setString(msg, name);
+}
+</pre></blockquote>
+</p>
+<h3>Transposing notes with <code>MidiMessage msg, int semitones</code></h3>
+<blockquote><pre>
+import javax.sound.midi.ShortMessage;
+...
+if (msg instanceof ShortMessage) {
+	ShortMessage sm = (ShortMessage)msg;
+	int cmd = sm.getCommand();
+	if (cmd == ShortMessage.NOTE_ON || 
+		cmd == ShortMessage.NOTE_OFF || 
+		cmd == ShortMessage.POLY_PRESSURE) {
+			sm.setMessage(cmd, sm.getChannel(), sm.getData1()+semitones, sm.getData2());
+	}
+		
+}
+</pre></blockquote>
+becomes
+<blockquote><pre>
+import static uk.org.toot.midi.message.PitchMsg.*;
+...
+if (isPitch(msg))
+	transpose(msg, semitones)
+</pre></blockquote>
+
+<h3>Detecting a <code>NOTE_OFF</code></h3>
+<blockquote><pre>
+import javax.sound.midi.ShortMessage;
+...
+if (msg instanceof ShortMessage) {
+	ShortMessage sm = (ShortMessage)msg;
+	int cmd = sm.getCommand();
+	boolean b = cmd == ShortMessage.NOTE_OFF || (cmd == ShortMessage.NOTE_ON && sm.getData2() == 0);
+}
+</pre></blockquote>
+becomes
+<blockquote><pre>
+import static uk.org.toot.midi.NoteMsg.*;
+...
+boolean b = isNote(msg) && isOff(msg);
+</pre></blockquote>
+<h2>Package uk.org.toot.midi.message UML Class Diagram</h2>
+<p><image src="doc-files/message-1.gif"></p>
+
+</body>

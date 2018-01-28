@@ -1,0 +1,11 @@
+<body>
+<p>This package provides a small framework to synchronize the transport of virtual and external (hardware) systems such as MIDI Sequencers and multi track tape recorders. Stop, Play, Record and Locate functions are provided and the current transport location is available with microsecond resolution.</p>
+
+<p>An application would typically have a single Transport, the default implementation being DefaultTransport.
+Various subsystems would then add TransportListeners to this Transport.</p>
+
+<p>Abstract classes AbstractMMCMaster and AbstractMMCSlave are provided for both master and slave MIDI Machine Control, just concretize with MIDI ports. AbstractMMCMaster is a TransportListener, AbstractMMCSlave is a Transport.</p>
+<h2>Package uk.org.toot.transport UML Class Diagram</h2>
+<p><image src="doc-files/transport-1.gif"></p>
+</body>
+

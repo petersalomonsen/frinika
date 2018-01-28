@@ -110,11 +110,11 @@
             </Container>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="sampleProjectsPanel">
+        <Container class="javax.swing.JPanel" name="exampleProjectsPanel">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Sample Projects">
-                <Property name="tabTitle" type="java.lang.String" value="Sample Projects"/>
+              <JTabbedPaneConstraints tabName="Example Projects">
+                <Property name="tabTitle" type="java.lang.String" value="Example Projects"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -133,7 +133,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JList" name="sampleList">
+                <Component class="javax.swing.JList" name="exampleList">
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;ProjectFileRecord&gt;"/>
                   </AuxValues>

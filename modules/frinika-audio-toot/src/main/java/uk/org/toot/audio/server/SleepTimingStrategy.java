@@ -11,12 +11,10 @@ package uk.org.toot.audio.server;
  */
 public class SleepTimingStrategy implements AudioTimingStrategy
 {
-    @Override
     public int getThreadPriority() {
         return Thread.MAX_PRIORITY;
     }
 
-    @Override
     public void block(long nowNanos, long blockNanos) {
         try {
 	        Thread.sleep(blockNanos / ONE_MILLION, (int)(blockNanos % ONE_MILLION));

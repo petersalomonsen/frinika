@@ -72,7 +72,7 @@ public class FrinikaMain {
 
         configureUI();
 
-        startProject();
+        startFrinika();
 
 //        try {
         JFrame welcomeFrame = new JFrame();
@@ -166,7 +166,7 @@ public class FrinikaMain {
 //        FrinikaAudioSystem.getAudioServer().start();
     }
 
-    private static void startProject() {
+    private static void startFrinika() {
         exitHook = new FrinikaExitHandler();
         Runtime.getRuntime().addShutdownHook(exitHook);
 
@@ -233,7 +233,7 @@ public class FrinikaMain {
             }
 
             @Override
-            public void openSampleProject(@Nonnull ProjectFileRecord projectFileRecord) {
+            public void openExampleProject(@Nonnull ProjectFileRecord projectFileRecord) {
                 try {
                     FrinikaFrame projectFrame = new FrinikaFrame();
 

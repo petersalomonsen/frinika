@@ -2,6 +2,7 @@ package uk.org.toot.swingui.audioui.serverui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -20,7 +21,6 @@ public abstract class AbstractAudioServerPanel extends JPanel
 		if ( periodMilliseconds > 0 ) {
 			Timer timer = new Timer(periodMilliseconds,
 				new ActionListener() {
-                                        @Override
 					public void actionPerformed(ActionEvent arg0) {
 						updatePeriodic();
 					}				

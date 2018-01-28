@@ -13,7 +13,6 @@ dependencies {
     compile(project(':modules:frinika-driver-osx'))
     compile(project(':modules:frinika-driver-jack'))
     compile 'commons-logging:commons-logging:1.2'
-    compile ':toot'
     compile ':tootvst'
     compile 'com.jgoodies:looks:2.1.4'
     compile ':darcula'

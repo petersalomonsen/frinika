@@ -8,5 +8,4 @@ dependencies {
     compile(project(':modules:frinika-audio-toot'))
     compile('org.jaudiolibs:jnajack:1.2.0')
     compile(':jasiohost')
-    compile ':toot'
 }

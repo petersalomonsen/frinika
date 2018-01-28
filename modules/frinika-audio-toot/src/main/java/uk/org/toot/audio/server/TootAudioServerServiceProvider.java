@@ -6,8 +6,8 @@
 
 package uk.org.toot.audio.server;
 
-import uk.org.toot.audio.id.ProviderId;
 import uk.org.toot.audio.server.spi.AudioServerServiceProvider;
+import uk.org.toot.audio.id.ProviderId;
 
 public class TootAudioServerServiceProvider extends AudioServerServiceProvider
 {
@@ -17,7 +17,6 @@ public class TootAudioServerServiceProvider extends AudioServerServiceProvider
         add(MultiIOJavaSoundAudioServer.class, "JavaSound (stereo)", "JavaSound", "0.1");
     }
     
-    @Override
     public AudioServerConfiguration createServerConfiguration(AudioServer server) {
     	if ( server instanceof ExtendedAudioServer ) {
     		return new ExtendedAudioServerConfiguration((ExtendedAudioServer)server);
@@ -25,7 +24,6 @@ public class TootAudioServerServiceProvider extends AudioServerServiceProvider
     	return null;
     }
     
-    @Override
     public AudioServerConfiguration createServerSetup(AudioServer server) {
     	if ( server instanceof JavaSoundAudioServer ) {
     		return new JavaSoundAudioServerSetup((JavaSoundAudioServer)server);

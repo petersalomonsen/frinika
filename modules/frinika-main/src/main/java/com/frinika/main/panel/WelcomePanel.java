@@ -43,7 +43,7 @@ import javax.swing.text.html.HTMLDocument;
 public class WelcomePanel extends javax.swing.JPanel {
 
     private ActionListener actionListener = null;
-    private final DefaultListModel<ProjectFileRecord> sampleListModel = new DefaultListModel<>();
+    private final DefaultListModel<ProjectFileRecord> exampleListModel = new DefaultListModel<>();
     private final DefaultListModel<ProjectFileRecord> recentListModel = new DefaultListModel<>();
 
     public WelcomePanel() {
@@ -87,10 +87,10 @@ public class WelcomePanel extends javax.swing.JPanel {
             }
         });
 
-        sampleList.setModel(sampleListModel);
-        sampleList.setCellRenderer(new ProjectFileRecordCellRenderer());
+        exampleList.setModel(exampleListModel);
+        exampleList.setCellRenderer(new ProjectFileRecordCellRenderer());
 
-        sampleList.addKeyListener(new KeyAdapter() {
+        exampleList.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent event) {
                 if (event.getKeyCode() == KeyEvent.VK_ENTER) {
@@ -98,14 +98,14 @@ public class WelcomePanel extends javax.swing.JPanel {
                     if (source instanceof JList<?>) {
                         int index = ((JList<?>) source).getSelectedIndex();
                         if (index >= 0) {
-                            ProjectFileRecord projectFileRecord = sampleListModel.get(index);
-                            actionListener.openSampleProject(projectFileRecord);
+                            ProjectFileRecord projectFileRecord = exampleListModel.get(index);
+                            actionListener.openExampleProject(projectFileRecord);
                         }
                     }
                 }
             }
         });
-        sampleList.addMouseListener(new MouseAdapter() {
+        exampleList.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent event) {
                 if (event.getClickCount() == 2) {
@@ -113,8 +113,8 @@ public class WelcomePanel extends javax.swing.JPanel {
                     if (source instanceof JList<?>) {
                         int index = ((JList<?>) source).locationToIndex(event.getPoint());
                         if (index >= 0) {
-                            ProjectFileRecord projectFileRecord = sampleListModel.get(index);
-                            actionListener.openSampleProject(projectFileRecord);
+                            ProjectFileRecord projectFileRecord = exampleListModel.get(index);
+                            actionListener.openExampleProject(projectFileRecord);
                         }
                     }
                 }
@@ -136,9 +136,9 @@ public class WelcomePanel extends javax.swing.JPanel {
         recentProjectsPanel = new javax.swing.JPanel();
         recentListScrollPane = new javax.swing.JScrollPane();
         recentList = new javax.swing.JList<>();
-        sampleProjectsPanel = new javax.swing.JPanel();
+        exampleProjectsPanel = new javax.swing.JPanel();
         samplListScrollPane = new javax.swing.JScrollPane();
-        sampleList = new javax.swing.JList<>();
+        exampleList = new javax.swing.JList<>();
         newProjectButton = new javax.swing.JButton();
         openProjectButton = new javax.swing.JButton();
         controlPanel = new javax.swing.JPanel();
@@ -159,13 +159,13 @@ public class WelcomePanel extends javax.swing.JPanel {
 
         projectsTabbedPane.addTab("Recent Projects", recentProjectsPanel);
 
-        sampleProjectsPanel.setLayout(new java.awt.BorderLayout());
+        exampleProjectsPanel.setLayout(new java.awt.BorderLayout());
 
-        samplListScrollPane.setViewportView(sampleList);
+        samplListScrollPane.setViewportView(exampleList);
 
-        sampleProjectsPanel.add(samplListScrollPane, java.awt.BorderLayout.CENTER);
+        exampleProjectsPanel.add(samplListScrollPane, java.awt.BorderLayout.CENTER);
 
-        projectsTabbedPane.addTab("Sample Projects", sampleProjectsPanel);
+        projectsTabbedPane.addTab("Example Projects", exampleProjectsPanel);
 
         newProjectButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/new.gif"))); // NOI18N
         newProjectButton.setText("Create new project");
@@ -365,6 +365,8 @@ public class WelcomePanel extends javax.swing.JPanel {
     private javax.swing.JPanel controlPanel;
     private javax.swing.JToggleButton darculaLafToggleButton;
     private javax.swing.JToggleButton defaultLafToggleButton;
+    private javax.swing.JList<ProjectFileRecord> exampleList;
+    private javax.swing.JPanel exampleProjectsPanel;
     private javax.swing.JButton exitButton;
     private javax.swing.ButtonGroup lafButtonGroup;
     private javax.swing.JPanel lafPanel;
@@ -377,8 +379,6 @@ public class WelcomePanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane recentListScrollPane;
     private javax.swing.JPanel recentProjectsPanel;
     private javax.swing.JScrollPane samplListScrollPane;
-    private javax.swing.JList<ProjectFileRecord> sampleList;
-    private javax.swing.JPanel sampleProjectsPanel;
     // End of variables declaration//GEN-END:variables
 
     private void switchLookAndFeel(@Nonnull SupportedLaf selectedLaf) {
@@ -416,7 +416,7 @@ public class WelcomePanel extends javax.swing.JPanel {
 
         void openRecentProject(@Nonnull ProjectFileRecord projectFileRecord);
 
-        void openSampleProject(@Nonnull ProjectFileRecord projectFileRecord);
+        void openExampleProject(@Nonnull ProjectFileRecord projectFileRecord);
 
         void saveDefaultTheme(@Nullable String theme);
     }
@@ -429,7 +429,7 @@ public class WelcomePanel extends javax.swing.JPanel {
 
     public void setExampleProjects(@Nonnull List<ProjectFileRecord> projectRecord) {
         projectRecord.forEach((projectFileRecord) -> {
-            sampleListModel.addElement(projectFileRecord);
+            exampleListModel.addElement(projectFileRecord);
         });
     }
 

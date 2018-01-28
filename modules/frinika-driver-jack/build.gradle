@@ -9,5 +9,4 @@ dependencies {
     compile('org.jaudiolibs:jnajack:1.2.0')
     compile(':jna-4.2.2')
     compile(':audioservers-api-1.1.1')
-    compile ':toot'
 }

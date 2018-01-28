@@ -28,14 +28,12 @@ public class JavaSoundAudioServerSetup extends AudioServerConfiguration
 		this.server = server;
 	}
 	
-        @Override
 	public Properties getProperties() {
 		Properties p = new Properties();
 		p.setProperty(SAMPLE_RATE, String.valueOf(server.getSampleRate()));
 		return p;
 	}
 
-        @Override
 	public void applyProperties(Properties p) {
     	if ( p == null ) {
      	   System.err.println("null properties passed to JavaSoundAudioServerSetup.applyProperties()");

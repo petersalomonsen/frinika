@@ -37,6 +37,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 import java.util.TreeSet;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.Nonnull;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -55,6 +57,8 @@ import javax.swing.text.html.HTMLDocument;
 /**
  * Panel for about dialog.
  *
+ * Migrated from About Dialog.
+ *
  * @author hajdam
  */
 public class AboutPanel extends javax.swing.JPanel {
@@ -66,7 +70,7 @@ public class AboutPanel extends javax.swing.JPanel {
     public static final String MAIN_TITLE
             = "<html><center>"
             + "<b>Frinika DEV version " + VersionProperties.getVersion() + " </b><br>"
-            + "<a href=\"http://frinika.sourceforge.net\">http://frinika.sourceforge.net</a><br><font color='#A0A0A0'><i>Build date: " + VersionProperties.getBuildDate() + "</i></font>"
+            + "<a href=\"http://frinika.com\">http://frinika.com</a><br><font color='#A0A0A0'><i>Build date: " + VersionProperties.getBuildDate() + "</i></font>"
             + "</html>";
 
     public static final String COPYRIGHT_NOTICE
@@ -86,6 +90,7 @@ public class AboutPanel extends javax.swing.JPanel {
             + "Toni (oc2pus@arcor.de) - Ant build scripts and Linux RPMs<br>"
             + "Steve Taylor - Toot integration<br>"
             + "Jens Gulden - Ghosts parts, Midi Tools menu, step recording, ctrl tools, scripting and more<br>"
+            + "Miroslav Hajda - GUI cleanup<br>"
             + "<br>"
             + "<b>Libraries:</b><br>"
             + "JJack Copyright " + COPYRIGHT_SYMBOL + " Jens Gulden<br>"
@@ -222,8 +227,8 @@ public class AboutPanel extends javax.swing.JPanel {
             panel.add(licenseScrollPane, BorderLayout.CENTER);
             licenseAgreement.scrollRectToVisible(new Rectangle(0, 0, 1, 1));
             panel.setPreferredSize(new Dimension(700, 400));
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (IOException ex) {
+            Logger.getLogger(AboutPanel.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Couldn't find license agreement.. Exiting.");
             System.exit(0);
         }

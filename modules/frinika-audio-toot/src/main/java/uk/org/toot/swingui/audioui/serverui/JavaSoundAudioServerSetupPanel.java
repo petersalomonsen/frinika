@@ -2,7 +2,9 @@ package uk.org.toot.swingui.audioui.serverui;
 
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+
 import javax.swing.JComboBox;
+
 import uk.org.toot.audio.server.AudioServerConfiguration;
 import uk.org.toot.audio.server.JavaSoundAudioServer;
 
@@ -28,7 +30,6 @@ public class JavaSoundAudioServerSetupPanel extends AbstractAudioServerPanel
 			addItem("96000");
 			addItemListener(
 				new ItemListener() {
-                                        @Override
 					public void itemStateChanged(ItemEvent arg0) {
 						float sampleRate = Float.parseFloat((String)sampleRateCombo.getSelectedItem());
 						server.setSampleRate(sampleRate);

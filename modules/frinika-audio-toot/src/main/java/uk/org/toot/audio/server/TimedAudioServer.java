@@ -76,12 +76,10 @@ abstract public class TimedAudioServer extends AbstractAudioServer
     }
 
     // @Override
-    @Override
     protected boolean canStart() {
         return super.canStart() && syncLine != null;
     }
 
-    @Override
     protected void startImpl() {
         started = false;
         stableCount = 0;
@@ -89,7 +87,6 @@ abstract public class TimedAudioServer extends AbstractAudioServer
        	thread.start();
     }
 
-    @Override
     protected void stopImpl() {
         isRunning = false;
         // use Thread.join() here? TODO
@@ -101,7 +98,6 @@ abstract public class TimedAudioServer extends AbstractAudioServer
         }
     }
 
-    @Override
     public boolean isRunning() {
         return isRunning;
     }
@@ -109,12 +105,10 @@ abstract public class TimedAudioServer extends AbstractAudioServer
     /**
      * Return the total latency from analogue input to analogue output.
      */
-    @Override
     public int getTotalLatencyFrames() {
     	return totalLatencyFrames;
     }
     
-    @Override
     public void run() {
         try {
             hasStopped = false;
@@ -196,7 +190,6 @@ abstract public class TimedAudioServer extends AbstractAudioServer
         resetMetrics(false);
     }
 
-    @Override
     public void resetMetrics(boolean resetUnderruns) {
         requestResetMetrics = true;
         if ( resetUnderruns ) {
@@ -213,7 +206,6 @@ abstract public class TimedAudioServer extends AbstractAudioServer
      * Set the software output latency request in milliseconds.
      * This is the demand to the control loop.
      */
-    @Override
     public void setLatencyMilliseconds(float ms) {
         latencyMilliseconds = ms;
         // reset other metrics synchronously
@@ -223,7 +215,6 @@ abstract public class TimedAudioServer extends AbstractAudioServer
     /**
      * Return the requested software output latency in milliseconds.
      */
-    @Override
     public float getLatencyMilliseconds() {
         return latencyMilliseconds;
     }
@@ -233,7 +224,6 @@ abstract public class TimedAudioServer extends AbstractAudioServer
      * This is the controlled amount which will diverge from the requested
      * amount due to instantaneous control error caused by timing jitter.
      */
-    @Override
     public float getActualLatencyMilliseconds() {
         return actualLatencyMilliseconds;
     }
@@ -245,7 +235,6 @@ abstract public class TimedAudioServer extends AbstractAudioServer
      * This might not be the best place to do the compensation but it is the
      * cheapest. While bufferMilliseconds is effectively immutable it's ok.
      */
-    @Override
     public float getLowestLatencyMilliseconds() {
         return lowestLatencyMilliseconds;
     }
@@ -253,7 +242,6 @@ abstract public class TimedAudioServer extends AbstractAudioServer
     /**
      * Return the minimum software output latency which may be requested.
      */
-    @Override
     public float getMinimumLatencyMilliseconds() {
         return bufferUnderRunThreshold + 2f;
     }
@@ -261,7 +249,6 @@ abstract public class TimedAudioServer extends AbstractAudioServer
     /**
      * Return the maximum software output latency which may be requested.
      */
-    @Override
     public float getMaximumLatencyMilliseconds() {
     	return maximumLatencyMilliseconds;
     }
@@ -270,7 +257,6 @@ abstract public class TimedAudioServer extends AbstractAudioServer
      * Return the number of buffer underruns which may have resulted in an audio
      * glitch.
      */
-    @Override
     public int getBufferUnderRuns() {
         return bufferUnderRuns;
     }
@@ -282,7 +268,6 @@ abstract public class TimedAudioServer extends AbstractAudioServer
     /**
      * Return the duration of the buffers in milliseconds.
      */
-    @Override
     public float getBufferMilliseconds() {
         return bufferMilliseconds;
     }
@@ -290,7 +275,6 @@ abstract public class TimedAudioServer extends AbstractAudioServer
     /**
      * Set the duration of the buffers in milliseconds.
      */
-    @Override
     public void setBufferMilliseconds(float ms) {
         requestedBufferMilliseconds = ms;
         if ( !isRunning ) sync();

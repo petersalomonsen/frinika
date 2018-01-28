@@ -27,6 +27,7 @@ package uk.org.toot.audio.server;
 import java.util.Hashtable;
 import uk.org.toot.audio.core.AudioBuffer;
 import uk.org.toot.audio.core.ChannelFormat;
+import uk.org.toot.audio.server.IOAudioProcess;
 
 /**
  * 
@@ -44,7 +45,6 @@ public class MultiIOJavaSoundAudioServer extends JavaSoundAudioServer  {
 	public MultiIOJavaSoundAudioServer() {
 	}
 	
-        @Override
 	public IOAudioProcess openAudioOutput(String name,String label)  throws Exception {
         if ( name == null ) {
             // use the first available output if null is passed
@@ -59,7 +59,6 @@ public class MultiIOJavaSoundAudioServer extends JavaSoundAudioServer  {
 	}
 
 	
-        @Override
 	public IOAudioProcess openAudioInput(String name,String label) throws Exception {
         if ( name == null ) {
             // use the first available output if null is passed
@@ -81,30 +80,25 @@ public class MultiIOJavaSoundAudioServer extends JavaSoundAudioServer  {
 			this.process=process;
 		}
 
-                @Override
 		public void open() throws Exception {
 			if (openCount== 0 ) process.open();
 			openCount++;
 		}
 
-                @Override
 		public int processAudio(AudioBuffer buffer) {
 			return process.processAudio(buffer);
 		}
 
-                @Override
 		public void close() throws Exception {
 			openCount--;
 			if (openCount==0) process.close();
 			
 		}
 
-                @Override
 		public ChannelFormat getChannelFormat() {
 			return process.getChannelFormat();
 		}
 
-                @Override
 		public String getName() {
 			// TODO Auto-generated method stub
 			return process.getName();
@@ -112,13 +106,11 @@ public class MultiIOJavaSoundAudioServer extends JavaSoundAudioServer  {
 				
 	}
 
-        @Override
 	public void closeAudioInput(IOAudioProcess input) {
 		// TODO Auto-generated method stub
 		
 	}
 
-        @Override
 	public void closeAudioOutput(IOAudioProcess output) {
 		// TODO Auto-generated method stub
 		

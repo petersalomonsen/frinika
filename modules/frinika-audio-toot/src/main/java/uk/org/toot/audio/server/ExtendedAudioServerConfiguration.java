@@ -18,7 +18,6 @@ public class ExtendedAudioServerConfiguration extends AudioServerConfiguration
 			server instanceof PriorityAudioServer;
 	}
 	
-        @Override
 	public Properties getProperties() {
 		Properties p = new Properties();
 		String k = server.getConfigKey();
@@ -31,7 +30,6 @@ public class ExtendedAudioServerConfiguration extends AudioServerConfiguration
 		return p;
 	}
 
-        @Override
 	public void applyProperties(Properties p) {
     	if ( p == null ) {
      	   System.err.println("null properties passed to ExtendedAudioServerConfiguration.applyProperties()");

@@ -10,10 +10,10 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Iterator;
-import javax.swing.*;
-import uk.org.toot.audio.server.*;
 import uk.org.toot.service.*;
+import uk.org.toot.audio.server.*;
 import uk.org.toot.swingui.audioui.serverui.spi.AudioServerUIServiceProvider;
+import javax.swing.*;
 
 public class AudioServerUIServices extends Services
 {
@@ -39,7 +39,6 @@ public class AudioServerUIServices extends Services
             	final JComponent theUi = ui;
             	try {
             		SwingUtilities.invokeAndWait(new Runnable() {
-                                    @Override
             			public void run() {
             				new SetupDialog(theUi);    		
             			}
@@ -91,7 +90,6 @@ public class AudioServerUIServices extends Services
 	        setVisible(true);
 	    }
 	 
-            @Override
 	    public void actionPerformed(ActionEvent e) {
 	        dispose();
 	    }

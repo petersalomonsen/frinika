@@ -13,12 +13,10 @@ package uk.org.toot.audio.server;
  */
 public class YieldTimingStrategy implements AudioTimingStrategy
 {
-    @Override
     public int getThreadPriority() {
         return Thread.NORM_PRIORITY+1;
     }
 
-    @Override
     public void block(long nowNanos, long blockNanos) {
         long untilNanos = nowNanos + blockNanos;
         while ( System.nanoTime() < untilNanos ) {

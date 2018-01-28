@@ -18,12 +18,10 @@ import java.util.logging.Logger;
  */
 public class SpinningTimingStrategy implements AudioTimingStrategy
 {
-    @Override
     public int getThreadPriority() {
         return Thread.MAX_PRIORITY;
     }
 
-    @Override
     public void block(long nowNanos, long blockNanos) {
         long untilNanos = nowNanos + blockNanos;
         

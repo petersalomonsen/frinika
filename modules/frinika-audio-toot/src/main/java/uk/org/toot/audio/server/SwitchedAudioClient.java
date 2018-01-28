@@ -46,13 +46,11 @@ public class SwitchedAudioClient implements AudioClient {
 	Stack<AudioClient> stack = new Stack<AudioClient>();
 	boolean attached=true;
 	
-        @Override
 	public synchronized void work(int size) {
 		if (attached && client != null)
 			client.work(size);
 	}
 
-        @Override
 	public void setEnabled(boolean enabled) {
 		attachServer(enabled);
 	}

@@ -1,6 +1,7 @@
 package uk.org.toot.audio.server;
 
 import java.util.List;
+
 import uk.org.toot.audio.core.AudioBuffer;
 
 /**
@@ -37,7 +38,6 @@ public abstract class AbstractAudioServer implements AudioServer
         try {
 	        Runtime.getRuntime().addShutdownHook(
 	            new Thread() {
-                            @Override
 	            	public void run() {
 	                	AbstractAudioServer.this.stop();
 	            	}
@@ -52,14 +52,12 @@ public abstract class AbstractAudioServer implements AudioServer
         return new AudioBuffer(name, 2, bufferFrames, getSampleRate()); // SR TODO
     }
 
-    @Override
     public AudioBuffer createAudioBuffer(String name) {
         AudioBuffer buffer = _createAudioBuffer(name);
         audioBuffers.add(buffer);
         return buffer;
     }
 
-    @Override
     public void removeAudioBuffer(AudioBuffer buffer)  {
         audioBuffers.remove(buffer);
     }
@@ -75,12 +73,10 @@ public abstract class AbstractAudioServer implements AudioServer
     	return bufferFrames;
     }
     
-    @Override
 	public float getLoad() {
 		return load;
 	}
 
-    @Override
     public void setClient(AudioClient client) {
         this.client = client;
         checkStart(); // start may be delayed waiting for a client to be set
@@ -98,7 +94,6 @@ public abstract class AbstractAudioServer implements AudioServer
 	}
     }
 
-    @Override
     public void start() {
         if ( isRunning() ) return;
         if ( canStart() ) {
@@ -112,7 +107,6 @@ public abstract class AbstractAudioServer implements AudioServer
         }
     }
 
-    @Override
     public void stop() {
         if ( !isRunning() ) return;
        	System.out.println("AudioServer stopping");
