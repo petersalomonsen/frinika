@@ -11,5 +11,4 @@ dependencies {
     compile(project(':modules:frinika-view-pianoroll'))
     compile(project(':modules:sevenzip'))
     compile ':js'
-    compile ':FrinikaServerInterfaces'
 }

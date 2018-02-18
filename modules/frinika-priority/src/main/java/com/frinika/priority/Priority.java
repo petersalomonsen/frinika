@@ -35,7 +35,7 @@ public class Priority {
     	} catch(Throwable e)
     	{
             try {
-    		File file = new File("lib/"+System.getProperty("os.arch")+"/"+System.getProperty("os.name")+"/libpriority.so");
+    		File file = new File("lib/native/"+System.getProperty("os.arch")+"/"+System.getProperty("os.name")+"/libpriority.so");
                 libJJackFileName = file.getAbsolutePath();
                 System.load(libJJackFileName);
        		System.out.println("loaded priority native library "+ libJJackFileName );
@@ -63,7 +63,7 @@ public class Priority {
 //			File file = new File("libpriority.so");
 //			libFrinikaFileName = file.getAbsolutePath();
 //			FileOutputStream fos = new FileOutputStream("libpriority.so");
-//			String ldPath ="lib/"+System.getProperty("os.arch")+"/"+System.getProperty("os.name")+"/libpriority.so";
+//			String ldPath ="lib/native/"+System.getProperty("os.arch")+"/"+System.getProperty("os.name")+"/libpriority.so";
 //			System.out.println("Loading Priority library for architecture: "
 //					+ System.getProperty("os.arch"));
 //			InputStream is = ClassLoader.getSystemResource(ldPath).openStream();

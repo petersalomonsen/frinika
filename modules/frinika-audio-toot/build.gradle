@@ -5,4 +5,5 @@ ext.libraryDescription = 'Audio Toot library for Frinika'
 apply from: '../modules.gradle'
 
 dependencies {
+    compile(project(':modules:frinika-priority'))
 }

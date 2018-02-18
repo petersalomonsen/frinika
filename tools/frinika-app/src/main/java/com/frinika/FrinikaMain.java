@@ -181,9 +181,15 @@ public class FrinikaMain {
 // TODO        String lcOSName = System.getProperty("os.name").toLowerCase();
 
         String theme = FrinikaGlobalProperties.THEME.getValue();
-        if (SupportedLaf.DARCULA.name().equals(theme)) {
-            WindowUtils.switchLookAndFeel(SupportedLaf.DARCULA);
+        SupportedLaf selectedLaf = SupportedLaf.DEFAULT;
+        if (theme != null) {
+            try {
+                selectedLaf = SupportedLaf.valueOf(theme);
+            } catch (IllegalArgumentException ex) {
+                // do nothing
+            }
         }
+        WindowUtils.switchLookAndFeel(selectedLaf);
     }
 
     private static void setupWelcomePanel(@Nonnull final JFrame welcomeFrame, @Nonnull WelcomePanel welcomePanel) {

@@ -1,3 +1,5 @@
 rootProject.name = 'frinika-audio-toot'
 
 apply from: '../modules-settings.gradle'
+
+include ":modules:frinika-priority"

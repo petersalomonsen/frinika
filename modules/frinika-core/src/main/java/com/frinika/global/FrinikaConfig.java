@@ -86,7 +86,7 @@ import javax.swing.event.ChangeEvent;
 public class FrinikaConfig {
 
     private static final String CONFIG_FILE_NAME = "FrinikaConfig.xml";
-    private static final String EXAMPLES_DIR = "examples";
+    private static final String EXAMPLES_DIR = "Examples";
 
     private static File defaultUserFrinikaDir = new File(System.getProperty("user.home"), "frinika");
     private static File configFile = new File(defaultUserFrinikaDir, CONFIG_FILE_NAME);

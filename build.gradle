@@ -60,10 +60,12 @@ distributions {
             into('lib') {
                 from 'lib'
                 include '*.txt'
+            }
+            into('lib/native') {
                 from 'lib/native'
-                exclude 'native'
                 include '**'
             }
+
             project(':modules').subprojects.each { p ->
                 p.plugins.withType(JavaPlugin) {
                     into('lib') {
