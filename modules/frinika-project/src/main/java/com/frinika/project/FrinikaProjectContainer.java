@@ -29,7 +29,7 @@ import com.frinika.audio.io.BufferedRandomAccessFileManager;
 import com.frinika.audio.toot.AudioInjector;
 import com.frinika.base.FrinikaAudioServer;
 import com.frinika.base.FrinikaAudioSystem;
-import com.frinika.base.MessageDialog;
+import com.frinika.base.MessageDialogUtils;
 import com.frinika.global.ConfigListener;
 import com.frinika.global.FrinikaConfig;
 import com.frinika.global.property.FrinikaGlobalProperties;
@@ -37,7 +37,6 @@ import com.frinika.midi.MidiDebugDevice;
 import com.frinika.model.EditHistoryContainer;
 import com.frinika.model.EditHistoryRecordableAction;
 import com.frinika.model.EditHistoryRecorder;
-import com.frinika.project.dialog.SplashDialog;
 import com.frinika.project.scripting.FrinikaScriptingEngine;
 import com.frinika.renderer.FrinikaRenderer;
 import com.frinika.sequencer.FrinikaSequence;
@@ -77,7 +76,6 @@ import com.frinika.sequencer.project.SequencerProjectContainer;
 import com.frinika.sequencer.project.SoundBankNameHolder;
 import com.frinika.synth.SynthRack;
 import com.frinika.synth.settings.SynthSettings;
-import com.frinika.tools.ObjectInputStreamFixer;
 import com.frinika.tools.ProgressInputStream;
 import com.frinika.tootX.MidiHub;
 import com.frinika.tootX.midi.ControlResolver;
@@ -117,7 +115,6 @@ import javax.sound.midi.Sequence;
 import javax.sound.midi.ShortMessage;
 import javax.sound.midi.Synthesizer;
 import javax.swing.JPanel;
-import javax.swing.JProgressBar;
 import javax.swing.event.ChangeEvent;
 import uk.org.toot.audio.core.AudioControlsChain;
 import uk.org.toot.audio.core.AudioProcess;
@@ -1763,13 +1760,13 @@ public class FrinikaProjectContainer extends SequencerProjectContainer
     @Override
     public void message(String message) {
         // NBP
-        MessageDialog.message(null, message);
+        MessageDialogUtils.message(null, message);
     }
 
     @Override
     public void error(String message) {
         // NBP
-        MessageDialog.error(null, message);
+        MessageDialogUtils.error(null, message);
     }
 
     public SynthLane createSynthLane(MidiDeviceDescriptor desc) {

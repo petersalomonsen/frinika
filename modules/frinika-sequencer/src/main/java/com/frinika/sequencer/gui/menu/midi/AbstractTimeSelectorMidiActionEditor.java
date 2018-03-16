@@ -25,6 +25,7 @@ package com.frinika.sequencer.gui.menu.midi;
 
 import com.frinika.sequencer.gui.TimeFormat;
 import com.frinika.sequencer.gui.TimeSelector;
+import com.frinika.sequencer.gui.menu.midi.AbstractMidiAction;
 import com.frinika.sequencer.project.SequencerProjectContainer;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;

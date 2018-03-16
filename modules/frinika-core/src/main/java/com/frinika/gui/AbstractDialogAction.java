@@ -139,7 +139,7 @@ public abstract class AbstractDialogAction extends AbstractAction {
         }
     }
 
-    public BaseProjectContainer getProjectFrame() {
+    public BaseProjectContainer getProject() {
         return project;
     }
 

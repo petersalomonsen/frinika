@@ -23,7 +23,7 @@
  */
 package com.frinika.project.scripting.javascript;
 
-import com.frinika.base.MessageDialog;
+import com.frinika.base.MessageDialogUtils;
 import com.frinika.localization.CurrentLocale;
 import com.frinika.project.FrinikaProjectContainer;
 import com.frinika.project.scripting.FrinikaScriptingEngine;
@@ -551,19 +551,19 @@ public class JavascriptScope extends ScriptableObject {
 
     public void message(String s) {
         System.out.println(s);
-        MessageDialog.message(dialog, s);
+        MessageDialogUtils.message(dialog, s);
     }
 
     public void error(String s) {
         System.err.println(s);
-        MessageDialog.error(dialog, s);
+        MessageDialogUtils.error(dialog, s);
     }
 
     public boolean confirm(String s) {
         System.out.print(s);
         if (project != null) {
             System.out.println("... Ok.");
-            return MessageDialog.confirm(dialog, s);
+            return MessageDialogUtils.confirm(dialog, s);
         } else {
             System.out.println("... Cancel.");
             return false;
@@ -574,7 +574,7 @@ public class JavascriptScope extends ScriptableObject {
         System.out.print(s);
         String r;
         if (project != null) {
-            r = MessageDialog.prompt(dialog, s);
+            r = MessageDialogUtils.prompt(dialog, s);
         } else {
             r = null;
         }
@@ -609,7 +609,7 @@ public class JavascriptScope extends ScriptableObject {
             } else {
                 s = new String[0][0];
             }
-            r = MessageDialog.promptFile(dialog, defaultFilename, s, saveMode, directoryMode);
+            r = MessageDialogUtils.promptFile(dialog, defaultFilename, s, saveMode, directoryMode);
         } else {
             r = null;
         }
@@ -752,7 +752,7 @@ public class JavascriptScope extends ScriptableObject {
                 return p.waitFor();
             }
         } catch (IOException | InterruptedException e) {
-            MessageDialog.error(dialog, e);
+            MessageDialogUtils.error(dialog, e);
             return -1;
         }
     }
@@ -913,7 +913,7 @@ public class JavascriptScope extends ScriptableObject {
                 try {
                     p.saveProject(file);
                 } catch (IOException t) {
-                    MessageDialog.error(dialog, t);
+                    MessageDialogUtils.error(dialog, t);
                 }
             } else {
                 // nop (script must test whether filename valid)
@@ -928,10 +928,10 @@ public class JavascriptScope extends ScriptableObject {
                     // lastSaved... value of project
                     // like manual saving
                 } catch (IOException t) {
-                    MessageDialog.error(dialog, t);
+                    MessageDialogUtils.error(dialog, t);
                 }
             } else {
-                MessageDialog.error(dialog, "Invalid filename for saving '" + filename + "'.");
+                MessageDialogUtils.error(dialog, "Invalid filename for saving '" + filename + "'.");
             }
         }
 
@@ -1064,7 +1064,7 @@ public class JavascriptScope extends ScriptableObject {
             } else if (type == TYPE_TEXT) {
                 part = new TextPart((TextLane) l);
             } else {
-                MessageDialog.error(dialog, "cannot create new part, unknown type " + type);
+                MessageDialogUtils.error(dialog, "cannot create new part, unknown type " + type);
                 return null;
             }
 

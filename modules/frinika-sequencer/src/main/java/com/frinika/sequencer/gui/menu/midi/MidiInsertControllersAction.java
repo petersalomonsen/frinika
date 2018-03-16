@@ -28,6 +28,7 @@ import com.frinika.gui.util.WindowUtils;
 import com.frinika.localization.CurrentLocale;
 import com.frinika.sequencer.gui.TimeFormat;
 import com.frinika.sequencer.gui.TimeSelector;
+import com.frinika.sequencer.gui.menu.midi.AbstractMidiAction;
 import com.frinika.sequencer.model.ControllerEvent;
 import com.frinika.sequencer.model.MidiPart;
 import com.frinika.sequencer.model.MultiEvent;

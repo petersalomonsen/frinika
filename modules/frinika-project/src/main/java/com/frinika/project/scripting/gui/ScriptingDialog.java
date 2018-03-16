@@ -23,7 +23,7 @@
  */
 package com.frinika.project.scripting.gui;
 
-import com.frinika.base.MessageDialog;
+import com.frinika.base.MessageDialogUtils;
 import com.frinika.gui.AbstractDialog;
 import com.frinika.localization.CurrentLocale;
 import com.frinika.project.FrinikaProjectContainer;
@@ -328,7 +328,7 @@ public class ScriptingDialog extends JDialog implements InternalFrameListener, S
     public void internalFrameClosing(InternalFrameEvent e) {
         ScriptEditorInternalFrame f = (ScriptEditorInternalFrame) e.getInternalFrame();
         if (f.hasBeenModifiedWithoutSaving()) {
-            if (!MessageDialog.confirm(this, "Script has been modified without saving. Close?")) {
+            if (!MessageDialogUtils.confirm(this, "Script has been modified without saving. Close?")) {
                 return;
             }
         }
@@ -575,7 +575,7 @@ public class ScriptingDialog extends JDialog implements InternalFrameListener, S
                     editor.toFront();
                 }
             } catch (IOException ioe) {
-                MessageDialog.error(this, ioe);
+                MessageDialogUtils.error(this, ioe);
             }
         }
     }//GEN-LAST:event_fileOpenMenuItemActionPerformed
@@ -594,7 +594,7 @@ public class ScriptingDialog extends JDialog implements InternalFrameListener, S
                 editor.lastSaveTimestamp = file.lastModified();
                 editor.setDirty(false);
             } catch (IOException ioe) {
-                MessageDialog.error(this, ioe);
+                MessageDialogUtils.error(this, ioe);
                 fileSaveAsMenuItemActionPerformed(evt);
             }
         } else {
@@ -611,14 +611,14 @@ public class ScriptingDialog extends JDialog implements InternalFrameListener, S
         File file = requester(true);
         if (file != null) {
             try {
-                if ((!file.exists()) || MessageDialog.confirm(this, "File " + file.getCanonicalPath() + " already exists. Overwrite?")) {
+                if ((!file.exists()) || MessageDialogUtils.confirm(this, "File " + file.getCanonicalPath() + " already exists. Overwrite?")) {
                     engine.saveScript(script, file);
                     editor.updateTitle();
                     editor.lastSaveTimestamp = file.lastModified();
                     editor.setDirty(false);
                 }
             } catch (IOException ioe) {
-                MessageDialog.error(this, ioe);
+                MessageDialogUtils.error(this, ioe);
             }
         }
     }//GEN-LAST:event_fileSaveAsMenuItemActionPerformed

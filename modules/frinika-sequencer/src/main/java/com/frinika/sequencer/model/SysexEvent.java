@@ -23,7 +23,7 @@
  */
 package com.frinika.sequencer.model;
 
-import com.frinika.base.MessageDialog;
+import com.frinika.base.MessageDialogUtils;
 import com.frinika.global.Toolbox;
 import com.frinika.localization.CurrentLocale;
 import com.frinika.model.EditHistoryAction;
@@ -119,7 +119,7 @@ public class SysexEvent extends MultiEvent {
         do {
             err = false;
             // NBP
-            final String s = MessageDialog.prompt(null, CurrentLocale.getMessage("sequencer.sysex.edit_sysex") + ":", oldMacroString);
+            final String s = MessageDialogUtils.prompt(null, CurrentLocale.getMessage("sequencer.sysex.edit_sysex") + ":", oldMacroString);
             if (s != null) {
                 if (!s.equals(oldMacroString)) {
                     try {
@@ -149,7 +149,7 @@ public class SysexEvent extends MultiEvent {
                         project.getEditHistoryContainer().notifyEditHistoryListeners();
                     } catch (InvalidMidiDataException imde) {
                         // NBP
-                        MessageDialog.error(null, imde.getMessage());
+                        MessageDialogUtils.error(null, imde.getMessage());
                         err = true;
                     }
                 }

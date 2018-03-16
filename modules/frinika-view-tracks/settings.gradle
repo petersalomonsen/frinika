@@ -1,7 +1,6 @@
-rootProject.name = 'frinika-pianoroll'
+rootProject.name = 'frinika-view-tracks'
 
 apply from: '../modules-settings.gradle'
 
 include ":modules:frinika-core"
 include ":modules:frinika-sequencer"
-include ":modules:frinika-view-pianoroll"

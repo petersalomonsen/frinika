@@ -1,6 +1,5 @@
 rootProject.name = 'frinika'
 
-include ":modules:frinika-action"
 include ":modules:frinika-core"
 include ":modules:frinika-audio"
 include ":modules:frinika-audio-toot"
@@ -15,6 +14,7 @@ include ":modules:frinika-priority"
 include ":modules:frinika-view-notation"
 include ":modules:frinika-view-tracker"
 include ":modules:frinika-view-pianoroll"
+include ":modules:frinika-view-tracks"
 include ":modules:frinika-main"
 include ":modules:frinika-driver-jack"
 include ":modules:frinika-driver-osx"

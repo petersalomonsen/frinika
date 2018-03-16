@@ -37,8 +37,8 @@ public class AudioInput {
     // Always opened in 16 bit stereo
     AudioFormat format;
 
-    public AudioInput(TargetDataLine lineIn, float Fs) throws Exception {
-        format = new AudioFormat(Fs, 16, 2, true, true);
+    public AudioInput(TargetDataLine lineIn, float sampleRate) throws Exception {
+        format = new AudioFormat(sampleRate, 16, 2, true, true);
         this.lineIn = lineIn;
     }
 

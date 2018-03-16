@@ -24,6 +24,7 @@
 package com.frinika.tools;
 
 import java.io.File;
+import javax.annotation.Nonnull;
 import javax.swing.filechooser.FileFilter;
 
 /**
@@ -31,8 +32,8 @@ import javax.swing.filechooser.FileFilter;
  */
 public class MyFileFilter extends FileFilter {
 
-    String extension;
-    String description;
+    private final String extension;
+    private final String description;
 
     public MyFileFilter(String extension, String description) {
         this.extension = extension;
@@ -40,13 +41,8 @@ public class MyFileFilter extends FileFilter {
     }
 
     @Override
-    public boolean accept(File f) {
-
-        if (f.getName().toLowerCase().indexOf(extension) > 0 || f.isDirectory()) {
-            return true;
-        } else {
-            return false;
-        }
+    public boolean accept(@Nonnull File file) {
+        return file.getName().toLowerCase().indexOf(extension) > 0 || file.isDirectory();
     }
 
     @Override

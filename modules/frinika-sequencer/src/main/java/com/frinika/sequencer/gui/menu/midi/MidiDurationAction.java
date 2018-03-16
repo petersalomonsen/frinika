@@ -23,6 +23,7 @@
  */
 package com.frinika.sequencer.gui.menu.midi;
 
+import com.frinika.sequencer.gui.menu.midi.AbstractMidiAction;
 import com.frinika.sequencer.model.MidiPart;
 import com.frinika.sequencer.model.MultiEvent;
 import com.frinika.sequencer.model.NoteEvent;

@@ -61,6 +61,7 @@ public class FrinikaMain {
     static FrinikaExitHandler exitHook = null;
     private static final String DOWNLOAD_PATH_PREFIX = "http://sourceforge.net/projects/frinika/files/frinika-example-projects/Frinka-example-projects/";
     private static final String DOWNLOAD_PATH_POSTFIX = "/download";
+    private static String argProjectFile = null;
 
     public static void main(String[] args) throws Exception {
 
@@ -80,10 +81,16 @@ public class FrinikaMain {
         welcomeFrame.setIconImage(new javax.swing.ImageIcon(FrinikaFrame.class.getResource("/icons/frinika.png")).getImage());
         welcomeFrame.setResizable(false);
 
-        WelcomePanel welcomePanel = new WelcomePanel();
-        setupWelcomePanel(welcomeFrame, welcomePanel);
-        WindowUtils.initWindowByComponent(welcomeFrame, welcomePanel);
-        WindowUtils.setWindowCenterPosition(welcomeFrame);
+        if (argProjectFile != null) {
+            OpenProjectAction.setSelectedFile(new File(argProjectFile));
+            new OpenProjectAction().actionPerformed(null);
+            welcomeFrame.setVisible(false);
+        } else {
+            WelcomePanel welcomePanel = new WelcomePanel();
+            setupWelcomePanel(welcomeFrame, welcomePanel);
+            WindowUtils.initWindowByComponent(welcomeFrame, welcomePanel);
+            WindowUtils.setWindowCenterPosition(welcomeFrame);
+        }
 
         welcomeFrame.setVisible(true);
 
@@ -339,14 +346,14 @@ public class FrinikaMain {
             if (classpath.endsWith(".jar")) {
                 File file = new File(classpath);
                 if (file.exists() && file.isFile()) { // yes, running from 1 jar
-                    String osarch = System.getProperty("os.arch");
-                    String osname = System.getProperty("os.name");
-                    String libPrefix = "lib/" + osarch + "/" + osname + "/";
+                    String osArch = System.getProperty("os.arch");
+                    String osName = System.getProperty("os.name");
+                    String libPrefix = "lib/" + osArch + "/" + osName + "/";
                     String tmp = System.getProperty("java.io.tmpdir");
-                    File tmpdir = new File(tmp);
+                    File tmpDirectory = new File(tmp);
                     try {
-                        System.out.println("extracting files from " + libPrefix + " to " + tmpdir.getAbsolutePath() + ":");
-                        Toolbox.extractFromJar(file, libPrefix, tmpdir);
+                        System.out.println("extracting files from " + libPrefix + " to " + tmpDirectory.getAbsolutePath() + ":");
+                        Toolbox.extractFromJar(file, libPrefix, tmpDirectory);
                         System.setProperty("java.library.path", tmp);
                     } catch (IOException ioe) {
                         System.err.println("Native library extraction failed. Problems may occur.");
@@ -366,7 +373,7 @@ public class FrinikaMain {
                 System.out.println("-h, --help: Display this help message and exit.");
                 System.out.println("-v, --version: Display the version number and exit");
                 System.out.println("-c, --config [path]: Specifies an alternate file at 'path' to use as a config.");
-                System.out.println("\tExample: java -jar frinika.jar -c ~/Documents/Config.xml");
+                System.out.println("\tExample: java -jar frinika.jar -c ~/Documents/Config.xml file.prinika");
                 System.exit(0);
             } else if (arg.equalsIgnoreCase("-v") || arg.equalsIgnoreCase("--version")) {
                 System.out.println("Frinika version " + VersionProperties.getVersion() + " (build date " + VersionProperties.getBuildDate() + ")");
@@ -379,6 +386,8 @@ public class FrinikaMain {
                 }
                 String path = args[i];
                 FrinikaConfig.setConfigLocation(path);
+            } else if (!arg.startsWith("-") && argProjectFile == null) {
+                argProjectFile = arg;
             } else {
                 System.out.println("Unknown argument " + arg + ", ignoring.");
                 System.out.println("For help with command line usage, please see java -jar frinika.jar --help");
