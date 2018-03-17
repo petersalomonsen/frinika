@@ -4,5 +4,4 @@ apply from: '../modules-settings.gradle'
 
 include ":modules:frinika-core"
 include ":modules:frinika-audio"
-include ":modules:frinika-view-tracker"
 include ":modules:frinika-device-synthrack"

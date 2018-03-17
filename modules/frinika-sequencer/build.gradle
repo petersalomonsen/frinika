@@ -8,5 +8,4 @@ dependencies {
     compile(project(':modules:frinika-core'))
     compile(project(':modules:frinika-audio'))
     compile(project(':modules:frinika-device-synthrack'))
-    compile(project(':modules:frinika-view-tracker'))
 }

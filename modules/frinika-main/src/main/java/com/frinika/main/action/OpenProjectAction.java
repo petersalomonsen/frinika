@@ -27,7 +27,7 @@ import com.frinika.global.FrinikaConfig;
 import com.frinika.localization.CurrentLocale;
 import com.frinika.main.FrinikaFrame;
 import com.frinika.main.ProgressOperation;
-import com.frinika.tracker.ProjectFileFilter;
+import com.frinika.tools.ProjectFileFilter;
 import java.awt.event.ActionEvent;
 import java.io.File;
 import java.util.logging.Level;

@@ -21,7 +21,7 @@
  * along with Frinika; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
-package com.frinika.tracker;
+package com.frinika.tools;
 
 import java.io.File;
 import javax.swing.filechooser.FileFilter;
@@ -30,15 +30,15 @@ import javax.swing.filechooser.FileFilter;
  * @author Peter Johan Salomonsen
  *
  */
-public class MidiFileFilter extends FileFilter {
+public class GearFileFilter extends FileFilter {
 
     @Override
     public boolean accept(File file) {
-        return file.getName().toLowerCase().indexOf(".mid") > 0 || file.isDirectory();
+        return file.getName().toLowerCase().indexOf(".gear") > 0 || file.isDirectory();
     }
 
     @Override
     public String getDescription() {
-        return "Standard Midi File (*.mid)";
+        return "myStudio gear setup (*.gear)";
     }
 }

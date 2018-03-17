@@ -15,8 +15,8 @@ public class SelectAllAction {
 
     public boolean selectAll(KeyEvent e) {
         FrinikaFrame frinikaFrame = (FrinikaFrame) project;
-        if (project.getTrackerPanel().getTable().hasFocus()) {
-            project.getTrackerPanel().getTable().selectAll();
+        if (((FrinikaFrame) project).getTrackerPanel().getTable().hasFocus()) {
+            ((FrinikaFrame) project).getTrackerPanel().getTable().selectAll();
         } else if (project.getPartViewEditor().getPartview().getMousePosition() != null) {
             project.getPartViewEditor().getPartview().selectAll();
         } else if (frinikaFrame.getPianoControllerPane().getPianoRoll().getMousePosition() != null) {

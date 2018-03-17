@@ -150,6 +150,12 @@ public class MessageDialogUtils {
     }
 
     public static void error(Component parentComponent, Throwable ex) {
+        ex.printStackTrace();
         JOptionPane.showMessageDialog(parentComponent, ex, "Frinika Error", JOptionPane.ERROR_MESSAGE);
+    }
+
+    public static void error(Component parentComponent, String message, Throwable t) { // Jens
+        t.printStackTrace();
+        error(parentComponent, message + " - " + t.getMessage());
     }
 }

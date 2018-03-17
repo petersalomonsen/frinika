@@ -28,70 +28,68 @@ import java.awt.event.KeyEvent;
 import java.util.Vector;
 import javax.sound.midi.Receiver;
 
-
 /**
- * Thread for tracking when a key is pressed and when it is actually released - seperating
- * key auto repeat events. This makes you able to hold a note using the computer keyboard, and make
- * it sustains its actual length (until you release the key, regardless of auto repeat events).
- * 
+ * Thread for tracking when a key is pressed and when it is actually released -
+ * separating key auto repeat events. This makes you able to hold a note using
+ * the computer keyboard, and make it sustains its actual length (until you
+ * release the key, regardless of auto repeat events).
+ *
  * @author Peter Johan Salomonsen
  */
 public class NoteKeyThread extends Thread {
+
     private Receiver receiver;
     int noteNumber;
     int velocity;
     int channel;
-    
+
     NoteKeyThread[] noteKeyThreads;
-    
+
     Vector<KeyEvent> keyEvents = new Vector<>();
-    
-    public NoteKeyThread(NoteKeyThread[] noteKeyThreads,Receiver receiver, int noteNumber, int channel, int velocity)
-    {
+
+    public NoteKeyThread(NoteKeyThread[] noteKeyThreads, Receiver receiver, int noteNumber, int channel, int velocity) {
         this.receiver = receiver;
         this.noteNumber = noteNumber;
         this.velocity = velocity;
         this.channel = channel;
         this.noteKeyThreads = noteKeyThreads;
-        
-        VirtualKeyboard.noteOn(receiver,noteNumber,channel,velocity);
-        start();        
+
+        VirtualKeyboard.noteOn(receiver, noteNumber, channel, velocity);
+        start();
     }
 
-    public synchronized void addKeyEvent(KeyEvent evt)
-    {
+    public synchronized void addKeyEvent(KeyEvent evt) {
         keyEvents.add(evt);
         notify();
     }
-    
+
     @Override
-    public synchronized void run()
-    {
+    public synchronized void run() {
         boolean keepPlay = true;
-        
-        while(keepPlay)
-        {
-            if(keyEvents.size() == 0)
-            {
-                try                
-                {
+
+        while (keepPlay) {
+            if (keyEvents.size() == 0) {
+                try {
                     wait();
-                } catch(InterruptedException ex) {}
-            }        
-            do
-            {
-                if(keyEvents.get(0).getID()==KeyEvent.KEY_RELEASED)
-                    keepPlay = false;
-                else
-                    keepPlay = true;
-                keyEvents.remove(0);
-                try{ wait(10); } catch(InterruptedException ex) {}
-;
+                } catch (InterruptedException ex) {
+                }
             }
-            while(keyEvents.size()>0);
+            do {
+                if (keyEvents.get(0).getID() == KeyEvent.KEY_RELEASED) {
+                    keepPlay = false;
+                } else {
+                    keepPlay = true;
+                }
+                keyEvents.remove(0);
+                try {
+                    wait(10);
+                } catch (InterruptedException ex) {
+                }
+                ;
+            } while (keyEvents.size() > 0);
         }
-        
-        VirtualKeyboard.noteOff(receiver,noteNumber,channel);
+
+        VirtualKeyboard.noteOff(receiver, noteNumber, channel);
         noteKeyThreads[noteNumber] = null;
     }
 }

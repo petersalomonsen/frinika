@@ -961,7 +961,6 @@ public class FrinikaProjectContainer extends SequencerProjectContainer
 //            JProgressBar bar = splash.getProgressBar();
 //            bar.setValue(bar.getMaximum());
 //        }
-
         return loadLegacyProject(in);
     }
 

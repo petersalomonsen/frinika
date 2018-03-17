@@ -26,6 +26,7 @@
 package com.frinika.main;
 
 import com.frinika.base.FrinikaAudioSystem;
+import com.frinika.base.MessageDialogUtils;
 import com.frinika.global.ConfigDialog;
 import com.frinika.global.ConfigDialogPanel;
 import com.frinika.global.ConfigError;
@@ -105,8 +106,8 @@ import com.frinika.tootX.gui.FrinikaMixerPanel;
 import com.frinika.tootX.gui.MidiLearnPanel;
 import com.frinika.tootX.midi.MidiInDeviceManager;
 import com.frinika.tootX.midi.MidiLearnIF;
-import com.frinika.tracker.MidiFileFilter;
-import com.frinika.tracker.ProjectFileFilter;
+import com.frinika.tools.MidiFileFilter;
+import com.frinika.tools.ProjectFileFilter;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dialog;
@@ -833,7 +834,6 @@ public class FrinikaFrame extends JFrame implements ProjectFrame {
         return newLaneMenu;
     }
 
-    @Override
     public TrackerPanel getTrackerPanel() {
         return trackerPanel;
     }
@@ -1378,7 +1378,7 @@ public class FrinikaFrame extends JFrame implements ProjectFrame {
                         openSaveProjectDialog();
                     }
                 } catch (IOException ex) {
-                    error("Error while saving", ex); // show error message,
+                    MessageDialogUtils.error(getFrame(), "Error while saving", ex); // show error message,
                     // user should know that
                     // saving went wrong
                     ex.printStackTrace();
@@ -1421,7 +1421,7 @@ public class FrinikaFrame extends JFrame implements ProjectFrame {
                         openSaveProjectDialog();
                     }
                 } catch (IOException ex) {
-                    error("Error while saving", ex); // show error message,
+                    MessageDialogUtils.error(getFrame(), "Error while saving", ex); // show error message,
                     // user should know that
                     // saving went wrong
                     ex.printStackTrace();
@@ -2608,7 +2608,7 @@ public class FrinikaFrame extends JFrame implements ProjectFrame {
      */
     @Override
     public void infoMessage(String string) {
-        message(string);
+        MessageDialogUtils.message(this, string);
     }
 
     MidiDevicesPanel midiDevicesPanel;
@@ -2632,148 +2632,6 @@ public class FrinikaFrame extends JFrame implements ProjectFrame {
     @Override
     public void setStatusBarMessage(String msg) {
         statusBar.setMessage(msg);
-
-    }
-
-    @Override
-    public void message(String msg, int type) { // Jens
-        JOptionPane.showMessageDialog(this, msg, "Frinika Message", type);
-    }
-
-    @Override
-    public void message(String msg) { // Jens
-        message(msg, JOptionPane.INFORMATION_MESSAGE);
-    }
-
-    @Override
-    public void error(String msg) { // Jens
-        message(msg, JOptionPane.ERROR_MESSAGE);
-    }
-
-    @Override
-    public void error(String msg, Throwable t) { // Jens
-        t.printStackTrace();
-        error(msg + " - " + t.getMessage());
-    }
-
-    @Override
-    public void error(Throwable t) { // Jens
-        error(t.getClass().getName(), t);
-    }
-
-    @Override
-    public boolean confirm(String msg) { // Jens
-        int result = JOptionPane.showConfirmDialog(this, msg,
-                "Frinika Question", JOptionPane.OK_CANCEL_OPTION,
-                JOptionPane.QUESTION_MESSAGE);
-        return (result == JOptionPane.OK_OPTION);
-    }
-
-    @Override
-    public String prompt(String msg, String initialValue) { // Jens
-        if (initialValue == null) {
-            initialValue = "";
-        }
-        String result = JOptionPane.showInputDialog(this, msg, initialValue);
-        return result;
-    }
-
-    @Override
-    public String prompt(String msg) { // Jens
-        return prompt(msg, null);
-    }
-
-    @Override
-    public String promptFile(String defaultFilename, String[][] suffices,
-            boolean saveMode, boolean directoryMode) { // Jens
-        JFileChooser fc = new JFileChooser();
-        if (!directoryMode) {
-            final boolean save = saveMode;
-            // final String[][] suff = suffices;
-            if (suffices != null) {
-                for (String[] suffice : suffices) {
-                    final String suffix = suffice[0];
-                    final String description = suffice[1];
-                    // if (suffix == null) suffix = "*";
-                    // if (description == null) description = "";
-                    FileFilter ff = new FileFilter() {
-                        @Override
-                        public boolean accept(File file) {
-                            if (file.isDirectory()) {
-                                return true;
-                            }
-                            String name = file.getName();
-                            return suffix.equals("*")
-                                    || name.endsWith("." + suffix)
-                                    || (save && fileDoesntExistAndDoesntEndWithAnySuffix(file));
-                        }
-
-                        @Override
-                        public String getDescription() {
-                            return "." + suffix + " - " + description;
-                        }
-                    };
-                    fc.addChoosableFileFilter(ff);
-                }
-            }
-        } else { // directory mode
-            fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-        }
-
-        int r;
-        if (defaultFilename != null) {
-            File file = new File(defaultFilename);
-            fc.setSelectedFile(file);
-        }
-        if (saveMode) {
-            r = fc.showSaveDialog(this);
-        } else {
-            r = fc.showOpenDialog(this);
-        }
-
-        if (r == JFileChooser.APPROVE_OPTION) {
-            File file = fc.getSelectedFile();
-            String name = file.getName();
-            String extraSuffix = "";
-            if (name.indexOf('.') == -1) { // no suffix entered
-                if (suffices != null && suffices.length > 0) {
-                    extraSuffix = "." + suffices[0][0]; // use first one as
-                    // default
-                }
-            }
-            String filename = file.getAbsolutePath() + extraSuffix;
-            if (saveMode) {
-                File fl = new File(filename);
-                if (fl.exists()) {
-                    if (!confirm("File " + filename
-                            + " already exists. Overwrite?")) {
-                        return null;
-                    }
-                }
-            }
-            return filename;
-        } else {
-            return null;
-        }
-    }
-
-    @Override
-    public String promptFile(String defaultFilename, String[][] suffices,
-            boolean saveMode) {
-        return promptFile(defaultFilename, suffices, saveMode, false);
-    }
-
-    @Override
-    public String promptFile(String defaultFilename, String[][] suffices) {
-        return promptFile(defaultFilename, suffices, false);
-    }
-
-    private static boolean fileDoesntExistAndDoesntEndWithAnySuffix(File file) {
-        if (file.exists()) {
-            return false;
-        }
-        String name = file.getName();
-        return (name.indexOf('.') == -1);
     }
 
     /**
@@ -2839,7 +2697,7 @@ public class FrinikaFrame extends JFrame implements ProjectFrame {
                 setTitle(newProject.getName());
             }
         } catch (HeadlessException | IOException ex) {
-            error("Error while saving", ex); // show error message, user
+            MessageDialogUtils.error(this, "Error while saving", ex); // show error message, user
             // should know that saving went
             // wrong
             ex.printStackTrace();
@@ -2879,15 +2737,6 @@ public class FrinikaFrame extends JFrame implements ProjectFrame {
     public static void notifyProjectFocusListeners() {
         for (ProjectFocusListener l : projectFocusListeners) {
             l.projectFocusNotify(focusFrame.getProjectContainer());
-        }
-    }
-
-    public static void staticMessage(FrinikaProjectContainer container, String string) {
-        for (FrinikaFrame f : openProjectFrames) {
-            if (f.project == container) {
-                f.message(string);
-                return;
-            }
         }
     }
 

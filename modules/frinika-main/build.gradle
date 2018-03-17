@@ -10,6 +10,7 @@ dependencies {
     compile(project(':modules:frinika-radio'))
     compile(project(':modules:frinika-view-notation'))
     compile(project(':modules:frinika-view-pianoroll'))
+    compile(project(':modules:frinika-view-tracker'))
     compile(project(':modules:frinika-view-tracks'))
     compile(project(':modules:frinika-project'))
     compile(project(':modules:frinika-generator-soundhelix'))

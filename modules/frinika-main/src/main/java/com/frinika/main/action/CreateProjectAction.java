@@ -28,7 +28,7 @@ import com.frinika.localization.CurrentLocale;
 import com.frinika.main.FrinikaFrame;
 import com.frinika.project.FrinikaProjectContainer;
 import com.frinika.sequencer.gui.ProjectFrame;
-import com.frinika.tracker.ProjectFileFilter;
+import com.frinika.tools.ProjectFileFilter;
 import java.awt.event.ActionEvent;
 import java.io.File;
 import java.io.IOException;

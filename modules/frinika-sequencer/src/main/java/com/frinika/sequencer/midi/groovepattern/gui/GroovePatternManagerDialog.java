@@ -23,6 +23,7 @@
  */
 package com.frinika.sequencer.midi.groovepattern.gui;
 
+import com.frinika.base.MessageDialogUtils;
 import com.frinika.gui.AbstractDialog;
 import com.frinika.sequencer.gui.ProjectFrame;
 import com.frinika.sequencer.gui.selection.PartSelection;
@@ -31,6 +32,7 @@ import com.frinika.sequencer.midi.groovepattern.GroovePatternFromSequence;
 import com.frinika.sequencer.midi.groovepattern.GroovePatternManager;
 import com.frinika.sequencer.model.MidiPart;
 import com.frinika.sequencer.model.Part;
+import java.awt.Component;
 import java.awt.Point;
 import java.io.File;
 import java.io.IOException;
@@ -224,13 +226,13 @@ public class GroovePatternManagerDialog extends AbstractDialog {
 
         GroovePatternFromSequence sel = (GroovePatternFromSequence) itemsList.getSelectedValue();
         if (sel != null) {
-            String filename = projectFrame.promptFile(null, ProjectFrame.FILE_FILTER_MIDIFILES, true);
+            String filename = MessageDialogUtils.promptFile(projectFrame.getFrame(), null, ProjectFrame.FILE_FILTER_MIDIFILES, true);
             if (filename != null) {
                 File file = new File(filename);
                 try {
                     sel.saveAsMidiFile(file);
                 } catch (IOException e) {
-                    projectFrame.error(e);
+                    MessageDialogUtils.error(projectFrame.getFrame(), e);
                 }
             }
         }
@@ -252,7 +254,7 @@ public class GroovePatternManagerDialog extends AbstractDialog {
             if (!c.isEmpty()) {
                 Part p = c.iterator().next(); // first
                 if (p instanceof MidiPart) {
-                    String name = projectFrame.prompt("Import selected Midi part as groove pattern.\nPlease enter a name for the new groove pattern:");
+                    String name = MessageDialogUtils.prompt(projectFrame.getFrame(), "Import selected Midi part as groove pattern.\nPlease enter a name for the new groove pattern:");
                     if (name != null) {
                         try {
                             GroovePattern gp = GroovePatternManager.getInstance().importUserGroovePattern(name, (MidiPart) p);
@@ -261,14 +263,14 @@ public class GroovePatternManagerDialog extends AbstractDialog {
                                 dialog.itemsList.setSelectedValue(gp.getName(), true);
                             }
                         } catch (IOException e) {
-                            projectFrame.error(e);
+                            MessageDialogUtils.error(projectFrame.getFrame(), e);
                         }
                     }
                     return; // successful exit (or user-canceled)
                 }
             }
         }
-        projectFrame.message("Please select a Midi part to import as groove pattern.");
+        MessageDialogUtils.message(projectFrame.getFrame(), "Please select a Midi part to import as groove pattern.");
     }
 
     private void newButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newButtonActionPerformed
@@ -276,7 +278,7 @@ public class GroovePatternManagerDialog extends AbstractDialog {
     }//GEN-LAST:event_newButtonActionPerformed
 
     private void importButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_importButtonActionPerformed
-        String filename = projectFrame.promptFile(null, ProjectFrame.FILE_FILTER_MIDIFILES);
+        String filename = MessageDialogUtils.promptFile(projectFrame.getFrame(), null, ProjectFrame.FILE_FILTER_MIDIFILES);
         if (filename != null) {
             File file = new File(filename);
             try {
@@ -284,7 +286,7 @@ public class GroovePatternManagerDialog extends AbstractDialog {
                 refreshItemsList();
                 itemsList.setSelectedValue(gp, true);
             } catch (IOException e) {
-                projectFrame.error(e);
+                MessageDialogUtils.error(projectFrame.getFrame(), e);
             }
         }
     }//GEN-LAST:event_importButtonActionPerformed
@@ -293,11 +295,11 @@ public class GroovePatternManagerDialog extends AbstractDialog {
 
         GroovePatternFromSequence sel = (GroovePatternFromSequence) itemsList.getSelectedValue();
         if (sel != null) {
-            if (projectFrame.confirm("Really DELETE groove pattern '" + sel.getName() + "'?")) {
+            if (MessageDialogUtils.confirm(projectFrame.getFrame(), "Really DELETE groove pattern '" + sel.getName() + "'?")) {
                 try {
                     GroovePatternManager.getInstance().removeUserGroovePattern(sel);
                 } catch (IOException ioe) {
-                    projectFrame.error(ioe);
+                    MessageDialogUtils.error(projectFrame.getFrame(), ioe);
                 }
                 refreshItemsList();
                 itemsList.setSelectedIndex(-1);
@@ -313,7 +315,7 @@ public class GroovePatternManagerDialog extends AbstractDialog {
             //this.toFront(); // we are modal, so user must first close this dialog to go on in newly opened project
             this.hide();
         } catch (Exception e) {
-            projectFrame.error(e);
+            MessageDialogUtils.error(projectFrame.getFrame(), e);
         }
 
     }//GEN-LAST:event_editButtonActionPerformed
