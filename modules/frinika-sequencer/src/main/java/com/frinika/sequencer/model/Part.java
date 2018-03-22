@@ -23,7 +23,7 @@ package com.frinika.sequencer.model;
 
 import com.frinika.gui.OptionsDialog;
 import com.frinika.gui.OptionsEditor;
-import static com.frinika.localization.CurrentLocale.getMessage;
+import com.frinika.localization.CurrentLocale;
 import com.frinika.model.EditHistoryAction;
 import com.frinika.model.EditHistoryRecordable;
 import com.frinika.project.MultiPart;
@@ -437,7 +437,7 @@ public abstract class Part implements Item, Selectable, EditHistoryRecordable, S
             popup.addSeparator();
         }
         // "Properties..."
-        JMenuItem item = new JMenuItem(getMessage("project.menu.properties") + "...");
+        JMenuItem item = new JMenuItem(CurrentLocale.getMessage("project.menu.properties") + "...");
         item.addActionListener(new ActionListener() {
 
             @Override
@@ -487,7 +487,7 @@ public abstract class Part implements Item, Selectable, EditHistoryRecordable, S
                 super.ok();
                 // commit as undoable action
                 SequencerProjectContainer project = ((ProjectFrame) frame).getProjectContainer();
-                project.getEditHistoryContainer().mark(getMessage("project.menu.edit_properties"));
+                project.getEditHistoryContainer().mark(CurrentLocale.getMessage("project.menu.edit_properties"));
                 EditHistoryAction action = new EditHistoryAction() {
 
                     @Override

@@ -58,7 +58,7 @@ import javax.swing.JFrame;
  */
 public class FrinikaMain {
 
-    static FrinikaExitHandler exitHook = null;
+    private static FrinikaExitHandler exitHook = null;
     private static final String DOWNLOAD_PATH_PREFIX = "http://sourceforge.net/projects/frinika/files/frinika-example-projects/Frinka-example-projects/";
     private static final String DOWNLOAD_PATH_POSTFIX = "/download";
     private static String argProjectFile = null;
@@ -78,7 +78,7 @@ public class FrinikaMain {
 //        try {
         JFrame welcomeFrame = new JFrame();
         welcomeFrame.setTitle("Welcome to Frinika");
-        welcomeFrame.setIconImage(new javax.swing.ImageIcon(FrinikaFrame.class.getResource("/icons/frinika.png")).getImage());
+        welcomeFrame.setIconImage(new javax.swing.ImageIcon(FrinikaMain.class.getResource("/icons/frinika.png")).getImage());
         welcomeFrame.setResizable(false);
 
         if (argProjectFile != null) {
@@ -94,69 +94,6 @@ public class FrinikaMain {
 
         welcomeFrame.setVisible(true);
 
-//            int n;
-//
-//            Object[] options = {
-//                CurrentLocale.getMessage("welcome.new_project"),
-//                CurrentLocale.getMessage("welcome.open_existing"),
-//                CurrentLocale.getMessage("welcome.settings"),
-//                CurrentLocale.getMessage("welcome.quit")
-//            };
-//
-//            //String setup = FrinikaConfig.getProperty("multiplexed_audio");
-//            WelcomeDialog welcome = new WelcomeDialog(options);
-//
-//            //if (setup == null) {
-//            if (!FrinikaConfig.SETUP_DONE) {
-//                //	welcome = new WelcomeDialog(options);
-//                welcome.setModal(false);
-//                welcome.setVisible(true);
-//                SetupDialog.showSettingsModal();
-//                welcome.setVisible(false);
-//            }
-//
-//            welcome.setModal(true);
-//
-//            welcome.addButtonActionListener(2, new ActionListener() {
-//                @Override
-//                public void actionPerformed(ActionEvent e) {
-//                    SetupDialog.showSettingsModal();
-//                }
-//            });
-//
-//            welcome.setVisible(true);
-//
-//            n = welcome.getSelectedOption();
-//
-//            switch (n) {
-//                case -1:
-//                    System.exit(0);
-//                    break;
-//                case 0:
-//                    // new ProjectFrame(new ProjectContainer());
-//                    SplashDialog.showSplash();
-//                    new CreateProjectAction().actionPerformed(null);
-//                    break;
-//                case 1:
-//                    SplashDialog.showSplash();
-//                    String lastFile = FrinikaConfig.lastProjectFile();
-//                    if (lastFile != null) {
-//                        OpenProjectAction.setSelectedFile(new File(lastFile));
-//                    }
-//                    new OpenProjectAction().actionPerformed(null);
-//                    break;
-//                case 3:
-//                    System.exit(0);
-//                    break;
-//
-//                default:
-//                    assert (false);
-//            }
-//
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            System.exit(-1); // new ProjectFrame(new ProjectContainer());
-//        }
 //
 //        exitHook = new FrinikaExitHandler();
 //        Runtime.getRuntime().addShutdownHook(exitHook);

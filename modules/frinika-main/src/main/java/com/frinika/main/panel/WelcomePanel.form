@@ -58,7 +58,7 @@
                   <Group type="102" attributes="0">
                       <Component id="animatedLogoPanel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="mainTitleTextPane" pref="64" max="32767" attributes="0"/>
+                      <Component id="mainTitleTextPane" pref="66" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="newProjectButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -146,8 +146,8 @@
     </Container>
     <Component class="javax.swing.JButton" name="newProjectButton">
       <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/icons/new.gif"/>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="FrinikaFrame.getIconResource(&quot;new.gif&quot;)" type="code"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Create new project"/>
         <Property name="horizontalAlignment" type="int" value="2"/>
@@ -158,8 +158,8 @@
     </Component>
     <Component class="javax.swing.JButton" name="openProjectButton">
       <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/icons/open.gif"/>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="FrinikaFrame.getIconResource(&quot;open.gif&quot;)&#xa;" type="code"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Open project"/>
         <Property name="horizontalAlignment" type="int" value="2"/>

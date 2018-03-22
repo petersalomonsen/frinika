@@ -296,7 +296,7 @@ public class FrinikaSoundHelixPanel extends javax.swing.JPanel {
                 lane.setMidiDevice(sw);
                 MidiPart part = (MidiPart) lane.createPart();
                 part.setName(arrangeEntry.getInstrument());
-                
+
                 // Compute end tick
                 long endTick = 0;
                 for (int j = 0; j < arrangeEntry.getTrack().size(); j++) {
@@ -310,7 +310,7 @@ public class FrinikaSoundHelixPanel extends javax.swing.JPanel {
                         }
                     }
                 }
-                
+
                 part.setEndTick(endTick);
 //                        part.setEndTick(entry.getTrack().size() * 24); // SIZE is getTicks() ?
                 lanes.add(lane);

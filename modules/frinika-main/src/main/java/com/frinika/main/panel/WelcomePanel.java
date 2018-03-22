@@ -21,6 +21,7 @@ package com.frinika.main.panel;
 
 import com.frinika.gui.util.SupportedLaf;
 import com.frinika.gui.util.WindowUtils;
+import com.frinika.main.FrinikaFrame;
 import com.frinika.main.model.ProjectFileRecord;
 import com.frinika.main.model.ProjectFileRecordCellRenderer;
 import java.awt.event.KeyAdapter;
@@ -167,7 +168,7 @@ public class WelcomePanel extends javax.swing.JPanel {
 
         projectsTabbedPane.addTab("Example Projects", exampleProjectsPanel);
 
-        newProjectButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/new.gif"))); // NOI18N
+        newProjectButton.setIcon(FrinikaFrame.getIconResource("new.gif"));
         newProjectButton.setText("Create new project");
         newProjectButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         newProjectButton.addActionListener(new java.awt.event.ActionListener() {
@@ -176,7 +177,8 @@ public class WelcomePanel extends javax.swing.JPanel {
             }
         });
 
-        openProjectButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/open.gif"))); // NOI18N
+        openProjectButton.setIcon(FrinikaFrame.getIconResource("open.gif")
+        );
         openProjectButton.setText("Open project");
         openProjectButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         openProjectButton.addActionListener(new java.awt.event.ActionListener() {
@@ -312,7 +314,7 @@ public class WelcomePanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(animatedLogoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(mainTitleTextPane, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
+                        .addComponent(mainTitleTextPane, javax.swing.GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(newProjectButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)

@@ -22,6 +22,7 @@ package com.frinika.main.model;
 import javax.annotation.Nonnull;
 
 /**
+ * Enumeration of example projects.
  *
  * @author hajdam
  */

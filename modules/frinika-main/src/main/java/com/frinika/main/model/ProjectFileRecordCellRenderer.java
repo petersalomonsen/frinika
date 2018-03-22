@@ -19,6 +19,7 @@
  */
 package com.frinika.main.model;
 
+import com.frinika.main.FrinikaFrame;
 import java.awt.Component;
 import javax.annotation.Nonnull;
 import javax.swing.ImageIcon;
@@ -28,6 +29,7 @@ import javax.swing.ListCellRenderer;
 import javax.swing.UIDefaults;
 
 /**
+ * Cell renderer for project files.
  *
  * @author hajdam
  */
@@ -37,7 +39,7 @@ public class ProjectFileRecordCellRenderer extends JLabel implements ListCellRen
     public Component getListCellRendererComponent(@Nonnull JList<? extends ProjectFileRecord> list, @Nonnull ProjectFileRecord value, int index, boolean isSelected, boolean cellHasFocus) {
         setOpaque(true);
 
-        ImageIcon imageIcon = new javax.swing.ImageIcon(ProjectFileRecordCellRenderer.class.getResource("/icons/frinika-project.png"));
+        ImageIcon imageIcon = FrinikaFrame.getIconResource("frinika-project.png");
         setIcon(imageIcon);
 
         UIDefaults defaults = javax.swing.UIManager.getDefaults();

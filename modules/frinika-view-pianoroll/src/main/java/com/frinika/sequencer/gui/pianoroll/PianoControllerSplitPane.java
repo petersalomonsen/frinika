@@ -101,11 +101,11 @@ public class PianoControllerSplitPane extends ItemScrollPane implements
         final PartSelectedAction wpl = new PartSelectedAction(project,
                 pianoRoll);
 
-        ButtonFactory.makePressButton("viewpageleft", "warptopartleft",
+        ButtonFactory.makePressButton(PianoControllerSplitPane.class.getResource("/icons/viewpageleft.png"), "warptopartleft",
                 CurrentLocale.getMessage("sequencer.pianoroll.warptopartleft_tip"), wpl,
                 toolBar.getZoomPanel()).setMargin(insets);
 
-        final JToggleButton bb = ButtonFactory.makeToggleButton("music_drumnote", "music_drumnote",
+        final JToggleButton bb = ButtonFactory.makeToggleButton(PianoControllerSplitPane.class.getResource("/icons/music_drumnote.png"), "music_drumnote",
                 CurrentLocale.getMessage("sequencer.pianoroll.drumwrite_tip"), wpl,
                 toolBar.getToolsPanel());
 

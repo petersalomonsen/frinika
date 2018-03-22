@@ -39,7 +39,7 @@ import com.frinika.gui.DefaultOptionsBinder;
 import com.frinika.gui.util.PresentationPanel;
 import com.frinika.gui.util.WindowUtils;
 import com.frinika.localization.CurrentLocale;
-import com.frinika.main.action.About;
+import com.frinika.main.action.AboutAction;
 import com.frinika.main.action.CreateProjectAction;
 import com.frinika.main.action.SelectAllAction;
 import com.frinika.mod.MODImporter;
@@ -147,7 +147,10 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import javax.sound.midi.InvalidMidiDataException;
 import javax.sound.midi.MidiDevice;
 import javax.sound.midi.MidiSystem;
@@ -439,8 +442,7 @@ public class FrinikaFrame extends JFrame implements ProjectFrame {
 
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
-        setIconImage(new javax.swing.ImageIcon(FrinikaFrame.class
-                .getResource("/icons/frinika.png")).getImage());
+        setIconImage(FrinikaFrame.getIconResource("frinika.png").getImage());
     }
 
     public void setProject(@Nonnull final FrinikaProjectContainer project) throws Exception {
@@ -642,8 +644,7 @@ public class FrinikaFrame extends JFrame implements ProjectFrame {
 
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
-        setIconImage(new javax.swing.ImageIcon(FrinikaFrame.class
-                .getResource("/icons/frinika.png")).getImage());
+        setIconImage(FrinikaFrame.getIconResource("frinika.png").getImage());
 
         String name = "Frinika - Copyright (c) Frinika developers - Licensed under GNU General Public License";
         File file = project.getProjectFile();
@@ -731,11 +732,8 @@ public class FrinikaFrame extends JFrame implements ProjectFrame {
         }
     }
 
-    private static Icon maximize_icon = new javax.swing.ImageIcon(
-            FrinikaFrame.class.getResource("/icons/maximize.gif"));
-
-    private static Icon minimize_icon = new javax.swing.ImageIcon(
-            FrinikaFrame.class.getResource("/icons/minimize.gif"));
+    private static final Icon MAXIMIZE_ICON = getIconResource("maximize.gif");
+    private static final Icon MINIMIZE_ICON = getIconResource("minimize.gif");
 
     @Override
     public MidiLearnIF getMidiLearnIF() {
@@ -1032,49 +1030,41 @@ public class FrinikaFrame extends JFrame implements ProjectFrame {
         mixer.setMinimumSize(new Dimension(0, 0));
 
         createView(TRACKS_VIEW, CurrentLocale.getMessage("project.maintabs.tracks"),
-                partViewEditor, dockicon_tracks);
-        createView(VOICE_VIEW, CurrentLocale.getMessage("project.maintabs.lane_properties"), laneView, dockicon_voice);
+                partViewEditor, DOCKICON_TRACKS);
+        createView(VOICE_VIEW, CurrentLocale.getMessage("project.maintabs.lane_properties"), laneView, DOCKICON_VOICE);
         createView(PIANOROLL_VIEW, CurrentLocale.getMessage("project.maintabs.piano_roll"), pianoControllerPane,
-                dockicon_pianoroll);
-        createView(TRACKER_VIEW, CurrentLocale.getMessage("project.maintabs.tracker"), trackerPanel, dockicon_tracker);
-        createView(NOTATION_VIEW, CurrentLocale.getMessage("project.maintabs.notation"), notationPanel, dockicon_notation);
+                DOCKICON_PIANOROLL);
+        createView(TRACKER_VIEW, CurrentLocale.getMessage("project.maintabs.tracker"), trackerPanel, DOCKICON_TRACKER);
+        createView(NOTATION_VIEW, CurrentLocale.getMessage("project.maintabs.notation"), notationPanel, DOCKICON_NOTATION);
         createView(MIDIOUT_VIEW, CurrentLocale.getMessage("project.maintabs.midimixer"),
-                new JScrollPane(midiDevicesPanel = new MidiDevicesPanel(project)),
-                dockicon_midiout);
+                new JScrollPane(midiDevicesPanel = new MidiDevicesPanel(project)), DOCKICON_MIDIOUT);
         createView(MIXER_VIEW, CurrentLocale.getMessage("project.maintabs.audiomixer"), mixer,
-                dockicon_mixer);
+                DOCKICON_MIXER);
     }
 
-    public static Icon getIconResource(String name) {
+    @Nullable
+    public static ImageIcon getIconResource(@Nonnull String name) {
         try {
-            Icon icon = new javax.swing.ImageIcon(FrinikaFrame.class
-                    .getResource("/icons/" + name));
+            ImageIcon icon = new ImageIcon(FrinikaFrame.class.getResource("/com/frinika/resources/icons/" + name));
             return icon;
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception ex) {
+            Logger.getLogger(FrinikaFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         return null;
     }
 
-    private static Icon dockicon_tracks = getIconResource("track.gif");
+    private static final Icon DOCKICON_TRACKS = getIconResource("track.gif");
+    private static final Icon DOCKICON_TRACKER = getIconResource("tracker.gif");
+    private static final Icon DOCKICON_MIDIOUT = getIconResource("midi_mixer.gif");
+    private static final Icon DOCKICON_VOICE = getIconResource("properties.gif");
+    private static final Icon DOCKICON_PIANOROLL = getIconResource("piano.png");
+    private static final Icon DOCKICON_MIXER = getIconResource("mixer.gif");
+    private static final Icon DOCKICON_NOTATION = getIconResource("midilane.png");
+    private static final Icon DEFAULT_MIDI_ICON = getIconResource("midi.png");
 
-    private static Icon dockicon_tracker = getIconResource("tracker.gif");
-
-    private static Icon dockicon_midiout = getIconResource("midi_mixer.gif");
-
-    private static Icon dockicon_voice = getIconResource("properties.gif");
-
-    private static Icon dockicon_pianoroll = getIconResource("piano.png");
-
-    private static Icon dockicon_mixer = getIconResource("mixer.gif");
-
-    private static Icon dockicon_notation = getIconResource("midilane.png");
-
-    private static Icon default_midi_icon = getIconResource("midi.png");
-
-    public static Icon getMidiDeviceIcon(MidiDevice dev) {
-        Icon icon = getMidiDeviceLargeIcon(dev);
+    public static Icon getMidiDeviceIcon(MidiDevice device) {
+        Icon icon = getMidiDeviceLargeIcon(device);
         if (icon.getIconHeight() > 16 || icon.getIconWidth() > 16) {
             BufferedImage img = new BufferedImage(icon.getIconWidth(), icon
                     .getIconHeight(), BufferedImage.TYPE_4BYTE_ABGR);
@@ -1087,14 +1077,14 @@ public class FrinikaFrame extends JFrame implements ProjectFrame {
         return icon;
     }
 
-    public static Icon getMidiDeviceLargeIcon(MidiDevice dev) {
-        if (dev instanceof SynthWrapper) {
-            dev = ((SynthWrapper) dev).getRealDevice();
+    public static Icon getMidiDeviceLargeIcon(MidiDevice device) {
+        if (device instanceof SynthWrapper) {
+            device = ((SynthWrapper) device).getRealDevice();
         }
-        Icon icon = default_midi_icon;
+        Icon icon = DEFAULT_MIDI_ICON;
         try {
-            Method icon_method = dev.getClass().getMethod("getIcon");
-            icon = (Icon) icon_method.invoke(dev);
+            Method icon_method = device.getClass().getMethod("getIcon");
+            icon = (Icon) icon_method.invoke(device);
         } catch (IllegalAccessException | IllegalArgumentException | NoSuchMethodException | SecurityException | InvocationTargetException e) {
         }
         return icon;
@@ -1152,7 +1142,7 @@ public class FrinikaFrame extends JFrame implements ProjectFrame {
                     return "Maximize";
                 }
                 if (key.equals("SmallIcon")) {
-                    return maximize_icon;
+                    return MAXIMIZE_ICON;
                 }
                 return super.getValue(key);
             }
@@ -1924,7 +1914,7 @@ public class FrinikaFrame extends JFrame implements ProjectFrame {
                     if (dev instanceof Synthesizer) {
                         infos1.add(info);
                         icons1.add(icon);
-                    } else if (icon == default_midi_icon) {
+                    } else if (icon == DEFAULT_MIDI_ICON) {
                         infos2.add(info);
                         icons2.add(icon);
                     } else {
@@ -2429,7 +2419,7 @@ public class FrinikaFrame extends JFrame implements ProjectFrame {
         aboutMenuItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                About.about(FrinikaFrame.this);
+                AboutAction.about(FrinikaFrame.this);
             }
         });
         aboutMenuItem.setMnemonic(KeyEvent.VK_A);

@@ -158,8 +158,8 @@ public class PartViewEditor extends ItemScrollPane {
 
         partView.setToolBar(toolBar);
         setView(partView);
-        toolBar.addButtonToTools("scissors16", "split", CurrentLocale.getMessage("sequencer.partview.split_part_tool_tip"));
-        toolBar.addButtonToTools("glue", "glue", CurrentLocale.getMessage("sequencer.partview.glue_part_tool_tip"));
+        toolBar.addButtonToTools(PartViewEditor.class.getResource("/icons/scissors16.png"), "split", CurrentLocale.getMessage("sequencer.partview.split_part_tool_tip"));
+        toolBar.addButtonToTools(PartViewEditor.class.getResource("/icons/glue.png"), "glue", CurrentLocale.getMessage("sequencer.partview.glue_part_tool_tip"));
 
         //	toolBar.add(new ToolbarSeperator(),1);
         //	toolBar.add(new ToolbarSeperator());

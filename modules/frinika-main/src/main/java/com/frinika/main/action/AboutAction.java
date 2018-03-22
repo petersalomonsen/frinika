@@ -40,7 +40,7 @@ import javax.swing.JFrame;
 /**
  * @author peter
  */
-public class About {
+public class AboutAction {
 
     public static void about(JFrame parentFrame) {
         boolean darkMode = WindowUtils.isDarkMode();

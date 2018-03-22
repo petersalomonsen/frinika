@@ -32,6 +32,7 @@ import java.awt.FlowLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.URL;
 import java.util.List;
 import javax.sound.midi.Sequence;
 import javax.swing.BorderFactory;
@@ -79,20 +80,20 @@ public class ItemRollToolBar extends JToolBar implements ActionListener {
 
         toolGroup = new ButtonGroup();
 
-        JToggleButton but = ButtonFactory.makeToggleButton("select", "select",
-                CurrentLocale.getMessage("seqeuncer.toolbar.select_tip"), this, toolGroup, tools);
+        JToggleButton but = ButtonFactory.makeToggleButton(ItemRollToolBar.class.getResource("/icons/select.png"), "select",
+                CurrentLocale.getMessage("sequencer.toolbar.select_tip"), this, toolGroup, tools);
         but.setMargin(insets);
 
         // Toolkit.getDefaultToolkit().createCustomCursor(
         // icon.getImage(), new Point(2,icon.getIconHeight()-2), "select");
         // selectTool =
-        ButtonFactory.makeToggleButton("pencil", "write", CurrentLocale.getMessage("seqeuncer.toolbar.write_tip"), this, toolGroup, tools)
+        ButtonFactory.makeToggleButton(ItemRollToolBar.class.getResource("/icons/pencil.png"), "write", CurrentLocale.getMessage("sequencer.toolbar.write_tip"), this, toolGroup, tools)
                 .setMargin(insets);
 
-        ButtonFactory.makeToggleButton("eraser", "erase", CurrentLocale.getMessage("seqeuncer.toolbar.erase_tip"), this, toolGroup, tools)
+        ButtonFactory.makeToggleButton(ItemRollToolBar.class.getResource("/icons/eraser.png"), "erase", CurrentLocale.getMessage("sequencer.toolbar.erase_tip"), this, toolGroup, tools)
                 .setMargin(insets);
 
-        ButtonFactory.makeToggleButton("hand", "dragview", CurrentLocale.getMessage("seqeuncer.toolbar.dragclick_tip"),
+        ButtonFactory.makeToggleButton(ItemRollToolBar.class.getResource("/icons/hand.png"), "dragview", CurrentLocale.getMessage("sequencer.toolbar.dragclick_tip"),
                 this, toolGroup, tools).setMargin(insets);
 
         add(tools);
@@ -108,7 +109,7 @@ public class ItemRollToolBar extends JToolBar implements ActionListener {
         follow.setSelected(clients.get(0).isFollowSong());
         follow.setMargin(insets);
 
-        quantize = ButtonFactory.makeToggleButton("quantize", "snaptoON", CurrentLocale.getMessage("sequencer.toolbar.snapto_toggle_tip"), this,
+        quantize = ButtonFactory.makeToggleButton(ItemRollToolBar.class.getResource("/icons/quantize.png"), "snaptoON", CurrentLocale.getMessage("sequencer.toolbar.snapto_toggle_tip"), this,
                 null, settings);
 
         quantize.setMargin(insets);
@@ -128,15 +129,15 @@ public class ItemRollToolBar extends JToolBar implements ActionListener {
         zoom.setBorder(BorderFactory.createEmptyBorder(4, 4, 4, 4));
         zoom.setOpaque(false);
 
-        zoomBut = ButtonFactory.makeToggleButton("viewmagfit", "magrect",
+        zoomBut = ButtonFactory.makeToggleButton(ItemRollToolBar.class.getResource("/icons/viewmagfit.png"), "magrect",
                 CurrentLocale.getMessage("sequencer.toolbar.zoomtorect_tip"), this, null, zoom);
 
         zoomBut.setMargin(insets);
 
-        ButtonFactory.makePressButton("viewmag+", "zoomin", CurrentLocale.getMessage("sequencer.toolbar.zoomin_tip"), this, zoom).setMargin(
+        ButtonFactory.makePressButton(ItemRollToolBar.class.getResource("/icons/viewmag+.png"), "zoomin", CurrentLocale.getMessage("sequencer.toolbar.zoomin_tip"), this, zoom).setMargin(
                 insets);
 
-        ButtonFactory.makePressButton("viewmag-", "zoomout", CurrentLocale.getMessage("sequencer.toolbar.zoomout_tip"), this, zoom)
+        ButtonFactory.makePressButton(ItemRollToolBar.class.getResource("/icons/viewmag-.png"), "zoomout", CurrentLocale.getMessage("sequencer.toolbar.zoomout_tip"), this, zoom)
                 .setMargin(insets);
 
         //	ButtonFactory.makePressButton("extend", "extend", "Extend project", this, zoom)
@@ -154,19 +155,19 @@ public class ItemRollToolBar extends JToolBar implements ActionListener {
         // buttonPressed("select");
     }
 
-    public void addButtonToTools(String icon, String cmd, String popup) {
-        ButtonFactory.makeToggleButton(icon, cmd, popup, this, toolGroup, tools)
+    public void addButtonToTools(URL iconUrl, String cmd, String popup) {
+        ButtonFactory.makeToggleButton(iconUrl, cmd, popup, this, toolGroup, tools)
                 .setMargin(insets);
 
     }
 
     public static JToggleButton makeFollowSongButton(ActionListener actionListener, JPanel panel) {
-        return ButtonFactory.makeToggleButton(CurrentLocale.getMessage("sequencer.play.follow"), CurrentLocale.getMessage("sequencer.play.follow"), CurrentLocale.getMessage("sequencer.play.follow_song"), actionListener,
+        return ButtonFactory.makeToggleButton(ItemRollToolBar.class.getResource("/icons/follow.png"), CurrentLocale.getMessage("sequencer.play.follow"), CurrentLocale.getMessage("sequencer.play.follow_song"), actionListener,
                 null, panel);
     }
 
     public static JButton makeSnapToButton(final List<Snapable> clients, JPanel panel, final Sequence sequence) {
-        final JButton snapToButton = ButtonFactory.makePressButton("music_quarternote", "snaptoSET",
+        final JButton snapToButton = ButtonFactory.makePressButton(ItemRollToolBar.class.getResource("/icons/music_quarternote.png"), "snaptoSET",
                 CurrentLocale.getMessage("sequencer.toolbar.snaptolength_tip"), null, panel);
         snapToButton.addActionListener(new ActionListener() {
             @Override

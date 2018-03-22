@@ -21,8 +21,6 @@
  * along with Frinika; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
-
-
 package com.frinika.ogg.vorbis;
 
 import java.io.IOException;
@@ -43,48 +41,48 @@ import javax.sound.sampled.TargetDataLine;
  * @author Peter Johan Salomonsen
  */
 public class VorbisAudioStreamingExample {
+
     public static void main(String[] args) throws Exception {
-        AudioFormat orgFormat = new AudioFormat(44100,16,2,true,false);
+        AudioFormat orgFormat = new AudioFormat(44100, 16, 2, true, false);
 
         //final AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("/home/peter/nydalstyggis.wav"));
         Mixer.Info info = AudioSystem.getMixerInfo()[0];
-        System.out.println("Using "+info+" for input");
-        TargetDataLine tdl = AudioSystem.getTargetDataLine(orgFormat,info);
+        System.out.println("Using " + info + " for input");
+        TargetDataLine tdl = AudioSystem.getTargetDataLine(orgFormat, info);
         tdl.open();
         tdl.start();
         final AudioInputStream audioInputStream = new AudioInputStream(tdl);
 
         PipedInputStream snk = new PipedInputStream();
         final PipedOutputStream out = new PipedOutputStream(snk);
-        
+
         new Thread() {
 
             @Override
             public void run() {
                 try {
-                    System.out.println("Written "+AudioSystem.write(audioInputStream, new Type("OGG", "ogg"), out)+" bytes");
+                    System.out.println("Written " + AudioSystem.write(audioInputStream, new Type("OGG", "ogg"), out) + " bytes");
                 } catch (IOException ex) {
                     Logger.getLogger(VorbisAudioStreamingExample.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
 
         }.start();
-        
+
         AudioInputStream oggStream = AudioSystem.getAudioInputStream(snk);
         System.out.println(oggStream.getFormat());
-        AudioInputStream pcmStream = AudioSystem.getAudioInputStream(orgFormat,oggStream);
-        
+        AudioInputStream pcmStream = AudioSystem.getAudioInputStream(orgFormat, oggStream);
+
         SourceDataLine sdl = AudioSystem.getSourceDataLine(orgFormat);
         sdl.open();
         sdl.start();
         System.out.println("Audiooutput started");
         byte[] buf = new byte[1024];
 
-        int len = pcmStream.read(buf,0,buf.length);
-        while(len!=-1)
-        {
-            sdl.write(buf, 0, len);            
-            len = pcmStream.read(buf,0,buf.length);
+        int len = pcmStream.read(buf, 0, buf.length);
+        while (len != -1) {
+            sdl.write(buf, 0, len);
+            len = pcmStream.read(buf, 0, buf.length);
         }
     }
 }
