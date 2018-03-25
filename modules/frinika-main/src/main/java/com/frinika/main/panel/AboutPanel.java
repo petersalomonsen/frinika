@@ -213,7 +213,7 @@ public class AboutPanel extends javax.swing.JPanel {
 
         JTextPane licenseAgreement;
         try {
-            InputStream is = AboutPanel.class.getResource("/com/frinika/resources/license-gpl2.html").openStream();
+            InputStream is = AboutPanel.class.getResource("/com/frinika/main/resources/license-gpl2.html").openStream();
             ByteArrayOutputStream bos = new ByteArrayOutputStream();
             while (is.available() > 0) {
                 bos.write(is.read());

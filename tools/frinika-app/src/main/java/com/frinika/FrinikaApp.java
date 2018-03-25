@@ -56,7 +56,7 @@ import javax.swing.JFrame;
  *
  * @author Peter Johan Salomonsen
  */
-public class FrinikaMain {
+public class FrinikaApp {
 
     private static FrinikaExitHandler exitHook = null;
     private static final String DOWNLOAD_PATH_PREFIX = "http://sourceforge.net/projects/frinika/files/frinika-example-projects/Frinka-example-projects/";
@@ -78,12 +78,13 @@ public class FrinikaMain {
 //        try {
         JFrame welcomeFrame = new JFrame();
         welcomeFrame.setTitle("Welcome to Frinika");
-        welcomeFrame.setIconImage(new javax.swing.ImageIcon(FrinikaMain.class.getResource("/icons/frinika.png")).getImage());
+        welcomeFrame.setIconImage(new javax.swing.ImageIcon(FrinikaApp.class.getResource("/icons/frinika.png")).getImage());
         welcomeFrame.setResizable(false);
 
         if (argProjectFile != null) {
-            OpenProjectAction.setSelectedFile(new File(argProjectFile));
-            new OpenProjectAction().actionPerformed(null);
+            OpenProjectAction openProjectAction = new OpenProjectAction();
+            openProjectAction.setSelectedFile(new File(argProjectFile));
+            openProjectAction.actionPerformed(null);
             welcomeFrame.setVisible(false);
         } else {
             WelcomePanel welcomePanel = new WelcomePanel();
@@ -148,10 +149,11 @@ public class FrinikaMain {
             @Override
             public void openProject() {
                 String lastFile = FrinikaGlobalProperties.LAST_PROJECT_FILENAME.getValue();
+                OpenProjectAction openProjectAction = new OpenProjectAction();
                 if (lastFile != null) {
-                    OpenProjectAction.setSelectedFile(new File(lastFile));
+                    openProjectAction.setSelectedFile(new File(lastFile));
                 }
-                new OpenProjectAction().actionPerformed(null);
+                openProjectAction.actionPerformed(null);
                 welcomeFrame.setVisible(false);
             }
 
@@ -178,7 +180,7 @@ public class FrinikaMain {
                     ProgressOperation.openProjectFile(projectFrame, file);
                     welcomeFrame.setVisible(false);
                 } catch (Exception ex) {
-                    Logger.getLogger(FrinikaMain.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(FrinikaApp.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
 
@@ -198,7 +200,7 @@ public class FrinikaMain {
                         welcomeFrame.setVisible(false);
                     }
                 } catch (Exception ex) {
-                    Logger.getLogger(FrinikaMain.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(FrinikaApp.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
 
@@ -243,7 +245,7 @@ public class FrinikaMain {
         try {
             FrinikaConfig.load();
         } catch (IOException ex) {
-            Logger.getLogger(FrinikaMain.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FrinikaApp.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -294,7 +296,7 @@ public class FrinikaMain {
                         System.setProperty("java.library.path", tmp);
                     } catch (IOException ioe) {
                         System.err.println("Native library extraction failed. Problems may occur.");
-                        Logger.getLogger(FrinikaMain.class.getName()).log(Level.SEVERE, null, ioe);
+                        Logger.getLogger(FrinikaApp.class.getName()).log(Level.SEVERE, null, ioe);
                     }
                 }
             }

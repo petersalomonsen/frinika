@@ -406,23 +406,6 @@ public class WelcomePanel extends javax.swing.JPanel {
         actionListener.saveDefaultTheme(defaultLafToggleButton.isSelected() ? null : SupportedLaf.DARCULA.name());
     }
 
-    public static interface ActionListener {
-
-        void newProject();
-
-        void openProject();
-
-        void configureAudio();
-
-        void closeDialog();
-
-        void openRecentProject(@Nonnull ProjectFileRecord projectFileRecord);
-
-        void openExampleProject(@Nonnull ProjectFileRecord projectFileRecord);
-
-        void saveDefaultTheme(@Nullable String theme);
-    }
-
     public void setRecentProjects(@Nonnull List<ProjectFileRecord> projectRecord) {
         projectRecord.forEach((projectFileRecord) -> {
             recentListModel.addElement(projectFileRecord);
@@ -438,5 +421,22 @@ public class WelcomePanel extends javax.swing.JPanel {
     public void setInitialTheme(@Nullable String theme) {
         SupportedLaf themeLaf = theme == null ? SupportedLaf.DEFAULT : SupportedLaf.DARCULA;
         darculaLafToggleButton.setSelected(themeLaf == SupportedLaf.DARCULA);
+    }
+
+    public static interface ActionListener {
+
+        void newProject();
+
+        void openProject();
+
+        void configureAudio();
+
+        void closeDialog();
+
+        void openRecentProject(@Nonnull ProjectFileRecord projectFileRecord);
+
+        void openExampleProject(@Nonnull ProjectFileRecord projectFileRecord);
+
+        void saveDefaultTheme(@Nullable String theme);
     }
 }

@@ -32,6 +32,7 @@ import java.awt.event.ActionEvent;
 import java.io.File;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.annotation.Nullable;
 import javax.swing.AbstractAction;
 import javax.swing.JFileChooser;
 
@@ -42,20 +43,20 @@ import javax.swing.JFileChooser;
  */
 public class OpenProjectAction extends AbstractAction {
 
-    private static final long serialVersionUID = 1L;
-    private static final JFileChooser chooser = new JFileChooser();
+    private final long serialVersionUID = 1L;
+    private File selectedFile = null;
 
-    static {
-        chooser.setDialogTitle(CurrentLocale.getMessage("project.menu.file.open_project.dialogtitle"));
-        chooser.setFileFilter(new ProjectFileFilter());
-    }
-
-    public static void setSelectedFile(File file) {
-        chooser.setSelectedFile(file);
+    public void setSelectedFile(@Nullable File file) {
+        selectedFile = file;
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(ActionEvent event) {
+        JFileChooser chooser = new JFileChooser();
+        chooser.setSelectedFile(selectedFile);
+        chooser.setDialogTitle(CurrentLocale.getMessage("project.menu.file.open_project.dialogtitle"));
+        chooser.setFileFilter(new ProjectFileFilter());
+
         try {
             if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
                 File newProject = chooser.getSelectedFile();
@@ -65,7 +66,7 @@ public class OpenProjectAction extends AbstractAction {
                 FrinikaConfig.setLastProject(newProject);
             }
         } catch (Exception ex) {
-            Logger.getLogger(ProgressOperation.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(OpenProjectAction.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

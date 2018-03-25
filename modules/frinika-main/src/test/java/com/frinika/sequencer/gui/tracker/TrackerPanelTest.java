@@ -23,7 +23,6 @@
  */
 package com.frinika.sequencer.gui.tracker;
 
-import com.frinika.FrinikaMain;
 import com.frinika.main.FrinikaFrame;
 import com.frinika.project.FrinikaProjectContainer;
 import com.frinika.sequencer.model.MidiPart;
@@ -38,7 +37,6 @@ public class TrackerPanelTest {
 
     public static void main(String[] args) throws Exception {
         System.out.println(System.getProperty("java.version"));
-        FrinikaMain.configureUI();
         JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(new Dimension(800, 600));
