@@ -55,7 +55,7 @@ public class FrinikaApp {
 
         configureUI();
 
-        FrinikaMain frinikaMain = new FrinikaMain();
+        FrinikaMain frinikaMain = FrinikaMain.getInstance();
         frinikaMain.startFrinika(argProjectFile);
     }
 

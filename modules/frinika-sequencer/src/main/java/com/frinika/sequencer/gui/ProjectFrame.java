@@ -46,12 +46,9 @@ public interface ProjectFrame extends ProjectFrameIntf {
      *
      * @see promptFile
      */
-    final static String[][] FILE_FILTER_MIDIFILES = new String[][]{
+    public static final String[][] FILE_FILTER_MIDIFILES = new String[][]{
         {"mid", "Midi standard files"}
     };
-
-    // hack to stop exit when last frma is closed.
-    static boolean doNotQuit = false;
 
     MidiLearnIF getMidiLearnIF();
 
@@ -71,9 +68,9 @@ public interface ProjectFrame extends ProjectFrameIntf {
 
     MidiDevice selectMidiDevice();
 
-    void tryQuit();
-
     SequencerProjectContainer getProjectContainer();
+    
+    boolean hasChanges();
 
     /**
      *

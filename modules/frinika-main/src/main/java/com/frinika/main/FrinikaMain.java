@@ -26,22 +26,26 @@ import com.frinika.global.FrinikaConfig;
 import com.frinika.global.property.FrinikaGlobalProperties;
 import com.frinika.global.property.RecentProjectRecord;
 import com.frinika.gui.util.WindowUtils;
+import com.frinika.localization.CurrentLocale;
 import com.frinika.main.action.CreateProjectAction;
 import com.frinika.main.action.OpenProjectAction;
 import com.frinika.main.model.ExampleProjectFile;
 import com.frinika.main.model.ProjectFileRecord;
 import com.frinika.main.panel.WelcomePanel;
 import com.frinika.project.FrinikaProjectContainer;
+import com.frinika.project.gui.ProjectFocusListener;
 import com.frinika.settings.SetupDialog;
 import com.frinika.tootX.midi.MidiInDeviceManager;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  * Main class for Frinika handling multiple frames and welcome window.
@@ -54,53 +58,75 @@ public class FrinikaMain {
     private static final String DOWNLOAD_PATH_POSTFIX = "/download";
 
     private final FrinikaExitHandler exitHook = new FrinikaExitHandler();
+    private final List<ProjectFocusListener> projectFocusListeners = new ArrayList<>();
 
-    public FrinikaMain() {
+    private JFrame welcomeFrame = null;
+    private WelcomePanel welcomePanel = null;
+
+    private final List<FrinikaFrame> openProjectFrames = new ArrayList<>();
+    private FrinikaFrame focusFrame = null;
+
+    private static FrinikaMain instance = null;
+
+    private FrinikaMain() {
+    }
+
+    @Nonnull
+    public static FrinikaMain getInstance() {
+        if (instance == null) {
+            instance = new FrinikaMain();
+        }
+
+        return instance;
     }
 
     public void startFrinika(@Nullable String argProjectFile) {
         Runtime.getRuntime().addShutdownHook(exitHook);
 
-        FrinikaFrame.addProjectFocusListener((FrinikaProjectContainer project) -> {
+        addProjectFocusListener((FrinikaProjectContainer project) -> {
             FrinikaAudioSystem.installClient(project.getAudioClient());
         });
 
         FrinikaAudioSystem.getAudioServer().start();
 
-//        try {
-        JFrame welcomeFrame = new JFrame();
-        welcomeFrame.setTitle("Welcome to Frinika");
-        welcomeFrame.setIconImage(new javax.swing.ImageIcon(FrinikaMain.class.getResource("/icons/frinika.png")).getImage());
-        welcomeFrame.setResizable(false);
-
         if (argProjectFile != null) {
             OpenProjectAction openProjectAction = new OpenProjectAction();
             openProjectAction.setSelectedFile(new File(argProjectFile));
             openProjectAction.actionPerformed(null);
-            welcomeFrame.setVisible(false);
         } else {
-            WelcomePanel welcomePanel = new WelcomePanel();
-            setupWelcomePanel(welcomeFrame, welcomePanel);
-            WindowUtils.initWindowByComponent(welcomeFrame, welcomePanel);
-            WindowUtils.setWindowCenterPosition(welcomeFrame);
+            getWelcomeFrameInstance().setVisible(true);
+        }
+    }
+
+    /**
+     * Returns frame using provided project or null if not found.
+     *
+     * @param project
+     * @return Frinika frame or null
+     */
+    @Nullable
+    public FrinikaFrame findFrame(@Nonnull FrinikaProjectContainer project) {
+        for (FrinikaFrame frame : openProjectFrames) {
+            if (frame.project == project) {
+                return frame;
+            }
         }
 
-        welcomeFrame.setVisible(true);
+        return null;
+    }
 
-//
-//        exitHook = new FrinikaExitHandler();
-//        Runtime.getRuntime().addShutdownHook(exitHook);
-//
-//        FrinikaFrame.addProjectFocusListener(new ProjectFocusListener() {
-//            @Override
-//            public void projectFocusNotify(FrinikaProjectContainer project) {
-//                FrinikaAudioSystem.installClient(project.getAudioClient());
-//            }
-//        });
-//
-//        SplashDialog.closeSplash();
-//
-//        FrinikaAudioSystem.getAudioServer().start();
+    protected void setFocusFrame(@Nonnull FrinikaFrame frame) {
+        if (frame != focusFrame) {
+            focusFrame = frame;
+            System.out.println(" Setting focus project " + frame.getProjectContainer().getFile());
+        }
+    }
+
+    @Nonnull
+    public FrinikaFrame getFocusFrame() {
+        Objects.requireNonNull(focusFrame, "Focused frame cannot be null");
+
+        return focusFrame;
     }
 
     @Nonnull
@@ -110,24 +136,40 @@ public class FrinikaMain {
         return new File(exampleFilesPath, projectFileName);
     }
 
-    private static void setupWelcomePanel(@Nonnull final JFrame welcomeFrame, @Nonnull WelcomePanel welcomePanel) {
+    @Nonnull
+    private JFrame getWelcomeFrameInstance() {
+        if (welcomeFrame == null) {
+            welcomeFrame = new JFrame();
+            welcomeFrame.setTitle("Welcome to Frinika");
+            welcomeFrame.setIconImage(new javax.swing.ImageIcon(FrinikaMain.class.getResource("/icons/frinika.png")).getImage());
+            welcomeFrame.setResizable(false);
+
+            welcomePanel = new WelcomePanel();
+            setupWelcomePanel();
+            WindowUtils.initWindowByComponent(welcomeFrame, welcomePanel);
+            WindowUtils.setWindowCenterPosition(welcomeFrame);
+        }
+
+        return welcomeFrame;
+    }
+
+    private void setupWelcomePanel() {
         welcomePanel.setActionListener(new WelcomePanel.ActionListener() {
             @Override
             public void newProject() {
-                welcomeFrame.setVisible(false);
+                welcomeFrame.setEnabled(false);
                 new CreateProjectAction().actionPerformed(null);
-                welcomeFrame.setVisible(false);
             }
 
             @Override
             public void openProject() {
+                welcomeFrame.setEnabled(false);
                 String lastFile = FrinikaGlobalProperties.LAST_PROJECT_FILENAME.getValue();
                 OpenProjectAction openProjectAction = new OpenProjectAction();
                 if (lastFile != null) {
                     openProjectAction.setSelectedFile(new File(lastFile));
                 }
                 openProjectAction.actionPerformed(null);
-                welcomeFrame.setVisible(false);
             }
 
             @Override
@@ -137,29 +179,29 @@ public class FrinikaMain {
 
             @Override
             public void closeDialog() {
-                welcomeFrame.setVisible(false);
-
-                System.exit(0);
+                mainExit();
             }
 
             @Override
             public void openRecentProject(@Nonnull ProjectFileRecord projectFileRecord) {
                 try {
+                    welcomeFrame.setEnabled(false);
                     String projectName = projectFileRecord.getProjectName();
                     String filePath = projectFileRecord.getFilePath();
                     FrinikaConfig.setLastProject(filePath, projectName);
                     File file = new File(filePath);
                     FrinikaFrame projectFrame = new FrinikaFrame();
                     ProgressOperation.openProjectFile(projectFrame, file);
-                    welcomeFrame.setVisible(false);
                 } catch (Exception ex) {
                     Logger.getLogger(FrinikaMain.class.getName()).log(Level.SEVERE, null, ex);
+                    welcomeFrame.setEnabled(true);
                 }
             }
 
             @Override
             public void openExampleProject(@Nonnull ProjectFileRecord projectFileRecord) {
                 try {
+                    welcomeFrame.setEnabled(false);
                     FrinikaFrame projectFrame = new FrinikaFrame();
 
                     final File projectFile = getSampleFile(projectFileRecord.getFilePath());
@@ -170,10 +212,10 @@ public class FrinikaMain {
 
                     if (projectFile.exists()) {
                         ProgressOperation.openProjectFile(projectFrame, projectFile);
-                        welcomeFrame.setVisible(false);
                     }
                 } catch (Exception ex) {
                     Logger.getLogger(FrinikaMain.class.getName()).log(Level.SEVERE, null, ex);
+                    welcomeFrame.setEnabled(true);
                 }
             }
 
@@ -183,6 +225,19 @@ public class FrinikaMain {
             }
         });
 
+        reloadRecentProjects();
+
+        List<ProjectFileRecord> sampleProjects = new ArrayList<>();
+        for (ExampleProjectFile exampleFile : ExampleProjectFile.values()) {
+            sampleProjects.add(new ProjectFileRecord(exampleFile.getName(), exampleFile.getFileName()));
+        }
+        welcomePanel.setExampleProjects(sampleProjects);
+
+        String theme = FrinikaGlobalProperties.THEME.getValue();
+        welcomePanel.setInitialTheme(theme);
+    }
+
+    private void reloadRecentProjects() {
         List<ProjectFileRecord> recentProjects = new ArrayList<>();
         String lastProjectFile = FrinikaGlobalProperties.LAST_PROJECT_FILENAME.getValue();
         if (lastProjectFile != null) {
@@ -202,15 +257,112 @@ public class FrinikaMain {
             }
         }
         welcomePanel.setRecentProjects(recentProjects);
+    }
 
-        List<ProjectFileRecord> sampleProjects = new ArrayList<>();
-        for (ExampleProjectFile exampleFile : ExampleProjectFile.values()) {
-            sampleProjects.add(new ProjectFileRecord(exampleFile.getName(), exampleFile.getFileName()));
+    public void addProjectFocusListener(@Nonnull ProjectFocusListener listener) {
+        projectFocusListeners.add(listener);
+    }
+
+    public void removeProjectFocusListener(@Nonnull ProjectFocusListener listener) {
+        projectFocusListeners.remove(listener);
+    }
+
+    public void notifyProjectFocusListeners() {
+        projectFocusListeners.forEach((listener) -> {
+            listener.projectFocusNotify(focusFrame.getProjectContainer());
+        });
+    }
+
+    // TODO pass this as interface to frame instead of instance access
+    public void addFrame(@Nonnull FrinikaFrame frame) {
+        openProjectFrames.add(frame);
+
+        // Hide welcome dialog on creation of project frame
+        if (welcomeFrame != null) {
+            if (welcomeFrame.isVisible()) {
+                welcomeFrame.setVisible(false);
+            }
         }
-        welcomePanel.setExampleProjects(sampleProjects);
+    }
 
-        String theme = FrinikaGlobalProperties.THEME.getValue();
-        welcomePanel.setInitialTheme(theme);
+    public void removeFrame(@Nonnull FrinikaFrame frame) {
+        openProjectFrames.remove(frame);
+    }
+
+    public void closeFrame(@Nonnull FrinikaFrame frame) {
+        if (canClose(frame)) {
+            frame.dispose();
+
+            // Reopen welcome dialog on close of last project frame
+            if (openProjectFrames.isEmpty()) {
+                welcomeFrame = getWelcomeFrameInstance();
+                showWelcomePanel();
+            }
+        }
+    }
+
+    public void quit(@Nonnull FrinikaFrame frame) {
+        boolean hasChanges = false;
+        for (FrinikaFrame openFrame : openProjectFrames) {
+            if (openFrame.hasChanges()) {
+                hasChanges = true;
+                break;
+            }
+        }
+
+        String quitMessage;
+        if (hasChanges) {
+            quitMessage = CurrentLocale.getMessage("quit.doYouReallyWantTo.unsaved");
+        } else {
+            quitMessage = CurrentLocale.getMessage("quit.doYouReallyWantTo");
+        }
+
+        boolean quitApproved = (JOptionPane.showOptionDialog(frame, quitMessage,
+                CurrentLocale.getMessage("quit.really"), JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE, null, null, null) == 0);
+
+        if (quitApproved) {
+            // Todo changed projects with checkboxes
+            // Close frame one by one
+            while (!openProjectFrames.isEmpty()) {
+                FrinikaFrame openFrame = openProjectFrames.get(0);
+                if (canClose(openFrame)) {
+                    openFrame.dispose();
+                }
+            }
+
+            mainExit();
+        }
+    }
+
+    private void mainExit() {
+        /**
+         * VERY IMPORTANT! Make sure all midi-in devices are closed for
+         * system.exit!
+         */
+        MidiInDeviceManager.close();
+        FrinikaConfig.storeAndQuit();
+
+        System.exit(0);
+    }
+
+    private boolean canClose(@Nonnull FrinikaFrame frame) {
+        if (!frame.hasChanges()) {
+            return true;
+        }
+
+        return JOptionPane.showOptionDialog(frame,
+                CurrentLocale.getMessage("close.unsavedChanges"),
+                CurrentLocale.getMessage("close.unsavedChanges.dialogTitle"),
+                JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE,
+                null, null, null) == 0;
+    }
+
+    private void showWelcomePanel() {
+        reloadRecentProjects();
+        welcomeFrame.setEnabled(true);
+        welcomeFrame.setVisible(true);
+        welcomeFrame.repaint();
     }
 
     private static class FrinikaExitHandler extends Thread {
@@ -219,12 +371,12 @@ public class FrinikaMain {
         public void run() {
             MidiInDeviceManager.close();
             FrinikaAudioSystem.close();
-//			SwingUtilities.invokeLater(new Runnable() {
-//				public void run() {
-//					System.out.println(" Closing ALL midi devices ");
-//					ProjectContainer.closeAllMidiOutDevices();
-//				}
-//			});
+//            SwingUtilities.invokeLater(new Runnable() {
+//                public void run() {
+//                    System.out.println(" Closing ALL midi devices ");
+//                    ProjectContainer.closeAllMidiOutDevices();
+//                }
+//            });
         }
     }
 

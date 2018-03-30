@@ -289,10 +289,10 @@ public class FrinikaProjectContainer extends SequencerProjectContainer
     /**
      * Set the title of the song.
      *
-     * @param t
+     * @param title
      */
-    public void setTitle(String t) {
-        title = t;
+    public void setTitle(String title) {
+        title = title;
     }
 
     /**

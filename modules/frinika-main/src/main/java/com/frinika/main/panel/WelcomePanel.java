@@ -407,12 +407,14 @@ public class WelcomePanel extends javax.swing.JPanel {
     }
 
     public void setRecentProjects(@Nonnull List<ProjectFileRecord> projectRecord) {
+        recentListModel.clear();
         projectRecord.forEach((projectFileRecord) -> {
             recentListModel.addElement(projectFileRecord);
         });
     }
 
     public void setExampleProjects(@Nonnull List<ProjectFileRecord> projectRecord) {
+        exampleListModel.clear();
         projectRecord.forEach((projectFileRecord) -> {
             exampleListModel.addElement(projectFileRecord);
         });
