@@ -292,7 +292,7 @@ public class FrinikaProjectContainer extends SequencerProjectContainer
      * @param title
      */
     public void setTitle(String title) {
-        title = title;
+        this.title = title;
     }
 
     /**
@@ -1135,6 +1135,7 @@ public class FrinikaProjectContainer extends SequencerProjectContainer
 
         projectContainer.scriptingEngine.project = null;
         projectContainer.tempoList.project = null;
+        projectContainer.sequencer.setTempoList(null);
         projectContainer.projectLane.project = null;
         ((Lane) projectContainer.projectLane).project = null;
         for (Lane lane : projectContainer.projectLane.getFamilyLanes()) {
@@ -2103,6 +2104,7 @@ public class FrinikaProjectContainer extends SequencerProjectContainer
         container.timeSignitureList = projectContainer.timeSignitureList;
         container.ticksPerQuarterNote = projectContainer.ticksPerQuarterNote;
         container.tempoList = projectContainer.tempoList;
+        container.getSequencer().setTempoList(container.tempoList);
         container.pianoRollSnapQuantization = projectContainer.pianoRollSnapQuantization;
         container.partViewSnapQuantization = projectContainer.partViewSnapQuantization;
         container.isPianoRollSnapQuantized = projectContainer.isPianoRollSnapQuantized;

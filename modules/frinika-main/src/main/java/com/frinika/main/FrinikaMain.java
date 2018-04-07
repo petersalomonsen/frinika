@@ -21,7 +21,11 @@
  */
 package com.frinika.main;
 
+import com.frinika.audio.asio.AsioAudioServerServiceProvider;
+import com.frinika.audio.jnajack.JackTootAudioServerServiceProvider;
+import com.frinika.audio.osx.OSXAudioServerServiceProvider;
 import com.frinika.base.FrinikaAudioSystem;
+import com.frinika.base.FrinikaControl;
 import com.frinika.global.FrinikaConfig;
 import com.frinika.global.property.FrinikaGlobalProperties;
 import com.frinika.global.property.RecentProjectRecord;
@@ -35,6 +39,7 @@ import com.frinika.main.panel.WelcomePanel;
 import com.frinika.project.FrinikaProjectContainer;
 import com.frinika.project.gui.ProjectFocusListener;
 import com.frinika.settings.SetupDialog;
+import com.frinika.toot.FrinikaAudioServerServiceProvider;
 import com.frinika.tootX.midi.MidiInDeviceManager;
 import java.io.File;
 import java.util.ArrayList;
@@ -44,8 +49,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import javax.sound.midi.Sequence;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
+import uk.org.toot.audio.server.AudioServerServices;
+import uk.org.toot.audio.server.TootAudioServerServiceProvider;
+import uk.org.toot.audio.server.spi.AudioServerServiceProvider;
 
 /**
  * Main class for Frinika handling multiple frames and welcome window.
@@ -87,7 +97,34 @@ public class FrinikaMain {
             FrinikaAudioSystem.installClient(project.getAudioClient());
         });
 
+        if (audioServicesScanCapable()) {
+            // Java version up to 1.8
+            AudioServerServices.scan();
+        } else {
+            // Workaround for SPI error in Java 9 and newer
+            List<AudioServerServiceProvider> providers = new ArrayList<>();
+            providers.add(new FrinikaAudioServerServiceProvider());
+            providers.add(new TootAudioServerServiceProvider());
+            providers.add(new AsioAudioServerServiceProvider());
+            providers.add(new JackTootAudioServerServiceProvider());
+            providers.add(new OSXAudioServerServiceProvider());
+            AudioServerServices.forceProviders(providers);
+        }
+
         FrinikaAudioSystem.getAudioServer().start();
+
+        FrinikaControl.getInstance().registerProjectHandler(new FrinikaControl.ProjectHandler() {
+            @Override
+            public void openProject(Sequence sequence) {
+                try {
+                    FrinikaProjectContainer newProject = new FrinikaProjectContainer(sequence);
+                    FrinikaFrame newFrame = new FrinikaFrame();
+                    newFrame.setProject(newProject);
+                } catch (Exception ex) {
+                    Logger.getLogger(FrinikaMain.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
 
         if (argProjectFile != null) {
             OpenProjectAction openProjectAction = new OpenProjectAction();
@@ -148,6 +185,7 @@ public class FrinikaMain {
             setupWelcomePanel();
             WindowUtils.initWindowByComponent(welcomeFrame, welcomePanel);
             WindowUtils.setWindowCenterPosition(welcomeFrame);
+            welcomeFrame.addWindowListener(welcomePanel.getWindowListener());
         }
 
         return welcomeFrame;
@@ -365,19 +403,33 @@ public class FrinikaMain {
         welcomeFrame.repaint();
     }
 
+    private boolean audioServicesScanCapable() {
+        String version = System.getProperty("java.version");
+        int subVersionPos = version.indexOf('.');
+
+        int mainVersion;
+        if (subVersionPos > 0) {
+            mainVersion = Integer.valueOf(version.substring(0, subVersionPos));
+        } else {
+            mainVersion = Integer.valueOf(version);
+        }
+
+        return mainVersion < 2;
+    }
+
     private static class FrinikaExitHandler extends Thread {
 
         @Override
         public void run() {
             MidiInDeviceManager.close();
             FrinikaAudioSystem.close();
-//            SwingUtilities.invokeLater(new Runnable() {
-//                public void run() {
-//                    System.out.println(" Closing ALL midi devices ");
-//                    ProjectContainer.closeAllMidiOutDevices();
-//                }
-//            });
+            SwingUtilities.invokeLater(new Runnable() {
+                @Override
+                public void run() {
+                    System.out.println(" Closing ALL midi devices ");
+                    FrinikaProjectContainer.closeAllMidiOutDevices();
+                }
+            });
         }
     }
-
 }

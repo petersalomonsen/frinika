@@ -23,6 +23,8 @@
  */
 package com.frinika.sequencer.midi.groovepattern;
 
+import com.frinika.base.FrinikaControl;
+import com.frinika.sequencer.gui.ProjectFrame;
 import com.frinika.sequencer.model.MidiPart;
 import com.frinika.sequencer.model.MultiEvent;
 import com.frinika.sequencer.model.NoteEvent;
@@ -287,11 +289,8 @@ public class GroovePatternFromSequence implements GroovePattern {
         MidiSystem.write(sequence, 1, file);
     }
 
-    public void openAsOwnProject() throws Exception {
-        // NBP
-        throw new UnsupportedOperationException("Not supported yet.");
-//        ProjectContainer newProject = new ProjectContainer(sequence);
-//        ProjectFrame newProjectFrame = new ProjectFrame(newProject);
+    public void openAsOwnProject(ProjectFrame projectFrame) throws Exception {
+        FrinikaControl.getInstance().openProject(sequence);
     }
 
     /**

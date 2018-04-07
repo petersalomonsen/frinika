@@ -24,7 +24,7 @@ public class Metronome implements AudioProcess, SongPositionListener {
 
         //  this.tracker = tracker;
         try {
-            AudioInputStream stream = AudioSystem.getAudioInputStream(ClassLoader.getSystemResource("sounds/metronome1.wav"));
+            AudioInputStream stream = AudioSystem.getAudioInputStream(Metronome.class.getResource("/sounds/metronome1.wav"));
             sampleData = new float[(int) stream.getFrameLength()];
 
             int index = 0;

@@ -7,4 +7,5 @@ apply from: '../modules.gradle'
 dependencies {
     compile(project(':modules:frinika-core'))
     compile(project(':modules:frinika-audio'))
+    compile group: 'javax.annotation', name: 'javax.annotation-api', version: '1.3.2'
 }

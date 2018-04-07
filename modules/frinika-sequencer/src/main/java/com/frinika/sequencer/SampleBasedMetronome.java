@@ -43,8 +43,7 @@ public class SampleBasedMetronome implements AudioProcess, SequencerListener {
         sequencer.addSequencerListener(this);
         try {
             AudioInputStream stream = AudioSystem
-                    .getAudioInputStream(ClassLoader
-                            .getSystemResource("sounds/metronome1.wav"));
+                    .getAudioInputStream(SampleBasedMetronome.class.getResource("/sounds/metronome1.wav"));
             sampleData = new float[(int) stream.getFrameLength()];
 
             int index = 0;

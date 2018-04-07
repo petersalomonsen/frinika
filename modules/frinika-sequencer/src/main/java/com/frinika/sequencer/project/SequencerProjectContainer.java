@@ -71,6 +71,7 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import javax.annotation.Nonnull;
 import javax.sound.midi.MetaMessage;
 import javax.sound.midi.MidiDevice;
 import javax.sound.midi.MidiEvent;
@@ -230,8 +231,8 @@ public abstract class SequencerProjectContainer implements BaseProjectContainer,
 
     private static Icon default_midi_icon = getIconResource("midi.png");
 
-    public static Icon getMidiDeviceIcon(MidiDevice dev) {
-        Icon icon = getMidiDeviceLargeIcon(dev);
+    public static Icon getMidiDeviceIcon(MidiDevice device) {
+        Icon icon = getMidiDeviceLargeIcon(device);
         if (icon.getIconHeight() > 16 || icon.getIconWidth() > 16) {
             BufferedImage img = new BufferedImage(icon.getIconWidth(), icon
                     .getIconHeight(), BufferedImage.TYPE_4BYTE_ABGR);

@@ -32,7 +32,6 @@ import com.frinika.sequencer.midi.groovepattern.GroovePatternFromSequence;
 import com.frinika.sequencer.midi.groovepattern.GroovePatternManager;
 import com.frinika.sequencer.model.MidiPart;
 import com.frinika.sequencer.model.Part;
-import java.awt.Component;
 import java.awt.Point;
 import java.io.File;
 import java.io.IOException;
@@ -311,7 +310,7 @@ public class GroovePatternManagerDialog extends AbstractDialog {
 
         GroovePatternFromSequence sel = (GroovePatternFromSequence) itemsList.getSelectedValue();
         try {
-            sel.openAsOwnProject();
+            sel.openAsOwnProject(projectFrame);
             //this.toFront(); // we are modal, so user must first close this dialog to go on in newly opened project
             this.hide();
         } catch (Exception e) {

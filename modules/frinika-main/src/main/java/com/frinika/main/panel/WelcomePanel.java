@@ -28,6 +28,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowListener;
 import java.util.List;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -423,6 +424,11 @@ public class WelcomePanel extends javax.swing.JPanel {
     public void setInitialTheme(@Nullable String theme) {
         SupportedLaf themeLaf = theme == null ? SupportedLaf.DEFAULT : SupportedLaf.DARCULA;
         darculaLafToggleButton.setSelected(themeLaf == SupportedLaf.DARCULA);
+    }
+    
+    @Nonnull
+    public WindowListener getWindowListener() {
+        return animatedLogoPanel.getWindowListener();
     }
 
     public static interface ActionListener {

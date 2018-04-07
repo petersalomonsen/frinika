@@ -310,7 +310,7 @@ public class TempoList implements Serializable {
         if (dirty) {
             reco();
         }
-        long itick = (long) tick + 1; // 
+        long itick = (long) tick + 1;
         SortedMap<Long, MyTempoEvent> head = treeSet.headMap(itick);
         MyTempoEvent ev;
         Long lastKey;

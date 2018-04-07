@@ -247,22 +247,22 @@ public class AboutPanel extends javax.swing.JPanel {
         WindowUtils.invokeDialog(new AboutPanel());
     }
 
-    public void whitening(Container co) {
+    private void whitening(@Nonnull Container container) {
         boolean darkMode = WindowUtils.isDarkMode();
-        Component[] comps = co.getComponents();
-        for (Component comp : comps) {
-            if (comp instanceof JOptionPane) {
+        Component[] components = container.getComponents();
+        for (Component component : components) {
+            if (component instanceof JOptionPane) {
                 if (!darkMode) {
-                    comp.setBackground(Color.WHITE);
+                    component.setBackground(Color.WHITE);
                 }
             }
-            if (comp instanceof JPanel) {
+            if (component instanceof JPanel) {
                 if (!darkMode) {
-                    comp.setBackground(Color.WHITE);
+                    component.setBackground(Color.WHITE);
                 }
             }
-            if (comp instanceof Container) {
-                whitening((Container) comp);
+            if (component instanceof Container) {
+                whitening((Container) component);
             }
         }
     }
@@ -289,17 +289,17 @@ public class AboutPanel extends javax.swing.JPanel {
 
     public void showSystemInfo() {
         // Jens:
-        Properties p = System.getProperties();
-        String[][] ss = new String[p.size()][2];
+        Properties properties = System.getProperties();
+        String[][] propertiesArray = new String[properties.size()][2];
         int i = 0;
-        for (Object o : (new TreeSet(p.keySet()))) {
+        for (Object o : (new TreeSet(properties.keySet()))) {
             String s = (String) o;
-            String value = p.getProperty(s);
-            ss[i][0] = s;
-            ss[i][1] = value;
+            String value = properties.getProperty(s);
+            propertiesArray[i][0] = s;
+            propertiesArray[i][1] = value;
             i++;
         }
-        JTable systemInfo = new JTable(ss, new String[]{"Entry", "Value"});
+        JTable systemInfo = new JTable(propertiesArray, new String[]{"Entry", "Value"});
         systemInfo.setEnabled(false);
 
         JOptionPane.showMessageDialog(this, new JScrollPane(systemInfo), "System Info",

@@ -111,8 +111,7 @@ public class FrinikaAudioSystem {
                 realAudioServer = new MultiIOJavaSoundAudioServer();
                 //realAudioServer = new FrogDiscoAudioServer();
             } else {
-                System.out
-                        .println(" WARNING USING EXPERIMENTAL MULTIPLEXED AUDIO SERVER ");
+                System.out.println(" WARNING USING EXPERIMENTAL MULTIPLEXED AUDIO SERVER ");
                 MultiplexedJavaSoundAudioServer s = new MultiplexedJavaSoundAudioServer();
                 realAudioServer = s;
                 configureMultiplexed(s);
@@ -121,8 +120,7 @@ public class FrinikaAudioSystem {
 
             audioServer = new FrinikaAudioServer(realAudioServer);
 
-            serverConfig = AudioServerServices
-                    .createServerConfiguration(realAudioServer);
+            serverConfig = AudioServerServices.createServerConfiguration(realAudioServer);
             serverConfig.addObserver(new Observer() {
                 @Override
                 public void update(Observable obs, Object obj) {
