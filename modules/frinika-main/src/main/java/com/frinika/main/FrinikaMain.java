@@ -23,6 +23,7 @@ package com.frinika.main;
 
 import com.frinika.audio.asio.AsioAudioServerServiceProvider;
 import com.frinika.audio.jnajack.JackTootAudioServerServiceProvider;
+import com.frinika.audio.dummy.DummyAudioServerServiceProvider;
 import com.frinika.audio.osx.OSXAudioServerServiceProvider;
 import com.frinika.base.FrinikaAudioSystem;
 import com.frinika.base.FrinikaControl;
@@ -108,6 +109,7 @@ public class FrinikaMain {
             providers.add(new AsioAudioServerServiceProvider());
             providers.add(new JackTootAudioServerServiceProvider());
             providers.add(new OSXAudioServerServiceProvider());
+            providers.add(new DummyAudioServerServiceProvider());
             AudioServerServices.forceProviders(providers);
         }
 
@@ -423,12 +425,9 @@ public class FrinikaMain {
         public void run() {
             MidiInDeviceManager.close();
             FrinikaAudioSystem.close();
-            SwingUtilities.invokeLater(new Runnable() {
-                @Override
-                public void run() {
-                    System.out.println(" Closing ALL midi devices ");
-                    FrinikaProjectContainer.closeAllMidiOutDevices();
-                }
+            SwingUtilities.invokeLater(() -> {
+                System.out.println(" Closing ALL midi devices ");
+                FrinikaProjectContainer.closeAllMidiOutDevices();
             });
         }
     }

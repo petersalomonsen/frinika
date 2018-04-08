@@ -66,7 +66,10 @@ public class SetupDialog extends JDialog {
 
     public SetupDialog() {
         super();
+        init();
+    }
 
+    private void init() {
         setTitle("Audio Server Setup");
         setUndecorated(true);
         //	setBackground(Color.WHITE);	

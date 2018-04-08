@@ -1,5 +1,5 @@
 0.9.0
-- Project modularized (internal)
+- Project modularized (internal, gradle building)
 - Added Darcula dark look and feel https://github.com/bulenkov/Darcula
 - Added SoundHelix generator http://soundhelix.com/ (Tools/Generator)
 - Logo in about dialog is now animated

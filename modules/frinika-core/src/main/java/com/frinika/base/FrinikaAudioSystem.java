@@ -98,6 +98,8 @@ public class FrinikaAudioSystem {
                         realAudioServer = new JackTootAudioServer();
                     } catch (Exception e) {
                         realAudioServer = new MultiIOJavaSoundAudioServer();
+                        // realAudioServer = new FrogDiscoAudioServer();
+                        // realAudioServer = new DummyAudioServer();
                     }
                 }
             } else {
@@ -105,17 +107,6 @@ public class FrinikaAudioSystem {
                 MultiplexedJavaSoundAudioServer s = new MultiplexedJavaSoundAudioServer();
                 realAudioServer = s;
                 configureMultiplexed(s);
-            }
-
-            if (!multiplexIO) {
-                realAudioServer = new MultiIOJavaSoundAudioServer();
-                //realAudioServer = new FrogDiscoAudioServer();
-            } else {
-                System.out.println(" WARNING USING EXPERIMENTAL MULTIPLEXED AUDIO SERVER ");
-                MultiplexedJavaSoundAudioServer s = new MultiplexedJavaSoundAudioServer();
-                realAudioServer = s;
-                configureMultiplexed(s);
-
             }
 
             audioServer = new FrinikaAudioServer(realAudioServer);

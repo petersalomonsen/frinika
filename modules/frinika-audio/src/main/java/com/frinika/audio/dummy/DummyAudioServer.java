@@ -21,19 +21,10 @@
  * along with Frinika; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
-package com.frinika.audio.osx;
+package com.frinika.audio.dummy;
 
-import com.sun.jna.Callback;
-import com.sun.jna.Library;
-import com.sun.jna.Native;
-import com.sun.jna.Pointer;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.InputStream;
 import java.util.Arrays;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import uk.org.toot.audio.core.AudioBuffer;
 import uk.org.toot.audio.core.AudioProcess;
 import uk.org.toot.audio.core.ChannelFormat;
@@ -43,103 +34,31 @@ import uk.org.toot.audio.server.ExtendedAudioServer;
 import uk.org.toot.audio.server.IOAudioProcess;
 
 /**
+ * Dummy audio server for simulation of audio servers.
  *
  * @author peter
  */
-public class OSXAudioServer extends AbstractAudioServer implements ExtendedAudioServer {
+public class DummyAudioServer extends AbstractAudioServer implements ExtendedAudioServer {
 
-    AudioBuffer audioOut;
-    boolean running = false;
-
-    Thread audioThread;
-
-    public interface CLibrary extends Library {
-
-        interface FrinikaAudioCallback extends Callback {
-
-            void invoke(int inNumberFrames, int inBusNumber, Pointer bufferLeft, Pointer bufferRight);
-        }
-
-        void startAudioWithCallback(FrinikaAudioCallback fn);
-
-    }
-
-    final CLibrary lib;
-    final CLibrary.FrinikaAudioCallback fn;
-
-    public OSXAudioServer() throws Exception {
-
-        String nativeLibName = "libfrinikaosxaudio.dylib";
-        InputStream is = OSXAudioServer.class.getResourceAsStream(nativeLibName);
-
-        File tmpLibFile = new File(System.getProperty("java.io.tmpdir"), nativeLibName);
-        System.out.println("Extracting libfrinikaosxaudio.dylib native library to " + tmpLibFile.getAbsolutePath());
-        FileOutputStream fos = new FileOutputStream(tmpLibFile);
-        byte[] buf = new byte[1024];
-        int len = is.read(buf);
-        while (len > -1) {
-            fos.write(buf, 0, len);
-            len = is.read(buf);
-        }
-        fos.close();
-
-        lib = (CLibrary) Native.loadLibrary(tmpLibFile.getAbsolutePath(), CLibrary.class);
-        final int floatNativeSize = Native.getNativeSize(Float.TYPE);
-        fn = (int inNumberFrames, int inBusNumber, Pointer bufferLeft, Pointer bufferRight) -> {
-            // Audio callback function
-            if (bufferFrames == 0) {
-                bufferFrames = inNumberFrames;
-            } else {
-                work();
-                if (audioOut != null) {
-                    for (int i = 0; i < inNumberFrames; i++) {
-                        bufferLeft.setFloat(i * floatNativeSize, (float) audioOut.getChannel(0)[i]);
-                        bufferRight.setFloat(i * floatNativeSize, (float) audioOut.getChannel(1)[i]);
-                    }
-                }
-            }
-
-            if (audioThread != Thread.currentThread()) {
-                audioThread = Thread.currentThread();
-                Native.detach(false);
-            }
-        };
-
-        lib.startAudioWithCallback(fn);
-
-        // Wait for number of bufferframes to be set
-        while (bufferFrames == 0) {
-            try {
-                Thread.sleep(10);
-            } catch (InterruptedException ex) {
-                Logger.getLogger(OSXAudioServer.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
+    public DummyAudioServer() throws Exception {
     }
 
     @Override
     protected void startImpl() {
-        if (running) {
-            return;
-        }
-
-        System.out.println("OSX Audio started");
-        running = true;
     }
 
     @Override
     protected void stopImpl() {
-
     }
 
     @Override
     public boolean isRunning() {
-        return running;
+        return true;
     }
 
     @Override
     public List<String> getAvailableOutputNames() {
-        return Arrays.asList(new String[]{"AUGraph"});
+        return Arrays.asList(new String[]{"DummyServer"});
     }
 
     @Override
@@ -168,13 +87,6 @@ public class OSXAudioServer extends AbstractAudioServer implements ExtendedAudio
 
             @Override
             public int processAudio(AudioBuffer ab) {
-
-                if (!ab.isRealTime()) {
-                    return AudioProcess.AUDIO_OK;
-                }
-
-                audioOut = ab;
-                //System.out.println(ab.getChannelCount()+" "+ab.getSampleCount()+" "+ab.getSampleRate());
                 return AudioProcess.AUDIO_OK;
             }
 
@@ -293,11 +205,11 @@ public class OSXAudioServer extends AbstractAudioServer implements ExtendedAudio
 
     @Override
     public String getConfigKey() {
-        return "AUGraph";
+        return "DummyServer";
     }
 
     public static void main(String[] args) throws Exception {
-        new OSXAudioServer().startImpl();
+        new DummyAudioServer().startImpl();
 
         System.in.read();
     }
