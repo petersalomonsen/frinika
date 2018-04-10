@@ -24,6 +24,7 @@
 package com.frinika.base;
 
 import com.frinika.audio.asio.AsioAudioServer;
+import com.frinika.audio.dummy.DummyAudioServer;
 import com.frinika.audio.jnajack.JackTootAudioServer;
 import com.frinika.audio.osx.OSXAudioServer;
 import com.frinika.global.FrinikaConfig;
@@ -82,6 +83,8 @@ public class FrinikaAudioSystem {
         }
 
         try {
+//            realAudioServer = new DummyAudioServer();
+
             // JJack will recognise this name when setting up the jjack client
             System.setProperty("jjack.client.name", "Frinika");
 
@@ -99,7 +102,6 @@ public class FrinikaAudioSystem {
                     } catch (Exception e) {
                         realAudioServer = new MultiIOJavaSoundAudioServer();
                         // realAudioServer = new FrogDiscoAudioServer();
-                        // realAudioServer = new DummyAudioServer();
                     }
                 }
             } else {

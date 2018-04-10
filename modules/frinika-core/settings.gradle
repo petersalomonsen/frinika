@@ -5,3 +5,4 @@ apply from: '../modules-settings.gradle'
 include ":modules:frinika-audio-toot"
 include ":modules:frinika-driver-osx"
 include ":modules:frinika-driver-jack"
+include ":modules:frinika-driver-dummy"
