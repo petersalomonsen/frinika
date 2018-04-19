@@ -180,7 +180,7 @@ class AudioServerSelectPanel extends JPanel {
 
         final boolean multiplexIO = FrinikaGlobalProperties.MULTIPLEXED_AUDIO.getValue();
 
-        String opt[] = {"Default Server", "Multiplexed Server"};
+        String opt[] = { "Default Server", "Multiplexed Server", "Jack" };
 
         cb = new JComboBox(opt);
         add(new JLabel("Audio Server"));

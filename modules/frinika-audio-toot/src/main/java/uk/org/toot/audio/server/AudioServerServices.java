@@ -4,7 +4,6 @@
 // http://www.toot.org/LICENSE_1_0.txt)
 package uk.org.toot.audio.server;
 
-import com.frinika.toot.FrinikaAudioServerServiceProvider;
 import java.util.Iterator;
 import java.util.List;
 import uk.org.toot.service.*;

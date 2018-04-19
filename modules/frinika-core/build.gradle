@@ -10,9 +10,9 @@ if (!hasProperty('mainClass')) {
 
 dependencies {
     compile(project(':modules:frinika-audio-toot'))
-    compile(project(':modules:frinika-driver-osx'))
-    compile(project(':modules:frinika-driver-jack'))
     compile(project(':modules:frinika-driver-dummy'))
+    compile(project(':modules:frinika-driver-jack'))
+    compile(project(':modules:frinika-driver-osx'))
     compile 'commons-logging:commons-logging:1.2'
     compile ':tootvst'
     compile 'com.jgoodies:looks:2.1.4'
