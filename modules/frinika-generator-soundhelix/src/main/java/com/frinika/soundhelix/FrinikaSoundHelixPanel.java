@@ -28,7 +28,7 @@ import com.frinika.sequencer.model.MidiLane;
 import com.frinika.sequencer.model.MidiPart;
 import com.frinika.sequencer.model.MultiEvent;
 import com.frinika.sequencer.model.NoteEvent;
-import com.frinika.sequencer.project.SequencerProjectContainer;
+import com.frinika.sequencer.project.AbstractProjectContainer;
 import com.soundhelix.misc.Arrangement;
 import com.soundhelix.misc.Sequence;
 import com.soundhelix.misc.SongContext;
@@ -51,10 +51,10 @@ import org.apache.log4j.PropertyConfigurator;
  */
 public class FrinikaSoundHelixPanel extends javax.swing.JPanel {
 
-    private final SequencerProjectContainer project;
+    private final AbstractProjectContainer project;
     private WindowUtils.OkCancelListener okCancelListener = null;
 
-    public FrinikaSoundHelixPanel(SequencerProjectContainer project) {
+    public FrinikaSoundHelixPanel(AbstractProjectContainer project) {
         this.project = project;
         initComponents();
     }

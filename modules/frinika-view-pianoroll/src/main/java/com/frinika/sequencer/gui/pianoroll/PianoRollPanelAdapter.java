@@ -6,11 +6,11 @@ import com.frinika.sequencer.gui.ItemPanel;
 import com.frinika.sequencer.gui.ItemScrollPane;
 import com.frinika.sequencer.model.MultiEvent;
 import com.frinika.sequencer.model.util.EventFilter;
-import com.frinika.sequencer.project.SequencerProjectContainer;
+import com.frinika.sequencer.project.AbstractProjectContainer;
 
 public abstract class PianoRollPanelAdapter extends ItemPanel implements EditHistoryListener, EventFilter {
 
-    public PianoRollPanelAdapter(final SequencerProjectContainer project, ItemScrollPane scroller,
+    public PianoRollPanelAdapter(final AbstractProjectContainer project, ItemScrollPane scroller,
             boolean hasTimeLine, boolean canScrollY) {
         super(project, scroller, hasTimeLine, canScrollY, .5, false);
 

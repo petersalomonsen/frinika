@@ -25,10 +25,11 @@ package com.frinika.sequencer.project.mididevices.gui;
 
 import com.frinika.sequencer.gui.mixer.MidiDeviceMixerPanel;
 import com.frinika.sequencer.gui.mixer.SynthWrapper;
-import com.frinika.sequencer.project.SequencerProjectContainer;
+import com.frinika.sequencer.project.AbstractProjectContainer;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.annotation.Nonnull;
 import javax.sound.midi.MidiDevice;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -42,9 +43,9 @@ import javax.swing.JTabbedPane;
 public class MidiDevicesPanel extends JPanel {
 
     JTabbedPane deviceTabs;
-    SequencerProjectContainer project;
+    AbstractProjectContainer project;
 
-    public MidiDevicesPanel(final SequencerProjectContainer project) {
+    public MidiDevicesPanel(@Nonnull final AbstractProjectContainer project, @Nonnull final MidiDevicesHandler midiDevicesHandler) {
         this.project = project;
 
         setLayout(new BorderLayout());
@@ -57,7 +58,7 @@ public class MidiDevicesPanel extends JPanel {
             public void actionPerformed(ActionEvent e) {
 
                 JPopupMenu popup = new JPopupMenu();
-                project.addMidiDevices(popup);
+                midiDevicesHandler.addMidiDevices(popup);
                 popup.show(but, 0, 0);
             }
 
@@ -90,7 +91,11 @@ public class MidiDevicesPanel extends JPanel {
         updateDeviceTabs();
     }
 
-    public SequencerProjectContainer getProject() {
+    public AbstractProjectContainer getProject() {
         return project;
+    }
+    
+    public interface MidiDevicesHandler {
+        void addMidiDevices(@Nonnull JPopupMenu popup);
     }
 }

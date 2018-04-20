@@ -28,7 +28,7 @@ import com.frinika.sequencer.gui.TimeSelector;
 import com.frinika.sequencer.model.tempo.TempoList;
 import com.frinika.sequencer.model.tempo.TempoListListener;
 import com.frinika.sequencer.model.util.TimeUtils;
-import com.frinika.sequencer.project.SequencerProjectContainer;
+import com.frinika.sequencer.project.AbstractProjectContainer;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
@@ -52,7 +52,7 @@ public class TempoListEditAction extends AbstractAction {
     private TimeUtils timeUtil;
 
     public TempoListEditAction(ProjectFrame project) {
-        super(CurrentLocale.getMessage("sequencer.project.edit_tempolist"), SequencerProjectContainer
+        super(CurrentLocale.getMessage("sequencer.project.edit_tempolist"), AbstractProjectContainer
                 .getIconResource("tempolist.png"));
         this.project = project;
         this.list = project.getProjectContainer().getTempoList();

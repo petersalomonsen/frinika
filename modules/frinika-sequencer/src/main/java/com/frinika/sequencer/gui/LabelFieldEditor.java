@@ -26,7 +26,7 @@ package com.frinika.sequencer.gui;
 import static com.frinika.sequencer.gui.menu.midi.MidiStepRecordAction.formatNote;
 import static com.frinika.sequencer.gui.menu.midi.MidiStepRecordAction.parseNote;
 import com.frinika.sequencer.model.util.TimeUtils;
-import com.frinika.sequencer.project.SequencerProjectContainer;
+import com.frinika.sequencer.project.AbstractProjectContainer;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -54,7 +54,7 @@ public class LabelFieldEditor extends JPanel {
     private TimeUtils timeUtil;
     private String textBackup = null;
 
-    public LabelFieldEditor(final MyAbstractTableModel model, final int column, SequencerProjectContainer project) {
+    public LabelFieldEditor(final MyAbstractTableModel model, final int column, AbstractProjectContainer project) {
         timeUtil = new TimeUtils(project);
 //System.out.println("COLUMN-CLASS: #"+column+" "+model.getColumnClass(column).getName());		
         setLayout(new FlowLayout(FlowLayout.CENTER, 2, 0));
@@ -80,7 +80,7 @@ public class LabelFieldEditor extends JPanel {
 
     boolean isUpdateing = false;
 
-    protected JComponent createEditor(final MyAbstractTableModel model, int columnIndex, SequencerProjectContainer project) {
+    protected JComponent createEditor(final MyAbstractTableModel model, int columnIndex, AbstractProjectContainer project) {
         // hard-code different types of editors by index-number... not too beautiful, but effective
         switch (column) {
             case 0: // start-tick

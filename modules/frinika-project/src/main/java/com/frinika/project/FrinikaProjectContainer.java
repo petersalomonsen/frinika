@@ -72,7 +72,7 @@ import com.frinika.sequencer.model.timesignature.TimeSignatureList.TimeSignature
 import com.frinika.sequencer.model.util.TimeUtils;
 import com.frinika.sequencer.project.MidiDeviceDescriptorIntf;
 import com.frinika.sequencer.project.ProjectSettings;
-import com.frinika.sequencer.project.SequencerProjectContainer;
+import com.frinika.sequencer.project.AbstractProjectContainer;
 import com.frinika.sequencer.project.SoundBankNameHolder;
 import com.frinika.synth.SynthRack;
 import com.frinika.synth.settings.SynthSettings;
@@ -129,7 +129,7 @@ import uk.org.toot.audio.server.AudioClient;
 import uk.org.toot.misc.Tempo;
 
 /**
- * Use to load Frinika projects.
+ * Frinika project container.
  *
  * This class links together all components of a Frinika project, and provides
  * all operations and features - including a Frinika sequencer instance.
@@ -143,7 +143,7 @@ import uk.org.toot.misc.Tempo;
  *
  * @author Peter Johan Salomonsen
  */
-public class FrinikaProjectContainer extends SequencerProjectContainer
+public class FrinikaProjectContainer extends AbstractProjectContainer
         implements EditHistoryRecorder<Lane>, MidiConsumer, DynamicMixer {
 
     private static final long serialVersionUID = 1L;
@@ -966,7 +966,7 @@ public class FrinikaProjectContainer extends SequencerProjectContainer
 
     public transient int compression_level = 0;
     transient private TimeUtils timeUtils;    // Keep a note of all open midi out devices
-    private static List<MidiDevice> midiOutList = new ArrayList<MidiDevice>();
+    private static List<MidiDevice> midiOutList = new ArrayList<>();
 
     /**
      * Save project to a file.
@@ -1763,12 +1763,6 @@ public class FrinikaProjectContainer extends SequencerProjectContainer
         MessageDialogUtils.message(null, message);
     }
 
-    @Override
-    public void error(String message) {
-        // NBP
-        MessageDialogUtils.error(null, message);
-    }
-
     public SynthLane createSynthLane(MidiDeviceDescriptor desc) {
         SynthLane lane = new SynthLane(this, desc);
         add(lane);
@@ -2073,7 +2067,7 @@ public class FrinikaProjectContainer extends SequencerProjectContainer
     }
 
     @Override
-    public JPanel createDrumMapperGUI(DrumMapper drumMapper, SequencerProjectContainer project, MidiLane lane) {
+    public JPanel createDrumMapperGUI(DrumMapper drumMapper, AbstractProjectContainer project, MidiLane lane) {
         return new DrumMapperGUI(drumMapper, project, lane);
     }
 

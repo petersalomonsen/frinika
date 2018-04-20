@@ -31,7 +31,7 @@ import com.frinika.sequencer.model.timesignature.TimeSignatureList;
 import com.frinika.sequencer.model.timesignature.TimeSignatureList.QStepIterator;
 import com.frinika.sequencer.model.timesignature.TimeSignatureList.TimeSignatureEvent;
 import com.frinika.sequencer.model.util.TimeUtils;
-import com.frinika.sequencer.project.SequencerProjectContainer;
+import com.frinika.sequencer.project.AbstractProjectContainer;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
@@ -125,7 +125,7 @@ abstract public class ItemPanel extends JPanel implements SongPositionListener,
     protected boolean dragArmed; // about to be dragged? but not started yet.
     private boolean dirty;
     protected int dragMode;
-    protected SequencerProjectContainer project;
+    protected AbstractProjectContainer project;
     boolean hasTimeLine;
     private int timePanelHeight;
     private boolean canScrollY;
@@ -164,7 +164,7 @@ abstract public class ItemPanel extends JPanel implements SongPositionListener,
     //protected ProjectFrame frame;
     private int previousCursor;
 
-    protected ItemPanel(SequencerProjectContainer project, ItemScrollPane scroller,
+    protected ItemPanel(AbstractProjectContainer project, ItemScrollPane scroller,
             boolean hasTimeLine, boolean canScrollY, double ticksToScreen,
             boolean sampleBased) {
         super(false);
@@ -1180,7 +1180,7 @@ abstract public class ItemPanel extends JPanel implements SongPositionListener,
         setCursor(cursors[mode]);
     }
 
-    public SequencerProjectContainer getProjectContainer() {
+    public AbstractProjectContainer getProjectContainer() {
         return project;
     }
 

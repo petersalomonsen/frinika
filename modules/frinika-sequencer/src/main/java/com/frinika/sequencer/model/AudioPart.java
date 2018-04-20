@@ -34,7 +34,7 @@ import com.frinika.sequencer.gui.menu.AudioAnalysisAction;
 import com.frinika.sequencer.gui.partview.PartView;
 import com.frinika.sequencer.model.audio.AudioStreamVoice;
 import com.frinika.sequencer.model.audio.EnvelopedAudioReader;
-import com.frinika.sequencer.project.SequencerProjectContainer;
+import com.frinika.sequencer.project.AbstractProjectContainer;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
@@ -584,7 +584,7 @@ public class AudioPart extends Part implements AudioReaderFactory {
 
             int nChannel = thumbNailIn.getFormat().getChannels();
             long nFrame = thumbNailIn.getLengthInFrames();
-            SequencerProjectContainer project = lane.getProject();
+            AbstractProjectContainer project = lane.getProject();
 //			double ticksPerSecond = project.getSequence().getResolution()
 //					* (project.getSequencer().getTempoInBPM() / 60.0);
 //			double framePerTick = FrinikaConfig.sampleRate / ticksPerSecond;

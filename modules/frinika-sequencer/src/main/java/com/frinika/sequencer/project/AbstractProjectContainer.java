@@ -26,11 +26,9 @@ package com.frinika.sequencer.project;
 import com.frinika.audio.DynamicMixer;
 import com.frinika.audio.io.BufferedRandomAccessFileManager;
 import com.frinika.audio.toot.AudioInjector;
-import com.frinika.base.BaseProjectContainer;
 import com.frinika.base.FrinikaAudioServer;
 import com.frinika.global.property.FrinikaGlobalProperties;
 import com.frinika.localization.CurrentLocale;
-import com.frinika.model.EditHistoryContainer;
 import com.frinika.model.EditHistoryRecorder;
 import com.frinika.sequencer.FrinikaSequence;
 import com.frinika.sequencer.FrinikaSequencer;
@@ -58,40 +56,31 @@ import com.frinika.sequencer.model.ViewableLaneList;
 import com.frinika.sequencer.model.tempo.TempoList;
 import com.frinika.sequencer.model.timesignature.TimeSignatureList;
 import com.frinika.sequencer.model.util.TimeUtils;
-import com.frinika.sequencer.project.mididevices.gui.MidiDevicesPanel;
 import com.frinika.tootX.midi.MidiConsumer;
 import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import javax.annotation.Nonnull;
 import javax.sound.midi.MetaMessage;
 import javax.sound.midi.MidiDevice;
 import javax.sound.midi.MidiEvent;
 import javax.sound.midi.MidiMessage;
-import javax.sound.midi.MidiSystem;
 import javax.sound.midi.MidiUnavailableException;
 import javax.sound.midi.Sequence;
 import javax.sound.midi.ShortMessage;
-import javax.sound.midi.Synthesizer;
 import javax.sound.midi.Track;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import javax.swing.JComponent;
-import javax.swing.JMenuItem;
 import javax.swing.JPanel;
-import javax.swing.JSeparator;
 import uk.org.toot.audio.core.AudioProcess;
 import uk.org.toot.audio.mixer.AudioMixer;
+import uk.org.toot.audio.mixer.MixerControls;
+import com.frinika.base.EditHistoryProvider;
 
-public abstract class SequencerProjectContainer implements BaseProjectContainer,
+public abstract class AbstractProjectContainer implements EditHistoryProvider,
         EditHistoryRecorder<Lane>, MidiConsumer, DynamicMixer {
 
     protected int ticksPerQuarterNote = FrinikaGlobalProperties.TICKS_PER_QUARTER.getValue();
@@ -101,9 +90,6 @@ public abstract class SequencerProjectContainer implements BaseProjectContainer,
     public abstract File getFile();
 
     public abstract FrinikaSequencer getSequencer();
-
-    @Override
-    public abstract EditHistoryContainer getEditHistoryContainer();
 
     public abstract List<Lane> getLanes();
 
@@ -179,8 +165,6 @@ public abstract class SequencerProjectContainer implements BaseProjectContainer,
 
     public abstract void message(String string);
 
-    public abstract void error(String string);
-
     public abstract double getPianoRollSnapQuantization();
 
     public abstract void setPianoRollSnapQuantization(double val);
@@ -216,9 +200,13 @@ public abstract class SequencerProjectContainer implements BaseProjectContainer,
 
     public abstract void createSequence();
 
+    public abstract MixerControls getMixerControls();
+
+    public abstract void close();
+
     public static Icon getIconResource(String name) {
         try {
-            Icon icon = new javax.swing.ImageIcon(BaseProjectContainer.class.getResource("/com/frinika/resources/icons/" + name));
+            Icon icon = new javax.swing.ImageIcon(EditHistoryProvider.class.getResource("/com/frinika/resources/icons/" + name));
             return icon;
         } catch (Exception e) {
             e.printStackTrace();
@@ -258,77 +246,6 @@ public abstract class SequencerProjectContainer implements BaseProjectContainer,
         return icon;
     }
 
-    // NBP
-    MidiDevicesPanel midiDevicesPanel;
-
-    // NBP
-    public MidiDevicesPanel getMidiDevicesPanel() {
-        return midiDevicesPanel;
-    }
-
-    // NBP
-    public void createMidiDevicesPanel() {
-        midiDevicesPanel = new MidiDevicesPanel(this);
-    }
-
-    private ActionListener addMidiDevices_listener = null;
-
-    private MidiDevice addMidiDevices_selected = null;
-
-    private Icon addMidiDevices_selected_icon = null;
-
-    // NBP
-    public void addMidiDevices(JComponent menu, List<MidiDevice.Info> infos,
-            List<Icon> icons) {
-        Iterator<Icon> icon_iterator = icons.iterator();
-        for (MidiDevice.Info info : infos) {
-            JMenuItem item = new JMenuItem(info.toString());
-            item.setIcon(icon_iterator.next());
-            item.addActionListener(new MidiDevicesActionListener(this, item.getIcon(), info));
-            menu.add(item);
-        }
-    }
-
-    // NBP
-    public void addMidiDevices(JComponent menu) {
-        List<MidiDevice.Info> infos = new ArrayList<>();
-        List<Icon> icons = new ArrayList<>();
-
-        List<MidiDevice.Info> infos1 = new ArrayList<>();
-        List<Icon> icons1 = new ArrayList<>();
-
-        List<MidiDevice.Info> infos2 = new ArrayList<>();
-        List<Icon> icons2 = new ArrayList<>();
-
-        for (MidiDevice.Info info : MidiSystem.getMidiDeviceInfo()) {
-            try {
-                MidiDevice dev = MidiSystem.getMidiDevice(info);
-                if (dev.getMaxReceivers() != 0) {
-                    Icon icon = getMidiDeviceIcon(dev);
-                    if (dev instanceof Synthesizer) {
-                        infos1.add(info);
-                        icons1.add(icon);
-                    } else if (icon == default_midi_icon) {
-                        infos2.add(info);
-                        icons2.add(icon);
-                    } else {
-                        infos.add(info);
-                        icons.add(icon);
-                    }
-                }
-
-            } catch (MidiUnavailableException e) {
-            }
-        }
-
-        addMidiDevices(menu, infos1, icons1);
-        menu.add(new JSeparator());
-        addMidiDevices(menu, infos, icons);
-        menu.add(new JSeparator());
-        addMidiDevices(menu, infos2, icons2);
-    }
-
-    // NBP
     public abstract MidiDeviceDescriptorIntf addMidiOutDevice(MidiDevice midiDev) throws MidiUnavailableException;
 
     public void repaintViews() {
@@ -339,55 +256,7 @@ public abstract class SequencerProjectContainer implements BaseProjectContainer,
         projectRepaintListener.repaintPartView();
     }
 
-    public abstract JPanel createDrumMapperGUI(DrumMapper drumMapper, SequencerProjectContainer project, MidiLane lane);
-
-    // NBP
-    private class MidiDevicesActionListener implements ActionListener {
-
-        SequencerProjectContainer project;
-        final Icon icon;
-        final MidiDevice.Info info;
-
-        public MidiDevicesActionListener(SequencerProjectContainer project, Icon icon, MidiDevice.Info info) {
-            this.info = info;
-            this.icon = icon;
-        }
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            // TODO Auto-generated method stub
-
-            MidiDevice midiDevice = null;
-            try {
-                midiDevice = MidiSystem.getMidiDevice(info);
-
-                if (addMidiDevices_listener != null) {
-                    addMidiDevices_selected = midiDevice;
-                    addMidiDevices_selected_icon = icon;
-                    addMidiDevices_listener.actionPerformed(null);
-                    return;
-                }
-
-                midiDevice = new SynthWrapper(project, midiDevice);
-
-            } catch (MidiUnavailableException e2) {
-                // TODO Auto-generated catch block
-                e2.printStackTrace();
-            }
-
-            try {
-                getEditHistoryContainer().mark("X");
-                addMidiOutDevice(midiDevice);
-                getEditHistoryContainer()
-                        .notifyEditHistoryListeners();
-            } catch (MidiUnavailableException e2) {
-                // TODO Auto-generated catch block
-                e2.printStackTrace();
-            }
-
-            midiDevicesPanel.updateDeviceTabs();
-        }
-    }
+    public abstract JPanel createDrumMapperGUI(DrumMapper drumMapper, AbstractProjectContainer project, MidiLane lane);
 
     public void createMidiLanesFromSequence(Sequence seq, MidiDevice midiDevice) {
 

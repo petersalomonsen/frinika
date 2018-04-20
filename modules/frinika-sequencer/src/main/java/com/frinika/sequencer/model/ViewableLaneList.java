@@ -23,7 +23,7 @@
 package com.frinika.sequencer.model;
 
 import com.frinika.sequencer.gui.Layout;
-import com.frinika.sequencer.project.SequencerProjectContainer;
+import com.frinika.sequencer.project.AbstractProjectContainer;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
@@ -37,12 +37,12 @@ import java.util.Vector;
  */
 public class ViewableLaneList implements Iterable<Lane> {
 
-    SequencerProjectContainer project;
+    AbstractProjectContainer project;
     Vector<Lane> lanes;
     int y;
     int id;
 
-    public ViewableLaneList(SequencerProjectContainer project) {
+    public ViewableLaneList(AbstractProjectContainer project) {
         this.project = project;
 
         rebuild();

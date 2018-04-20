@@ -24,13 +24,13 @@
 package com.frinika.sequencer.model;
 
 import com.frinika.sequencer.project.MidiDeviceDescriptorIntf;
-import com.frinika.sequencer.project.SequencerProjectContainer;
+import com.frinika.sequencer.project.AbstractProjectContainer;
 import java.util.Vector;
 import javax.sound.midi.MidiDevice;
 
 public class SoloManager {
 
-    SequencerProjectContainer project;
+    AbstractProjectContainer project;
 
     // lanes that have had mute set.
     Vector<RecordableLane> muted = new Vector<>();
@@ -41,7 +41,7 @@ public class SoloManager {
     // device lanes need not muted because soloed midi lane
     Vector<RecordableLane> soloedParent = new Vector<>();
 
-    public SoloManager(SequencerProjectContainer container) {
+    public SoloManager(AbstractProjectContainer container) {
         this.project = container;
     }
 

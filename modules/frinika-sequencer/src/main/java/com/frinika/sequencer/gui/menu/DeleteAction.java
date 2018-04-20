@@ -25,7 +25,7 @@ package com.frinika.sequencer.gui.menu;
 import static com.frinika.localization.CurrentLocale.getMessage;
 import com.frinika.sequencer.gui.selection.SelectionFocusable;
 import com.frinika.sequencer.model.Selectable;
-import com.frinika.sequencer.project.SequencerProjectContainer;
+import com.frinika.sequencer.project.AbstractProjectContainer;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -35,9 +35,9 @@ public class DeleteAction extends AbstractAction {
 
     private static final long serialVersionUID = 1L;
 
-    private SequencerProjectContainer project;
+    private AbstractProjectContainer project;
 
-    public DeleteAction(SequencerProjectContainer project) {
+    public DeleteAction(AbstractProjectContainer project) {
         super(getMessage("sequencer.project.delete"));
         this.project = project;
     }

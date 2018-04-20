@@ -54,7 +54,7 @@ import com.frinika.sequencer.model.NoteEvent;
 import com.frinika.sequencer.model.Part;
 import com.frinika.sequencer.model.util.EventFilter;
 import com.frinika.sequencer.model.util.EventsInPartsIterator;
-import com.frinika.sequencer.project.SequencerProjectContainer;
+import com.frinika.sequencer.project.AbstractProjectContainer;
 import java.awt.AWTEvent;
 import java.awt.Color;
 import java.awt.Cursor;
@@ -201,7 +201,7 @@ public class NotationEditor extends ItemPanel implements EditHistoryListener, Ev
 
     int channel = 1;
 
-    protected NotationEditor(final SequencerProjectContainer project, ItemScrollPane scroller) {
+    protected NotationEditor(final AbstractProjectContainer project, ItemScrollPane scroller) {
         super(project, scroller, true, true, .5, false);   // PJL added ticksToScreen and sampledBased 
 
         notesOnScreen = new Iterable<MultiEvent>() {

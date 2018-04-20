@@ -35,7 +35,7 @@ import com.frinika.sequencer.gui.TimeSelector;
 import com.frinika.sequencer.gui.selection.SelectionContainer;
 import com.frinika.sequencer.gui.selection.SelectionListener;
 import com.frinika.sequencer.model.MidiLane;
-import com.frinika.sequencer.project.SequencerProjectContainer;
+import com.frinika.sequencer.project.AbstractProjectContainer;
 import com.frinika.tootX.midi.MidiInDeviceManager;
 import java.awt.Font;
 import java.awt.event.KeyAdapter;
@@ -65,7 +65,7 @@ public class MidiStepRecordActionDialog extends AbstractDialog implements Option
     private final static Font BUFFER_TEXT_FIELD_FONT_ITALICS = new Font("DialogInput", Font.ITALIC, 12);
 
     private MidiStepRecordAction action;
-    private SequencerProjectContainer project;
+    private AbstractProjectContainer project;
     private TimeSelector positionTimeSelector;
     private TimeSelector stepTimeSelector;
     //private boolean autoRecord = false;
@@ -74,7 +74,7 @@ public class MidiStepRecordActionDialog extends AbstractDialog implements Option
     private Collection<Integer> currentlyPressedNotes = new HashSet<>();
     private AutoRecordThread autoRecordThread = null;
 
-    public MidiStepRecordActionDialog(AbstractDialog dialog, SequencerProjectContainer project, MidiStepRecordAction action) {
+    public MidiStepRecordActionDialog(AbstractDialog dialog, AbstractProjectContainer project, MidiStepRecordAction action) {
         super(dialog, CurrentLocale.getMessage("sequencer.midi.step_record"), false); // non-modal
         this.project = project;
         this.action = action;

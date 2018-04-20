@@ -2,11 +2,11 @@ package com.frinika.sequencer.gui.selection;
 
 import com.frinika.sequencer.model.MultiEvent;
 import com.frinika.sequencer.model.Part;
-import com.frinika.sequencer.project.SequencerProjectContainer;
+import com.frinika.sequencer.project.AbstractProjectContainer;
 
 public class MultiEventSelection extends SelectionContainer<MultiEvent> {
 
-    public MultiEventSelection(SequencerProjectContainer project) {
+    public MultiEventSelection(AbstractProjectContainer project) {
         super(project);
     }
 

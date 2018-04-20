@@ -26,7 +26,7 @@ package com.frinika.sequencer.gui.menu;
 import com.frinika.gui.OptionsEditor;
 import com.frinika.sequencer.gui.TimeFormat;
 import com.frinika.sequencer.gui.TimeSelector;
-import com.frinika.sequencer.project.SequencerProjectContainer;
+import com.frinika.sequencer.project.AbstractProjectContainer;
 import javax.swing.JPanel;
 
 /**
@@ -41,7 +41,7 @@ class RepeatActionEditor extends JPanel implements OptionsEditor {
     private RepeatAction action;
     private TimeSelector timeSelector;
 
-    public RepeatActionEditor(RepeatAction action, SequencerProjectContainer project) {
+    public RepeatActionEditor(RepeatAction action, AbstractProjectContainer project) {
         super();
         this.action = action;
         initComponents();

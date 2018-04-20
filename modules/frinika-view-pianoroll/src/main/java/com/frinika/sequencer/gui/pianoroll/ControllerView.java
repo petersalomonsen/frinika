@@ -44,7 +44,7 @@ import com.frinika.sequencer.model.MidiPart;
 import com.frinika.sequencer.model.MultiEvent;
 import com.frinika.sequencer.model.Part;
 import com.frinika.sequencer.model.util.EventsInPartsIterator;
-import com.frinika.sequencer.project.SequencerProjectContainer;
+import com.frinika.sequencer.project.AbstractProjectContainer;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Graphics2D;
@@ -111,7 +111,7 @@ public class ControllerView extends PianoRollPanelAdapter implements AdjustmentL
      * @param project project to view
      * @param scroller controls the view onto the virtualScreen.
      */
-    public ControllerView(final SequencerProjectContainer project, ItemScrollPane scroller) {
+    public ControllerView(final AbstractProjectContainer project, ItemScrollPane scroller) {
         super(project, scroller, false, false);
         this.sequencer = project.getSequencer();
 

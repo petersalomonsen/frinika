@@ -32,7 +32,7 @@ import com.frinika.sequencer.gui.ProjectFrame;
 import com.frinika.sequencer.gui.TimeFormat;
 import com.frinika.sequencer.gui.TimeSelector;
 import com.frinika.sequencer.gui.partview.PartView;
-import com.frinika.sequencer.project.SequencerProjectContainer;
+import com.frinika.sequencer.project.AbstractProjectContainer;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Graphics2D;
@@ -486,7 +486,7 @@ public abstract class Part implements Item, Selectable, EditHistoryRecordable, S
             public void ok() {
                 super.ok();
                 // commit as undoable action
-                SequencerProjectContainer project = ((ProjectFrame) frame).getProjectContainer();
+                AbstractProjectContainer project = ((ProjectFrame) frame).getProjectContainer();
                 project.getEditHistoryContainer().mark(CurrentLocale.getMessage("project.menu.edit_properties"));
                 EditHistoryAction action = new EditHistoryAction() {
 

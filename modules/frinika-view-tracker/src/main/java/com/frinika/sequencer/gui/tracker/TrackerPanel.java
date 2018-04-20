@@ -43,7 +43,7 @@ import com.frinika.sequencer.model.NoteEvent;
 import com.frinika.sequencer.model.Part;
 import com.frinika.sequencer.model.PitchBendEvent;
 import com.frinika.sequencer.model.SysexEvent;
-import com.frinika.sequencer.project.SequencerProjectContainer;
+import com.frinika.sequencer.project.AbstractProjectContainer;
 import com.frinika.tracker.DoubleCellRenderer;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -118,7 +118,7 @@ public class TrackerPanel extends JPanel implements SelectionListener<Part>, Son
 
     private static final long serialVersionUID = 1L;
 
-    SequencerProjectContainer project;
+    AbstractProjectContainer project;
     MidiPart part;
     int playingRow = 0;
 
@@ -149,7 +149,7 @@ public class TrackerPanel extends JPanel implements SelectionListener<Part>, Son
         });
     }
 
-    public TrackerPanel(FrinikaSequence sequence, SequencerProjectContainer project) {
+    public TrackerPanel(FrinikaSequence sequence, AbstractProjectContainer project) {
         this.project = project;
         this.multiEventSelectionContainer = project.getMultiEventSelection();
         initComponents();

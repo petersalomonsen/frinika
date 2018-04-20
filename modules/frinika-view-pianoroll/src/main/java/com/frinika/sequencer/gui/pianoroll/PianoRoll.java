@@ -47,7 +47,7 @@ import com.frinika.sequencer.model.NoteEvent;
 import com.frinika.sequencer.model.Part;
 import com.frinika.sequencer.model.timesignature.TimeSignatureList.QStepIterator;
 import com.frinika.sequencer.model.util.EventsInPartsIterator;
-import com.frinika.sequencer.project.SequencerProjectContainer;
+import com.frinika.sequencer.project.AbstractProjectContainer;
 import java.awt.AWTEvent;
 import java.awt.Color;
 import java.awt.Cursor;
@@ -119,7 +119,7 @@ public class PianoRoll extends PianoRollPanelAdapter {
      * @param project project to view
      * @param scroller controls the view onto the virtualScreen.
      */
-    public PianoRoll(final SequencerProjectContainer project, ItemScrollPane scroller) {
+    public PianoRoll(final AbstractProjectContainer project, ItemScrollPane scroller) {
         super(project, scroller, true, true);
 
         notesOnScreen = new Iterable<MultiEvent>() {

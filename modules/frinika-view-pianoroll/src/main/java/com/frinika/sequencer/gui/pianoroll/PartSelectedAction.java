@@ -26,7 +26,7 @@ package com.frinika.sequencer.gui.pianoroll;
 import com.frinika.sequencer.gui.ItemPanel;
 import com.frinika.sequencer.model.MidiPart;
 import com.frinika.sequencer.model.Part;
-import com.frinika.sequencer.project.SequencerProjectContainer;
+import com.frinika.sequencer.project.AbstractProjectContainer;
 import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
 
@@ -40,13 +40,13 @@ public class PartSelectedAction extends AbstractAction {
 
     private static final long serialVersionUID = 1L;
 
-    SequencerProjectContainer project;
+    AbstractProjectContainer project;
 
     static boolean ignoreWarp = false;
 
     ItemPanel panel;
 
-    public PartSelectedAction(SequencerProjectContainer project, ItemPanel panel) {
+    public PartSelectedAction(AbstractProjectContainer project, ItemPanel panel) {
 
         this.panel = panel;
         this.project = project;

@@ -24,18 +24,13 @@
 package com.frinika.base;
 
 import com.frinika.model.EditHistoryContainer;
-import uk.org.toot.audio.mixer.MixerControls;
 
 /**
- * Base project container.
+ * Interface for history provider.
  *
  * @author Peter Johan Salomonsen
  */
-public interface BaseProjectContainer {
-
-    MixerControls getMixerControls();
-
-    void close();
+public interface EditHistoryProvider {
 
     EditHistoryContainer getEditHistoryContainer();
 }

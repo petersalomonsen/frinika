@@ -25,7 +25,7 @@ package com.frinika.sequencer.gui.menu.midi;
 
 import com.frinika.sequencer.gui.menu.midi.AbstractMidiAction;
 import com.frinika.sequencer.model.NoteEvent;
-import com.frinika.sequencer.project.SequencerProjectContainer;
+import com.frinika.sequencer.project.AbstractProjectContainer;
 import java.util.*;
 import javax.swing.JComponent;
 
@@ -41,7 +41,7 @@ public class MidiVelocityAction extends AbstractMidiAction {
     private long startTick;
     private long endTick;
 
-    public MidiVelocityAction(SequencerProjectContainer project) {
+    public MidiVelocityAction(AbstractProjectContainer project) {
         super(project, "sequencer.midi.velocity");
     }
 

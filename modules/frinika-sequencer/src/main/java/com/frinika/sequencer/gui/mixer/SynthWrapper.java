@@ -27,7 +27,7 @@ import com.frinika.audio.midi.MidiDeviceIconProvider;
 import com.frinika.global.property.FrinikaGlobalProperties;
 import com.frinika.renderer.MidiRender;
 import com.frinika.renderer.MidiRenderFactory;
-import com.frinika.sequencer.project.SequencerProjectContainer;
+import com.frinika.sequencer.project.AbstractProjectContainer;
 import com.frinika.soundbank.JARSoundbankLoader;
 import com.sun.media.sound.AudioSynthesizer;
 import java.io.File;
@@ -84,7 +84,7 @@ public class SynthWrapper implements Synthesizer, MidiRenderFactory, MidiDeviceI
     MidiDeviceMixerPanel gui;
     AudioProcess synthVoice = null;
     public String soundBankFile;  // Hack (for simphoney to propagate to the mididevicedescriptor ).
-    SequencerProjectContainer project;
+    AbstractProjectContainer project;
 
     MidiChannel[] midiChannels = new MidiChannel[16];
 
@@ -348,7 +348,7 @@ public class SynthWrapper implements Synthesizer, MidiRenderFactory, MidiDeviceI
      * @param midiDevice
      * @throws MidiUnavailableException
      */
-    public SynthWrapper(SequencerProjectContainer project, final MidiDevice midiDevice) {
+    public SynthWrapper(AbstractProjectContainer project, final MidiDevice midiDevice) {
         this.midiDevice = midiDevice;
         this.project = project;
 
@@ -909,7 +909,7 @@ public class SynthWrapper implements Synthesizer, MidiRenderFactory, MidiDeviceI
         if (icon != null) {
             return icon;
         }
-        icon = SequencerProjectContainer.getMidiDeviceIcon(midiDevice);
+        icon = AbstractProjectContainer.getMidiDeviceIcon(midiDevice);
         return icon;
     }
 

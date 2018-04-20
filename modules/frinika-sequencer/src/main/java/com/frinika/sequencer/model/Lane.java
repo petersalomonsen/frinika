@@ -26,7 +26,7 @@ package com.frinika.sequencer.model;
 import com.frinika.model.EditHistoryRecordable;
 import com.frinika.model.EditHistoryRecordableAction;
 import com.frinika.model.EditHistoryRecorder;
-import com.frinika.sequencer.project.SequencerProjectContainer;
+import com.frinika.sequencer.project.AbstractProjectContainer;
 import com.frinika.sequencer.project.SequencerProjectSerializer;
 import java.awt.Color;
 import java.io.IOException;
@@ -85,7 +85,7 @@ public abstract class Lane implements Selectable, EditHistoryRecordable,
     /**
      * Please don't use this field directly. Used only for serialization.
      */
-    public transient SequencerProjectContainer frinikaProject;
+    public transient AbstractProjectContainer frinikaProject;
 
     /*
 	 * to save the position in the children list. Only for use by the add/remove
@@ -99,7 +99,7 @@ public abstract class Lane implements Selectable, EditHistoryRecordable,
     protected Lane() {
     }
 
-    protected Lane(String name, SequencerProjectContainer project) {
+    protected Lane(String name, AbstractProjectContainer project) {
         height = 1; // Layout.getLaneItemHeight();
         this.frinikaProject = project;
         parts = new Vector<>();
@@ -167,7 +167,7 @@ public abstract class Lane implements Selectable, EditHistoryRecordable,
 //	public int getColorID() {
 //		return colorID;
 //	}
-    public SequencerProjectContainer getProject() {
+    public AbstractProjectContainer getProject() {
         return frinikaProject;
     }
 

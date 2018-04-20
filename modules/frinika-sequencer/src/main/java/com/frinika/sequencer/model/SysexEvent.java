@@ -28,7 +28,7 @@ import com.frinika.global.Toolbox;
 import com.frinika.localization.CurrentLocale;
 import com.frinika.model.EditHistoryAction;
 import com.frinika.model.EditHistoryRecordable;
-import com.frinika.sequencer.project.SequencerProjectContainer;
+import com.frinika.sequencer.project.AbstractProjectContainer;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.StringTokenizer;
@@ -113,7 +113,7 @@ public class SysexEvent extends MultiEvent {
         return me;
     }
 
-    public void showEditorGUI(SequencerProjectContainer project) {
+    public void showEditorGUI(AbstractProjectContainer project) {
         final String oldMacroString = this.macro;
         boolean err;
         do {

@@ -34,7 +34,7 @@ import com.frinika.sequencer.FrinikaSequence;
 import com.frinika.sequencer.FrinikaSequencer;
 import com.frinika.sequencer.gui.mixer.SynthWrapper;
 import com.frinika.sequencer.project.MidiDeviceDescriptorIntf;
-import com.frinika.sequencer.project.SequencerProjectContainer;
+import com.frinika.sequencer.project.AbstractProjectContainer;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -76,7 +76,7 @@ public class SynthLane extends Lane implements RecordableLane {
     public SynthLane() {
     }
 
-    public SynthLane(SequencerProjectContainer project, MidiDeviceDescriptorIntf desc) {
+    public SynthLane(AbstractProjectContainer project, MidiDeviceDescriptorIntf desc) {
         super(null, project);
         install(desc);
         channelLabel = new MetaInfo(getName());
@@ -259,7 +259,7 @@ public class SynthLane extends Lane implements RecordableLane {
             return clipFile;
         }
 
-        SequencerProjectContainer proj = getProject();
+        AbstractProjectContainer proj = getProject();
         File audioDir = proj.getAudioDirectory();
         String audioFileName = getName() + ".wav";
         clipFile = new File(audioDir, audioFileName);

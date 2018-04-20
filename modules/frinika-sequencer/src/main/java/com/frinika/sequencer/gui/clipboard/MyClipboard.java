@@ -4,7 +4,7 @@ import com.frinika.sequencer.model.Lane;
 import com.frinika.sequencer.model.MultiEvent;
 import com.frinika.sequencer.model.Part;
 import com.frinika.sequencer.model.Selectable;
-import com.frinika.sequencer.project.SequencerProjectContainer;
+import com.frinika.sequencer.project.AbstractProjectContainer;
 import java.util.Collection;
 import java.util.Vector;
 
@@ -24,7 +24,7 @@ public class MyClipboard { // implements SelectionListener<Part> {
     //private static final ProjectContainer ProjectFrame.fo = null;
     Vector<Selectable> copy;
 
-    SequencerProjectContainer srcProject;
+    AbstractProjectContainer srcProject;
 
     long leftTickOfCopy;
 
@@ -48,7 +48,7 @@ public class MyClipboard { // implements SelectionListener<Part> {
     }
 
     public void copy(Collection<Selectable> list, long selectionStartTick,
-            int selectionLeftColumn, SequencerProjectContainer srcProject) {
+            int selectionLeftColumn, AbstractProjectContainer srcProject) {
         copy(list, srcProject);
         leftTickOfCopy = selectionStartTick;
         leftColumnOfCopy = selectionLeftColumn;
@@ -56,7 +56,7 @@ public class MyClipboard { // implements SelectionListener<Part> {
 
     }
 
-    public void copy(Collection<? extends Selectable> collection, SequencerProjectContainer srcProject) {
+    public void copy(Collection<? extends Selectable> collection, AbstractProjectContainer srcProject) {
         this.srcProject = srcProject;
         copy = deepCopy(collection, null);
         leftTickOfCopy = Long.MAX_VALUE;
@@ -85,7 +85,7 @@ public class MyClipboard { // implements SelectionListener<Part> {
      * Default paste action to the sequencers tickposition and tracker column 0
      *
      */
-    public void paste(SequencerProjectContainer dstProject) {
+    public void paste(AbstractProjectContainer dstProject) {
         //	ProjectContainer project=ProjectFrame.getFocusFrame().getProjectContainer();
         paste(dstProject.getSequencer().getTickPosition(), 0, false, dstProject);
     }
@@ -99,7 +99,7 @@ public class MyClipboard { // implements SelectionListener<Part> {
      * @param trackerOverrideSnap - when pasting from the tracker - snap to the
      * row rather than the piano roll snap setting
      */
-    public void paste(long tickDest, int selectionLeftColumn, boolean trackerOverrideSnap, SequencerProjectContainer dstProject) {
+    public void paste(long tickDest, int selectionLeftColumn, boolean trackerOverrideSnap, AbstractProjectContainer dstProject) {
 
         if (copy == null || copy.size() == 0) {
             System.out.println(" Nothing in the paste buffer to paste!");

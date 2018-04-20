@@ -24,7 +24,7 @@
 package com.frinika.sequencer.tools;
 
 import com.frinika.sequencer.FrinikaSequencer;
-import com.frinika.sequencer.project.SequencerProjectContainer;
+import com.frinika.sequencer.project.AbstractProjectContainer;
 import java.io.IOException;
 import java.util.Arrays;
 import javax.swing.JFrame;
@@ -35,7 +35,7 @@ import uk.org.toot.audio.server.AudioClient;
 
 public class BufferedPlayback implements Runnable {
 
-    private SequencerProjectContainer project;
+    private AbstractProjectContainer project;
     private JFrame frame;
 
     MyMidiRenderer midiRenderer;
@@ -54,7 +54,7 @@ public class BufferedPlayback implements Runnable {
     int circularbuffer_write_pos = 0;
     int circularbuffer_avail = 0;
 
-    public BufferedPlayback(JFrame frame, SequencerProjectContainer project) {
+    public BufferedPlayback(JFrame frame, AbstractProjectContainer project) {
         this.frame = frame;
         this.project = project;
 

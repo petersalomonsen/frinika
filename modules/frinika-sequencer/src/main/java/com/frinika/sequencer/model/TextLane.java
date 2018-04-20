@@ -25,7 +25,7 @@ package com.frinika.sequencer.model;
 
 import com.frinika.global.Toolbox;
 import com.frinika.model.EditHistoryRecordable;
-import com.frinika.sequencer.project.SequencerProjectContainer;
+import com.frinika.sequencer.project.AbstractProjectContainer;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
@@ -51,7 +51,7 @@ public class TextLane extends Lane {
 
     static int nameCount = 0;
 
-    public TextLane(SequencerProjectContainer project) {
+    public TextLane(AbstractProjectContainer project) {
         super("Text " + nameCount++, project);
         long ticks = project.getSequencer().getTickPosition();
         createNewTextPart(ticks);

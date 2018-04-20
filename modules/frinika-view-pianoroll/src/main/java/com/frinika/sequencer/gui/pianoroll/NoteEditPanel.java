@@ -25,7 +25,7 @@ package com.frinika.sequencer.gui.pianoroll;
 
 import com.frinika.sequencer.gui.LabelFieldEditor;
 import com.frinika.sequencer.model.NoteEvent;
-import com.frinika.sequencer.project.SequencerProjectContainer;
+import com.frinika.sequencer.project.AbstractProjectContainer;
 import javax.swing.JPanel;
 
 public class NoteEditPanel extends JPanel // *** class seems to be unused (? Jens) ***
@@ -37,7 +37,7 @@ public class NoteEditPanel extends JPanel // *** class seems to be unused (? Jen
 
     NoteEventTableModel model;
 
-    public NoteEditPanel(int ticksPerbeat, SequencerProjectContainer project) {
+    public NoteEditPanel(int ticksPerbeat, AbstractProjectContainer project) {
         //setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
         model = new NoteEventTableModel(null, 1, ticksPerbeat);
         //table = new JTable(tableModel);

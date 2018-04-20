@@ -4,7 +4,7 @@ package com.frinika.sequencer.gui.clipboard;
 import com.frinika.sequencer.model.MultiEvent;
 import com.frinika.sequencer.model.Part;
 import com.frinika.sequencer.model.Selectable;
-import com.frinika.sequencer.project.SequencerProjectContainer;
+import com.frinika.sequencer.project.AbstractProjectContainer;
 import java.util.Collection;
 import java.util.Vector;
 
@@ -23,7 +23,7 @@ public class CopyOfMyClipboard { // implements SelectionListener<Part> {
 
     Vector<Selectable> copy;
 
-    SequencerProjectContainer project;
+    AbstractProjectContainer project;
 
     long leftTickOfCopy;
 
@@ -32,7 +32,7 @@ public class CopyOfMyClipboard { // implements SelectionListener<Part> {
     private int leftColumnOfCopy; // Used by tracker editor
 
     // private boolean blocknotify=false;
-    public CopyOfMyClipboard(SequencerProjectContainer project) {
+    public CopyOfMyClipboard(AbstractProjectContainer project) {
         this.project = project;
     }
 

@@ -513,7 +513,12 @@ public class FrinikaFrame extends JFrame implements ProjectFrame {
                     createSplit(frameSize));
             midPanels.addTab(CurrentLocale.getMessage("project.maintabs.midiout_devices"),
                     new JScrollPane(midiDevicesPanel = new MidiDevicesPanel(
-                            project)));
+                            project, new MidiDevicesPanel.MidiDevicesHandler() {
+                        @Override
+                        public void addMidiDevices(JPopupMenu popup) {
+                            FrinikaFrame.this.addMidiDevices(popup);
+                        }
+                    })));
 
             midPanels.addTab(CurrentLocale.getMessage("project.maintabs.audiomixer"),
                     new FrinikaMixerPanel(project.getMixerControls(), midiLearnFrame));
@@ -852,7 +857,12 @@ public class FrinikaFrame extends JFrame implements ProjectFrame {
         createView(TRACKER_VIEW, CurrentLocale.getMessage("project.maintabs.tracker"), trackerPanel, DOCKICON_TRACKER);
         createView(NOTATION_VIEW, CurrentLocale.getMessage("project.maintabs.notation"), notationPanel, DOCKICON_NOTATION);
         createView(MIDIOUT_VIEW, CurrentLocale.getMessage("project.maintabs.midimixer"),
-                new JScrollPane(midiDevicesPanel = new MidiDevicesPanel(project)), DOCKICON_MIDIOUT);
+                new JScrollPane(midiDevicesPanel = new MidiDevicesPanel(project, new MidiDevicesPanel.MidiDevicesHandler() {
+                    @Override
+                    public void addMidiDevices(JPopupMenu popup) {
+                        FrinikaFrame.this.addMidiDevices(popup);
+                    }
+                })), DOCKICON_MIDIOUT);
         createView(MIXER_VIEW, CurrentLocale.getMessage("project.maintabs.audiomixer"), mixer,
                 DOCKICON_MIXER);
     }

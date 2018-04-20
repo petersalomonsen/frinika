@@ -24,7 +24,7 @@
 package com.frinika.sequencer.gui.menu;
 
 import com.frinika.localization.CurrentLocale;
-import com.frinika.sequencer.project.SequencerProjectContainer;
+import com.frinika.sequencer.project.AbstractProjectContainer;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.ButtonGroup;
@@ -38,9 +38,9 @@ public class GuiCursorUpdateMenu extends JMenu {
 
     private static final long serialVersionUID = 1L;
 
-    private SequencerProjectContainer project;
+    private AbstractProjectContainer project;
 
-    public GuiCursorUpdateMenu(final SequencerProjectContainer project) {
+    public GuiCursorUpdateMenu(final AbstractProjectContainer project) {
         this.project = project;
 
         int inc = project.getPixelsPerRedraw();

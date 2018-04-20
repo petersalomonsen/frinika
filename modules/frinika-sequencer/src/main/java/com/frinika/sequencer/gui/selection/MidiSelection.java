@@ -28,7 +28,7 @@ import com.frinika.sequencer.model.MidiPart;
 import com.frinika.sequencer.model.MultiEvent;
 import com.frinika.sequencer.model.Part;
 import com.frinika.sequencer.model.Selectable;
-import com.frinika.sequencer.project.SequencerProjectContainer;
+import com.frinika.sequencer.project.AbstractProjectContainer;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Vector;
@@ -49,7 +49,7 @@ public class MidiSelection extends MultiEventSelection implements SelectionListe
 
     protected Collection<JMenuItem> menuItems = new ArrayList<>(); // list of MenuItems to automatically activate/deactivate depending on available MidiSelection
 
-    public MidiSelection(SequencerProjectContainer project) {
+    public MidiSelection(AbstractProjectContainer project) {
         super(project);
         project.getPartSelection().addSelectionListener(this);
         project.getMultiEventSelection().addSelectionListener(this);

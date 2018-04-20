@@ -3,7 +3,7 @@ package com.frinika.sequencer;
 import com.frinika.project.FrinikaProjectContainer;
 import com.frinika.sequencer.model.MidiPart;
 import com.frinika.sequencer.model.NoteEvent;
-import com.frinika.sequencer.project.SequencerProjectContainer;
+import com.frinika.sequencer.project.AbstractProjectContainer;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,7 +16,7 @@ import org.junit.Test;
 public class EditHistoryContainerTest {
 
     MidiPart part;
-    SequencerProjectContainer proj;
+    AbstractProjectContainer proj;
 
     @Before
     protected void setUp() throws Exception {

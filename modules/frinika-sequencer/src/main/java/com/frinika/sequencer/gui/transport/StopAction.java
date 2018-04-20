@@ -2,7 +2,7 @@ package com.frinika.sequencer.gui.transport;
 
 import com.frinika.localization.CurrentLocale;
 import com.frinika.sequencer.FrinikaSequencer;
-import com.frinika.sequencer.project.SequencerProjectContainer;
+import com.frinika.sequencer.project.AbstractProjectContainer;
 import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
 
@@ -10,9 +10,9 @@ public class StopAction extends AbstractAction {
 
     private static final long serialVersionUID = 1L;
     private FrinikaSequencer sequencer;
-    private SequencerProjectContainer project;
+    private AbstractProjectContainer project;
 
-    public StopAction(SequencerProjectContainer project) {
+    public StopAction(AbstractProjectContainer project) {
         super(CurrentLocale.getMessage("sequencer.project.start_stop"));
         this.sequencer = project.getSequencer();
         this.project = project;

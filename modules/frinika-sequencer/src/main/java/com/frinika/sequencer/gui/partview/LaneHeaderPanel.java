@@ -9,7 +9,7 @@ import com.frinika.sequencer.gui.ProjectFrame;
 import com.frinika.sequencer.model.Lane;
 import com.frinika.sequencer.model.LaneTreeListener;
 import com.frinika.sequencer.model.ViewableLaneList;
-import com.frinika.sequencer.project.SequencerProjectContainer;
+import com.frinika.sequencer.project.AbstractProjectContainer;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -37,7 +37,7 @@ public class LaneHeaderPanel extends JPanel implements ComponentListener,
 
     private Timer timer;
 
-    public LaneHeaderPanel(PartView partView, SequencerProjectContainer project) {
+    public LaneHeaderPanel(PartView partView, AbstractProjectContainer project) {
 
         this.partView = partView;
 

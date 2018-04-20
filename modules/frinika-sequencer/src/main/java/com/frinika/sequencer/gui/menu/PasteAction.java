@@ -25,16 +25,16 @@ package com.frinika.sequencer.gui.menu;
 import com.frinika.localization.CurrentLocale;
 import com.frinika.sequencer.gui.selection.SelectionContainer;
 import com.frinika.sequencer.gui.selection.SelectionFocusable;
-import com.frinika.sequencer.project.SequencerProjectContainer;
+import com.frinika.sequencer.project.AbstractProjectContainer;
 import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
 
 public class PasteAction extends AbstractAction {
 
     private static final long serialVersionUID = 1L;
-    private SequencerProjectContainer project;
+    private AbstractProjectContainer project;
 
-    public PasteAction(SequencerProjectContainer project) {
+    public PasteAction(AbstractProjectContainer project) {
         super(CurrentLocale.getMessage("sequencer.project.paste"));
         this.project = project;
     }

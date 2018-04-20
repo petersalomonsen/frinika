@@ -30,7 +30,7 @@ import com.frinika.sequencer.gui.TimeFormat;
 import com.frinika.sequencer.gui.TimeSelector;
 import com.frinika.sequencer.model.MidiLane;
 import com.frinika.sequencer.model.MultiEvent;
-import com.frinika.sequencer.project.SequencerProjectContainer;
+import com.frinika.sequencer.project.AbstractProjectContainer;
 import java.awt.Container;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -59,7 +59,7 @@ import javax.swing.event.ChangeListener;
 public class MidiInsertControllersActionEditor extends JPanel implements OptionsEditor {
 
     private MidiInsertControllersAction action;
-    private SequencerProjectContainer project;
+    private AbstractProjectContainer project;
     private TimeSelector startTimeSelector;
     private TimeSelector lengthTimeSelector;
     private TimeSelector resolutionTimeSelector;
@@ -67,7 +67,7 @@ public class MidiInsertControllersActionEditor extends JPanel implements Options
     private Map<AbstractButton, MidiInsertControllersAction.ControllerFunction> functionButtons;
     private Map<MidiInsertControllersAction.ControllerFunction, JComponent> functions;
 
-    public MidiInsertControllersActionEditor(SequencerProjectContainer project, MidiInsertControllersAction action) {
+    public MidiInsertControllersActionEditor(AbstractProjectContainer project, MidiInsertControllersAction action) {
         super();
         this.project = project;
         this.action = action;

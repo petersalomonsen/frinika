@@ -25,7 +25,7 @@ package com.frinika.sequencer.gui.menu.midi;
 
 import com.frinika.sequencer.gui.TimeFormat;
 import com.frinika.sequencer.gui.TimeSelector;
-import com.frinika.sequencer.project.SequencerProjectContainer;
+import com.frinika.sequencer.project.AbstractProjectContainer;
 import javax.swing.JPanel;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -42,7 +42,7 @@ public class MidiDurationActionEditor extends JPanel {
 
     private MidiDurationAction action;
 
-    public MidiDurationActionEditor(MidiDurationAction action, SequencerProjectContainer project) {
+    public MidiDurationActionEditor(MidiDurationAction action, AbstractProjectContainer project) {
         super();
         this.action = action;
         initComponents();

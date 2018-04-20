@@ -25,7 +25,7 @@ package com.frinika.sequencer.model;
 
 import com.frinika.model.EditHistoryAction;
 import com.frinika.sequencer.gui.ItemPanel;
-import com.frinika.sequencer.project.SequencerProjectContainer;
+import com.frinika.sequencer.project.AbstractProjectContainer;
 import java.io.FileNotFoundException;
 import java.util.Vector;
 
@@ -37,7 +37,7 @@ import java.util.Vector;
  */
 public class SplitPartAction implements EditHistoryAction {
 
-    SequencerProjectContainer project;
+    AbstractProjectContainer project;
 
     ItemPanel panel;
 
@@ -47,7 +47,7 @@ public class SplitPartAction implements EditHistoryAction {
 
     long splitTick;
 
-    public SplitPartAction(SequencerProjectContainer project, long tick) {
+    public SplitPartAction(AbstractProjectContainer project, long tick) {
 
         // victims are the existing parts to be split
         victims = new Vector<>();

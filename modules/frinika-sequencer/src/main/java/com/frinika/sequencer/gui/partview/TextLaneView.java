@@ -27,7 +27,7 @@ import com.frinika.global.Toolbox;
 import com.frinika.localization.CurrentLocale;
 import com.frinika.model.EditHistoryAction;
 import com.frinika.sequencer.model.TextLane;
-import com.frinika.sequencer.project.SequencerProjectContainer;
+import com.frinika.sequencer.project.AbstractProjectContainer;
 import java.awt.BorderLayout;
 import java.awt.event.*;
 import java.util.*;
@@ -47,11 +47,11 @@ public class TextLaneView extends LaneView implements ChangeListener {
     public final static String DELIMITER = "\n\n---\n\n";
 
     private JEditorPane editor;
-    private SequencerProjectContainer project;
+    private AbstractProjectContainer project;
     private String textBackup = null;
     private boolean initialRefresh = true;
 
-    public TextLaneView(TextLane lane, SequencerProjectContainer project) {
+    public TextLaneView(TextLane lane, AbstractProjectContainer project) {
         super(lane);
         this.project = project;
         init();

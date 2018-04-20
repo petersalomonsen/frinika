@@ -3,7 +3,7 @@
  */
 package com.frinika.sequencer;
 
-import com.frinika.sequencer.project.SequencerProjectContainer;
+import com.frinika.sequencer.project.AbstractProjectContainer;
 import com.frinika.synth.envelope.MidiVolume;
 import java.io.IOException;
 import javax.sound.sampled.AudioInputStream;
@@ -22,7 +22,7 @@ public class SampleBasedMetronome implements AudioProcess, SequencerListener {
 
     boolean active = false;
 
-    SequencerProjectContainer project;
+    AbstractProjectContainer project;
 
     int metSamplePos = 0;
 
@@ -30,7 +30,7 @@ public class SampleBasedMetronome implements AudioProcess, SequencerListener {
 
     private int doClick = 0;
 
-    public SampleBasedMetronome(SequencerProjectContainer project) throws Exception {
+    public SampleBasedMetronome(AbstractProjectContainer project) throws Exception {
 //		super(project.getAudioServer(), getFramePos(project.getSequencer(), project.getAudioServer(),
 //				0));
         // super(project.getAudioServer().openAudioOutput(project.getAudioServer().getAvailableOutputNames().get(0),null));

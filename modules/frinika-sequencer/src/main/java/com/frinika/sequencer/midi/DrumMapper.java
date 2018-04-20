@@ -25,7 +25,7 @@ package com.frinika.sequencer.midi;
 
 import com.frinika.audio.midi.MidiDeviceIconProvider;
 import com.frinika.sequencer.model.MidiLane;
-import com.frinika.sequencer.project.SequencerProjectContainer;
+import com.frinika.sequencer.project.AbstractProjectContainer;
 import com.frinika.synth.Synth;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -480,7 +480,7 @@ public class DrumMapper implements MidiDevice, MidiDeviceIconProvider {
         defaultDevice = midiDevice;
     }
 
-    public JPanel getGUIPanel(SequencerProjectContainer project, MidiLane lane) {
+    public JPanel getGUIPanel(AbstractProjectContainer project, MidiLane lane) {
         return project.createDrumMapperGUI(this, project, lane);
     }
 

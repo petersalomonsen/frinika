@@ -32,7 +32,7 @@ import com.frinika.sequencer.model.MidiPartGhost;
 import com.frinika.sequencer.model.MultiEvent;
 import com.frinika.sequencer.model.Part;
 import com.frinika.sequencer.model.Selectable;
-import com.frinika.sequencer.project.SequencerProjectContainer;
+import com.frinika.sequencer.project.AbstractProjectContainer;
 import java.awt.KeyboardFocusManager;
 import java.awt.event.ActionEvent;
 import java.util.Collection;
@@ -65,7 +65,7 @@ public class RepeatAction extends AbstractDialogAction {
     boolean selectionSupportsGhosts;
     protected Collection<Selectable> list;
 
-    public RepeatAction(SequencerProjectContainer project) {
+    public RepeatAction(AbstractProjectContainer project) {
         super(project, "sequencer.project.repeat");
         repeatTicks = project.getSequence().getResolution() * 4 * 4; // default: 4 bars
     }
@@ -82,12 +82,12 @@ public class RepeatAction extends AbstractDialogAction {
 
     @Override
     protected JComponent createGUI() {
-        return new RepeatActionEditor(this, (SequencerProjectContainer) project);
+        return new RepeatActionEditor(this, (AbstractProjectContainer) project);
     }
 
     @Override
     protected void performPrepare() {
-        SelectionFocusable focus = ((SequencerProjectContainer) project).getSelectionFocus();
+        SelectionFocusable focus = ((AbstractProjectContainer) project).getSelectionFocus();
         if (focus != null) {
             list = focus.getObjects();
             if (!list.isEmpty()) {

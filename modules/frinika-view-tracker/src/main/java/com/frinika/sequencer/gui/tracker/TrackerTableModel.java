@@ -38,7 +38,7 @@ import com.frinika.sequencer.model.NoteEvent;
 import com.frinika.sequencer.model.PitchBendEvent;
 import com.frinika.sequencer.model.SysexEvent;
 import com.frinika.sequencer.model.util.TimeUtils;
-import com.frinika.sequencer.project.SequencerProjectContainer;
+import com.frinika.sequencer.project.AbstractProjectContainer;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.SortedSet;
@@ -80,9 +80,9 @@ public class TrackerTableModel extends AbstractTableModel implements EditHistory
     double editDuration = 1.0;
 
     TimeUtils timeUtils;
-    SequencerProjectContainer project;
+    AbstractProjectContainer project;
 
-    public TrackerTableModel(SequencerProjectContainer project) {
+    public TrackerTableModel(AbstractProjectContainer project) {
         this.project = project;
         this.sequence = project.getSequence();
         this.ticksPerRow = sequence.getResolution() / 4.0; // Default 1/4th notes

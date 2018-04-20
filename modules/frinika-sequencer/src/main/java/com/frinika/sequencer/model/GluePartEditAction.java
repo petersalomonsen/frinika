@@ -24,7 +24,7 @@
 package com.frinika.sequencer.model;
 
 import com.frinika.model.EditHistoryAction;
-import com.frinika.sequencer.project.SequencerProjectContainer;
+import com.frinika.sequencer.project.AbstractProjectContainer;
 
 /**
  * Action to split selected parts at a given tick.
@@ -33,7 +33,7 @@ import com.frinika.sequencer.project.SequencerProjectContainer;
  */
 public class GluePartEditAction implements EditHistoryAction {
 
-    SequencerProjectContainer project;
+    AbstractProjectContainer project;
 
     MidiPart origPart1;
 

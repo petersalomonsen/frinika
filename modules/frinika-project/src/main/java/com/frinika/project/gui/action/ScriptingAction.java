@@ -28,7 +28,7 @@ import com.frinika.localization.CurrentLocale;
 import com.frinika.project.FrinikaProjectContainer;
 import com.frinika.project.scripting.FrinikaScript;
 import com.frinika.project.scripting.gui.ScriptingDialog;
-import com.frinika.sequencer.project.SequencerProjectContainer;
+import com.frinika.sequencer.project.AbstractProjectContainer;
 import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
 import javax.swing.JMenu;
@@ -53,17 +53,17 @@ public class ScriptingAction extends AbstractAction {
 
     public final static String actionId = "sequencer.project.scripting"; // also accessed by ScriptingDialog
 
-    private SequencerProjectContainer project;
+    private AbstractProjectContainer project;
     private FrinikaScript script;
     private ScriptingDialog scriptingDialog;
 
-    public ScriptingAction(SequencerProjectContainer project) {
+    public ScriptingAction(AbstractProjectContainer project) {
         super(CurrentLocale.getMessage(actionId));
         this.project = project;
         script = null;
     }
 
-    public ScriptingAction(SequencerProjectContainer project, FrinikaScript script) {
+    public ScriptingAction(AbstractProjectContainer project, FrinikaScript script) {
         super(script.getName());
         this.project = project;
         this.script = script;

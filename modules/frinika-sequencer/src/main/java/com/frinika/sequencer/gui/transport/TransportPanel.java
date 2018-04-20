@@ -29,7 +29,7 @@ import com.frinika.sequencer.FrinikaSequencer;
 import com.frinika.sequencer.SongPositionListener;
 import com.frinika.sequencer.SwingSongPositionListenerWrapper;
 import com.frinika.sequencer.model.util.TimeUtils;
-import com.frinika.sequencer.project.SequencerProjectContainer;
+import com.frinika.sequencer.project.AbstractProjectContainer;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
@@ -60,7 +60,7 @@ public class TransportPanel extends JPanel {
 
     FrinikaSequencer sequencer;
 
-    SequencerProjectContainer project;
+    AbstractProjectContainer project;
 
     StartStopAction startStopAction;
 
@@ -77,7 +77,7 @@ public class TransportPanel extends JPanel {
 
     private TimeUtils timeUtils;
 
-    public TransportPanel(SequencerProjectContainer project) {
+    public TransportPanel(AbstractProjectContainer project) {
         timeUtils = new TimeUtils(project);
         this.project = project;
         this.sequencer = project.getSequencer();

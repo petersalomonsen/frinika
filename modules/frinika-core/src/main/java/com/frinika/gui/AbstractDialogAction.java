@@ -23,13 +23,13 @@
  */
 package com.frinika.gui;
 
-import com.frinika.base.BaseProjectContainer;
 import com.frinika.gui.util.WindowUtils;
 import com.frinika.localization.CurrentLocale;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
 import javax.swing.JComponent;
+import com.frinika.base.EditHistoryProvider;
 
 /**
  * Abstract superclass for menu-actions that will pop-up a dialog (usually to
@@ -48,12 +48,12 @@ import javax.swing.JComponent;
  */
 public abstract class AbstractDialogAction extends AbstractAction {
 
-    protected BaseProjectContainer project;
+    protected EditHistoryProvider project;
     protected String actionId;
     protected OptionsDialog optionsDialog;
     protected boolean canceled;
 
-    public AbstractDialogAction(BaseProjectContainer project, String actionId) {
+    public AbstractDialogAction(EditHistoryProvider project, String actionId) {
         super(CurrentLocale.getMessage(actionId) + "...");
         this.project = project;
         this.actionId = actionId;
@@ -139,7 +139,7 @@ public abstract class AbstractDialogAction extends AbstractAction {
         }
     }
 
-    public BaseProjectContainer getProject() {
+    public EditHistoryProvider getProject() {
         return project;
     }
 

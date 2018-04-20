@@ -23,7 +23,7 @@
  */
 package com.frinika.sequencer.gui;
 
-import com.frinika.sequencer.project.SequencerProjectContainer;
+import com.frinika.sequencer.project.AbstractProjectContainer;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
@@ -45,14 +45,7 @@ public class NoteLengthPopup extends JPopupMenu implements ActionListener {
     String[] notes = {"bar", "1", "1/2", "1/3", "1/4", "1/6", "1/8", "1/16"};
 
     static Icon[] icons = {
-        SequencerProjectContainer.getIconResource("note_1.png"), // bar      (whole note)      [1]
-SequencerProjectContainer.getIconResource("note_4.png"), // 1   note (quarter note)    [1/4]
-SequencerProjectContainer.getIconResource("note_8.png"), // 1/2 note (eighth note)     [1/8]
-SequencerProjectContainer.getIconResource("note_12.png"), // 1/3 note (triplet)         [1/12] [3-tuplet]
-SequencerProjectContainer.getIconResource("note_16.png"), // 1/4 note (sixteenth note)  [1/16]
-SequencerProjectContainer.getIconResource("note_24.png"), // 1/6 note (sixteenth triplet note)  [1/24]
-SequencerProjectContainer.getIconResource("note_32.png"), // 1/8 note (32th note)  [1/32]
-SequencerProjectContainer.getIconResource("note_64.png"), // 1/16 note (64th note)  [1/64]
+        AbstractProjectContainer.getIconResource("note_1.png"), AbstractProjectContainer.getIconResource("note_4.png"), AbstractProjectContainer.getIconResource("note_8.png"), AbstractProjectContainer.getIconResource("note_12.png"), AbstractProjectContainer.getIconResource("note_16.png"), AbstractProjectContainer.getIconResource("note_24.png"), AbstractProjectContainer.getIconResource("note_32.png"), AbstractProjectContainer.getIconResource("note_64.png"), // 1/16 note (64th note)  [1/64]
     };
 
     int numA[] = {-1, 1, 1, 1, 1, 1, 1, 1};

@@ -23,7 +23,7 @@
 package com.frinika.sequencer.model;
 
 import com.frinika.model.EditHistoryRecordable;
-import com.frinika.sequencer.project.SequencerProjectContainer;
+import com.frinika.sequencer.project.AbstractProjectContainer;
 import com.frinika.sequencer.project.SequencerProjectSerializer;
 import java.util.Vector;
 import javax.swing.Icon;
@@ -58,7 +58,7 @@ public class ProjectLane extends Lane {
         super();
     }
 
-    public ProjectLane(SequencerProjectContainer project) {
+    public ProjectLane(AbstractProjectContainer project) {
         super("project", project);
         setHidden(true);
     }

@@ -33,7 +33,7 @@ import com.frinika.sequencer.MidiResource;
 import com.frinika.sequencer.gui.mixer.SynthWrapper;
 import com.frinika.sequencer.midi.MonitorReceiver;
 import com.frinika.sequencer.patchname.MyPatch;
-import com.frinika.sequencer.project.SequencerProjectContainer;
+import com.frinika.sequencer.project.AbstractProjectContainer;
 import com.frinika.synth.Synth;
 import com.frinika.synth.SynthRack;
 import com.frinika.synth.synths.MySampler;
@@ -133,7 +133,7 @@ public class MidiLane extends Lane implements RecordableLane {
      * @param ftw
      * @param project
      */
-    public MidiLane(FrinikaTrackWrapper ftw, SequencerProjectContainer project) {
+    public MidiLane(FrinikaTrackWrapper ftw, AbstractProjectContainer project) {
         super("Midi " + nameCount++, project);
         this.ftw = ftw;
         // cntrlList=new ControllerList(); // TODO different lists

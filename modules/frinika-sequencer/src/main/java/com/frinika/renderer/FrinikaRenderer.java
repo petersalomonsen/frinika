@@ -31,7 +31,7 @@ import com.frinika.sequencer.gui.mixer.SynthWrapper;
 import com.frinika.sequencer.model.Lane;
 import com.frinika.sequencer.model.MidiLane;
 import com.frinika.sequencer.model.MidiPlayOptions;
-import com.frinika.sequencer.project.SequencerProjectContainer;
+import com.frinika.sequencer.project.AbstractProjectContainer;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -42,7 +42,7 @@ import javax.swing.JOptionPane;
 
 public class FrinikaRenderer implements SequencerListener {
 
-    SequencerProjectContainer project;
+    AbstractProjectContainer project;
     FrinikaSequencer seqr;
 
     ArrayList<FrinikaDeviceRenderer> deviceRenderers = new ArrayList<>();
@@ -59,7 +59,7 @@ public class FrinikaRenderer implements SequencerListener {
         return render;
     }
 
-    public FrinikaRenderer(SequencerProjectContainer project) {
+    public FrinikaRenderer(AbstractProjectContainer project) {
         this.project = project;
         seqr = project.getSequencer();
         seqr.addSequencerListener(this);

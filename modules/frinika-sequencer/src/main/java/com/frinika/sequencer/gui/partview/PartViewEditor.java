@@ -33,7 +33,7 @@ import com.frinika.sequencer.gui.ProjectFrame;
 import com.frinika.sequencer.model.Lane;
 import com.frinika.sequencer.model.Part;
 import com.frinika.sequencer.model.ProjectLane;
-import com.frinika.sequencer.project.SequencerProjectContainer;
+import com.frinika.sequencer.project.AbstractProjectContainer;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
@@ -73,7 +73,7 @@ public class PartViewEditor extends ItemScrollPane {
 
     public PartViewEditor(final ProjectFrame frame) {
 
-        final SequencerProjectContainer project = frame.getProjectContainer();
+        final AbstractProjectContainer project = frame.getProjectContainer();
 
         partView = new PartView(frame, this);
         Vector<ItemPanel> clients = new Vector<>();
@@ -85,7 +85,7 @@ public class PartViewEditor extends ItemScrollPane {
         new_panel.setOpaque(false);
 
         Insets insets = new Insets(0, 0, 0, 0);
-        final JButton new_button = new JButton(SequencerProjectContainer.getIconResource("new_track.gif"));
+        final JButton new_button = new JButton(AbstractProjectContainer.getIconResource("new_track.gif"));
         new_button.setText(CurrentLocale.getMessage("new_track"));
         new_button.setMargin(insets);
         new_button.addActionListener(new ActionListener() {
@@ -101,7 +101,7 @@ public class PartViewEditor extends ItemScrollPane {
         sep.setMinimumSize(new Dimension(5, 5));
         new_panel.add(sep);
 
-        final JButton up_button = new JButton(SequencerProjectContainer.getIconResource("uparrow.gif"));
+        final JButton up_button = new JButton(AbstractProjectContainer.getIconResource("uparrow.gif"));
         up_button.setMargin(insets);
         up_button.addActionListener(new ActionListener() {
             @Override
@@ -127,7 +127,7 @@ public class PartViewEditor extends ItemScrollPane {
         });
         new_panel.add(up_button);
 
-        final JButton down_button = new JButton(SequencerProjectContainer.getIconResource("downarrow.gif"));
+        final JButton down_button = new JButton(AbstractProjectContainer.getIconResource("downarrow.gif"));
         down_button.setMargin(insets);
         down_button.addActionListener(new ActionListener() {
             @Override
@@ -163,7 +163,7 @@ public class PartViewEditor extends ItemScrollPane {
 
         //	toolBar.add(new ToolbarSeperator(),1);
         //	toolBar.add(new ToolbarSeperator());
-        JButton palette = new JButton(SequencerProjectContainer
+        JButton palette = new JButton(AbstractProjectContainer
                 .getIconResource("pallete.png"));
         palette.setMargin(insets);
         palette.setToolTipText(CurrentLocale.getMessage("sequencer.partview.colour_palette_tip"));
