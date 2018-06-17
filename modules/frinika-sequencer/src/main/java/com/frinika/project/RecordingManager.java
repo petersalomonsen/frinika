@@ -45,7 +45,7 @@ public class RecordingManager implements SongPositionListener, MidiMessageListen
     boolean looped;
     boolean isDrumTake;
 
-    public RecordingManager(AbstractProjectContainer proj, int buffSize) {
+     public RecordingManager(AbstractProjectContainer proj, int buffSize) {
         this.project = proj;
         this.sequencer = proj.getSequencer();
         sequencer.addSongPositionListener(this);

@@ -120,7 +120,7 @@ public interface ProgressOperation {
         progressDialog.pack();
 
         progressPanel.setCloseListener(() -> {
-            progressDialog.setVisible(false);
+            progressDialog.dispose();
         });
 
         int screenWidth = allDevices[0].getDefaultConfiguration().getBounds().width;

@@ -799,7 +799,7 @@ public class FrinikaProjectContainer extends AbstractProjectContainer
                                 try {
                                     String txt = new String(meta.getData());
                                     title = txt;
-                                    System.out.println("setTing title \"" + txt + "\"");
+                                    System.out.println("setting title \"" + txt + "\"");
                                 } catch (Throwable t) {
                                     t.printStackTrace();
                                 }
@@ -973,7 +973,7 @@ public class FrinikaProjectContainer extends AbstractProjectContainer
      *
      * @param file
      */
-    public void saveProject(File file) throws IOException { // throw exception
+    public void saveProject(@Nonnull File file) throws IOException { // throw exception
         // so ProjectFrame
         // can show error
         // message, user
@@ -1321,7 +1321,7 @@ public class FrinikaProjectContainer extends AbstractProjectContainer
      * Lanes can contain other lanes. A project is contained within a project
      * lane.
      *
-     * @return top level Lane that containes all others.
+     * @return top level Lane that contains all others.
      */
     @Override
     public ProjectLane getProjectLane() {
@@ -1344,7 +1344,7 @@ public class FrinikaProjectContainer extends AbstractProjectContainer
 
     /**
      *
-     * Set the tempo of the first event in the tempo list
+     * Set the tempo of the first event in the tempo list.
      *
      * @param tempo
      */
@@ -1369,7 +1369,7 @@ public class FrinikaProjectContainer extends AbstractProjectContainer
     }
 
     /**
-     * Go through the mididevice descriptor map and install mididevices
+     * Go through the mididevice descriptor map and install mididevices.
      */
     public void installMidiDevices() {
         this.midiDeviceDescriptorMap = new HashMap<>();
@@ -1675,7 +1675,7 @@ public class FrinikaProjectContainer extends AbstractProjectContainer
 
     /**
      * Package private method used by descriptors to install MidiOutdevices.
-     * Will create the neccesary mappings, and add the device to the sequencer
+     * Will create the necessary mappings, and add the device to the sequencer
      *
      * You should not use this to add a new Midi device - use the public method
      * addMidiOutDevice for that
@@ -1789,9 +1789,10 @@ public class FrinikaProjectContainer extends AbstractProjectContainer
         mixer = projectContainer.mixer;
 
         projectContainer.scriptingEngine.project = null;
-        if (tempoList != null) {
+        if (projectContainer.tempoList != null) {
             projectContainer.tempoList.project = null;
             projectContainer.tempoList.frinikaProject = this;
+            tempoList = projectContainer.tempoList;
         }
         if (projectLane != null) {
             projectContainer.projectLane.project = null;
@@ -1810,7 +1811,7 @@ public class FrinikaProjectContainer extends AbstractProjectContainer
          * SynthRack is for older projects stored directly in the
          * ProjectContainer in the synthSettings property.
          *
-         * As you can see below, when the "old" project is loaded the Frinka
+         * As you can see below, when the "old" project is loaded the Frinika
          * Synthrack is put into a MidiDeviceDescriptor, so that when saved next
          * time it follows the new format.
          *
@@ -2132,6 +2133,7 @@ public class FrinikaProjectContainer extends AbstractProjectContainer
         container.timeSignitureList = projectContainer.timeSignitureList;
         container.ticksPerQuarterNote = projectContainer.ticksPerQuarterNote;
         container.tempoList = projectContainer.tempoList;
+        container.tempoList.project = container;
         container.pianoRollSnapQuantization = projectContainer.pianoRollSnapQuantization;
         container.partViewSnapQuantization = projectContainer.partViewSnapQuantization;
         container.isPianoRollSnapQuantized = projectContainer.isPianoRollSnapQuantized;

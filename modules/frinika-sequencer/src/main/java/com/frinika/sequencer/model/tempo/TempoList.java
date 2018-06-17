@@ -81,7 +81,7 @@ public class TempoList implements Serializable {
         this.ticksPerBeat = ticksPerBeat;
         listeners = new Vector<>();
     }
-
+    
     public void addTempoListListener(TempoListListener o) {
         listeners.add(o);
     }
