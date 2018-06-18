@@ -198,7 +198,7 @@ import uk.org.toot.swingui.audioui.mixerui.CompactMixerPanel;
 /**
  * Frinika is designed to have one basis frame per project.
  *
- * A projectframe is the main window for a project.
+ * A project frame is the main window for a project.
  *
  * @author Peter Johan Salomonsen
  */
@@ -498,6 +498,7 @@ public class FrinikaFrame extends JFrame implements ProjectFrame {
 
         createMenu();
 
+        // SIDEEFECT: injects metronome audio client to audio mixer
         globalToolBar = new GlobalToolBar(project);
 
         JPanel content = new JPanel(new BorderLayout());

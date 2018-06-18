@@ -120,7 +120,7 @@ public interface ProgressOperation {
         progressDialog.pack();
 
         progressPanel.setCloseListener(() -> {
-            progressDialog.dispose();
+            progressDialog.dispatchEvent(new WindowEvent(progressDialog, WindowEvent.WINDOW_CLOSING));
         });
 
         int screenWidth = allDevices[0].getDefaultConfiguration().getBounds().width;
@@ -135,6 +135,10 @@ public interface ProgressOperation {
                 }).start();
             }
         });
-        progressDialog.setVisible(true);
+        try {
+            progressDialog.setVisible(true);
+        } catch (RuntimeException ex) {
+            Logger.getLogger(ProgressOperation.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

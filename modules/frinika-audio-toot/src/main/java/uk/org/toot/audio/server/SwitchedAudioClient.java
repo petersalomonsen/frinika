@@ -28,10 +28,10 @@ import java.util.Stack;
 
 /**
  *  An adapter to allow switching of clients.
- *  It operatates as a stack so revert() will go back to the previous client installed.
+ *  It operates as a stack so revert() will go back to the previous client installed.
  *  Client can be null (useful to disable the audio).
  *  
- *  To stop the server calling any clients work (e.g. to rescue CPU ovderload use setEnabled(false)
+ *  To stop the server calling any clients work (e.g. to rescue CPU overload use setEnabled(false)
  *  
  * @author pjl
  * @author st tweaked a little for toot

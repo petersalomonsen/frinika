@@ -935,7 +935,6 @@ public class FrinikaProjectContainer extends AbstractProjectContainer
             } finally {
                 fileinputStream.close();
             }
-
         }
 
         if (project == null) {
@@ -2075,7 +2074,6 @@ public class FrinikaProjectContainer extends AbstractProjectContainer
     private void attachTootNotifications() {
         Taps.setAudioServer(audioServer);
         sequencer.addTempoChangeListener(new TempoChangeListener() {
-
             @Override
             public void notifyTempoChange(float bpm) {
                 Tempo.setTempo(bpm);
@@ -2086,6 +2084,8 @@ public class FrinikaProjectContainer extends AbstractProjectContainer
     public static FrinikaProjectContainer translateFromLegacy(ProjectContainer projectContainer) throws Exception {
         FrinikaProjectContainer container = new FrinikaProjectContainer();
 
+        container.mixer = projectContainer.mixer;
+        container.mixer.getMainBus().setOutputProcess(container.outputProcess);
         container.mixerControls = projectContainer.mixerControls;
         container.projectLane = projectContainer.projectLane;
         container.title = projectContainer.title;
@@ -2120,6 +2120,7 @@ public class FrinikaProjectContainer extends AbstractProjectContainer
         FrinikaProjectContainer projectContainer = this;
         ProjectContainer container = new ProjectContainer();
 
+        container.mixer = projectContainer.mixer;
         container.mixerControls = projectContainer.mixerControls;
         container.projectLane = projectContainer.projectLane;
         container.title = projectContainer.title;

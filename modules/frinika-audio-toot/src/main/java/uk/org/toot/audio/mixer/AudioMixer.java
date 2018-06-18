@@ -19,7 +19,7 @@ import static uk.org.toot.audio.mixer.MixerControlsIds.*;
 
 /**
  * AudioMixer provides a 'crossbar' of AudioMixerStrips and AudioMixerBusses,
- * at each strip/bus intesection a MixProcess is used to potentially mix
+ * at each strip/bus intersection a MixProcess is used to potentially mix
  * a portion of the audio signal from the strip to the bus (or to a strip if
  * routed).
  * The audio signal is not modified by MixProcess.
