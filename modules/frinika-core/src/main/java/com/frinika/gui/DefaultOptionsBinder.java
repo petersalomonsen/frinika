@@ -30,6 +30,7 @@ import com.frinika.global.property.FrinikaGlobalProperty;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 import javax.swing.AbstractButton;
@@ -57,9 +58,6 @@ public class DefaultOptionsBinder implements OptionsBinder {
     protected Object bindInstance = null;
     protected Map<FrinikaGlobalProperty, Object> back;
 
-    /*public DefaultOptionsBinder() {
-		// nop
-	}*/
     public DefaultOptionsBinder(Map<FrinikaGlobalProperty, Object> bindMap, Map<String, Object> dynamicBindMap, Properties properties) {
         this.bindMap = bindMap;
         this.dynamicBindMap = dynamicBindMap;
@@ -181,11 +179,11 @@ public class DefaultOptionsBinder implements OptionsBinder {
         } else if ((component instanceof JCheckBox) || (component instanceof JToggleButton)) {
             gui = new GUIAbstractionBoolean(component);
             boolean b = (Boolean) gui.getValue();
-            if (boolean.class.isAssignableFrom(fieldType)) {
+            if (Boolean.class.isAssignableFrom(fieldType)) {
                 return b;
             } else if (String.class.isAssignableFrom(fieldType)) {
                 return b ? "yes" : "no";
-            } else if (int.class.isAssignableFrom(fieldType)) {
+            } else if (Integer.class.isAssignableFrom(fieldType)) {
                 return b ? 1 : 0;
             } else {
                 throw new ConfigError("unsupported gui binding: JCheckBox - " + fieldType.getName());
@@ -194,15 +192,15 @@ public class DefaultOptionsBinder implements OptionsBinder {
         } else if (((component instanceof JSpinner) && (((JSpinner) component).getModel() instanceof SpinnerNumberModel)) || (component instanceof JSlider)) {
             gui = new GUIAbstractionNumber(component);
             Number num = (Number) gui.getValue();
-            if (int.class.isAssignableFrom(fieldType)) {
+            if (Integer.class.isAssignableFrom(fieldType)) {
                 return num.intValue();
-            } else if (long.class.isAssignableFrom(fieldType)) {
+            } else if (Long.class.isAssignableFrom(fieldType)) {
                 return num.longValue();
-            } else if (float.class.isAssignableFrom(fieldType)) {
+            } else if (Float.class.isAssignableFrom(fieldType)) {
                 return num.floatValue();
-            } else if (double.class.isAssignableFrom(fieldType)) {
+            } else if (Double.class.isAssignableFrom(fieldType)) {
                 return num.doubleValue();
-            } else if (boolean.class.isAssignableFrom(fieldType)) {
+            } else if (Boolean.class.isAssignableFrom(fieldType)) {
                 return (num.intValue() != 0);
             } else if (String.class.isAssignableFrom(fieldType)) {
                 return num.toString();
@@ -284,28 +282,27 @@ public class DefaultOptionsBinder implements OptionsBinder {
 
     @Override
     public void backup() {
-        throw new UnsupportedOperationException("Not supported yet.");
-//        back = new HashMap<>();
-//        for (FrinikaGlobalProperty f : bindMap.keySet()) {
-//            back.put(f, f.get(bindInstance));
-//        }
+        back = new HashMap<>();
+        for (FrinikaGlobalProperty f : bindMap.keySet()) {
+            back.put(f, bindInstance);
+        }
     }
 
     @Override
     public void restore() {
-        throw new UnsupportedOperationException("Not supported yet.");
-//        for (FrinikaGlobalProperty f : bindMap.keySet()) {
-//            Object o = back.get(f);
+        for (FrinikaGlobalProperty f : bindMap.keySet()) {
+            Object o = back.get(f);
 //            try {
 //                if (f.getDeclaringClass() == FrinikaConfig.class) { // make sure ChangeEvents are fired when Cancel leads to restoring old options
 //                    FrinikaConfig.setGlobalPropertyValue(f, o);
 //                } else {
-//                    f.set(bindInstance, o);
+                    ConfigurationProperty<Object> property = (ConfigurationProperty<Object>) ConfigurationProperty.findByName(f.getName());
+                    FrinikaConfig.setGlobalPropertyValue(property, o);
 //                }
 //            } catch (IllegalAccessException iae) {
 //                System.err.println("error writing field " + f.getName());
 //            }
-//        }
+        }
     }
 
     // --- inner classes -----------------------------------------------------
@@ -314,7 +311,6 @@ public class DefaultOptionsBinder implements OptionsBinder {
         abstract Object getValue();
 
         abstract void setValue(Object o);
-
     }
 
     class GUIAbstractionText extends GUIAbstraction {

@@ -332,7 +332,11 @@ public class FrinikaConfig {
         if (value instanceof File) {
             setupGlobalPropertyDirectory((ConfigurationProperty<File>) property, (File) value);
         } else {
-            property.setValue(value);
+            if (value instanceof String && (!String.class.isAssignableFrom(property.getType()))) {
+                property.setValue((T) stringToValue((String) value, property.getType()));
+            } else {
+                property.setValue(value);
+            }
         }
 
         if (((value != null) && (!value.equals(oldValue))) || ((value == null) && (oldValue != null))) {

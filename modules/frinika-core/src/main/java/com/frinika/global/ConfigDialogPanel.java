@@ -104,7 +104,7 @@ public class ConfigDialogPanel extends JPanel {
         userInterfacePanel.remove(comboboxRedrawRate);
 
         refreshMidiInDevicesList();
-        //       refreshAudioDevicesList();
+        refreshAudioDevicesList();
     }
 
     private void refreshMidiInDevicesList() {
