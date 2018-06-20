@@ -73,7 +73,7 @@
             <Property name="columns" type="int" value="20"/>
             <Property name="lineWrap" type="boolean" value="true"/>
             <Property name="rows" type="int" value="5"/>
-            <Property name="text" type="java.lang.String" value="SoundHelix is a free, versatile and flexible Java framework for composing and playing algorithmic random music based on constrained random generation (CRG).&#xa;&#xa;Author: Thomas Sch&#xfc;rger (thomas@schuerger.com)&#xa;&#xa;SoundHelix is Open Source Software with GPL v3 license.&#xa;&#xa;http://soundhelix.com&#xa;"/>
+            <Property name="text" type="java.lang.String" value="SoundHelix is a free, versatile and flexible Java framework for composing and playing algorithmic random music based on constrained random generation (CRG).&#xa;&#xa;Author: Thomas Sch&#xfc;rger (thomas@schuerger.com)&#xa;&#xa;SoundHelix is Open Source Software with GPL v3 license."/>
           </Properties>
         </Component>
       </SubComponents>

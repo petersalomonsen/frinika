@@ -24,34 +24,43 @@
 package uk.org.toot.misc;
 
 import java.util.Locale;
+import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 
 /**
- * Global class for retrieving the Locale (Language translation) to be used globally
- * by Toot.
- * 
+ * Global class for retrieving the Locale (Language translation) to be used
+ * globally by Toot.
+ *
  * @author Peter Johan Salomonsen
  * @author Steve Taylor
  */
-public class Localisation
-{
+public class Localisation {
+
     static ResourceBundle strings = null;
 
     static {
         try {
-	        strings = ResourceBundle.getBundle("TootLocalisation", Locale.getDefault());
-    		System.out.println("Toot using language: "+Locale.getDefault().getDisplayLanguage());
-        } catch ( Exception e ) {
+            try {
+                strings = ResourceBundle.getBundle("uk/org/toot/TootLocalisation", Locale.getDefault());
+                System.out.println("Toot using language: " + Locale.getDefault().getDisplayLanguage());
+            } catch (MissingResourceException ex) {
+                // Fall back to default locale
+                strings = ResourceBundle.getBundle("uk/org/toot/TootLocalisation", Locale.ROOT);
+                System.out.println("Toot using language: " + Locale.ROOT.getDisplayLanguage());
+            }
+        } catch (Exception e) {
             System.err.println("TootLocalisation properties not found");
             e.printStackTrace();
         }
     }
 
     public static final String getString(String key) {
-        if ( strings == null ) return key;
+        if (strings == null) {
+            return key;
+        }
         try {
             return strings.getString(key);
-        } catch(Exception e) {
+        } catch (Exception e) {
             return key.replace('.', ' ');
         }
     }

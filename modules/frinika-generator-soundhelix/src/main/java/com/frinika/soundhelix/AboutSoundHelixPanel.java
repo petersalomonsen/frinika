@@ -62,7 +62,7 @@ public class AboutSoundHelixPanel extends javax.swing.JPanel {
         textArea.setColumns(20);
         textArea.setLineWrap(true);
         textArea.setRows(5);
-        textArea.setText("SoundHelix is a free, versatile and flexible Java framework for composing and playing algorithmic random music based on constrained random generation (CRG).\n\nAuthor: Thomas Schürger (thomas@schuerger.com)\n\nSoundHelix is Open Source Software with GPL v3 license.\n\nhttp://soundhelix.com\n");
+        textArea.setText("SoundHelix is a free, versatile and flexible Java framework for composing and playing algorithmic random music based on constrained random generation (CRG).\n\nAuthor: Thomas Schürger (thomas@schuerger.com)\n\nSoundHelix is Open Source Software with GPL v3 license.");
         scrollPane.setViewportView(textArea);
 
         closeButton.setText("Close");
