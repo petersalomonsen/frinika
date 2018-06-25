@@ -56,6 +56,7 @@ import javax.swing.JPanel;
 import rasmus.midi.provider.RasmusSynthesizer;
 
 /**
+ * TODO: Move to Drum Mapper module.
  *
  * DrumMapper is a midi device that redirects midi events to other devices doing
  * some mapping enroute.
@@ -94,7 +95,7 @@ public class DrumMapper implements MidiDevice, MidiDeviceIconProvider {
 
     public static class DrumMapperInfo extends Info {
 
-        DrumMapperInfo() {
+        public DrumMapperInfo() {
             super("DrumMapper", "drpj.co.uk", "A MIDI drum mapper", "0.0.1");
         }
     }
@@ -105,7 +106,7 @@ public class DrumMapper implements MidiDevice, MidiDeviceIconProvider {
 
     List<Receiver> receivers;
 
-    DrumMapper() {
+    public DrumMapper() {
         int i = 0;
         for (; i < 128; i++) {
             NoteMap n = noteMap[i] = new NoteMap();
@@ -446,7 +447,7 @@ public class DrumMapper implements MidiDevice, MidiDeviceIconProvider {
     }
 
     /**
-     * over to provide easier GUI manufactoring
+     * over to provide easier GUI manufacturing
      */
     @Override
     public String toString() {

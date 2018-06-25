@@ -21,8 +21,9 @@
  * along with Frinika; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
-package com.frinika.sequencer.midi;
+package com.frinika.midi;
 
+import com.frinika.sequencer.midi.DrumMapper;
 import javax.sound.midi.MidiDevice;
 import javax.sound.midi.MidiDevice.Info;
 import javax.sound.midi.spi.MidiDeviceProvider;

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="changeme" default="all" basedir=".">
+    <target name="all">
+	<javac classpath="../dist/frinika.jar" srcdir="." />
+	<jar basedir="." includes="*.class" file="codesynthdemosoundbank.jar" />
+	<delete includes="*.class" dir="."/>
+    </target>
+</project>

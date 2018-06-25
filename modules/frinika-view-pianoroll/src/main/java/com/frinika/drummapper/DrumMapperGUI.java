@@ -1,5 +1,6 @@
-package com.frinika.sequencer.midi;
+package com.frinika.drummapper;
 
+import com.frinika.sequencer.midi.DrumMapper;
 import com.frinika.audio.gui.ListProvider;
 import com.frinika.sequencer.gui.PopupClient;
 import com.frinika.sequencer.gui.PopupSelectorButton;

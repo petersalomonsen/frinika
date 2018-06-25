@@ -1,5 +1,6 @@
-package com.frinika.sequencer.midi;
+package com.frinika.drummapper;
 
+import com.frinika.sequencer.midi.DrumMapper;
 import com.frinika.sequencer.gui.pianoroll.VirtualPianoVert;
 import java.awt.Color;
 import java.awt.Dimension;

@@ -54,7 +54,7 @@ import com.frinika.sequencer.gui.selection.MultiEventSelection;
 import com.frinika.sequencer.gui.selection.PartSelection;
 import com.frinika.sequencer.gui.selection.SelectionFocusable;
 import com.frinika.sequencer.midi.DrumMapper;
-import com.frinika.sequencer.midi.DrumMapperGUI;
+import com.frinika.drummapper.DrumMapperGUI;
 import com.frinika.sequencer.model.AudioLane;
 import com.frinika.sequencer.model.Lane;
 import com.frinika.sequencer.model.MidiLane;

@@ -43,7 +43,6 @@ import com.frinika.sequencer.gui.selection.MidiSelection;
 import com.frinika.sequencer.gui.selection.MultiEventSelection;
 import com.frinika.sequencer.gui.selection.PartSelection;
 import com.frinika.sequencer.gui.selection.SelectionFocusable;
-import com.frinika.sequencer.midi.DrumMapper;
 import com.frinika.sequencer.model.AudioLane;
 import com.frinika.sequencer.model.Lane;
 import com.frinika.sequencer.model.MidiLane;
@@ -79,6 +78,7 @@ import uk.org.toot.audio.core.AudioProcess;
 import uk.org.toot.audio.mixer.AudioMixer;
 import uk.org.toot.audio.mixer.MixerControls;
 import com.frinika.base.EditHistoryProvider;
+import com.frinika.sequencer.midi.DrumMapper;
 
 public abstract class AbstractProjectContainer implements EditHistoryProvider,
         EditHistoryRecorder<Lane>, MidiConsumer, DynamicMixer {
