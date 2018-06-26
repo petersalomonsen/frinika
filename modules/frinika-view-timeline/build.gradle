@@ -1,6 +1,6 @@
 group = 'com.frinika'
-ext.libraryName = 'Frinika tracks library'
-ext.libraryDescription = 'Tracks library for Frinika'
+ext.libraryName = 'Frinika timeline library'
+ext.libraryDescription = 'Timeline library for Frinika'
 
 apply from: '../modules.gradle'
 

@@ -1,12 +1,8 @@
 /*
  * Copyright (c) 2011 Peter Johan Salomonsen (http://www.petersalomonsen.com) - Licensed under GNU GPL
  */
-
 package com.frinika.jvstsynth;
 
-import java.io.FileOutputStream;
-import java.io.File;
-import java.io.InputStream;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

@@ -32,6 +32,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.InvocationTargetException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.channels.Channels;
@@ -40,6 +41,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.Nonnull;
 import javax.swing.JDialog;
+import javax.swing.SwingUtilities;
 
 /**
  * Progress operation.
@@ -50,16 +52,17 @@ public interface ProgressOperation {
 
     void run(@Nonnull ProgressPanel panel);
 
-    public static void openProjectFile(@Nonnull FrinikaFrame projectFrame, @Nonnull File projectFile) {
+    public static void openProjectFile(@Nonnull FrinikaFrame projectFrame, @Nonnull File projectFile) throws Exception {
         showProgressDialog(projectFrame, (ProgressPanel progressPanel) -> {
+            ProgressObserver progressObserver = progressPanel.getProgressObserver();
             try {
-                ProgressObserver progressObserver = progressPanel.getProgressObserver();
                 progressObserver.setGoal(projectFile.length());
                 FrinikaProjectContainer project = FrinikaProjectContainer.loadProject(projectFile, progressObserver);
                 projectFrame.setProject(project);
                 progressObserver.finished();
             } catch (Exception ex) {
                 Logger.getLogger(ProgressOperation.class.getName()).log(Level.SEVERE, null, ex);
+                progressObserver.fail(ex);
             }
         });
     }
@@ -91,8 +94,9 @@ public interface ProgressOperation {
             showProgressDialog(frame, (ProgressPanel progressPanel) -> {
                 progressPanel.setActionTitle("Download example project");
                 progressPanel.setActionText("Downloading...");
+
+                ProgressObserver progressObserver = progressPanel.getProgressObserver();
                 try {
-                    ProgressObserver progressObserver = progressPanel.getProgressObserver();
                     ProgressInputStream progressInputStream = new ProgressInputStream(progressObserver, inputStream);
                     progressObserver.setGoal(downloadLength);
                     ReadableByteChannel rbc = Channels.newChannel(progressInputStream);
@@ -101,10 +105,12 @@ public interface ProgressOperation {
                     progressObserver.finished();
                 } catch (IOException ex) {
                     Logger.getLogger(ProgressOperation.class.getName()).log(Level.SEVERE, null, ex);
+                    progressObserver.fail(ex);
                 }
             });
         } catch (IOException ex) {
             Logger.getLogger(ProgressOperation.class.getName()).log(Level.SEVERE, null, ex);
+            // TODO
         }
     }
 
@@ -135,8 +141,11 @@ public interface ProgressOperation {
                 }).start();
             }
         });
+
         try {
-            progressDialog.setVisible(true);
+            SwingUtilities.invokeLater(() -> {
+                progressDialog.setVisible(true);
+            });
         } catch (RuntimeException ex) {
             Logger.getLogger(ProgressOperation.class.getName()).log(Level.SEVERE, null, ex);
         }

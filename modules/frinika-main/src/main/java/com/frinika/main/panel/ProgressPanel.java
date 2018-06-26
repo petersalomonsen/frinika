@@ -146,6 +146,12 @@ public class ProgressPanel extends javax.swing.JPanel {
             public void finished() {
                 closeListener.close();
             }
+
+            @Override
+            public void fail(Exception ex) {
+                // TODO
+                closeListener.close();
+            }
         };
     }
 

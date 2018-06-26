@@ -119,6 +119,11 @@ public class BounceToLane extends JDialog implements Runnable {
                 @Override
                 public void finished() {
                 }
+
+                @Override
+                public void fail(Exception ex) {
+                    // TODO
+                }
             };
             AudioInputStream ais = new AudioInputStream(new ProgressInputStream(observer, midiRenderer), new AudioFormat((float) FrinikaGlobalProperties.getSampleRate(), 16, 2, true, true), numberOfSamples);
             FrinikaSequencer sequencer = project.getSequencer();

@@ -124,6 +124,11 @@ public class ExportWavDialog extends JDialog implements Runnable {
                 @Override
                 public void finished() {
                 }
+
+                @Override
+                public void fail(Exception ex) {
+                    // TODO
+                }
             };
             ProgressInputStream progressInputStream = new ProgressInputStream(observer, midiRenderer);
             observer.setGoal(midiRenderer.available());

@@ -1,4 +1,4 @@
-rootProject.name = 'frinika-view-tracks'
+rootProject.name = 'frinika-view-timeline'
 
 apply from: '../modules-settings.gradle'
 
