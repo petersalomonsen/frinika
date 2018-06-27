@@ -22,17 +22,17 @@ public class NativeLibLoader {
 
         try {
 
-            boolean is32bit = System.getProperty("sun.arch.data.model").contains("32");
+            String arch = System.getProperty("sun.arch.data.model");
         
             File tmpDir = new File(System.getProperty("java.io.tmpdir"));
             String osname = System.getProperty("os.name").toLowerCase();
             String nativeLibName = null;
             if (osname.startsWith("win") && "x86".equals(System.getProperty("os.arch"))) {
-                nativeLibName = "jvsthost2.dll";
+                nativeLibName = "jvsthost2_" + arch + ".dll";
             } else if (osname.startsWith("linux")) {
-                nativeLibName = "libjvsthost2.so";
+                nativeLibName = "libjvsthost2_" + arch + ".so";
             } else if (osname.startsWith("mac")) {
-                nativeLibName = "libjvsthost2.jnilib";
+                nativeLibName = "libjvsthost2_" + arch + ".jnilib";
             } else {
                 System.out.println("Found no JVSTHost binary for " + osname + " / " + System.getProperty("os.arch"));
                 return;
