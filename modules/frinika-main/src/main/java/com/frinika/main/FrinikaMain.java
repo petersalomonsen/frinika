@@ -36,12 +36,15 @@ import com.frinika.main.action.CreateProjectAction;
 import com.frinika.main.action.OpenProjectAction;
 import com.frinika.main.model.ExampleProjectFile;
 import com.frinika.main.model.ProjectFileRecord;
+import com.frinika.main.panel.AudioSetupPanel;
 import com.frinika.main.panel.WelcomePanel;
 import com.frinika.project.FrinikaProjectContainer;
 import com.frinika.project.gui.ProjectFocusListener;
 import com.frinika.settings.SetupDialog;
 import com.frinika.toot.FrinikaAudioServerServiceProvider;
 import com.frinika.tootX.midi.MidiInDeviceManager;
+import java.awt.Dialog;
+import java.awt.Dimension;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -51,8 +54,10 @@ import java.util.logging.Logger;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.sound.midi.Sequence;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import uk.org.toot.audio.server.AudioServerServices;
 import uk.org.toot.audio.server.TootAudioServerServiceProvider;
@@ -214,7 +219,15 @@ public class FrinikaMain {
 
             @Override
             public void configureAudio() {
-                SetupDialog.showSettingsModal();
+                JPanel audioSetupPanel = new AudioSetupPanel();
+                Dimension panelSize = audioSetupPanel.getMinimumSize();
+                JDialog audioSetupDialog = WindowUtils.createDialog(audioSetupPanel, welcomeFrame, Dialog.ModalityType.APPLICATION_MODAL);
+                audioSetupDialog.setTitle("Audio Setup");
+                WindowUtils.addHeaderPanel(audioSetupDialog, "Primary Audio Device Setup", "Select primary audio device to be used by Frinika", new javax.swing.ImageIcon(FrinikaMain.class.getResource("/icons/frinika.png")));
+                audioSetupDialog.setLocationByPlatform(true);
+                audioSetupDialog.setMinimumSize(panelSize);
+                audioSetupDialog.setVisible(true);
+                // SetupDialog.showSettingsModal();
             }
 
             @Override

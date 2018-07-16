@@ -55,7 +55,7 @@ public class InitialAudioServerPanel extends JPanel {
     JPanel buttonPanel = new JPanel();
     Color bgCol = darkMode ? Color.BLACK : Color.WHITE;
 
-    InitialAudioServerPanel() {
+    public InitialAudioServerPanel() {
 
         setLayout(new BorderLayout());
 
@@ -133,9 +133,9 @@ public class InitialAudioServerPanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Container top = getTopLevelAncestor();
-                if (getTopLevelAncestor() instanceof SetupDialog) {
+//                if (getTopLevelAncestor() instanceof SetupDialog) {
                     top.setVisible(false);
-                }
+//                }
             }
         });
     }
@@ -180,7 +180,7 @@ class AudioServerSelectPanel extends JPanel {
 
         final boolean multiplexIO = FrinikaGlobalProperties.MULTIPLEXED_AUDIO.getValue();
 
-        String opt[] = { "Default Server", "Multiplexed Server", "Jack" };
+        String opt[] = {"Default Server", "Multiplexed Server", "Jack"};
 
         cb = new JComboBox(opt);
         add(new JLabel("Audio Server"));

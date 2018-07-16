@@ -71,7 +71,6 @@ public class SetupDialog extends JDialog {
 
     private void init() {
         setTitle("Audio Server Setup");
-        setUndecorated(true);
         //	setBackground(Color.WHITE);	
         // setForeground(Color.WHITE);	
 //		JTabbedPane tabPanel=new JTabbedPane();
