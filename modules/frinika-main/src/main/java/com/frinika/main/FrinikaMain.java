@@ -40,7 +40,6 @@ import com.frinika.main.panel.AudioSetupPanel;
 import com.frinika.main.panel.WelcomePanel;
 import com.frinika.project.FrinikaProjectContainer;
 import com.frinika.project.gui.ProjectFocusListener;
-import com.frinika.settings.SetupDialog;
 import com.frinika.toot.FrinikaAudioServerServiceProvider;
 import com.frinika.tootX.midi.MidiInDeviceManager;
 import java.awt.Dialog;
@@ -224,10 +223,9 @@ public class FrinikaMain {
                 JDialog audioSetupDialog = WindowUtils.createDialog(audioSetupPanel, welcomeFrame, Dialog.ModalityType.APPLICATION_MODAL);
                 audioSetupDialog.setTitle("Audio Setup");
                 WindowUtils.addHeaderPanel(audioSetupDialog, "Primary Audio Device Setup", "Select primary audio device to be used by Frinika", new javax.swing.ImageIcon(FrinikaMain.class.getResource("/icons/frinika.png")));
-                audioSetupDialog.setLocationByPlatform(true);
                 audioSetupDialog.setMinimumSize(panelSize);
+                WindowUtils.centerWindowOnWindow(audioSetupDialog, welcomeFrame);
                 audioSetupDialog.setVisible(true);
-                // SetupDialog.showSettingsModal();
             }
 
             @Override

@@ -23,7 +23,6 @@
  */
 package com.frinika.codesynth;
 
-import com.frinika.codesynth.control.ChannelControlMaster;
 import com.frinika.codesynth.control.DefaultChannelControlMaster;
 import java.util.ArrayList;
 import java.util.List;

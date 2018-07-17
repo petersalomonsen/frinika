@@ -12,6 +12,7 @@ import java.awt.Dimension;
 import java.awt.Frame;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
+import java.awt.Rectangle;
 import java.awt.Window;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -311,21 +312,36 @@ public class WindowUtils {
         int topLeftX, topLeftY, screenX, screenY, windowPosX, windowPosY;
 
         if (screen < allDevices.length && screen > -1) {
-            topLeftX = allDevices[screen].getDefaultConfiguration().getBounds().x;
-            topLeftY = allDevices[screen].getDefaultConfiguration().getBounds().y;
+            Rectangle screenRectangle = allDevices[screen].getDefaultConfiguration().getBounds();
+            topLeftX = screenRectangle.x;
+            topLeftY = screenRectangle.y;
 
-            screenX = allDevices[screen].getDefaultConfiguration().getBounds().width;
-            screenY = allDevices[screen].getDefaultConfiguration().getBounds().height;
+            screenX = screenRectangle.width;
+            screenY = screenRectangle.height;
         } else {
-            topLeftX = allDevices[0].getDefaultConfiguration().getBounds().x;
-            topLeftY = allDevices[0].getDefaultConfiguration().getBounds().y;
+            Rectangle screenRectangle = allDevices[0].getDefaultConfiguration().getBounds();
+            topLeftX = screenRectangle.x;
+            topLeftY = screenRectangle.y;
 
-            screenX = allDevices[0].getDefaultConfiguration().getBounds().width;
-            screenY = allDevices[0].getDefaultConfiguration().getBounds().height;
+            screenX = screenRectangle.width;
+            screenY = screenRectangle.height;
         }
 
         windowPosX = ((screenX - window.getWidth()) / 2) + topLeftX;
         windowPosY = ((screenY - window.getHeight()) / 2) + topLeftY;
+
+        window.setLocation(windowPosX, windowPosY);
+    }
+
+    public static void centerWindowOnWindow(Window window, Window relativeWindow) {
+        int centerPosX, centerPosY, windowPosX, windowPosY;
+
+        Rectangle bounds = relativeWindow.getBounds();
+        centerPosX = bounds.x + (bounds.width / 2);
+        centerPosY = bounds.y + (bounds.height / 2);
+
+        windowPosX = centerPosX - (window.getWidth() / 2);
+        windowPosY = centerPosY - (window.getHeight() / 2);
 
         window.setLocation(windowPosX, windowPosY);
     }
