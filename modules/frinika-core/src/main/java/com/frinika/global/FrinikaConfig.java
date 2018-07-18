@@ -570,7 +570,7 @@ public class FrinikaConfig {
                     break;
                 }
             }
-            if (!projectPath.equals(lastProjectPath)) {
+            if (!projectPath.equals(lastProjectPath) && projectName.equals(lastProjectName)) {
                 RecentProjectRecord recentProject = new RecentProjectRecord(lastProjectName, lastProjectPath, lastProjectType);
                 recentProjects.add(0, recentProject);
                 if (recentProjects.size() > 10) {

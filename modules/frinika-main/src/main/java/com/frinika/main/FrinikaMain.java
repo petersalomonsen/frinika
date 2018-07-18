@@ -133,9 +133,11 @@ public class FrinikaMain {
         });
 
         if (argProjectFile != null) {
-            OpenProjectAction openProjectAction = new OpenProjectAction();
-            openProjectAction.setSelectedFile(new File(argProjectFile));
-            openProjectAction.actionPerformed(null);
+            try {
+                OpenProjectAction.openProjectFile(new File(argProjectFile));
+            } catch (Exception ex) {
+                Logger.getLogger(FrinikaMain.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } else {
             getWelcomeFrameInstance().setVisible(true);
         }
@@ -209,7 +211,7 @@ public class FrinikaMain {
             public void openProject() {
                 welcomeFrame.setEnabled(false);
                 String lastFile = FrinikaGlobalProperties.LAST_PROJECT_FILENAME.getValue();
-                OpenProjectAction openProjectAction = new OpenProjectAction();
+                OpenProjectAction openProjectAction = new OpenProjectAction(welcomeFrame);
                 if (lastFile != null) {
                     openProjectAction.setSelectedFile(new File(lastFile));
                 }

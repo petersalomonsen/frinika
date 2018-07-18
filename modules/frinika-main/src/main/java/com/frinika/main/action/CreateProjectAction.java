@@ -23,18 +23,13 @@
  */
 package com.frinika.main.action;
 
-import com.frinika.global.FrinikaConfig;
-import com.frinika.localization.CurrentLocale;
 import com.frinika.main.FrinikaFrame;
 import com.frinika.project.FrinikaProjectContainer;
 import com.frinika.sequencer.gui.ProjectFrame;
-import com.frinika.tools.ProjectFileFilter;
 import java.awt.event.ActionEvent;
-import java.io.File;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.AbstractAction;
-import javax.swing.JFileChooser;
 
 public class CreateProjectAction extends AbstractAction {
 
@@ -52,55 +47,55 @@ public class CreateProjectAction extends AbstractAction {
             Logger.getLogger(OpenProjectAction.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        if (true) {
-            return;
-        }
-
-//        File newProject = new File("New.frinika");
-//        if (newProject.exists()) {
-//            newProject.delete();
-//            try {
-//                newProject.createNewFile();
-//            } catch (IOException e1) {
-//                // TODO Auto-generated catch block
-//                e1.printStackTrace();
-//            }
+//        if (true) {
+//            return;
 //        }
-
-        try {
-            frame = new FrinikaFrame();
-            ((FrinikaFrame) frame).setProject(new FrinikaProjectContainer());
-        } catch (Exception ex) {
-            Logger.getLogger(OpenProjectAction.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        if (true) {
-            return;
-        }
-
-        try {
-            JFileChooser chooser = new JFileChooser();
-            chooser.setDialogTitle(CurrentLocale.getMessage("project.menu.file.new_project.dialogtitle"));
-            chooser.setFileFilter(new ProjectFileFilter());
-            //		if (project.getProjectFile() != null)
-            //			chooser.setSelectedFile(project.getProjectFile());
-            if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
-                File projectFile = chooser.getSelectedFile();
-
-                if (chooser.getFileFilter() instanceof ProjectFileFilter) {
-                    if (!chooser.getFileFilter().accept(projectFile)) {
-                        projectFile = new File(projectFile.getPath() + ".frinika");
-                    }
-                }
-
-                frame = new FrinikaFrame();
-                ((FrinikaFrame) frame).setProject(FrinikaProjectContainer.loadProject(projectFile, null));
-                FrinikaConfig.setLastProject(projectFile);
-            }
-
-        } catch (Exception ex) {
-            Logger.getLogger(OpenProjectAction.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//
+////        File newProject = new File("New.frinika");
+////        if (newProject.exists()) {
+////            newProject.delete();
+////            try {
+////                newProject.createNewFile();
+////            } catch (IOException e1) {
+////                // TODO Auto-generated catch block
+////                e1.printStackTrace();
+////            }
+////        }
+//
+//        try {
+//            frame = new FrinikaFrame();
+//            ((FrinikaFrame) frame).setProject(new FrinikaProjectContainer());
+//        } catch (Exception ex) {
+//            Logger.getLogger(OpenProjectAction.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//
+//        if (true) {
+//            return;
+//        }
+//
+//        try {
+//            JFileChooser chooser = new JFileChooser();
+//            chooser.setDialogTitle(CurrentLocale.getMessage("project.menu.file.new_project.dialogtitle"));
+//            chooser.setFileFilter(new ProjectFileFilter());
+//            //		if (project.getProjectFile() != null)
+//            //			chooser.setSelectedFile(project.getProjectFile());
+//            if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
+//                File projectFile = chooser.getSelectedFile();
+//
+//                if (chooser.getFileFilter() instanceof ProjectFileFilter) {
+//                    if (!chooser.getFileFilter().accept(projectFile)) {
+//                        projectFile = new File(projectFile.getPath() + ".frinika");
+//                    }
+//                }
+//
+//                frame = new FrinikaFrame();
+//                ((FrinikaFrame) frame).setProject(FrinikaProjectContainer.loadProject(projectFile, null));
+//                FrinikaConfig.setLastProject(projectFile);
+//            }
+//
+//        } catch (Exception ex) {
+//            Logger.getLogger(OpenProjectAction.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }
 
     public ProjectFrame getProjectFrame() {
