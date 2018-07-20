@@ -127,7 +127,7 @@ public class MidiStepRecordAction extends AbstractAction {
             }
             return result;
         } else {
-            project.message("Please select a part to record into.");
+            project.getMessageHandler().message("Please select a part to record into.");
             return null;
         }
     }

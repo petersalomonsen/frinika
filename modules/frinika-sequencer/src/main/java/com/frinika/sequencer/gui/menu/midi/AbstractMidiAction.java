@@ -67,12 +67,7 @@ abstract public class AbstractMidiAction extends AbstractDialogAction {
     public void actionPerformed(ActionEvent e) {
         if (!(java.awt.EventQueue.getCurrentEvent().getSource() instanceof JMenuItem)) { // event does not originate from JMenuItem, but from KeyStroke
             Object focusOwner = KeyboardFocusManager.getCurrentKeyboardFocusManager().getPermanentFocusOwner();
-            // NBP
-//            if (!((focusOwner instanceof PartView) || (focusOwner instanceof PianoRoll))) { // otherwise any gui-element catching single-key strokes would invoke menu
-//                return;
-//            }
-
-            if (!((focusOwner instanceof PartView))) { // otherwise any gui-element catching single-key strokes would invoke menu
+            if (!((AbstractProjectContainer) project).shouldProcessKeyboardEvent(focusOwner)) { // otherwise any gui-element catching single-key strokes would invoke menu
                 return;
             }
         }

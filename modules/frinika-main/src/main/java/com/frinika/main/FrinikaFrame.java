@@ -97,6 +97,7 @@ import com.frinika.sequencer.gui.transport.StartStopAction;
 import com.frinika.sequencer.model.AudioLane;
 import com.frinika.sequencer.model.Lane;
 import com.frinika.sequencer.model.Part;
+import com.frinika.sequencer.project.MessageHandler;
 import com.frinika.sequencer.project.ProjectRepaintListener;
 import com.frinika.sequencer.project.mididevices.gui.MidiDevicesPanel;
 import com.frinika.sequencer.tools.BufferedPlayback;
@@ -487,6 +488,53 @@ public class FrinikaFrame extends JFrame implements ProjectFrame {
                                 getTitle().length() - 1));
                     }
                 }
+            }
+        });
+
+        project.setMessageHandler(new MessageHandler() {
+            @Override
+            public void message(String message) {
+                MessageDialogUtils.message(FrinikaFrame.this, message);
+            }
+
+            @Override
+            public String prompt(String message, String initialValue) {
+                return MessageDialogUtils.prompt(FrinikaFrame.this, message, initialValue);
+            }
+
+            @Override
+            public String prompt(String message) {
+                return MessageDialogUtils.prompt(FrinikaFrame.this, message);
+            }
+
+            @Override
+            public String promptFile(String defaultFilename, String[][] suffices, boolean saveMode) {
+                return MessageDialogUtils.promptFile(FrinikaFrame.this, defaultFilename, suffices, saveMode);
+            }
+
+            @Override
+            public String promptFile(String defaultFilename, String[][] suffices) {
+                return MessageDialogUtils.promptFile(FrinikaFrame.this, defaultFilename, suffices);
+            }
+
+            @Override
+            public boolean confirm(String message) {
+                return MessageDialogUtils.confirm(FrinikaFrame.this, message);
+            }
+
+            @Override
+            public void error(String message) {
+                MessageDialogUtils.error(FrinikaFrame.this, message);
+            }
+
+            @Override
+            public void error(Throwable ex) {
+                MessageDialogUtils.error(FrinikaFrame.this, ex);
+            }
+
+            @Override
+            public void error(String message, Throwable t) {
+                MessageDialogUtils.error(FrinikaFrame.this, message, t);
             }
         });
 

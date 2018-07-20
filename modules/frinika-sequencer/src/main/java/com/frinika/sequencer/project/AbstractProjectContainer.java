@@ -163,7 +163,7 @@ public abstract class AbstractProjectContainer implements EditHistoryProvider,
 
     public abstract DragList getDragList();
 
-    public abstract void message(String string);
+    public abstract MessageHandler getMessageHandler();
 
     public abstract double getPianoRollSnapQuantization();
 
@@ -257,6 +257,8 @@ public abstract class AbstractProjectContainer implements EditHistoryProvider,
     }
 
     public abstract JPanel createDrumMapperGUI(DrumMapper drumMapper, AbstractProjectContainer project, MidiLane lane);
+    
+    public abstract boolean shouldProcessKeyboardEvent(Object focusOwner);
 
     public void createMidiLanesFromSequence(Sequence seq, MidiDevice midiDevice) {
 

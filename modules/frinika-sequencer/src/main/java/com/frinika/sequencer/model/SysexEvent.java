@@ -118,8 +118,7 @@ public class SysexEvent extends MultiEvent {
         boolean err;
         do {
             err = false;
-            // NBP
-            final String s = MessageDialogUtils.prompt(null, CurrentLocale.getMessage("sequencer.sysex.edit_sysex") + ":", oldMacroString);
+            final String s = project.getMessageHandler().prompt(CurrentLocale.getMessage("sequencer.sysex.edit_sysex") + ":", oldMacroString);
             if (s != null) {
                 if (!s.equals(oldMacroString)) {
                     try {
@@ -148,8 +147,7 @@ public class SysexEvent extends MultiEvent {
                         project.getEditHistoryContainer().push(action);
                         project.getEditHistoryContainer().notifyEditHistoryListeners();
                     } catch (InvalidMidiDataException imde) {
-                        // NBP
-                        MessageDialogUtils.error(null, imde.getMessage());
+                        project.getMessageHandler().error(imde.getMessage());
                         err = true;
                     }
                 }

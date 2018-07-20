@@ -163,7 +163,7 @@ public class FrinikaScriptingEngine implements ScriptContainer, Serializable {
                 result = cx.evaluateString(scope, source, name, 1, null);
             } catch (Throwable t) {
                 if (t instanceof ThreadDeath) {
-                    project.message("Script execution has been aborted.");
+                    project.getMessageHandler().message("Script execution has been aborted.");
                     result = "";
                 } else {
                     MessageDialogUtils.error(dialog, t);
@@ -208,7 +208,7 @@ public class FrinikaScriptingEngine implements ScriptContainer, Serializable {
         try {
             return engine.eval(source);
         } catch (ScriptException ex) {
-            project.message("Script execution has been aborted.");
+            project.getMessageHandler().message("Script execution has been aborted.");
             Logger.getLogger(FrinikaScriptingEngine.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }

@@ -18,8 +18,7 @@
  * You should have received a copy of the GNU General Public License
  * along with Frinika; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-*/
-
+ */
 package com.frinika.radio;
 
 import com.frinika.project.FrinikaProjectContainer;
@@ -40,7 +39,7 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import org.junit.After;
 import org.junit.AfterClass;
-import static org.junit.Assert.*;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -81,19 +80,17 @@ public class LocalOGGHttpRadioTest {
         FrinikaProjectContainer projectContainer = new FrinikaProjectContainer();
 
         MidiDevice dev = null;
-        for(MidiDevice.Info info : MidiSystem.getMidiDeviceInfo())
-        {
-            if(info.getName().equals("Gervill"))
-            {
+        for (MidiDevice.Info info : MidiSystem.getMidiDeviceInfo()) {
+            if (info.getName().equals("Gervill")) {
                 dev = MidiSystem.getMidiDevice(info);
                 break;
             }
         }
-        SynthWrapper sw = new SynthWrapper(projectContainer,dev);
+        SynthWrapper sw = new SynthWrapper(projectContainer, dev);
         MidiDeviceDescriptor mdd = projectContainer.addMidiOutDevice(sw);
         System.out.println(mdd.getMidiDeviceName());
         SynthLane sl = projectContainer.createSynthLane(mdd);
-        MidiLane ml =  projectContainer.createMidiLane();
+        MidiLane ml = projectContainer.createMidiLane();
         ml.setMidiDevice(sw);
 
         MidiPart p = (MidiPart) ml.createPart();
@@ -101,8 +98,8 @@ public class LocalOGGHttpRadioTest {
         p.add(ne);
         ml.add(p);
         projectContainer.getAudioServer().start();
-               
-        final boolean[] readerDone = new boolean[] {false};
+
+        final boolean[] readerDone = new boolean[]{false};
         LocalOGGHttpRadio.startRadio(projectContainer);
         new Thread() {
 
@@ -110,11 +107,11 @@ public class LocalOGGHttpRadioTest {
             public void run() {
                 try {
                     System.out.println("Get audio input stream");
-                    
+
                     try (AudioInputStream ais = AudioSystem.getAudioInputStream(new URL("http://localhost:15000").openStream())) {
-                        System.out.println("Got stream:" +ais.getFormat().getEncoding());
+                        System.out.println("Got stream:" + ais.getFormat().getEncoding());
                         returnedEncoding[0] = ais.getFormat().getEncoding().toString();
-                        
+
                         ais.read(returnedData);
                     }
                 } catch (IOException | UnsupportedAudioFileException ex) {
@@ -126,16 +123,17 @@ public class LocalOGGHttpRadioTest {
 
         }.start();
         projectContainer.getSequencer().setLoopStartPoint(0);
-        projectContainer.getSequencer().setLoopEndPoint(128*4);
+        projectContainer.getSequencer().setLoopEndPoint(128 * 4);
         projectContainer.getSequencer().setLoopCount(500);
-        
+
         projectContainer.getSequencer().start();
 
-        while(!readerDone[0])
+        while (!readerDone[0]) {
             Thread.sleep(100);
+        }
 
         LocalOGGHttpRadio.stopRadio();
-        assertEquals("VORBISENC",returnedEncoding[0]);
+        Assert.assertEquals("VORBISENC", returnedEncoding[0]);
     }
 
     /**

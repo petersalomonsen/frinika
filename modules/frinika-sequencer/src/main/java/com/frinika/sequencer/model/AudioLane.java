@@ -199,7 +199,7 @@ public class AudioLane extends Lane implements RecordableLane,
     public void setRecording(boolean b) {
         if (b && audioInProcess == null) {
             armed = false;
-            frinikaProject.message(CurrentLocale.getMessage("recording.please_select_audio_input"));
+            frinikaProject.getMessageHandler().message(CurrentLocale.getMessage("recording.please_select_audio_input"));
             return;
         }
 

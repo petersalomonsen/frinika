@@ -29,7 +29,6 @@ import com.frinika.audio.io.BufferedRandomAccessFileManager;
 import com.frinika.audio.toot.AudioInjector;
 import com.frinika.base.FrinikaAudioServer;
 import com.frinika.base.FrinikaAudioSystem;
-import com.frinika.base.MessageDialogUtils;
 import com.frinika.global.ConfigListener;
 import com.frinika.global.FrinikaConfig;
 import com.frinika.global.property.FrinikaGlobalProperties;
@@ -55,6 +54,8 @@ import com.frinika.sequencer.gui.selection.PartSelection;
 import com.frinika.sequencer.gui.selection.SelectionFocusable;
 import com.frinika.sequencer.midi.DrumMapper;
 import com.frinika.drummapper.DrumMapperGUI;
+import com.frinika.sequencer.gui.partview.PartView;
+import com.frinika.sequencer.gui.pianoroll.PianoRoll;
 import com.frinika.sequencer.model.AudioLane;
 import com.frinika.sequencer.model.Lane;
 import com.frinika.sequencer.model.MidiLane;
@@ -73,6 +74,7 @@ import com.frinika.sequencer.model.util.TimeUtils;
 import com.frinika.sequencer.project.MidiDeviceDescriptorIntf;
 import com.frinika.sequencer.project.ProjectSettings;
 import com.frinika.sequencer.project.AbstractProjectContainer;
+import com.frinika.sequencer.project.MessageHandler;
 import com.frinika.sequencer.project.SoundBankNameHolder;
 import com.frinika.synth.SynthRack;
 import com.frinika.synth.settings.SynthSettings;
@@ -160,6 +162,7 @@ public class FrinikaProjectContainer extends AbstractProjectContainer
     transient LaneSelection laneSelection;
     transient MidiSelection midiSelection; // Jens
     transient SelectionFocusable selectionFocus;
+    transient MessageHandler messageHandler;
     String title = null;
     File projectFile = null;
     File audioDir = null;
@@ -457,7 +460,7 @@ public class FrinikaProjectContainer extends AbstractProjectContainer
                 System.out.println("Using " + outDev + " as audio out device");
                 mixer.getMainBus().setOutputProcess(outputProcess);
             } else {
-                message(" No output devices found ");
+                getMessageHandler().message(" No output devices found ");
             }
 
             // This should only be done once.
@@ -1757,9 +1760,12 @@ public class FrinikaProjectContainer extends AbstractProjectContainer
     }
 
     @Override
-    public void message(String message) {
-        // NBP
-        MessageDialogUtils.message(null, message);
+    public MessageHandler getMessageHandler() {
+        return messageHandler;
+    }
+
+    public void setMessageHandler(MessageHandler messageHandler) {
+        this.messageHandler = messageHandler;
     }
 
     public SynthLane createSynthLane(MidiDeviceDescriptor desc) {
@@ -2069,6 +2075,11 @@ public class FrinikaProjectContainer extends AbstractProjectContainer
     @Override
     public JPanel createDrumMapperGUI(DrumMapper drumMapper, AbstractProjectContainer project, MidiLane lane) {
         return new DrumMapperGUI(drumMapper, project, lane);
+    }
+
+    @Override
+    public boolean shouldProcessKeyboardEvent(Object focusOwner) {
+        return (focusOwner instanceof PartView) || (focusOwner instanceof PianoRoll);
     }
 
     private void attachTootNotifications() {
