@@ -23,7 +23,6 @@ import com.frinika.gui.util.WindowUtils;
 import com.frinika.settings.InitialAudioServerPanel;
 import java.awt.BorderLayout;
 import java.awt.Color;
-import javax.swing.JPanel;
 
 /**
  * Audio settings panel.
@@ -33,6 +32,8 @@ import javax.swing.JPanel;
 public class AudioSetupPanel extends javax.swing.JPanel {
 
     private final boolean darkMode = WindowUtils.isDarkMode();
+    
+    private InitialAudioServerPanel panel;
 
     public AudioSetupPanel() {
         initComponents();
@@ -64,12 +65,16 @@ public class AudioSetupPanel extends javax.swing.JPanel {
 
     private void init() {
         setLayout(new BorderLayout());
-        JPanel panel = new InitialAudioServerPanel();
+        panel = new InitialAudioServerPanel();
         if (darkMode) {
             panel.setBackground(Color.BLACK);
         }
 
         add(panel, BorderLayout.CENTER);
+    }
+    
+    public void close() {
+        panel.close();
     }
 
 

@@ -44,6 +44,8 @@ import com.frinika.toot.FrinikaAudioServerServiceProvider;
 import com.frinika.tootX.midi.MidiInDeviceManager;
 import java.awt.Dialog;
 import java.awt.Dimension;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -56,7 +58,6 @@ import javax.sound.midi.Sequence;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import uk.org.toot.audio.server.AudioServerServices;
 import uk.org.toot.audio.server.TootAudioServerServiceProvider;
@@ -102,6 +103,7 @@ public class FrinikaMain {
             FrinikaAudioSystem.installClient(project.getAudioClient());
         });
 
+        // TODO: This is generally bad approach to depend on deprecated / internal classes
         if (audioServicesScanCapable()) {
             // Java version up to 1.8
             AudioServerServices.scan();
@@ -220,10 +222,16 @@ public class FrinikaMain {
 
             @Override
             public void configureAudio() {
-                JPanel audioSetupPanel = new AudioSetupPanel();
+                AudioSetupPanel audioSetupPanel = new AudioSetupPanel();
                 Dimension panelSize = audioSetupPanel.getMinimumSize();
                 JDialog audioSetupDialog = WindowUtils.createDialog(audioSetupPanel, welcomeFrame, Dialog.ModalityType.APPLICATION_MODAL);
                 audioSetupDialog.setTitle("Audio Setup");
+                audioSetupDialog.addWindowListener(new WindowAdapter() {
+                    @Override
+                    public void windowClosing(WindowEvent e) {
+                        audioSetupPanel.close();
+                    }
+                });
                 WindowUtils.addHeaderPanel(audioSetupDialog, "Primary Audio Device Setup", "Select primary audio device to be used by Frinika", new javax.swing.ImageIcon(FrinikaMain.class.getResource("/icons/frinika.png")));
                 audioSetupDialog.setMinimumSize(panelSize);
                 WindowUtils.centerWindowOnWindow(audioSetupDialog, welcomeFrame);
@@ -237,25 +245,30 @@ public class FrinikaMain {
 
             @Override
             public void openRecentProject(@Nonnull ProjectFileRecord projectFileRecord) {
+                FrinikaFrame projectFrame = null;
                 try {
                     welcomeFrame.setEnabled(false);
                     String projectName = projectFileRecord.getProjectName();
                     String filePath = projectFileRecord.getFilePath();
                     FrinikaConfig.setLastProject(filePath, projectName);
                     File file = new File(filePath);
-                    FrinikaFrame projectFrame = new FrinikaFrame();
+                    projectFrame = new FrinikaFrame();
                     ProgressOperation.openProjectFile(projectFrame, file);
                 } catch (Exception ex) {
                     Logger.getLogger(FrinikaMain.class.getName()).log(Level.SEVERE, null, ex);
+                    if (projectFrame != null) {
+                        FrinikaMain.getInstance().closeFrame(projectFrame);
+                    }
                     welcomeFrame.setEnabled(true);
                 }
             }
 
             @Override
             public void openExampleProject(@Nonnull ProjectFileRecord projectFileRecord) {
+                FrinikaFrame projectFrame = null;
                 try {
                     welcomeFrame.setEnabled(false);
-                    FrinikaFrame projectFrame = new FrinikaFrame();
+                    projectFrame = new FrinikaFrame();
 
                     final File projectFile = getSampleFile(projectFileRecord.getFilePath());
                     if (!projectFile.exists()) {
@@ -268,6 +281,9 @@ public class FrinikaMain {
                     }
                 } catch (Exception ex) {
                     Logger.getLogger(FrinikaMain.class.getName()).log(Level.SEVERE, null, ex);
+                    if (projectFrame != null) {
+                        FrinikaMain.getInstance().closeFrame(projectFrame);
+                    }
                     welcomeFrame.setEnabled(true);
                 }
             }

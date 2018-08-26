@@ -133,6 +133,7 @@ public class InitialAudioServerPanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Container top = getTopLevelAncestor();
+                    audioServer.stop();
 //                if (getTopLevelAncestor() instanceof SetupDialog) {
                     top.setVisible(false);
 //                }
@@ -157,6 +158,10 @@ public class InitialAudioServerPanel extends JPanel {
                 setStateIO();
             }
         });
+    }
+    
+    public void close() {
+        audioServer.stop();
     }
 }
 

@@ -1,4 +1,4 @@
-/*
+ /*
  * Created on Apr 10, 2007
  *
  * Copyright (c) 2006-2007 P.J.Leonard
@@ -76,10 +76,10 @@ class DeviceManager {
 	};
 
 	public DeviceManager(int bufferSize) throws MyException {
-
-		if (the != null)
-			throw new MyException(
-					" JavaSoundConnectionManager is a singleton. ");
+// TODO: Multiple device managers needed
+//		if (the != null)
+//			throw new MyException(
+//					" JavaSoundConnectionManager is a singleton. ");
 		the = this;
 		Mixer.Info[] mixerInfos = AudioSystem.getMixerInfo();
 
