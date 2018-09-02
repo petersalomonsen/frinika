@@ -1,0 +1,128 @@
+apply plugin: 'base'
+apply plugin: 'distribution'
+apply plugin: 'com.bmuschko.izpack'
+
+def baseVersion = '0.9.0'
+def devVersion = '-dev'
+version = baseVersion + devVersion + '-' + getDate('yyyyMMdd')
+
+def getDate(dateFormat) {
+    def date = new Date()
+    def formattedDate = date.format(dateFormat)
+    return formattedDate
+}
+
+task wrapper(type: Wrapper, description: 'Creates and deploys the Gradle wrapper to the current directory.') {
+    gradleVersion = '4.6'
+}
+
+subprojects.each { subproject -> evaluationDependsOn(subproject.path) }
+
+task versionFile() {
+    doLast {
+        new File("$projectDir/modules/frinika-core/src/main/resources/version.properties").text = """
+version = $baseVersion
+build-date = ${getDate('YYYY-MM-dd')}
+copyrightStart = 2004
+copyrightEnd = ${getDate('YYYY')}
+"""
+    }
+}
+
+assemble.dependsOn project.tasks['versionFile']
+distZip.dependsOn project(':tools').subprojects.assemble
+distZip.dependsOn project(':tools:frinika-app').tasks['createExe']
+distTar.dependsOn project(':tools').subprojects.assemble
+distTar.dependsOn project(':tools:frinika-app').tasks['createExe']
+
+distributions {
+    main {
+        contents {
+            duplicatesStrategy = 'exclude'
+
+            from project.rootDir
+            include 'license.txt'
+            include 'changes.txt'
+            include 'frinika-changes.txt'
+            into('') {
+                from 'src/dist'
+                include '**'
+            }
+            into('resources') {
+                from 'tools/frinika-app/resources'
+                include 'soundhelix/**'
+                include 'soundhelix-legacy/**'
+            }
+
+            from project(':tools:frinika-app').projectDir.absolutePath + '/build/launch4j'
+            include "frinika.exe"
+
+            into('lib') {
+                from 'lib'
+                include '*.txt'
+            }
+            into('lib/native') {
+                from 'lib/native'
+                include '**'
+            }
+
+            project(':modules').subprojects.each { p ->
+                p.plugins.withType(JavaPlugin) {
+                    into('lib') {
+                        from p.jar.archivePath
+                        include '*'
+                        from p.configurations.runtime
+                        include '*'
+                    }
+                }
+            }
+            project(':tools').subprojects.each { p ->
+                p.plugins.withType(JavaPlugin) {
+                    into('lib') {
+                        from p.configurations.runtime
+                        include '*'
+                    }
+
+                    into('') {
+                        from p.jar.archivePath
+                        include '*'
+                        rename { filename -> "frinika.jar" }
+                    }
+                }
+            }
+            into('doc') {
+                from 'doc'
+                exclude 'dev'
+                include '**'
+            }
+            into('samples') {
+                from 'resources/samples'
+                include '**'
+            }
+        }
+    }
+}
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.bmuschko:gradle-izpack-plugin:2.1'
+    }
+}
+
+dependencies {
+    izpack 'org.codehaus.izpack:izpack-standalone-compiler:4.3.5'
+}
+
+izpack {
+    baseDir = file("$buildDir/distributions")
+    installFile = file('src/install-definition.xml')
+    outputFile = file("$buildDir/distributions/frinika-${version}-installer.jar")
+    compression = 'deflate'
+    compressionLevel = 9
+    appProperties = ['app.group': 'frinika', 'app.name': 'frinika', 'app.title': 'Frinika',
+                     'app.version': version, 'app.subpath': "frinika-$version"]
+}

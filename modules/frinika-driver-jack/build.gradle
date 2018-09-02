@@ -1,0 +1,12 @@
+group = 'com.frinika'
+ext.libraryName = 'Frinika Jack library'
+ext.libraryDescription = 'Jack library for Frinika'
+
+apply from: '../modules.gradle'
+
+dependencies {
+    compile(project(':modules:frinika-audio-toot'))
+    compile('org.jaudiolibs:jnajack:1.2.0')
+    compile(':jna-4.2.2')
+    compile(':audioservers-api-1.1.1')
+}

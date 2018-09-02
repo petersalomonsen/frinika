@@ -1,0 +1,32 @@
+rootProject.name = 'frinika-app'
+include ":modules:frinika-core"
+include ":modules:frinika-audio"
+include ":modules:frinika-main"
+include ":modules:frinika-mod"
+include ":modules:frinika-radio"
+include ":modules:frinika-view-notation"
+include ":modules:frinika-simphoney"
+include ":modules:frinika-view-tracker"
+include ":modules:frinika-sequencer"
+include ":modules:frinika-project"
+include ":modules:frinika-driver-frogdisco"
+include ":modules:frinika-driver-jack"
+include ":modules:frinika-driver-osx"
+include ":modules:frinika-device-synthrack"
+include ":modules:frinika-device-rasmusdsp"
+include ":modules:frinika-device-debug"
+include ":modules:frinika-device-opl3"
+include ":modules:frinika-mystudio"
+include ":modules:sevenzip"
+
+def modifyPath(project) {
+    def rootProjectDir = rootProject.projectDir.parentFile.parent
+    project.children.each { p ->
+        p.projectDir = new File(rootProjectDir + p.projectDir.path.substring(rootProject.projectDir.path.length(), p.projectDir.path.length()))
+        modifyPath(p)
+    }
+}
+
+if (rootProject.path == ':') {
+    modifyPath(rootProject)
+}

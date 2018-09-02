@@ -1,0 +1,10 @@
+rootProject.name = 'frinika-mystudio'
+
+apply from: '../modules-settings.gradle'
+
+include ":modules:frinika-core"
+include ":modules:frinika-audio"
+include ":modules:frinika-tracker"
+include ":modules:frinika-sequencer"
+include ":modules:sevenzip"
+include ":modules:frinika-project"

@@ -1,0 +1,15 @@
+rootProject.name = 'frinika-project'
+
+apply from: '../modules-settings.gradle'
+
+include ":modules:frinika-core"
+include ":modules:frinika-audio"
+include ":modules:frinika-sequencer"
+include ":modules:frinika-view-tracker"
+include ":modules:frinika-view-pianoroll"
+include ":modules:frinika-device-synthrack"
+include ":modules:frinika-device-debug"
+include ":modules:frinika-device-codesynth"
+include ":modules:frinika-device-drummapper"
+include ":modules:frinika-device-jvst"
+include ":modules:sevenzip"

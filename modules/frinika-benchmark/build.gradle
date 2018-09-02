@@ -1,0 +1,15 @@
+group = 'com.frinika'
+ext.libraryName = 'Frinika benchmark library'
+ext.libraryDescription = 'Benchmark library for Frinika'
+
+apply from: '../modules.gradle'
+
+if (!hasProperty('mainClass')) {
+    ext.mainClass = ''
+}
+
+dependencies {
+    compile(project(':modules:frinika-core'))
+    compile(project(':modules:frinika-synth'))
+    compile(project(':modules:frinika-sequencer'))
+}

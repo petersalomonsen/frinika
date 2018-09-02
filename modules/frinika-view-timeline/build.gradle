@@ -1,0 +1,10 @@
+group = 'com.frinika'
+ext.libraryName = 'Frinika timeline library'
+ext.libraryDescription = 'Timeline library for Frinika'
+
+apply from: '../modules.gradle'
+
+dependencies {
+    compile(project(':modules:frinika-core'))
+    compile(project(':modules:frinika-sequencer'))
+}

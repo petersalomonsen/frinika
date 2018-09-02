@@ -1,0 +1,4 @@
+rootProject.name = 'frinika-audio-vorbis'
+
+apply from: '../modules-settings.gradle'
+

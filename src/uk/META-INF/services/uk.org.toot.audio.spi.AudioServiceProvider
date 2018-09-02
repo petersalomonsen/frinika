@@ -1,7 +1,0 @@
-uk.org.toot.audio.reverb.ReverbServiceProvider
-uk.org.toot.audio.eq.EQServiceProvider
-uk.org.toot.audio.dynamics.DynamicsServiceProvider
-uk.org.toot.audio.delay.DelayServiceProvider
-uk.org.toot.audio.distort.DistortionServiceProvider
-uk.org.toot.audio.basic.BasicServiceProvider
-uk.org.toot.audio.tool.ToolServiceProvider

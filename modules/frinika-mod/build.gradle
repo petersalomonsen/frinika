@@ -1,0 +1,13 @@
+group = 'com.frinika'
+ext.libraryName = 'Frinika MOD support library'
+ext.libraryDescription = 'MOD support library for Frinika'
+
+apply from: '../modules.gradle'
+
+dependencies {
+    compile(project(':modules:frinika-core'))
+    compile(project(':modules:frinika-audio'))
+    compile(project(':modules:frinika-sequencer'))
+    compile(project(':modules:frinika-project'))
+    compile ':jmod_0_9k'
+}

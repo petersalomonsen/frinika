@@ -1,0 +1,8 @@
+group = 'com.frinika'
+ext.libraryName = 'Frinika priority library'
+ext.libraryDescription = 'Priority library for Frinika'
+
+apply from: '../modules.gradle'
+
+dependencies {
+}

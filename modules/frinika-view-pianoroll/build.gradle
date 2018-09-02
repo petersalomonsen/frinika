@@ -1,0 +1,9 @@
+group = 'com.frinika'
+ext.libraryName = 'Frinika piano roll library'
+ext.libraryDescription = 'Piano roll library for Frinika'
+
+apply from: '../modules.gradle'
+
+dependencies {
+    compile(project(':modules:frinika-sequencer'))
+}
