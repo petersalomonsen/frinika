@@ -133,9 +133,9 @@ public class InitialAudioServerPanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Container top = getTopLevelAncestor();
-                    audioServer.stop();
+                audioServer.stop();
 //                if (getTopLevelAncestor() instanceof SetupDialog) {
-                    top.setVisible(false);
+                top.setVisible(false);
 //                }
             }
         });
@@ -159,9 +159,11 @@ public class InitialAudioServerPanel extends JPanel {
             }
         });
     }
-    
+
     public void close() {
-        audioServer.stop();
+        if (audioServer != null) {
+            audioServer.stop();
+        }
     }
 }
 
@@ -183,6 +185,7 @@ class AudioServerSelectPanel extends JPanel {
         c.gridy = 0;
         c.gridx = 0;
 
+        final boolean jackMode = FrinikaGlobalProperties.JACK_AUDIO.getValue();
         final boolean multiplexIO = FrinikaGlobalProperties.MULTIPLEXED_AUDIO.getValue();
 
         String opt[] = {"Default Server", "Multiplexed Server", "Jack"};
@@ -192,7 +195,9 @@ class AudioServerSelectPanel extends JPanel {
         c.gridx++;
         add(cb, c);
 
-        if (multiplexIO) {
+        if (jackMode) {
+            cb.setSelectedIndex(2);
+        } else if (multiplexIO) {
             cb.setSelectedIndex(1);
         } else {
             cb.setSelectedIndex(0);
@@ -202,6 +207,7 @@ class AudioServerSelectPanel extends JPanel {
     void done() {
         //FrinikaConfig.setProperty("multiplexed_audio", String
         //		.valueOf(cb.getSelectedIndex() == 1));
+        FrinikaGlobalProperties.JACK_AUDIO.setValue(cb.getSelectedIndex() == 2);
         FrinikaGlobalProperties.MULTIPLEXED_AUDIO.setValue(cb.getSelectedIndex() == 1);
         FrinikaConfig.store();
     }

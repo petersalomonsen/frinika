@@ -39,6 +39,7 @@ public class FrinikaGlobalProperties {
     public static final PackedStringListProperty MIDIIN_DEVICES_LIST = new PackedStringListProperty(FrinikaGlobalProperty.MIDIIN_DEVICES_LIST, "");
     public static final ConfigurationProperty<Boolean> DIRECT_MONITORING = new ConfigurationProperty<>(Boolean.class, FrinikaGlobalProperty.DIRECT_MONITORING, false);
     public static final ConfigurationProperty<Boolean> MULTIPLEXED_AUDIO = new ConfigurationProperty<>(Boolean.class, FrinikaGlobalProperty.MULTIPLEXED_AUDIO, false);
+    public static final ConfigurationProperty<Boolean> JACK_AUDIO = new ConfigurationProperty<>(Boolean.class, FrinikaGlobalProperty.JACK_AUDIO, false);
     public static final ConfigurationProperty<Boolean> BIG_ENDIAN = new ConfigurationProperty<>(Boolean.class, FrinikaGlobalProperty.BIG_ENDIAN, false);
     public static final ConfigurationProperty<Integer> SAMPLE_RATE = new ConfigurationProperty<>(Integer.class, FrinikaGlobalProperty.SAMPLE_RATE, 44100);
     public static final ConfigurationProperty<Boolean> JACK_AUTO_CONNECT = new ConfigurationProperty<>(Boolean.class, FrinikaGlobalProperty.JACK_AUTO_CONNECT, false);
