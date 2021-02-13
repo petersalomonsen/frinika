@@ -1,5 +1,9 @@
 Userland change log (see CHANGELOG.developer for internals)
 
+2021-XX-XX Version 0.8.2
+----------------------------------------------------------------------------------------------
+- (PJS) Fix for running on OpenJDK 14 and 15
+
 2016-11-21 Version 0.8.1
 ----------------------------------------------------------------------------------------------
 - (PJS) Fixed that Midi multi cast devices from RasmusDSP caused slow startup on OSX. 
